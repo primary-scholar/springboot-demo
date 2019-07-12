@@ -1,6 +1,7 @@
 package com.mimu.simple.sj.klass;
 
-import com.mimu.simple.klass.classloader.FileSystemClassLoader;
+
+import com.mimu.simple.sj.klass.classloader.FileSystemClassLoader;
 
 import java.io.File;
 import java.io.IOException;
