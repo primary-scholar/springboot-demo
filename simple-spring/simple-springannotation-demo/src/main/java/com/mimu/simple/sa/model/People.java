@@ -1,26 +1,19 @@
 package com.mimu.simple.sa.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * author: mimu
  * date: 2018/12/3
  */
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class People {
     private int pid;
     private String name;
-
-    public int getPid() {
-        return pid;
-    }
-
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

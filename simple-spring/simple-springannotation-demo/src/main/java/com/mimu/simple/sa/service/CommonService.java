@@ -41,6 +41,10 @@ public class CommonService {
         return termRepository.save(term);
     }
 
+    public People getPeople(int pid) {
+        return peopleRepository.getPeople(pid);
+    }
+
     @Transactional
     public boolean updateInfo(People people, Term term) {
         boolean result = false;
@@ -59,6 +63,7 @@ public class CommonService {
      * 事物回滚
      * 只有遇到 RuntimeException 或 Error 时
      * spring 事务才会执行 rollback 操作
+     *
      * @param term
      * @return
      */

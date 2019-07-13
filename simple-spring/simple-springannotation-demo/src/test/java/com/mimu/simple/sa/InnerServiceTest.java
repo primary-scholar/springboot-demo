@@ -47,5 +47,20 @@ public class InnerServiceTest {
         //Assert.assertTrue(commonService.updateInfo(people, term));
     }
 
+    @Test
+    public void info(){
+        while (true){
+            People people = commonService.getPeople(1);
+            System.out.println(people);
+            System.out.println(System.currentTimeMillis());
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 
 }

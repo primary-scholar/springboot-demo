@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * author: mimu
@@ -35,8 +36,18 @@ public class PeopleRepository extends BaseRepository<People> {
         return result > 0;
     }
 
+    public People getPeople(int pid) {
+        String sql = "select * from `person_info` where person_id=?";
+        List<People> peopleList = getReadTemplate().query(sql, this::mapRow, pid);
+        return peopleList.size() > 0 ? peopleList.get(0) : new People();
+    }
+
+
     @Override
     public People mapRow(ResultSet resultSet, int i) throws SQLException {
-        return null;
+        return People.builder()
+                .pid(resultSet.getInt("person_id"))
+                .name(resultSet.getString("person_name"))
+                .build();
     }
 }
