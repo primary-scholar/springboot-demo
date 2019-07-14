@@ -25,7 +25,7 @@ public class FileSystemClassLoaderTest {
 
     private String dot = ".";
     private String separator = File.separator;
-    private String sameClass = "com.mimu.simple.klass.classloader.SameClass";
+    private String sameClass = "com.mimu.simple.sj.klass.classloader.SameClass";
     private String setSameClass = "setSameClass";
     private String classSuffix = ".class";
     private String userDir = System.getProperty("user.dir");
