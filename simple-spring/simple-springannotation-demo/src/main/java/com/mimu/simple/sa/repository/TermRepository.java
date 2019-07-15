@@ -1,6 +1,6 @@
 package com.mimu.simple.sa.repository;
 
-import com.mimu.simple.sa.model.Term;
+import com.mimu.simple.sa.model.TermData;
 import com.mimu.simple.sa.repository.base.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * date: 2019/1/11
  */
 @Repository
-public class TermRepository extends BaseRepository<Term> {
+public class TermRepository extends BaseRepository<TermData> {
 
     @Override
     @Autowired
@@ -23,20 +23,20 @@ public class TermRepository extends BaseRepository<Term> {
         setReadData(db1Read);
     }
 
-    public boolean save(Term term) {
+    public boolean save(TermData termData) {
         String sql = "INSERT INTO `term_info` (`term_id`, `person_id`) values (?,?)";
-        int result = getWriteTemplate().update(sql, term.getTid(), term.getPid());
+        int result = getWriteTemplate().update(sql, termData.getTid(), termData.getPid());
         return result > 0;
     }
 
-    public boolean update(Term term) {
+    public boolean update(TermData termData) {
         String sql = "UPDATE `term_info` SET `term_id`=? WHERE `person_id`=? ";
-        int result = getWriteTemplate().update(sql, term.getTid(), term.getPid());
+        int result = getWriteTemplate().update(sql, termData.getTid(), termData.getPid());
         return result > 0;
     }
 
     @Override
-    public Term mapRow(ResultSet resultSet, int i) throws SQLException {
+    public TermData mapRow(ResultSet resultSet, int i) throws SQLException {
         return null;
     }
 }

@@ -1,8 +1,8 @@
 package com.mimu.simple.sa;
 
 import com.mimu.simple.sa.config.ApplicationConfig;
-import com.mimu.simple.sa.model.People;
-import com.mimu.simple.sa.model.Term;
+import com.mimu.simple.sa.model.PersonData;
+import com.mimu.simple.sa.model.TermData;
 import com.mimu.simple.sa.service.CommonService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -25,26 +25,41 @@ public class InnerServiceTest {
 
     @Test
     public void saveInfo() {
-        People people = new People();
-        people.setPid(2);
-        people.setName("nickname2");
-        Term term = new Term();
-        term.setPid(2);
-        term.setTid(2);
-        Assert.assertTrue(commonService.saveInfo(people, term));
+        PersonData personData = new PersonData();
+        personData.setPid(2);
+        personData.setNickName("nickname2");
+        TermData termData = new TermData();
+        termData.setPid(2);
+        termData.setTid(2);
+        Assert.assertTrue(commonService.saveInfo(personData, termData));
     }
 
 
     @Test
     public void updateInfo() {
-        People people = new People();
-        people.setPid(2);
-        people.setName("nickname2");
-        Term term = new Term();
-        term.setPid(1);
-        term.setTid(1);
-        commonService.updateInfo(people,term);
-        //Assert.assertTrue(commonService.updateInfo(people, term));
+        PersonData personData = new PersonData();
+        personData.setPid(2);
+        personData.setNickName("nickname2");
+        TermData termData = new TermData();
+        termData.setPid(1);
+        termData.setTid(1);
+        commonService.updateInfo(personData, termData);
+        //Assert.assertTrue(commonService.updateInfo(personData, termData));
+    }
+
+    @Test
+    public void info(){
+        while (true){
+            PersonData personData = commonService.getPeople(1);
+            System.out.println(personData);
+            System.out.println(System.currentTimeMillis());
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
 

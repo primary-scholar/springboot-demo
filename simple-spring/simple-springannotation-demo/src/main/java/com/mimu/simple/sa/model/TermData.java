@@ -2,11 +2,11 @@ package com.mimu.simple.sa.model;
 
 /**
  * author: mimu
- * date: 2018/12/3
+ * date: 2019/6/6
  */
-public class People {
+public class TermData {
     private int pid;
-    private String name;
+    private int tid;
 
     public int getPid() {
         return pid;
@@ -16,11 +16,11 @@ public class People {
         this.pid = pid;
     }
 
-    public String getName() {
-        return name;
+    public int getTid() {
+        return tid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTid(int tid) {
+        this.tid = tid;
     }
 }

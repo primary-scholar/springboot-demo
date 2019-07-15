@@ -1,7 +1,7 @@
 package com.mimu.simple.sa.service;
 
-import com.mimu.simple.sa.model.People;
-import com.mimu.simple.sa.model.Term;
+import com.mimu.simple.sa.model.PersonData;
+import com.mimu.simple.sa.model.TermData;
 import com.mimu.simple.sa.repository.PeopleRepository;
 import com.mimu.simple.sa.repository.TermRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,41 +29,46 @@ public class CommonService {
     }
 
     @Transactional
-    public boolean saveInfo(People people, Term term) {
-        return savePeople(people) && saveTerm(term);
+    public boolean saveInfo(PersonData personData, TermData termData) {
+        return savePeople(personData) && saveTerm(termData);
     }
 
-    public boolean savePeople(People people) {
-        return peopleRepository.save(people);
+    public boolean savePeople(PersonData personData) {
+        return peopleRepository.save(personData);
     }
 
-    public boolean saveTerm(Term term) {
-        return termRepository.save(term);
+    public boolean saveTerm(TermData termData) {
+        return termRepository.save(termData);
+    }
+
+    public PersonData getPeople(int pid) {
+        return peopleRepository.getPeople(pid);
     }
 
     @Transactional
-    public boolean updateInfo(People people, Term term) {
+    public boolean updateInfo(PersonData personData, TermData termData) {
         boolean result = false;
         try {
-            result = updatePeople(people) && updateTerm(term);
+            result = updatePeople(personData) && updateTerm(termData);
         } catch (Exception e) {
         }
         return result;
     }
 
-    public boolean updatePeople(People people) {
-        return peopleRepository.update(people);
+    public boolean updatePeople(PersonData personData) {
+        return peopleRepository.update(personData);
     }
 
     /**
      * 事物回滚
      * 只有遇到 RuntimeException 或 Error 时
      * spring 事务才会执行 rollback 操作
-     * @param term
+     *
+     * @param termData
      * @return
      */
-    public boolean updateTerm(Term term) {
-        if (!termRepository.update(term)) {
+    public boolean updateTerm(TermData termData) {
+        if (!termRepository.update(termData)) {
             throw new RuntimeException();
         }
         return true;

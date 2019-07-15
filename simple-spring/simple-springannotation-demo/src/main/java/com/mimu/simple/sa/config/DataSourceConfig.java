@@ -60,7 +60,7 @@ public class DataSourceConfig {
     private DataSource getDataSource(String url, String user, String password, boolean useUtf8Mb4) {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        String jdbcUrl = String.format("%s?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=true"
+        String jdbcUrl = String.format("%s"
                 , url);
         dataSource.setUrl(jdbcUrl);
         dataSource.setUsername(user);
@@ -70,9 +70,13 @@ public class DataSourceConfig {
         dataSource.setInitialSize(5);
         dataSource.setMaxWait(60000);
         dataSource.setPoolPreparedStatements(false);
+        dataSource.setValidationQuery("select 1");
+        dataSource.setRemoveAbandoned(true);
+        dataSource.setRemoveAbandonedTimeoutMillis(60000);
         dataSource.setTimeBetweenEvictionRunsMillis(60000);
         dataSource.setBreakAfterAcquireFailure(false);
-        dataSource.setTestOnBorrow(false);
+        dataSource.setTestOnBorrow(true);
+        dataSource.setTestOnReturn(false);
         if (useUtf8Mb4) {
             dataSource.setConnectionInitSqls(Collections.singletonList("set names utf8mb4;"));
         }
