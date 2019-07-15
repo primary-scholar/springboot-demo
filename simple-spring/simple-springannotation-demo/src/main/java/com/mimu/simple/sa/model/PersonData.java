@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class People {
+public class PersonData {
     private int pid;
-    private String name;
+    private String nickName;
 }

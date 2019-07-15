@@ -1,6 +1,6 @@
 package com.mimu.simple.sa.repository;
 
-import com.mimu.simple.sa.model.People;
+import com.mimu.simple.sa.model.PersonData;
 import com.mimu.simple.sa.repository.base.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,7 +15,7 @@ import java.util.List;
  * date: 2019/1/11
  */
 @Repository
-public class PeopleRepository extends BaseRepository<People> {
+public class PeopleRepository extends BaseRepository<PersonData> {
 
     @Override
     @Autowired
@@ -24,30 +24,30 @@ public class PeopleRepository extends BaseRepository<People> {
         setReadData(db1Read);
     }
 
-    public boolean save(People people) {
+    public boolean save(PersonData personData) {
         String sql = "INSERT INTO `person_info` (`person_name`, `person_id`) values (?,?)";
-        int result = getWriteTemplate().update(sql, people.getName(), people.getPid());
+        int result = getWriteTemplate().update(sql, personData.getNickName(), personData.getPid());
         return result > 0;
     }
 
-    public boolean update(People people) {
+    public boolean update(PersonData personData) {
         String sql = "UPDATE `person_info` SET `person_name`=? WHERE `person_id`=?";
-        int result = getWriteTemplate().update(sql, people.getName(), people.getPid());
+        int result = getWriteTemplate().update(sql, personData.getNickName(), personData.getPid());
         return result > 0;
     }
 
-    public People getPeople(int pid) {
+    public PersonData getPeople(int pid) {
         String sql = "select * from `person_info` where person_id=?";
-        List<People> peopleList = getReadTemplate().query(sql, this::mapRow, pid);
-        return peopleList.size() > 0 ? peopleList.get(0) : new People();
+        List<PersonData> personDataList = getReadTemplate().query(sql, this::mapRow, pid);
+        return personDataList.size() > 0 ? personDataList.get(0) : new PersonData();
     }
 
 
     @Override
-    public People mapRow(ResultSet resultSet, int i) throws SQLException {
-        return People.builder()
+    public PersonData mapRow(ResultSet resultSet, int i) throws SQLException {
+        return PersonData.builder()
                 .pid(resultSet.getInt("person_id"))
-                .name(resultSet.getString("person_name"))
+                .nickName(resultSet.getString("person_name"))
                 .build();
     }
 }

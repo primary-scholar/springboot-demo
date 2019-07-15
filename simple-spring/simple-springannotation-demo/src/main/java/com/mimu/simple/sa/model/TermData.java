@@ -4,7 +4,7 @@ package com.mimu.simple.sa.model;
  * author: mimu
  * date: 2019/6/6
  */
-public class Term {
+public class TermData {
     private int pid;
     private int tid;
 
