@@ -20,6 +20,7 @@
         <module>simple-springfilelifecycle-demo</module>
         <module>simple-springannotation-demo</module>
         <module>simple-springannotationlicecycle-demo</module>
+        <module>simple-springmybatis-demo</module>
     </modules>
 
     <properties>
