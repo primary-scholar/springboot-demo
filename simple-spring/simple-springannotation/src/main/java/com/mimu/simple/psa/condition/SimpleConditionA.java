@@ -10,9 +10,6 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  * Hello world!
  */
 public class SimpleConditionA implements Condition {
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
