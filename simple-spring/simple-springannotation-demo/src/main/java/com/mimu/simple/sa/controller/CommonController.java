@@ -1,14 +1,14 @@
 package com.mimu.simple.sa.controller;
 
-import com.mimu.simple.sa.core.SimpleController;
 import com.mimu.simple.sa.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * author: mimu
  * date: 2019/1/10
  */
-@SimpleController
+@RestController
 public class CommonController {
 
     private CommonService commonService;
