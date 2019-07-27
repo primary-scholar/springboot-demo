@@ -9,7 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mimu.simple</groupId>
     <artifactId>simple-springannotation</artifactId>
 
     <name>simple-springannotation</name>
