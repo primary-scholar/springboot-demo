@@ -52,7 +52,7 @@
         </logger>
 
         <root level="all">
-            <appender-ref ref="Console" />
+            <appender-ref ref="Console"/>
             <appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileError"/>
         </root>
