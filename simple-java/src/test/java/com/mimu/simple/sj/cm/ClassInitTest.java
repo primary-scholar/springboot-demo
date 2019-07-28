@@ -56,7 +56,7 @@ public class ClassInitTest {
         }
         /**
          * 静态代码块 按照顺序初始化，在执行new Singleton() 时，value1，value2 已进行初始化其值为5，3
-         * 执行完 构造函数后其值为6，4，但被后续的静态变量初始化覆盖为5，3
+         * 执行完 构造函数后其值为6，4
          */
         public static int value1 = 5;
         public static int value3 = 3;
