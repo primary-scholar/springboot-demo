@@ -1,4 +1,4 @@
-package com.mimu.simple.sj;
+package com.mimu.simple.sj.cm;
 
 /**
  * author: mimu
