@@ -1,0 +1,8 @@
+com/mimu/simple/sf/d/DomainC.class
+com/mimu/simple/sf/l/Person.class
+com/mimu/simple/sf/d/DomainA.class
+com/mimu/simple/sf/d/DomainD.class
+com/mimu/simple/sf/l/CustomBeanFactoryPostProcessor.class
+com/mimu/simple/sf/l/CustomInstantiationAwareBeanPostProcessor.class
+com/mimu/simple/sf/d/DomainB.class
+com/mimu/simple/sf/l/CustomBeanPostProcessor.class

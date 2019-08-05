@@ -1,0 +1,8 @@
+/Users/mimu/github/simple-demo/simple-spring/simple-springfilelifecycle-demo/src/main/java/com/mimu/simple/sf/d/DomainC.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfilelifecycle-demo/src/main/java/com/mimu/simple/sf/l/Person.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfilelifecycle-demo/src/main/java/com/mimu/simple/sf/l/CustomBeanPostProcessor.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfilelifecycle-demo/src/main/java/com/mimu/simple/sf/d/DomainD.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfilelifecycle-demo/src/main/java/com/mimu/simple/sf/d/DomainA.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfilelifecycle-demo/src/main/java/com/mimu/simple/sf/d/DomainB.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfilelifecycle-demo/src/main/java/com/mimu/simple/sf/l/CustomInstantiationAwareBeanPostProcessor.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfilelifecycle-demo/src/main/java/com/mimu/simple/sf/l/CustomBeanFactoryPostProcessor.java

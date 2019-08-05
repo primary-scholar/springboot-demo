@@ -1,0 +1,15 @@
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/repository/inner/InnerRepository.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/core/SimpleLoggerAspectBean.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/model/Human.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/controller/CommonController.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/service/external/ExternalService.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/repository/BaseRepository.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/controller/external/ExternalController.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/core/SimpleLoggerAroundAspectBean.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/model/Student.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/repository/external/ExternalRepository.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/repository/CommonRepository.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/service/inner/InnerService.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/controller/inner/InnerController.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/service/CommonService.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springfile-demo/src/main/java/com/mimu/simple/sf/model/People.java
