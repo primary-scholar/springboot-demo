@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--auto scan config change every 60s-->
 <configuration scan="true" scanPeriod="60 seconds">
-    <property scope="context" name="path" value="${server_log_home}"/>
-    <property scope="context" name="name" value="${server_name}"/>
-    <!--<property scope="context" name="path" value="logs/"/>
-    <property scope="context" name="name" value="simple-httpclient"/>-->
+    <!--<property scope="context" name="path" value="${server_log_home}"/>
+    <property scope="context" name="name" value="${server_name}"/>-->
+    <property scope="context" name="path" value="logs/"/>
+    <property scope="context" name="name" value="simplespringjetty"/>
     <!--time rolling log-->
     <appender name="timeRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${path}/${server_name}.log</File>
