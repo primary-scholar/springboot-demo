@@ -11,12 +11,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ApplicationConfig.class)
+/*@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = ApplicationConfig.class)*/
 public class SpringAnnotationTest {
 
-    @Test
     public void info() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.register(ApplicationConfig.class);
+        context.refresh();
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+    }
+
+    public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(ApplicationConfig.class);
         context.refresh();
