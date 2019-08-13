@@ -7,7 +7,7 @@
     <property scope="context" name="name" value="simplespringannotation"/>
     <!--time rolling log-->
     <appender name="timeRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${path}/${server_name}.log</File>
+        <File>${path}/${name}.log</File>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <FileNamePattern>${path}/${name}.%d{yyyy-MM-dd}.log</FileNamePattern>
