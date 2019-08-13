@@ -25,19 +25,19 @@ public class PeopleRepository extends BaseRepository<PersonData> {
     }
 
     public boolean save(PersonData personData) {
-        String sql = "INSERT INTO `person_info` (`person_name`, `person_id`) values (?,?)";
+        String sql = "INSERT INTO `user_info` (`person_name`, `person_id`) values (?,?)";
         int result = getWriteTemplate().update(sql, personData.getNickName(), personData.getPid());
         return result > 0;
     }
 
     public boolean update(PersonData personData) {
-        String sql = "UPDATE `person_info` SET `person_name`=? WHERE `person_id`=?";
+        String sql = "UPDATE `user_info` SET `person_name`=? WHERE `person_id`=?";
         int result = getWriteTemplate().update(sql, personData.getNickName(), personData.getPid());
         return result > 0;
     }
 
     public PersonData getPeople(int pid) {
-        String sql = "select * from `person_info` where person_id=?";
+        String sql = "select * from `user_info` where person_id=?";
         List<PersonData> personDataList = getReadTemplate().query(sql, this::mapRow, pid);
         return personDataList.size() > 0 ? personDataList.get(0) : new PersonData();
     }
