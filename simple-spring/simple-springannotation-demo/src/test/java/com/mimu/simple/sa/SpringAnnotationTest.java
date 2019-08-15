@@ -2,6 +2,7 @@ package com.mimu.simple.sa;
 
 
 import com.mimu.simple.sa.config.ApplicationConfig;
+import com.mimu.simple.sa.service.CommonService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -9,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.function.Consumer;
 
 /*@RunWith(SpringJUnit4ClassRunner.class)
@@ -26,7 +28,7 @@ public class SpringAnnotationTest {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(ApplicationConfig.class);
         context.refresh();
-        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+        System.out.println(context.getBean(CommonService.class));
     }
 
 }
