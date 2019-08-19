@@ -1,8 +1,8 @@
-package com.mimu.simple.psa.config;
+package com.mimu.simple.psa.con.config;
 
-import com.mimu.simple.psa.condition.SimpleConditionA;
-import com.mimu.simple.psa.condition.SimpleConditionB;
-import com.mimu.simple.psa.model.ConditionBean;
+import com.mimu.simple.psa.con.condition.SimpleConditionA;
+import com.mimu.simple.psa.con.condition.SimpleConditionB;
+import com.mimu.simple.psa.con.model.ConditionBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;

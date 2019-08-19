@@ -11,8 +11,8 @@ public class BaseRepository {
     protected Student get(int id) {
         Student student = new Student();
         student.setId(id);
-        student.setName("file model: " + id);
-        student.setAvator("file model");
+        student.setName("file imports: " + id);
+        student.setAvator("file imports");
         return student;
     }
 }

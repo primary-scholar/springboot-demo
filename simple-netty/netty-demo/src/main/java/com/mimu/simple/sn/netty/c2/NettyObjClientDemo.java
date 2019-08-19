@@ -41,7 +41,7 @@ public class NettyObjClientDemo {
                             protected void initChannel(SocketChannel ch) throws Exception {
                                 /*
                                   here ObjectDecoder can resolve tcp sticky packet and decoder the byte to object
-                                  in osgi classloader domain because every bundle model can reload without reboot jvm （hot deployment）
+                                  in osgi classloader domain because every bundle imports can reload without reboot jvm （hot deployment）
                                   so we didn't cache the classloader of one bundle
                                  */
                                 ch.pipeline().addLast(new ObjectDecoder(1024,

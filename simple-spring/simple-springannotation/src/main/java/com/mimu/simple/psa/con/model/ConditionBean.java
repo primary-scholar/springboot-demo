@@ -1,4 +1,4 @@
-package com.mimu.simple.psa.model;
+package com.mimu.simple.psa.con.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
