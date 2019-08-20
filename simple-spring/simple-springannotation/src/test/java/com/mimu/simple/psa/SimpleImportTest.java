@@ -1,7 +1,7 @@
 package com.mimu.simple.psa;
 
 import com.mimu.simple.psa.imports.config.BeanImportConfig;
-import com.mimu.simple.psa.imports.config.BeanImportDefinitionRegistraConfig;
+import com.mimu.simple.psa.imports.config.BeanImportDefinitionRegistrarConfig;
 import com.mimu.simple.psa.imports.config.BeanImportSelectorConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,8 +10,8 @@ public class SimpleImportTest {
     public static void main(String[] args) {
         SimpleImportTest simpleImportTest = new SimpleImportTest();
         //simpleImportTest.importInfo();
-        //simpleImportTest.importSelectorInfo();
-        simpleImportTest.importBeanDefinitionInfo();
+        simpleImportTest.importSelectorInfo();
+        //simpleImportTest.importBeanDefinitionInfo();
     }
 
     public void importInfo(){
@@ -31,7 +31,7 @@ public class SimpleImportTest {
     }
 
     public void importBeanDefinitionInfo(){
-        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(BeanImportDefinitionRegistraConfig.class);
+        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(BeanImportDefinitionRegistrarConfig.class);
         String[] beanDefinitionNames = configApplicationContext.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
             System.out.println(beanDefinitionName);

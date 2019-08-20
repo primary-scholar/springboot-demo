@@ -8,5 +8,5 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @ComponentScan("com.mimu.simple.psa.imports.beans")
 @Import(BeanImportBeanDefinitionRegistrar.class)
-public class BeanImportDefinitionRegistraConfig {
+public class BeanImportDefinitionRegistrarConfig {
 }
