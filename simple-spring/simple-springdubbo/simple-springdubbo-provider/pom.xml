@@ -3,37 +3,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>simple-demo</artifactId>
+        <artifactId>simple-springdubbo</artifactId>
         <groupId>com.mimu.simple</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>simple-spring</artifactId>
-    <packaging>pom</packaging>
+    <groupId>com.mimu.simple</groupId>
+    <artifactId>simple-springdubbo-provider</artifactId>
 
-    <name>simple-spring</name>
-
+    <name>simple-springdubbo-provider</name>
     <url>http://www.example.com</url>
-    <modules>
-        <module>simple-springfile-demo</module>
-        <module>simple-springfilelifecycle-demo</module>
-        <module>simple-springannotation-demo</module>
-        <module>simple-springannotationlicecycle-demo</module>
-        <module>simple-springannotation</module>
-        <module>simple-springjetty-demo</module>
-        <module>simple-springdubbo</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-
     </dependencies>
 
     <build>
-
     </build>
 </project>
