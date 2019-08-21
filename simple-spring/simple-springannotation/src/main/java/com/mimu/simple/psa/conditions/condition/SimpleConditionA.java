@@ -1,4 +1,4 @@
-package com.mimu.simple.psa.con.condition;
+package com.mimu.simple.psa.conditions.condition;
 
 
 import org.springframework.context.annotation.Condition;

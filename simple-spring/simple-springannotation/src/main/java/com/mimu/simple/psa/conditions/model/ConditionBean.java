@@ -1,4 +1,4 @@
-package com.mimu.simple.psa.con.model;
+package com.mimu.simple.psa.conditions.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

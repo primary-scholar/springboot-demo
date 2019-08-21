@@ -1,6 +1,6 @@
 package com.mimu.simple.psa;
 
-import com.mimu.simple.psa.con.config.SimpleConditionAnnotationConfig;
+import com.mimu.simple.psa.conditions.config.SimpleConditionAnnotationConfig;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
