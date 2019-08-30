@@ -23,6 +23,7 @@
         <module>simple-springannotation</module>
         <module>simple-springjetty-demo</module>
         <module>simple-springdubbo</module>
+        <module>simple-springhystrix-demo</module>
     </modules>
 
     <properties>
