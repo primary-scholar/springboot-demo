@@ -17,8 +17,6 @@ import org.springframework.stereotype.Component;
  * date: 2018/11/17
  */
 @Aspect
-@Component
-@EnableAspectJAutoProxy
 public class SimpleLoggerAroundAspectBean {
     private static final Logger logger = LoggerFactory.getLogger(SimpleLoggerAroundAspectBean.class);
 

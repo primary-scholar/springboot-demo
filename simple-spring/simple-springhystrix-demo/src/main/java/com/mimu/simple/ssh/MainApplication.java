@@ -17,11 +17,12 @@ public class MainApplication {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         CommonService commonService = context.getBean(CommonService.class);
-        List<InnerInfo> innerInfoList = getList();
+        /*List<InnerInfo> innerInfoList = getList();
         innerInfoList.stream().parallel().forEach(innerInfo -> innerInfo.setName(commonService.getInfo(innerInfo.getName())));
         for (InnerInfo innerInfo : innerInfoList) {
             System.out.println(innerInfo.getId() + " " + innerInfo.getName());
-        }
+        }*/
+        System.out.println(commonService.getInfo("aa"));
     }
 
     public static List<InnerInfo> getList() {

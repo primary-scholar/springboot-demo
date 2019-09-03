@@ -62,5 +62,10 @@ public class InnerServiceTest {
 
     }
 
+    @Test
+    public void logger(){
+        System.out.println(commonService.getPeople(1));
+    }
+
 
 }

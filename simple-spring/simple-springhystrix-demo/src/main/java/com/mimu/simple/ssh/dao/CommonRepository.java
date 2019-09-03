@@ -24,17 +24,17 @@ public class CommonRepository {
      * @param s
      * @return
      */
-    @HystrixCommand(fallbackMethod = "getRemoteInfoFallBack",
+    @HystrixCommand(fallbackMethod = "getRemoteInfoFallBack"/*,
             commandProperties = {
                     @HystrixProperty(name = HystrixPropertiesManager.EXECUTION_ISOLATION_THREAD_TIMEOUT_IN_MILLISECONDS, value = "50"),
                     @HystrixProperty(name = HystrixPropertiesManager.EXECUTION_ISOLATION_SEMAPHORE_MAX_CONCURRENT_REQUESTS, value = "10"),
                     @HystrixProperty(name = HystrixPropertiesManager.FALLBACK_ISOLATION_SEMAPHORE_MAX_CONCURRENT_REQUESTS, value = "10")
-            })
+            }*/)
     public String getRemoteInfo(String s) {
         int random = (int) (Math.random() * 100);
-        if (random > 50) {
+        /*if (random > 50) {
             throw new HystrixBadRequestException(String.valueOf(random));
-        }
+        }*/
         String value = "normal logic";
         logger.info("s={},random={},value={}", s, random, value);
         return value;

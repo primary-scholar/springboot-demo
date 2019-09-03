@@ -1,5 +1,6 @@
 package com.mimu.simple.sa.service;
 
+import com.mimu.simple.sa.core.SimpleLogger;
 import com.mimu.simple.sa.model.PersonData;
 import com.mimu.simple.sa.model.TermData;
 import com.mimu.simple.sa.repository.PeopleRepository;
@@ -41,6 +42,7 @@ public class CommonService {
         return termRepository.save(termData);
     }
 
+    @SimpleLogger
     public PersonData getPeople(int pid) {
         return peopleRepository.getPeople(pid);
     }

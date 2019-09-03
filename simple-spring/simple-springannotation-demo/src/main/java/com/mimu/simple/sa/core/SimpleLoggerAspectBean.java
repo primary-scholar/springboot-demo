@@ -13,8 +13,6 @@ import org.springframework.stereotype.Component;
  * date: 2019/1/25
  */
 @Aspect
-@Component
-@EnableAspectJAutoProxy
 public class SimpleLoggerAspectBean {
     private static final Logger logger = LoggerFactory.getLogger(SimpleLoggerAspectBean.class);
 
