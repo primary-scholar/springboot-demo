@@ -3,6 +3,10 @@ package com.mimu.simple.sj.fastjson;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
+
 /**
  * author: mimu
  * date: 2019/7/23
@@ -63,5 +67,22 @@ public class FastJsonTest {
         public void setName(String name) {
             this.name = name;
         }
+    }
+
+    @Test
+    public void info3(){
+        Set<Long> longSet = new HashSet<>();
+        longSet.add(6228812705470787697l);
+        longSet.add(6228812705470787696l);
+        longSet.add(6228812705470787695l);
+        String data = "{\"6228812705470787697\": \"1\",\"6228812705470787696\": \"1\",\"6228812705470787695\": \"1\"}";
+        JSONObject jsonObject = JSONObject.parseObject(data);
+        longSet.forEach(new Consumer<Long>() {
+            @Override
+            public void accept(Long aLong) {
+                System.out.println(aLong+" "+jsonObject.getString(String.valueOf(aLong)));
+            }
+        });
+        System.out.println(JSONObject.parseObject(data));
     }
 }
