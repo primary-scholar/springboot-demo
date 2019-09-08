@@ -85,17 +85,17 @@ public class CodeInit {
 
     public static List<String> order(List<String> name) {
         Collator collator = Collator.getInstance(Locale.CHINA);
-        return name.stream().sorted((o1, o2) -> collator.compare(o1, o2)).collect(Collectors.toList());
+        return name.stream().sorted(collator::compare).collect(Collectors.toList());
     }
 
     public static List<String> orderString(List<String> name) {
         Collator collator = Collator.getInstance(Locale.CHINA);
-        name.stream().forEach(item -> System.out.println(getPinYinString(item)));
+        name.forEach(item -> System.out.println(getPinYinString(item)));
         List<String> chinese =
                 name.stream().filter(s -> Character.isLetter(getPinYinString(s).charAt(0))).collect(Collectors.toList());
         List<String> noneChinese = name.stream().filter(s -> !Character.isLetter(getPinYinString(s).charAt(0))).collect(Collectors.toList());
         chinese = chinese.stream().sorted(Comparator.comparing(CodeInit::getPinYinString)).collect(Collectors.toList());
-        noneChinese = noneChinese.stream().sorted((o1, o2) -> collator.compare(o1, o2)).collect(Collectors.toList());
+        noneChinese = noneChinese.stream().sorted(collator::compare).collect(Collectors.toList());
         chinese.addAll(noneChinese);
         return chinese;
     }
