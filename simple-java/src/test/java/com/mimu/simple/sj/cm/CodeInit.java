@@ -90,7 +90,6 @@ public class CodeInit {
 
     public static List<String> orderString(List<String> name) {
         Collator collator = Collator.getInstance(Locale.CHINA);
-        name.forEach(item -> System.out.println(getPinYinString(item)));
         List<String> chinese =
                 name.stream().filter(s -> Character.isLetter(getPinYinString(s).charAt(0))).collect(Collectors.toList());
         List<String> noneChinese = name.stream().filter(s -> !Character.isLetter(getPinYinString(s).charAt(0))).collect(Collectors.toList());
@@ -105,7 +104,7 @@ public class CodeInit {
             return "";
         }
         try {
-            return PinyinHelper.convertToPinyinString(china, "", PinyinFormat.WITHOUT_TONE);
+            return PinyinHelper.convertToPinyinString(china, "", PinyinFormat.WITHOUT_TONE).toLowerCase();
         } catch (PinyinException e) {
             return china;
         }
