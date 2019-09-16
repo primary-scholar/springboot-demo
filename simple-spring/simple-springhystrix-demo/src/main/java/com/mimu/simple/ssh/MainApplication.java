@@ -13,21 +13,22 @@ import java.util.function.Consumer;
  * date: 2019/8/30
  */
 public class MainApplication {
+    private static final int size = 100;
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         CommonService commonService = context.getBean(CommonService.class);
-        /*List<InnerInfo> innerInfoList = getList();
+        List<InnerInfo> innerInfoList = getList();
         innerInfoList.stream().parallel().forEach(innerInfo -> innerInfo.setName(commonService.getInfo(innerInfo.getName())));
-        for (InnerInfo innerInfo : innerInfoList) {
-            System.out.println(innerInfo.getId() + " " + innerInfo.getName());
+        /*for (InnerInfo innerInfo : innerInfoList) {
+            innerInfo.getId();
         }*/
-        System.out.println(commonService.getInfo("aa"));
+        //System.out.println(commonService.getInfo("aa"));
     }
 
     public static List<InnerInfo> getList() {
-        List<InnerInfo> innerInfoList = new ArrayList<>(1000);
-        for (int i = 0; i < 100; i++) {
+        List<InnerInfo> innerInfoList = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
             InnerInfo innerInfo = new InnerInfo();
             innerInfo.setId(i);
             innerInfo.setName("s" + i);
