@@ -10,9 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class SpringDubboApplication {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext();
-        configApplicationContext.register(ServiceConsumerConfig.class);
-        configApplicationContext.refresh();
+        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(ServiceConsumerConfig.class);
         configApplicationContext.start();
         System.out.println(configApplicationContext.getBean(CommonService.class).getUserData(1));
     }
