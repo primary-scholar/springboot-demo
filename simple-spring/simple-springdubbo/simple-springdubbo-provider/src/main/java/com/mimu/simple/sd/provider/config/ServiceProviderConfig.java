@@ -3,7 +3,6 @@ package com.mimu.simple.sd.provider.config;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProviderConfig;
 import org.apache.dubbo.config.RegistryConfig;
-import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * date: 2019/8/18
  */
 @Configuration
-@EnableDubbo
-@DubboComponentScan(basePackages = {"com.mimu.simple.sd.provider"})
+@EnableDubbo(scanBasePackages = {"com.mimu.simple.sd.provider"})
 public class ServiceProviderConfig {
 
     @Bean

@@ -4,6 +4,7 @@ import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ConsumerConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,13 +15,13 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan(basePackages = {"com.mimu.simple.sd.consumer"})
-@DubboComponentScan(basePackages = {"com.mimu.simple.sd.consumer.service"})
+@EnableDubbo(scanBasePackages = {"com.mimu.simple.sd.consumer"})
 public class ServiceConsumerConfig {
 
     @Bean
     public ApplicationConfig applicationConfig(){
         ApplicationConfig applicationConfig = new ApplicationConfig();
-        applicationConfig.setName("sdb-service-consumer");
+        applicationConfig.setName("springd-service-consumer");
         return applicationConfig;
     }
 
