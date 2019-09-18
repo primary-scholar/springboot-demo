@@ -24,7 +24,7 @@ public class CommonController {
         this.userDataApi = userDataApi;
     }
 
-    @RequestMapping(value = "/sb3/info.go", method = RequestMethod.GET)
+    @RequestMapping(value = "/sd/info.go", method = RequestMethod.GET)
     public UserData getUserData(long pid) {
         UserData userData = userDataApi.getUserData(pid);
         logger.info("userInfo={}", userData);
