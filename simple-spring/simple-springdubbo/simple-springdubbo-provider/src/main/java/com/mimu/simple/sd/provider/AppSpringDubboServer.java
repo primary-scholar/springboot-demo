@@ -23,7 +23,7 @@ public class AppSpringDubboServer extends SimpleJettyServer {
             logger.info("system params initial complete.");
             new AppSpringDubboServer(port, ApplicationServerConfig.class).run();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("server start failure");
         }
     }
 }

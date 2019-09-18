@@ -12,6 +12,6 @@ public class SpringDubboApplication {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(ServiceConsumerConfig.class);
         configApplicationContext.start();
-        System.out.println(configApplicationContext.getBean(CommonService.class).getUserData(1));
+        System.out.println(configApplicationContext.getBean(CommonService.class).getUserData(2));
     }
 }
