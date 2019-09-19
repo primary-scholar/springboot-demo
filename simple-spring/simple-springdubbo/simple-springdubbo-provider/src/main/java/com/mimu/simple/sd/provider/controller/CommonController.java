@@ -4,7 +4,6 @@ import com.mimu.simple.sd.api.HelloStringApi;
 import com.mimu.simple.sd.api.UserDataApi;
 import com.mimu.simple.sd.core.model.HelloData;
 import com.mimu.simple.sd.core.model.UserData;
-import com.mimu.simple.sd.provider.service.UserDataApiImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class CommonController {
     private HelloStringApi helloStringApi;
 
     @Autowired
-    public void setUserDataApi(UserDataApiImpl userDataApi) {
+    public void setUserDataApi(UserDataApi userDataApi) {
         this.userDataApi = userDataApi;
     }
 
