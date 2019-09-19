@@ -15,6 +15,6 @@ public class SpringDubboApplication {
         configApplicationContext.start();
         System.out.println(configApplicationContext.getBean(CommonService.class).getUserData(2));
 
-        System.out.println(configApplicationContext.getBean(HelloService.class).getHello("哈哈"));
+        System.out.println(configApplicationContext.getBean(HelloService.class).getHello("哈哈1"));
     }
 }

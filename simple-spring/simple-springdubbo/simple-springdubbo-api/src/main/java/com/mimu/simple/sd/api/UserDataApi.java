@@ -8,6 +8,5 @@ import com.mimu.simple.sd.core.model.UserData;
  * date: 2019/8/18
  */
 public interface UserDataApi {
-
     UserData getUserData(long pid);
 }
