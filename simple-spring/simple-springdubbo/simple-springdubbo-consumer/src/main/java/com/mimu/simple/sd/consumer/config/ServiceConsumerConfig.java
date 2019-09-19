@@ -1,7 +1,9 @@
 package com.mimu.simple.sd.consumer.config;
 
+import com.mimu.simple.sd.api.HelloStringApi;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ConsumerConfig;
+import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
@@ -39,5 +41,10 @@ public class ServiceConsumerConfig {
         registryConfig.setClient("curator");
         return registryConfig;
     }
+
+    /*@Bean
+    public ReferenceConfig<HelloStringApi> helloStringApiReferenceConfig(){
+        return new ReferenceConfig<>();
+    }*/
 
 }

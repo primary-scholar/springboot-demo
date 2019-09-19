@@ -16,6 +16,10 @@
 
     <dubbo:service interface="com.mimu.simple.sd.api.UserDataApi"
                    ref="userDataApiImpl" timeout="3000" retries="0"/>
+    <!-- 上述 dubbo:service ref 中需要引用 spring bean 所以在spring 容器中需注册 userDataApiImpl bean
+     由于在com.mimu.simple.sd.provider.service.UserDataApiImpl 类中使用了 @Component 注解
+     所以下面的 注册可忽略-->
+    <!--<bean name="userDataApiImpl" class="com.mimu.simple.sd.provider.service.UserDataApiImpl"/>-->
     <dubbo:monitor protocol="dubbo"/>
 
 </beans>
