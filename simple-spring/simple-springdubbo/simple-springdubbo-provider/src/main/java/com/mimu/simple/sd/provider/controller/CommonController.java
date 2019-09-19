@@ -1,6 +1,7 @@
 package com.mimu.simple.sd.provider.controller;
 
 import com.mimu.simple.sd.api.HelloStringApi;
+import com.mimu.simple.sd.api.UserDataApi;
 import com.mimu.simple.sd.core.model.HelloData;
 import com.mimu.simple.sd.core.model.UserData;
 import com.mimu.simple.sd.provider.service.UserDataApiImpl;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CommonController {
     private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
-    private UserDataApiImpl userDataApi;
+    private UserDataApi userDataApi;
     private HelloStringApi helloStringApi;
 
     @Autowired
