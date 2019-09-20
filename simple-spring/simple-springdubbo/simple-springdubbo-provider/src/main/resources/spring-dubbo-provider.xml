@@ -3,19 +3,32 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="spring-dubbo-provider" logger="slf4j"/>
+    <dubbo:application name="spring-dubbo-provider" logger="slf4j">
+    </dubbo:application>
 
     <dubbo:registry address="zookeeper://localhost:2181" check="true" timeout="5000"/>
 
-    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:protocol name="dubbo" port="20880">
+        <!--使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
+        若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露
+        此处配置 和service 中配置效果一致-->
+        <dubbo:parameter key="scope" value="remote"/>
+    </dubbo:protocol>
 
     <dubbo:service interface="com.mimu.simple.sd.api.HelloStringApi"
                    ref="helloStringImpl" timeout="3000" retries="0">
         <dubbo:method name="hello" retries="3" timeout="1000"/>
+        <!--&lt;!&ndash;使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
+        若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露&ndash;&gt;
+        <dubbo:parameter key="scope" value="remote"/>-->
     </dubbo:service>
 
     <dubbo:service interface="com.mimu.simple.sd.api.UserDataApi"
-                   ref="userDataApiImpl" timeout="3000" retries="0"/>
+                   ref="userDataApiImpl" timeout="3000" retries="0">
+        <!--&lt;!&ndash;使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
+        若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露&ndash;&gt;
+        <dubbo:parameter key="scope" value="remote"/>-->
+    </dubbo:service>
     <!-- 上述 dubbo:service ref 中需要引用 spring bean 所以在spring 容器中需注册 userDataApiImpl bean
      由于在com.mimu.simple.sd.provider.service.UserDataApiImpl 类中使用了 @Component 注解
      所以下面的 注册可忽略-->

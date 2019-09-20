@@ -9,7 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * author: mimu
  * date: 2019/9/18
  */
-public class SpringDubboApplication {
+public class AppSpringDubboConsumer {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(ServiceConsumerConfig.class);
         configApplicationContext.start();

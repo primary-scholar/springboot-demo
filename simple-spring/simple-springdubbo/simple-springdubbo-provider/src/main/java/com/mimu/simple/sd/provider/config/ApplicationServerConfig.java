@@ -12,8 +12,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 @ComponentScan(value = "com.mimu.simple.sd.provider")
-@ImportResource(value = {"classpath:spring-dubbo-provider-annotation.xml"})
-//@ImportResource(value = {"classpath:spring-dubbo-provider.xml"})
+//@ImportResource(value = {"classpath:spring-dubbo-provider-annotation.xml"})
+@ImportResource(value = {"classpath:spring-dubbo-provider.xml"})
 @Import(value = {DataSourceConfig.class})
 @EnableWebMvc
 public class ApplicationServerConfig {

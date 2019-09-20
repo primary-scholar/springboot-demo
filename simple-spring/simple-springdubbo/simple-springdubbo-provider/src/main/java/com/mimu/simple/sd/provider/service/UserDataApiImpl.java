@@ -1,7 +1,6 @@
 package com.mimu.simple.sd.provider.service;
 
 
-import com.mimu.simple.sd.api.HelloStringApi;
 import com.mimu.simple.sd.api.UserDataApi;
 import com.mimu.simple.sd.core.model.UserData;
 import com.mimu.simple.sd.provider.dao.UserRepository;
