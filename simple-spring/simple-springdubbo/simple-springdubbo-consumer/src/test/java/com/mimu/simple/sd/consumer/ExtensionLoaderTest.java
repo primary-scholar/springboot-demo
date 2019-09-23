@@ -15,6 +15,8 @@ public class ExtensionLoaderTest {
     @Test
     public void info(){
         Protocol adaptiveExtension = ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();
+        System.out.println(adaptiveExtension.getDefaultPort());
+
         ExtensionLoader<Protocol> protocolExtensionLoader = ExtensionLoader.getExtensionLoader(Protocol.class);
         Protocol dubboProtocol = protocolExtensionLoader.getExtension(DubboProtocol.NAME);
         System.out.println(dubboProtocol);
