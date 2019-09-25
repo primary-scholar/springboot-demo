@@ -15,6 +15,11 @@ public class CommonService {
     @Reference(check = false)
     private UserDataApi userDataApi;
 
+    /*@Reference(check = false)
+    public void setUserDataApi(UserDataApi userDataApi) {
+        this.userDataApi = userDataApi;
+    }*/
+
     public UserData getUserData(long pid) {
         return userDataApi.getUserData(pid);
     }

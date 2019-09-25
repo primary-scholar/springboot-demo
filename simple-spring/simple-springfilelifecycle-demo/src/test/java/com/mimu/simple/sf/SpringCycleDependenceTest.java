@@ -1,6 +1,7 @@
 package com.mimu.simple.sf;
 
 
+import com.mimu.simple.sf.fb.ModelAFactoryBean;
 import com.mimu.simple.sf.l.Person;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -10,7 +11,8 @@ public class SpringCycleDependenceTest {
 
     @Test
     public void info(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beanlifecycle.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("factorybean.xml");
+        System.out.println(applicationContext.getBean("personFactroyBean"));
     }
 
     @Test

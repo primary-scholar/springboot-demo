@@ -4,6 +4,7 @@ import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.extension.ExtensionLoader;
 import org.apache.dubbo.rpc.Protocol;
 import org.apache.dubbo.rpc.ProxyFactory;
+import org.apache.dubbo.rpc.cluster.Cluster;
 import org.apache.dubbo.rpc.protocol.dubbo.DubboProtocol;
 import org.apache.dubbo.rpc.protocol.injvm.InjvmProtocol;
 import org.junit.Test;
@@ -17,10 +18,9 @@ import javax.xml.crypto.Data;
 public class ExtensionLoaderTest {
 
     @Test
-    public void info() {
-
-
-
+    public void cluster() {
+        Cluster adaptiveExtension = ExtensionLoader.getExtensionLoader(Cluster.class).getAdaptiveExtension();
+        System.out.println(adaptiveExtension);
     }
 
     @Test

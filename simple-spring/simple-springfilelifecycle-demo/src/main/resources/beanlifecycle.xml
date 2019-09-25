@@ -29,5 +29,4 @@
     <bean id="customBeanPostProcessor" class="com.mimu.simple.sf.l.CustomBeanPostProcessor"/>
     <bean id="customBeanFactoryPostProcessor" class="com.mimu.simple.sf.l.CustomBeanFactoryPostProcessor"/>
     <!-- lifecycle package init-->
-
 </beans>
