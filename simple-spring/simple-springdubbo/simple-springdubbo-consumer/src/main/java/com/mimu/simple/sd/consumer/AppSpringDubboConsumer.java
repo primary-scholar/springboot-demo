@@ -1,7 +1,6 @@
 package com.mimu.simple.sd.consumer;
 
 import com.mimu.simple.sd.consumer.config.ServiceConsumerConfig;
-import com.mimu.simple.sd.consumer.service.CommonService;
 import com.mimu.simple.sd.consumer.service.HelloService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
