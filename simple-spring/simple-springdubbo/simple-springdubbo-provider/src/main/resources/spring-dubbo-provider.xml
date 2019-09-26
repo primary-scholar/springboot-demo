@@ -7,7 +7,7 @@
         <dubbo:parameter key="qos.port" value="2222"/>
     </dubbo:application>
 
-    <dubbo:registry address="zookeeper://localhost:2181" check="true" timeout="5000"/>
+    <dubbo:registry address="zookeeper://localhost:2181" check="false" timeout="5000"/>
 
     <dubbo:protocol name="dubbo" port="20880">
         <!--&lt;!&ndash;使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
@@ -16,8 +16,10 @@
         <dubbo:parameter key="scope" value="remote"/>-->
     </dubbo:protocol>
 
+    <dubbo:provider timeout="5000"/>
+
     <dubbo:service interface="com.mimu.simple.sd.api.HelloStringApi"
-                   ref="helloStringImpl" timeout="3000" retries="0">
+                   ref="helloStringImpl" timeout="3000" loadbalance="random" cluster="failover" retries="0">
         <dubbo:method name="hello" retries="3" timeout="1000"/>
         <!--&lt;!&ndash;使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
         若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露&ndash;&gt;
