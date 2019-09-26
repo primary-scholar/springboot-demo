@@ -9,7 +9,8 @@
 
     <dubbo:registry address="zookeeper://localhost:2181" check="false" timeout="5000"/>
 
-    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100">
+    <!-- queues<0 时使用 linkBlockingQueue，默认queues=0，使用synchronousQueue -->
+    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100" queues="-1">
         <!--&lt;!&ndash;使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
         若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露
         此处配置 和service 中配置效果一致&ndash;&gt;
