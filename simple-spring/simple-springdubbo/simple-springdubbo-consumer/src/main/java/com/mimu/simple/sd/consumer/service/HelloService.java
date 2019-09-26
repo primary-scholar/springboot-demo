@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HelloService {
-    @Reference(check = false)
+    @Reference(check = false, retries = 0)
     private HelloStringApi helloStringApi;
 
     public HelloData getHello(String name) {

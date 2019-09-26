@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class AppSpringDubboServer extends SimpleJettyServer {
     private static final Logger logger = LoggerFactory.getLogger(AppSpringDubboServer.class);
 
-    private static int port = 9091;
+    private static int port = 9090;
 
     private AppSpringDubboServer(int port, Class<?> clazz) {
         super(port, clazz);
