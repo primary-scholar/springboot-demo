@@ -2,6 +2,7 @@ package com.mimu.simple.sd.consumer;
 
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.extension.ExtensionLoader;
+import org.apache.dubbo.registry.RegistryFactory;
 import org.apache.dubbo.rpc.Protocol;
 import org.apache.dubbo.rpc.ProxyFactory;
 import org.apache.dubbo.rpc.cluster.Cluster;
@@ -42,5 +43,11 @@ public class ExtensionLoaderTest {
 
         Protocol inJvmProtocol = protocolExtensionLoader.getExtension(InjvmProtocol.NAME);
         System.out.println(inJvmProtocol);
+    }
+
+    @Test
+    public void registryFactory(){
+        RegistryFactory adaptiveExtension = ExtensionLoader.getExtensionLoader(RegistryFactory.class).getAdaptiveExtension();
+        System.out.println(adaptiveExtension);
     }
 }
