@@ -16,6 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HelloData implements Serializable {
+    private static final long serialVersionUID = 3970884398250763626L;
     private String name;
 
     public String getName() {

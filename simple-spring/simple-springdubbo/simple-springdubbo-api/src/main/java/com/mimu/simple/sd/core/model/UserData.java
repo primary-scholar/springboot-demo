@@ -17,6 +17,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserData implements Serializable {
+    private static final long serialVersionUID = 669849930649228488L;
     private long pid;
     private String nickName;
 
