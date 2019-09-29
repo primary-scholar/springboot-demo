@@ -10,7 +10,7 @@
     <dubbo:registry address="zookeeper://localhost:2181" check="false" timeout="5000"/>
 
     <!-- queues<0 时使用 linkBlockingQueue，默认queues=0，使用synchronousQueue -->
-    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100" queues="-1">
+    <dubbo:protocol name="dubbo" port="20880" dispatcher="all" threadpool="fixed" threads="100">
         <!--&lt;!&ndash;使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
         若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露
         此处配置 和service 中配置效果一致&ndash;&gt;
@@ -20,7 +20,15 @@
     <dubbo:provider timeout="5000"/>
 
     <dubbo:service interface="com.mimu.simple.sd.api.HelloStringApi"
-                   ref="helloStringImpl" timeout="3000" loadbalance="random" cluster="failover" retries="0">
+                   ref="helloStringImpl" timeout="3000" loadbalance="random" cluster="failover" retries="0" version="1.0.0">
+        <dubbo:method name="hello" retries="3" timeout="1000"/>
+        <!--&lt;!&ndash;使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
+        若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露&ndash;&gt;
+        <dubbo:parameter key="scope" value="remote"/>-->
+    </dubbo:service>
+
+    <dubbo:service interface="com.mimu.simple.sd.api.HelloStringApi"
+                   ref="helloStringXImpl" timeout="3000" loadbalance="random" cluster="failover" retries="0" version="1.0.1">
         <dubbo:method name="hello" retries="3" timeout="1000"/>
         <!--&lt;!&ndash;使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
         若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露&ndash;&gt;

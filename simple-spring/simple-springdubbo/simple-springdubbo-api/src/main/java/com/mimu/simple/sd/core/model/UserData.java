@@ -1,9 +1,5 @@
 package com.mimu.simple.sd.core.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
@@ -12,10 +8,6 @@ import java.io.Serializable;
  * author: mimu
  * date: 2019/8/18
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserData implements Serializable {
     private static final long serialVersionUID = 669849930649228488L;
     private long pid;

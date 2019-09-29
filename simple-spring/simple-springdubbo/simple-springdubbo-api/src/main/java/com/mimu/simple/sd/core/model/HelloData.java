@@ -1,23 +1,30 @@
 package com.mimu.simple.sd.core.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * author: mimu
  * date: 2019/9/18
  */
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class HelloData implements Serializable {
     private static final long serialVersionUID = 3970884398250763626L;
-    private String name;
+    protected String name;
+
+    public HelloData() {
+    }
+
+    public HelloData(String name) {
+        this.name = name;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public String getName() {
         return name;
@@ -25,5 +32,23 @@ public class HelloData implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HelloData helloData = (HelloData) o;
+        return Objects.equals(name, helloData.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return JSONObject.toJSONString(this);
     }
 }

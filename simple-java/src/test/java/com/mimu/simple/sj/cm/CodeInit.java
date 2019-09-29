@@ -6,6 +6,6 @@ package com.mimu.simple.sj.cm;
  */
 public class CodeInit {
     public static void main(String[] args) {
-
+        System.out.println(Integer.toString(16,16));
     }
 }

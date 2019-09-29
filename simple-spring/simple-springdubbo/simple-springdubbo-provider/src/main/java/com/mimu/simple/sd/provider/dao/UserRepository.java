@@ -26,7 +26,7 @@ public class UserRepository {
     public UserData getUserData(long pid) {
         String sql = "select * from user_info where person_id=?";
         List<UserData> userDataList = userJdbc.query(sql, new UserDataMapper(), pid);
-        return userDataList.isEmpty() ? UserData.builder().build() : userDataList.get(0);
+        return userDataList.isEmpty() ? new UserData() : userDataList.get(0);
     }
 
     public boolean addUserData(long pid, String nickName) {
@@ -43,10 +43,10 @@ public class UserRepository {
 
         @Override
         public UserData mapRow(ResultSet resultSet, int i) throws SQLException {
-            return UserData.builder()
-                    .pid(resultSet.getLong("person_id"))
-                    .nickName(resultSet.getString("person_name"))
-                    .build();
+            UserData userData = new UserData();
+            userData.setPid(resultSet.getLong("person_id"));
+            userData.setNickName(resultSet.getString("person_name"));
+            return userData;
         }
     }
 }

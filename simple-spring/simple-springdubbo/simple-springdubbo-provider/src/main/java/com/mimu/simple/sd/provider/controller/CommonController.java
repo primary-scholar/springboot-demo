@@ -4,12 +4,15 @@ import com.mimu.simple.sd.api.HelloStringApi;
 import com.mimu.simple.sd.api.UserDataApi;
 import com.mimu.simple.sd.core.model.HelloData;
 import com.mimu.simple.sd.core.model.UserData;
+import com.mimu.simple.sd.provider.service.HelloStringImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /*
  * author: mimu
@@ -27,7 +30,7 @@ public class CommonController {
         this.userDataApi = userDataApi;
     }
 
-    @Autowired
+    @Resource(name = "helloStringXImpl")
     public void setHelloStringApi(HelloStringApi helloStringApi) {
         this.helloStringApi = helloStringApi;
     }
