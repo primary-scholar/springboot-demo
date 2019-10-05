@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDataRequest {
-    private int pid;
+    private long pid;
     private int termId;
 }

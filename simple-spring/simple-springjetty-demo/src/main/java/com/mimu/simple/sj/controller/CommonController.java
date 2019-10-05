@@ -28,13 +28,30 @@ public class CommonController {
     public Object getInfo(UserDataRequest request) {
         try {
             UserData personData = commonService.getuserData(request);
-            logger.info("getInfo result={}",personData);
+            logger.info("getInfo result={}", personData);
             return personData;
         } catch (Exception e) {
             Info info = new Info();
             info.setCode(500);
             info.setDesc("server error");
-            logger.error("simpleserver3 error", e);
+            logger.error("getInfo error", e);
+            return info;
+        }
+    }
+
+    @RequestMapping(value = "/sj/data.go")
+    public Object getData(UserDataRequest request) {
+        try {
+            UserData data = new UserData();
+            data.setPid(request.getPid());
+            data.setNickName("pid:" + request.getPid() + "termId:" + request.getTermId());
+            logger.info("getInfo result={}", data);
+            return data;
+        } catch (Exception e) {
+            Info info = new Info();
+            info.setCode(500);
+            info.setDesc("server error");
+            logger.error("getData error", e);
             return info;
         }
     }

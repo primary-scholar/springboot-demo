@@ -35,7 +35,7 @@ public class UserDataRepository extends BaseRepository<UserData> {
         return result > 0;
     }
 
-    public UserData getData(int pid) {
+    public UserData getData(long pid) {
         String sql = "select * from `user_info` where person_id=?";
         List<UserData> userDataList = getReadJdbcTemplate().query(sql, this::mapRow, pid);
         return userDataList.size() > 0 ? userDataList.get(0) : new UserData();
