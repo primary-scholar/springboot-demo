@@ -162,7 +162,7 @@ public class JavaApiSerializedTest {
          */
         private void readObject(ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException {
             objectInputStream.defaultReadObject();
-            this.setName((String) objectInputStream.readObject() + "readObject");
+            this.setName(objectInputStream.readObject() + "readObject");
         }
 
         /**
