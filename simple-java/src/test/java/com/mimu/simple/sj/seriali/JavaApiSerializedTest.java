@@ -1,4 +1,4 @@
-package com.mimu.simple.sj.cm;
+package com.mimu.simple.sj.seriali;
 
 import org.junit.Test;
 
@@ -33,7 +33,7 @@ import java.io.*;
  * ps:对于类中重写了 readObject() 或 writeObject() 的方法，或 readResolve() 方法
  * 则调用复写的上述方法进行对象的序列化和反序列化
  */
-public class SimpleSerializedTest {
+public class JavaApiSerializedTest {
 
     @Test
     public void info() throws IOException, ClassNotFoundException {
