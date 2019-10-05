@@ -66,6 +66,9 @@ public class JavaApiSerializedTest {
     }
 
 
+    /**
+     * 内部类不使用static修饰，序列化时会报错
+     */
     static class People implements Serializable {
         private static final long serialVersionUID = -6502068672348492882L;
         private String name;
@@ -101,6 +104,10 @@ public class JavaApiSerializedTest {
      * <p>
      * 还可以 实现 Externalizable
      * 并复写 writeExternal() 和 readExternal() 方法 可达到同样的效果
+     */
+
+    /**
+     * 内部类 不使用 static 修饰 会报错
      */
     static class People1 implements Serializable {
         private static final long serialVersionUID = -6622649391820958727L;
