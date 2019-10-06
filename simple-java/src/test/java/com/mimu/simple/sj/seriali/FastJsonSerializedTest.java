@@ -3,7 +3,6 @@ package com.mimu.simple.sj.seriali;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import org.junit.Test;
-import sun.tools.jstat.Jstat;
 
 /**
  * author: mimu
