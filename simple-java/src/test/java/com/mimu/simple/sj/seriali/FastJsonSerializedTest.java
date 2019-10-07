@@ -26,7 +26,8 @@ import org.junit.Test;
  * 1。1 首先把字符串 转换成 Map<String,Object>类型 组成 key：value 对儿
  * 2。1 根据 class 信息构造 ObjectDeserializer 信息
  * 2。2 反射获取class 所有 setXXX() 方法(解析使用@JSONField的情形) 以获取 反序列化后 field 接受 value 对应的 key
- * 2。3 根据 1。1中的 Map<String,Object>的数据和 2。2 中的key进行匹配，若有对应的key 则反射method.invoke() 给field付值
+ * 2。3 根据 class 信息，反射生成 object 对象
+ * 根据 1。1中的 Map<String,Object>的数据和 2。2 中的key进行匹配，若有对应的key 则反射method.invoke() 给field付值
  */
 public class FastJsonSerializedTest {
 
