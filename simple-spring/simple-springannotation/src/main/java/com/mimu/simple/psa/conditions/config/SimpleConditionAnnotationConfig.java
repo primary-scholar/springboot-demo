@@ -11,6 +11,10 @@ import org.springframework.context.annotation.Configuration;
  * author: mimu
  * date: 2019/7/26
  */
+
+/**
+ * 可以和 springboot-demo 中 springboot-debug-running 中的 ConditionOnBean 注解进行对比
+ */
 @Configuration
 public class SimpleConditionAnnotationConfig {
 
@@ -27,13 +31,10 @@ public class SimpleConditionAnnotationConfig {
 
     }
 
-    @Configuration
-    static class SimpleConditionBConfig {
-        @Bean
-        @Conditional(SimpleConditionB.class)
-        public ConditionBean conditionB() {
-            return ConditionBean.builder().flag("condition b").build();
-        }
+    @Bean
+    @Conditional(SimpleConditionB.class)
+    public ConditionBean conditionB() {
+        return ConditionBean.builder().flag("condition b").build();
     }
 
     /**
