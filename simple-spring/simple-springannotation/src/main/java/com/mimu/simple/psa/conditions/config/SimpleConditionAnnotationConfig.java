@@ -14,16 +14,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SimpleConditionAnnotationConfig {
 
-    @Bean
-    @Conditional(SimpleConditionA.class)
-    public ConditionBean conditionA() {
-        return ConditionBean.builder().flag("condition a").build();
+    /**
+     * 嵌套的config class 跟外层的 @configuration 标注的类解析是一样的
+     */
+    @Configuration
+    static class SimpleConditionAConfig {
+        @Bean
+        @Conditional(SimpleConditionA.class)
+        public ConditionBean conditionA() {
+            return ConditionBean.builder().flag("condition a").build();
+        }
+
     }
 
-    @Bean
-    @Conditional(SimpleConditionB.class)
-    public ConditionBean conditionB() {
-        return ConditionBean.builder().flag("condition b").build();
+    @Configuration
+    static class SimpleConditionBConfig {
+        @Bean
+        @Conditional(SimpleConditionB.class)
+        public ConditionBean conditionB() {
+            return ConditionBean.builder().flag("condition b").build();
+        }
     }
 
     /**

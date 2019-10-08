@@ -23,7 +23,7 @@ public class AppSimpleJettyServer extends SimpleJettyServer {
             logger.info("system params initial complete.");
             new AppSimpleJettyServer(port, ApplicationConfig.class).run();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("start server error", e);
         }
     }
 }
