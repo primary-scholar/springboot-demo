@@ -24,6 +24,10 @@ import org.springframework.context.annotation.Configuration;
  * 3.1 把 beanMethod 中的 方法名当作 beanDefinitionName Method 当作 BeanDefinition 注册到 DefaultListableBeanFactory 中
  * <p>
  * 生成 singleton 对象时, 会根据 BeanDefinition 定义中的 @Condition 来判断是否跳过该对象的创建
+ * <p>
+ * ps: 对于 该类的解析过程 会生成 两个 ConfigurationClass (1. SimpleConditionAnnotationConfig；2.SimpleConditionAConfig)
+ * 并且 1. 中有两个 beanMethod  (1.conditionB(); 2. conditionAB()),
+ * 2. 中有一个 beanMethod (1. conditionB() )
  */
 @Configuration
 public class SimpleConditionAnnotationConfig {
