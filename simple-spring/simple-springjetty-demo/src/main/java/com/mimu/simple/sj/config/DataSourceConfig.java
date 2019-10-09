@@ -81,9 +81,7 @@ public class DataSourceConfig {
         if (useUtf8Mb4) {
             dataSource.setConnectionInitSqls(Collections.singletonList("set names utf8mb4;"));
         }
-        if (logger.isDebugEnabled()) {
-            logger.debug("getDataSource info url={}", jdbcUrl);
-        }
+        logger.debug("getDataSource info url={}", jdbcUrl);
         return dataSource;
     }
 
