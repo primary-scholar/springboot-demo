@@ -3,35 +3,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>simple-spring</artifactId>
+        <artifactId>simple-demo</artifactId>
         <groupId>com.mimu.simple</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>simple-springdubbo</artifactId>
+    <groupId>com.mimu.simple.ssb</groupId>
+    <artifactId>simple-springboot</artifactId>
     <packaging>pom</packaging>
 
-    <name>simple-springdubbo</name>
+    <name>simple-springboot</name>
     <url>http://www.example.com</url>
     <modules>
-        <module>simple-springdubbo-api</module>
-        <module>simple-springdubbo-provider</module>
-        <module>simple-springdubbo-consumer</module>
+        <module>simple-springboot-debug</module>
+        <module>simple-springboot-mybatis-annotation</module>
+        <module>simple-springboot-dubbo</module>
+        <module>simple-springboot-demo1</module>
+        <module>simple-springboot-demo2</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <zookeeper.version>3.4.14</zookeeper.version>
-        <curator.version>4.0.1</curator.version>
-        <junit.version>4.12</junit.version>
-        <spring.version>5.1.2.RELEASE</spring.version>
     </properties>
 
     <dependencies>
+
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>
