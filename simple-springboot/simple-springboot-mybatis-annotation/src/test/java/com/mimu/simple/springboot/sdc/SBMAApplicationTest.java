@@ -45,6 +45,6 @@ public class SBMAApplicationTest {
 
     @Test
     public void info1(){
-        System.out.println(userDataMapper.getUserDataById(1));
+        System.out.println(userDataMapper.getUserDataById(2));
     }
 }

@@ -19,8 +19,7 @@
         <module>simple-springboot-debug</module>
         <module>simple-springboot-mybatis-annotation</module>
         <module>simple-springboot-dubbo</module>
-        <module>simple-springboot-demo1</module>
-        <module>simple-springboot-demo2</module>
+        <module>simple-springboot-demo</module>
     </modules>
 
     <properties>
