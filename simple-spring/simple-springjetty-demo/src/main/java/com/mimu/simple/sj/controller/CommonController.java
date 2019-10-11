@@ -1,6 +1,6 @@
 package com.mimu.simple.sj.controller;
 
-import com.mimu.simple.common.core.Info;
+import com.mimu.simple.sj.model.Info;
 import com.mimu.simple.sj.model.UserData;
 import com.mimu.simple.sj.request.UserDataRequest;
 import com.mimu.simple.sj.service.CommonService;

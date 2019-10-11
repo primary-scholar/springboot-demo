@@ -67,9 +67,6 @@
         <druid.springboot.version>1.1.18</druid.springboot.version>
         <mybatis.springboot.version>2.0.1</mybatis.springboot.version>
 
-        <simple.common.version>1.0-SNAPSHOT</simple.common.version>
-        <simple.jdbcsupport.version>1.0-SNAPSHOT</simple.jdbcsupport.version>
-
         <junit.version>4.12</junit.version>
     </properties>
 
@@ -324,17 +321,6 @@
                 <artifactId>mybatis-spring-boot-starter-test</artifactId>
                 <version>${mybatis.springboot.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.mimu.simple</groupId>
-                <artifactId>simple-common</artifactId>
-                <version>${simple.common.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.mimu.simple</groupId>
-                <artifactId>simple-jdbcsupport</artifactId>
-                <version>${simple.jdbcsupport.version}</version>
-            </dependency>
-
 
             <dependency>
                 <groupId>junit</groupId>

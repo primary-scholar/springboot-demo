@@ -1,11 +1,10 @@
 package com.mimu.simple.sj.repository;
 
-import com.mimu.simple.jdbcsupport.BaseRepository;
 import com.mimu.simple.sj.model.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,35 +14,34 @@ import java.util.List;
  * date: 2019/8/5
  */
 @Repository
-public class UserDataRepository extends BaseRepository<UserData> {
-    @Override
-    @Autowired
-    public void init(DataSource db1Write, DataSource db1Read) {
-        setWriteDataSource(db1Write);
-        setReadDataSource(db1Read);
+public class UserDataRepository {
+   private JdbcTemplate userDataJdbcTemplate;
+
+   @Autowired
+    public void setUserDataJdbcTemplate(JdbcTemplate userDataJdbcTemplate) {
+        this.userDataJdbcTemplate = userDataJdbcTemplate;
     }
 
     public boolean save(UserData userData) {
         String sql = "INSERT INTO `user_info` (`person_name`, `person_id`) values (?,?)";
-        int result = getWriteJdbcTemplate().update(sql, userData.getNickName(), userData.getPid());
+        int result = userDataJdbcTemplate.update(sql, userData.getNickName(), userData.getPid());
         return result > 0;
     }
 
     public boolean update(UserData userData) {
         String sql = "UPDATE `user_info` SET `person_name`=? WHERE `person_id`=?";
-        int result = getWriteJdbcTemplate().update(sql, userData.getNickName(), userData.getPid());
+        int result = userDataJdbcTemplate.update(sql, userData.getNickName(), userData.getPid());
         return result > 0;
     }
 
     public UserData getData(long pid) {
         String sql = "select * from `user_info` where person_id=?";
-        List<UserData> userDataList = getReadJdbcTemplate().query(sql, this::mapRow, pid);
+        List<UserData> userDataList = userDataJdbcTemplate.query(sql, this::mapRow, pid);
         return userDataList.size() > 0 ? userDataList.get(0) : new UserData();
     }
 
 
-    @Override
-    public UserData mapRow(ResultSet resultSet, int i) throws SQLException {
+    private UserData mapRow(ResultSet resultSet, int i) throws SQLException {
         return UserData.builder()
                 .pid(resultSet.getInt("person_id"))
                 .nickName(resultSet.getString("person_name"))

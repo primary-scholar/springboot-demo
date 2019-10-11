@@ -3,10 +3,12 @@ package com.mimu.simple.sa.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -56,6 +58,19 @@ public class DataSourceConfig {
     public PlatformTransactionManager transactionManager(DataSource db1Write) {
         return new DataSourceTransactionManager(db1Write);
     }
+
+    /**
+     * generate jdbcTemplate bean
+     *
+     * @param db1Write
+     * @return
+     */
+    @Bean
+    @Autowired
+    public JdbcTemplate jdbcTemplate(DataSource db1Write) {
+        return new JdbcTemplate(db1Write);
+    }
+
 
     private DataSource getDataSource(String url, String user, String password, boolean useUtf8Mb4) {
         DruidDataSource dataSource = new DruidDataSource();
