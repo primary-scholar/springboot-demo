@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_package = "com.mimu.simple.socket.netty.c3";
+option java_outer_classname = "SubModel";
+
+message SubModelInfo {
+    int32 subId = 1;
+    string productName = 2;
+    string address = 3;
+}

@@ -1,0 +1,3 @@
+com/mimu/simple/sd/consumer/AppSpringDubboConsumer.class
+com/mimu/simple/sd/consumer/service/HelloService.class
+com/mimu/simple/sd/consumer/config/ServiceConsumerConfig.class

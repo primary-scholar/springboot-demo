@@ -1,0 +1,8 @@
+/Users/mimu/github/simple-demo/simple-grpc/grpc-demo/target/generated-sources/protobuf/java/com/mimu/simple/grpc/gen/HelloRequest.java
+/Users/mimu/github/simple-demo/simple-grpc/grpc-demo/target/generated-sources/protobuf/java/com/mimu/simple/grpc/gen/HelloReplyOrBuilder.java
+/Users/mimu/github/simple-demo/simple-grpc/grpc-demo/target/generated-sources/protobuf/grpc-java/com/mimu/simple/grpc/gen/GreeterGrpc.java
+/Users/mimu/github/simple-demo/simple-grpc/grpc-demo/src/main/java/com/mimu/simple/sg/HelloWorldClient.java
+/Users/mimu/github/simple-demo/simple-grpc/grpc-demo/target/generated-sources/protobuf/java/com/mimu/simple/grpc/gen/HelloRequestOrBuilder.java
+/Users/mimu/github/simple-demo/simple-grpc/grpc-demo/src/main/java/com/mimu/simple/sg/HelloWorldServer.java
+/Users/mimu/github/simple-demo/simple-grpc/grpc-demo/target/generated-sources/protobuf/java/com/mimu/simple/grpc/gen/HelloReply.java
+/Users/mimu/github/simple-demo/simple-grpc/grpc-demo/target/generated-sources/protobuf/java/com/mimu/simple/grpc/gen/HelloWorld.java

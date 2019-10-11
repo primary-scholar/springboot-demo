@@ -1,0 +1,5 @@
+/Users/mimu/github/simple-demo/simple-spring/simple-springhystrix-demo/src/main/java/com/mimu/simple/ssh/service/CommonService.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springhystrix-demo/src/main/java/com/mimu/simple/ssh/config/HystrixConfig.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springhystrix-demo/src/main/java/com/mimu/simple/ssh/config/ApplicationConfig.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springhystrix-demo/src/main/java/com/mimu/simple/ssh/dao/CommonRepository.java
+/Users/mimu/github/simple-demo/simple-spring/simple-springhystrix-demo/src/main/java/com/mimu/simple/ssh/MainApplication.java

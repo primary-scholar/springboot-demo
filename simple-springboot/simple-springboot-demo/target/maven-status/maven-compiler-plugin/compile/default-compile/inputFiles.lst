@@ -1,0 +1,12 @@
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/model/TermData.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/advices/UserDataGlobalExceptionAdvice.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/SBApplication.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/controller/CommonController.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/model/UserData.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/config/UserDataApplicationConfig.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/config/UserFilterConfig.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/config/DataSourceConfig.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/request/UserDataRequest.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/dao/UserRepository.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/service/CommonService.java
+/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-demo/src/main/java/com/mimu/simple/springboot/ssb/dao/TermRepository.java

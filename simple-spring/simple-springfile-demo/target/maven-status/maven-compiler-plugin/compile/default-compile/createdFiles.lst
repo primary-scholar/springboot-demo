@@ -1,0 +1,17 @@
+com/mimu/simple/sf/model/Student.class
+com/mimu/simple/sf/controller/CommonController.class
+com/mimu/simple/sf/repository/CommonRepository.class
+com/mimu/simple/sf/service/inner/InnerService.class
+com/mimu/simple/sf/core/SimpleLoggerAspectBean.class
+com/mimu/simple/sf/controller/inner/InnerController.class
+com/mimu/simple/sf/core/SimpleLoggerAroundAspectBean.class
+com/mimu/simple/sf/repository/external/ExternalRepository.class
+com/mimu/simple/sf/service/external/ExternalService.class
+com/mimu/simple/sf/repository/inner/InnerRepository.class
+com/mimu/simple/sf/controller/external/ExternalController.class
+com/mimu/simple/sf/model/People$InnerClass.class
+com/mimu/simple/sf/model/Human.class
+com/mimu/simple/sf/repository/BaseRepository.class
+com/mimu/simple/sf/model/Human$InnerClass.class
+com/mimu/simple/sf/service/CommonService.class
+com/mimu/simple/sf/model/People.class

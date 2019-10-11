@@ -1,0 +1,5 @@
+com/mimu/simple/sa/l/CustomBeanPostProcessor.class
+com/mimu/simple/sa/l/CustomBeanFactoryPostProcessor.class
+com/mimu/simple/sa/l/CustomInstantiationAwareBeanPostProcessor.class
+com/mimu/simple/sa/l/ApplicationConfig.class
+com/mimu/simple/sa/l/Person.class
