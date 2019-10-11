@@ -1,6 +1,0 @@
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-dubbo/simple-springboot-dubbo-provider/src/main/java/com/mimu/simple/springboot/sbdp/SBDSApplication.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-dubbo/simple-springboot-dubbo-provider/src/main/java/com/mimu/simple/springboot/sbdp/service/UserDataApiImpl.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-dubbo/simple-springboot-dubbo-provider/src/main/java/com/mimu/simple/springboot/sbdp/dao/UserRepository.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-dubbo/simple-springboot-dubbo-provider/src/main/java/com/mimu/simple/springboot/sbdp/config/DataSourceConfig.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-dubbo/simple-springboot-dubbo-provider/src/main/java/com/mimu/simple/springboot/sbdp/controller/CommonController.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-dubbo/simple-springboot-dubbo-provider/src/main/java/com/mimu/simple/springboot/sbdp/config/ServiceProviderConfig.java

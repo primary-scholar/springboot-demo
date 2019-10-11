@@ -1,7 +1,0 @@
-com/mimu/simple/springboot/sbdp/dao/UserRepository.class
-com/mimu/simple/springboot/sbdp/SBDSApplication.class
-com/mimu/simple/springboot/sbdp/service/UserDataApiImpl.class
-com/mimu/simple/springboot/sbdp/config/DataSourceConfig.class
-com/mimu/simple/springboot/sbdp/dao/UserRepository$UserDataMapper.class
-com/mimu/simple/springboot/sbdp/controller/CommonController.class
-com/mimu/simple/springboot/sbdp/config/ServiceProviderConfig.class

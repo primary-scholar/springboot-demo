@@ -1,9 +1,0 @@
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/controller/CommonController.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/mapper/term/TermDataMapper.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/model/UserData.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/service/CommonService.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/model/TermData.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/SBMAApplication.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/config/TermDataSourceConfig.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/mapper/user/UserDataMapper.java
-/Users/mimu/github/simple-demo/simple-springboot/simple-springboot-mybatis-annotation/src/main/java/com/mimu/simple/springboot/sdc/config/UserDataSourceConfig.java
