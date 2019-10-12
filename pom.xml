@@ -44,7 +44,7 @@
         <collections.version>4.1</collections.version>
         <fastjson.version>1.2.47</fastjson.version>
         <spring.version>5.1.8.RELEASE</spring.version>
-        <netty.version>4.1.32.Final</netty.version>
+        <netty.version>4.1.42.Final</netty.version>
         <protobuf.version>3.5.1</protobuf.version>
         <grpc.version>1.17.0</grpc.version>
         <aspectj.version>1.8.13</aspectj.version>
