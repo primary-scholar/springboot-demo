@@ -44,7 +44,7 @@ Thumbs.db
 .gradle
 
 # Build output directies
-/target/
+target
 */target/
 /build/
 */build/
