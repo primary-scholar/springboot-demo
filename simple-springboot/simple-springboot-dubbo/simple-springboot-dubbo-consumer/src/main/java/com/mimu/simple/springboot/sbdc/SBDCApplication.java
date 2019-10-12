@@ -1,8 +1,6 @@
 package com.mimu.simple.springboot.sbdc;
 
-import com.mimu.simple.springboot.sbdc.config.ServiceConsumerConfig;
-import com.mimu.simple.springboot.sbdc.service.CommonService;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
 
 /**
  * author: mimu
@@ -10,9 +8,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class SBDCApplication {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext();
-        configApplicationContext.register(ServiceConsumerConfig.class);
-        configApplicationContext.refresh();
-        System.out.println(configApplicationContext.getBean(CommonService.class).getUserData(1));
+        SpringApplication.run(SBDCApplication.class);
     }
 }
