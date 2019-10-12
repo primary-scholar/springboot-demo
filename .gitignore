@@ -44,10 +44,10 @@ Thumbs.db
 .gradle
 
 # Build output directies
-/target
-*/target
-/build
-*/build
+/target/
+*/target/
+/build/
+*/build/
 var
 logs
 
