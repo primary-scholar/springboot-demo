@@ -1,7 +1,6 @@
 package com.mimu.simple.sd.core.model;
 
 import com.alibaba.fastjson.JSONObject;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,7 +9,6 @@ import java.util.Objects;
  * author: mimu
  * date: 2019/9/18
  */
-@Data
 public class HelloData implements Serializable {
     private static final long serialVersionUID = 3970884398250763626L;
     protected String name;

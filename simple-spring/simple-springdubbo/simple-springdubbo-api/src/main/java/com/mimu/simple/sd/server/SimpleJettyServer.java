@@ -1,5 +1,4 @@
-/*
-package com.mimu.simple.sd.provider.server;
+package com.mimu.simple.sd.server;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -9,13 +8,12 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-*/
 /**
  * author: mimu
- * date: 2019/7/19
- *//*
-
+ * date: 2019/10/15
+ */
 public abstract class SimpleJettyServer {
+
     protected static AnnotationConfigWebApplicationContext context;
     protected static final String contextPath = "/";
     protected static final String mappingUrl = "/*";
@@ -47,6 +45,4 @@ public abstract class SimpleJettyServer {
     public WebApplicationContext getContext() {
         return context;
     }
-
 }
-*/

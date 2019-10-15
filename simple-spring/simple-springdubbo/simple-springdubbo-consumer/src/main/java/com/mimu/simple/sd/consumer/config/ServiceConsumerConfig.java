@@ -1,11 +1,8 @@
 package com.mimu.simple.sd.consumer.config;
 
-import com.mimu.simple.sd.api.HelloStringApi;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ConsumerConfig;
-import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
-import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

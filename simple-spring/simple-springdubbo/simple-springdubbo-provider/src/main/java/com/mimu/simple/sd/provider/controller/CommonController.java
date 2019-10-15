@@ -4,7 +4,7 @@ import com.mimu.simple.sd.api.HelloStringApi;
 import com.mimu.simple.sd.api.UserDataApi;
 import com.mimu.simple.sd.core.model.HelloData;
 import com.mimu.simple.sd.core.model.UserData;
-import com.mimu.simple.sd.provider.service.HelloStringImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-/*
+/**
  * author: mimu
  * date: 2019/8/18
  */
-
+@Slf4j
 @RestController
 public class CommonController {
-    private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
     private UserDataApi userDataApi;
     private HelloStringApi helloStringApi;
 
@@ -38,13 +37,13 @@ public class CommonController {
     @RequestMapping(value = "/sd/info.go", method = RequestMethod.GET)
     public UserData getUserData(long pid) {
         UserData userData = userDataApi.getUserData(pid);
-        logger.info("userInfo={}", userData);
+        log.info("userInfo={}", userData);
         return userData;
     }
 
-    @RequestMapping(value = "/sd/hello.go", method = RequestMethod.GET)
+    @RequestMapping(value = "/sds/hello.go", method = RequestMethod.GET)
     public HelloData getHello(String name) {
-        logger.info("helloInfo={}", name);
+        log.info("helloInfo={}", name);
         return helloStringApi.hello(name);
     }
 }

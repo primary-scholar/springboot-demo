@@ -1,19 +1,29 @@
 package com.mimu.simple.sd.consumer;
 
+import com.mimu.simple.sd.consumer.config.ApplicationConsumerConfig;
 import com.mimu.simple.sd.consumer.config.ServiceConsumerConfig;
 import com.mimu.simple.sd.consumer.service.HelloService;
+import com.mimu.simple.sd.server.SimpleJettyServer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * author: mimu
  * date: 2019/9/18
  */
-public class AppSpringDubboConsumer {
-    public static void main(String[] args) {
-        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(ServiceConsumerConfig.class);
-        configApplicationContext.start();
-        //System.out.println(configApplicationContext.getBean(CommonService.class).getUserData(2));
+@Slf4j
+public class AppSpringDubboConsumer extends SimpleJettyServer {
 
-        System.out.println(configApplicationContext.getBean(HelloService.class).getHello("哈哈1"));
+    private AppSpringDubboConsumer(int port, Class<?> clazz) {
+        super(port, clazz);
+    }
+
+    public static void main(String args[]) {
+        try {
+            int port = 9091;
+            new AppSpringDubboConsumer(port, ApplicationConsumerConfig.class).run();
+        } catch (Exception e) {
+            log.error("server start failure");
+        }
     }
 }

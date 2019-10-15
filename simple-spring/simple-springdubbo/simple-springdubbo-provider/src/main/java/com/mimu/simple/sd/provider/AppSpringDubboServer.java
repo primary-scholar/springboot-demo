@@ -1,18 +1,15 @@
 package com.mimu.simple.sd.provider;
 
 import com.mimu.simple.sd.provider.config.ApplicationServerConfig;
-import com.mimu.simple.sd.provider.server.SimpleJettyServer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.mimu.simple.sd.server.SimpleJettyServer;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * author: mimu
  * date: 2019/7/15
  */
+@Slf4j
 public class AppSpringDubboServer extends SimpleJettyServer {
-    private static final Logger logger = LoggerFactory.getLogger(AppSpringDubboServer.class);
-
-    private static int port = 9090;
 
     private AppSpringDubboServer(int port, Class<?> clazz) {
         super(port, clazz);
@@ -20,9 +17,10 @@ public class AppSpringDubboServer extends SimpleJettyServer {
 
     public static void main(String args[]) {
         try {
+            int port = 9090;
             new AppSpringDubboServer(port, ApplicationServerConfig.class).run();
         } catch (Exception e) {
-            logger.error("server start failure");
+            log.error("server start failure");
         }
     }
 }
