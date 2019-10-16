@@ -18,21 +18,22 @@ import org.springframework.context.annotation.Configuration;
 public class ServiceConsumerConfig {
 
     @Bean
-    public ApplicationConfig applicationConfig(){
+    public ApplicationConfig applicationConfig() {
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName("springd-service-consumer");
+        applicationConfig.setQosEnable(false);
         return applicationConfig;
     }
 
     @Bean
-    public ConsumerConfig consumerConfig(){
+    public ConsumerConfig consumerConfig() {
         ConsumerConfig consumerConfig = new ConsumerConfig();
         consumerConfig.setTimeout(300000);
         return consumerConfig;
     }
 
     @Bean
-    public RegistryConfig registryConfig(){
+    public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setAddress("zookeeper://localhost:2181");
         registryConfig.setClient("curator");
