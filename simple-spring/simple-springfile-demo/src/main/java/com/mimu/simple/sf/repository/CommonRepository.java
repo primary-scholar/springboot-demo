@@ -1,7 +1,7 @@
 package com.mimu.simple.sf.repository;
 
 
-import com.mimu.simple.sf.model.Student;
+import com.mimu.simple.sf.model.ObjectAFieldFirst;
 
 /**
  * author: mimu
@@ -9,7 +9,7 @@ import com.mimu.simple.sf.model.Student;
  */
 public class CommonRepository extends BaseRepository {
 
-    public Student getCommon(int id){
+    public ObjectAFieldFirst getCommon(int id){
         return get(id);
     }
 }

@@ -1,6 +1,6 @@
 package com.mimu.simple.sf.repository;
 
-import com.mimu.simple.sf.model.Student;
+import com.mimu.simple.sf.model.ObjectAFieldFirst;
 
 /**
  * author: mimu
@@ -8,11 +8,8 @@ import com.mimu.simple.sf.model.Student;
  */
 public class BaseRepository {
 
-    protected Student get(int id) {
-        Student student = new Student();
-        student.setId(id);
-        student.setName("file imports: " + id);
-        student.setAvator("file imports");
-        return student;
+    protected ObjectAFieldFirst get(int id) {
+        ObjectAFieldFirst objectAFieldFirst = new ObjectAFieldFirst();
+        return objectAFieldFirst;
     }
 }

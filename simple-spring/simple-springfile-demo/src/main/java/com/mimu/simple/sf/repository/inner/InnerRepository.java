@@ -1,6 +1,6 @@
 package com.mimu.simple.sf.repository.inner;
 
-import com.mimu.simple.sf.model.Student;
+import com.mimu.simple.sf.model.ObjectAFieldFirst;
 import com.mimu.simple.sf.repository.BaseRepository;
 
 /**
@@ -9,7 +9,7 @@ import com.mimu.simple.sf.repository.BaseRepository;
  */
 public class InnerRepository extends BaseRepository {
 
-    public Student getInner(int id){
+    public ObjectAFieldFirst getInner(int id){
         return get(id);
     }
 }

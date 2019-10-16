@@ -1,6 +1,6 @@
 package com.mimu.simple.sf.repository.external;
 
-import com.mimu.simple.sf.model.Student;
+import com.mimu.simple.sf.model.ObjectAFieldFirst;
 import com.mimu.simple.sf.repository.BaseRepository;
 
 /**
@@ -9,7 +9,7 @@ import com.mimu.simple.sf.repository.BaseRepository;
  */
 public class ExternalRepository extends BaseRepository {
 
-    public Student getExternal(int id){
+    public ObjectAFieldFirst getExternal(int id){
         return get(id);
     }
 }

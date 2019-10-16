@@ -1,9 +1,10 @@
 package com.mimu.simple.sf;
 
 import com.mimu.simple.sf.controller.inner.InnerController;
-import com.mimu.simple.sf.model.Human;
-import com.mimu.simple.sf.model.People;
-import com.mimu.simple.sf.model.Student;
+import com.mimu.simple.sf.model.ObjectA;
+import com.mimu.simple.sf.model.ObjectAFieldFirst;
+import com.mimu.simple.sf.model.ObjectAFieldSecondExtendsObjectBFieldSecond;
+import com.mimu.simple.sf.model.ObjectB;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.ApplicationContext;
@@ -20,19 +21,21 @@ public class SpringFileTest {
 
     @Test
     public void info1(){
-        People people = new People();
-        people.setName("people");
-        Student student = new Student();
-        student.setId(123);
-        People.InnerClass innerClass = new People.InnerClass();
-        people.setStudent(student);
-        //innerClass.setId(1);
-        people.setInnerClass(innerClass);
-        Human human = new Human();
-        Human.InnerClass innerClass1 = new Human.InnerClass();
-        BeanUtils.copyProperties(people,human);
-        BeanUtils.copyProperties(innerClass,innerClass1);
-        human.setInnerClass(innerClass1);
-        System.out.println(human.getStudent());
+        ObjectA objectA = new ObjectA();
+        objectA.setaName("aName");
+        objectA.setDesc("a desc");
+        ObjectAFieldFirst objectAFieldFirst = new ObjectAFieldFirst();
+        objectAFieldFirst.setOaFieldFirst(1);
+        ObjectAFieldSecondExtendsObjectBFieldSecond objectAFieldSecondExtendsObjectBFieldSecond = new ObjectAFieldSecondExtendsObjectBFieldSecond();
+        objectAFieldSecondExtendsObjectBFieldSecond.setOaFieldSecond(2);
+        objectA.setFieldFirst(objectAFieldFirst);
+        objectA.setFieldSecond(objectAFieldSecondExtendsObjectBFieldSecond);
+        ObjectA.InnerClass oaInner = new ObjectA.InnerClass();
+        oaInner.setId(10);
+
+        ObjectB objectB = new ObjectB();
+
+        BeanUtils.copyProperties(objectA, objectB);
+        System.out.println(objectB);
     }
 }
