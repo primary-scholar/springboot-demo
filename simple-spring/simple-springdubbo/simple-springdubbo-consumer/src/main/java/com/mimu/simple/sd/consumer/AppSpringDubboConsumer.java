@@ -1,11 +1,8 @@
 package com.mimu.simple.sd.consumer;
 
 import com.mimu.simple.sd.consumer.config.ApplicationConsumerConfig;
-import com.mimu.simple.sd.consumer.config.ServiceConsumerConfig;
-import com.mimu.simple.sd.consumer.service.HelloService;
 import com.mimu.simple.sd.server.SimpleJettyServer;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * author: mimu
