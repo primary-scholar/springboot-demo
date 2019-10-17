@@ -1,3 +1,4 @@
+/*
 package com.mimu.simple.sd.consumer.config;
 
 import org.apache.dubbo.config.ApplicationConfig;
@@ -8,10 +9,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+*/
 /**
  * author: mimu
  * date: 2019/8/18
- */
+ *//*
+
 @Configuration
 @ComponentScan(basePackages = {"com.mimu.simple.sd.consumer"})
 @EnableDubbo(scanBasePackages = {"com.mimu.simple.sd.consumer"})
@@ -40,9 +43,12 @@ public class ServiceConsumerConfig {
         return registryConfig;
     }
 
-    /*@Bean
+    */
+/*@Bean
     public ReferenceConfig<HelloStringApi> helloStringApiReferenceConfig(){
         return new ReferenceConfig<>();
-    }*/
+    }*//*
+
 
 }
+*/

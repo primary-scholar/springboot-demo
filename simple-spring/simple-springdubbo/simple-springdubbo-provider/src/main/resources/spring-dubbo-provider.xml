@@ -24,7 +24,7 @@
     <dubbo:service interface="com.mimu.simple.sd.api.HelloStringApi"
                    ref="helloStringImpl" timeout="3000" loadbalance="random" cluster="failover" retries="0"
                    version="1.0.0">
-        <dubbo:method name="hello" retries="3" timeout="1000"/>
+        <!--<dubbo:method name="hello" retries="3" timeout="1000"/>-->
         <!--使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
         若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露-->
         <!--<dubbo:parameter key="scope" value="remote"/>-->
@@ -33,7 +33,7 @@
     <dubbo:service interface="com.mimu.simple.sd.api.HelloStringApi"
                    ref="helloStringXImpl" timeout="3000" loadbalance="random" cluster="failover" retries="0"
                    version="1.0.1">
-        <dubbo:method name="hello" retries="3" timeout="1000"/>
+        <!--<dubbo:method name="hello" retries="3" timeout="1000"/>-->
         <!--使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
         若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露-->
         <!--<dubbo:parameter key="scope" value="remote"/>-->

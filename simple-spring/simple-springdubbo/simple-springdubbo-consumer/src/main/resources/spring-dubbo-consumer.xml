@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="spring-dubbo-consumer" logger="slf4j">
+        <dubbo:parameter key="qos.enable" value="false"/>
+        <dubbo:parameter key="qos.port" value="2222"/>
+    </dubbo:application>
+
+    <!-- register 是否向此注册中心注册服务，如果设为false，将只订阅，不注册 一般在测试环境中 使用直联方式进行测试接口可用性-->
+    <dubbo:registry address="zookeeper://localhost:2181" check="false" timeout="5000" register="true"/>
+
+    <dubbo:consumer timeout="30000"/>
+
+    <dubbo:reference id="helloStringApi" interface="com.mimu.simple.sd.api.HelloStringApi" retries="0" version="*"
+                     check="false"/>
+</beans>

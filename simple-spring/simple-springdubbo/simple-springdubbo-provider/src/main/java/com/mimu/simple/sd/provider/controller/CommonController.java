@@ -34,7 +34,7 @@ public class CommonController {
         this.helloStringApi = helloStringApi;
     }
 
-    @RequestMapping(value = "/sd/info.go", method = RequestMethod.GET)
+    @RequestMapping(value = "/sds/info.go", method = RequestMethod.GET)
     public UserData getUserData(long pid) {
         UserData userData = userDataApi.getUserData(pid);
         log.info("userInfo={}", userData);
