@@ -24,7 +24,7 @@
         <property name="innerRepository" ref="innerRepository"/>
     </bean>
     <bean id="innerService" class="com.mimu.simple.sf.service.inner.InnerService">
-        <property name="innerRepository" ref="innerRepository"></property>
+        <property name="innerRepository" ref="innerRepository"/>
     </bean>
 
     <!-- controller -->
