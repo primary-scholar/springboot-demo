@@ -14,5 +14,5 @@
     <dubbo:consumer timeout="30000"/>
 
     <dubbo:reference id="helloStringApi" interface="com.mimu.simple.sd.api.HelloStringApi" retries="0" version="*"
-                     check="false"/>
+                     timeout="300000" check="false"/>
 </beans>
