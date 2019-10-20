@@ -24,8 +24,8 @@
             <DefaultRolloverStrategy max="15"/>
         </RollingFile>
 
-        <RollingFile name="ExposeRollingFileInfo" fileName="${path}/server_log/${name}.log"
-                     filePattern="${path}/server_log/${name}-%d{yyyy-MM-dd-HH}.log">
+        <RollingFile name="ExposeRollingFileInfo" fileName="${path}/serverLog/${name}.log"
+                     filePattern="${path}/serverLog/${name}-%d{yyyy-MM-dd-HH}.log">
             <ThresholdFilter level="INFO" onMatch="ACCEPT"/>
             <PatternLayout pattern="%d %-5p [%t] %c（%L）| %m%n"/>
 

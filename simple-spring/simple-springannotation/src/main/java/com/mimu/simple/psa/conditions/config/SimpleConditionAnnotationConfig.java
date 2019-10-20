@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Configuration;
  * <p>
  * ps: 对于 该类的解析过程 会生成 两个 ConfigurationClass (1. SimpleConditionAnnotationConfig；2.SimpleConditionAConfig)
  * 并且 1. 中有两个 beanMethod  (1.conditionB(); 2. conditionAB()),
- * 2. 中有一个 beanMethod (1. conditionB() )
+ * 2. 中有一个 beanMethod (1. conditionA() )
  */
 @Configuration
 public class SimpleConditionAnnotationConfig {
