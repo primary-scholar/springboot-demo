@@ -2,7 +2,6 @@ package com.mimu.simple.sd.consumer.service;
 
 import com.mimu.simple.sd.api.HelloStringApi;
 import com.mimu.simple.sd.core.model.HelloData;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
