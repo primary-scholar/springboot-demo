@@ -1,4 +1,4 @@
-package com.mimu.simple.ssm;
+package com.mimu.simple.ssm.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

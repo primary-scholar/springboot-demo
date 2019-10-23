@@ -3,8 +3,10 @@ package com.mimu.simple.sj.repository;
 import com.mimu.simple.sj.model.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,16 +17,19 @@ import java.util.List;
  */
 @Repository
 public class UserDataRepository {
-   private JdbcTemplate userDataJdbcTemplate;
+    private JdbcTemplate userDataJdbcTemplate;
 
-   @Autowired
+    @Autowired
     public void setUserDataJdbcTemplate(JdbcTemplate userDataJdbcTemplate) {
         this.userDataJdbcTemplate = userDataJdbcTemplate;
     }
 
     public boolean save(UserData userData) {
         String sql = "INSERT INTO `user_info` (`person_name`, `person_id`) values (?,?)";
-        int result = userDataJdbcTemplate.update(sql, userData.getNickName(), userData.getPid());
+        int result = userDataJdbcTemplate.update(sql, ps -> {
+            ps.setString(1,userData.getNickName());
+            ps.setLong(2,userData.getPid());
+        });
         return result > 0;
     }
 
