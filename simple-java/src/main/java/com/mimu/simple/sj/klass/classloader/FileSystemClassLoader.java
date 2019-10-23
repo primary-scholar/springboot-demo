@@ -22,7 +22,8 @@ public class FileSystemClassLoader extends ClassLoader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        throw new ClassNotFoundException();
+        //throw new ClassNotFoundException();
+        return null;
     }
 
     private byte[] getClassData(String className) throws IOException {

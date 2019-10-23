@@ -2,6 +2,7 @@ package com.mimu.simple.sd.provider.service;
 
 import com.mimu.simple.sd.api.HelloStringApi;
 import com.mimu.simple.sd.core.model.HelloData;
+import com.mimu.simple.sd.provider.exceptions.CustomException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,9 @@ import org.springframework.stereotype.Component;
 public class HelloStringImpl implements HelloStringApi {
     @Override
     public HelloData hello(String name) {
+        if (Math.random() > 0.5) {
+            throw new CustomException("custom");
+        }
         HelloData build = new HelloData(name);
         log.info("data={}", build);
         return build;

@@ -29,7 +29,7 @@ public class CommonController {
         this.userDataApi = userDataApi;
     }
 
-    @Resource(name = "helloStringXImpl")
+    @Resource(name = "helloStringImpl")
     public void setHelloStringApi(HelloStringApi helloStringApi) {
         this.helloStringApi = helloStringApi;
     }
@@ -43,7 +43,13 @@ public class CommonController {
 
     @RequestMapping(value = "/sds/hello.go", method = RequestMethod.GET)
     public HelloData getHello(String name) {
-        log.info("helloInfo={}", name);
-        return helloStringApi.hello(name);
+        try {
+            log.info("helloInfo={}", name);
+            return helloStringApi.hello(name);
+        } catch (Exception e) {
+            log.error("getHello error", e);
+            return new HelloData();
+
+        }
     }
 }
