@@ -19,11 +19,13 @@ public class SimpleZKOperator {
             synchronized (lock) {
                 if (framework == null) {
                     framework = CuratorFrameworkFactory.builder().
-                            connectString("localhost:2181").connectionTimeoutMs(2000)
-                            .sessionTimeoutMs(10000).retryPolicy(new ExponentialBackoffRetry(1000, 1)).namespace("customer")
-                            .build();
+                            connectString("localhost:2181").
+                            connectionTimeoutMs(2000).
+                            sessionTimeoutMs(10000).
+                            retryPolicy(new ExponentialBackoffRetry(1000, 1)).
+                            namespace("customer").
+                            build();
                     framework.start();
-
                 }
             }
         }
