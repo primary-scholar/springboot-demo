@@ -15,6 +15,7 @@
         <module>simple-netty</module>
         <module>simple-java</module>
         <module>simple-springboot</module>
+        <module>simple-zookeeper</module>
     </modules>
 
     <name>simple-demo</name>
@@ -59,6 +60,7 @@
         <lombok.version>1.18.8</lombok.version>
         <jackson.version>2.9.10</jackson.version>
         <jetty.version>9.4.19.v20190610</jetty.version>
+        <curator.version>4.1.0</curator.version>
         <skywalking.version>6.1.0</skywalking.version>
         <elasticsearch.version>6.2.4</elasticsearch.version>
 
@@ -315,7 +317,11 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.springboot.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter-test</artifactId>
