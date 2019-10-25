@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDataMapper {
 
-    @Select("select * from user_info where person_id=${id}")
+    @Select("select * from user_info where person_id=#{id}")
     @Results(value = {
             @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER),
             @Result(column = "person_id", property = "pid", jdbcType = JdbcType.INTEGER),
