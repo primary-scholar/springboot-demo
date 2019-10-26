@@ -1,4 +1,4 @@
-package com.mimu.simple.mybatis;
+package com.mimu.simple.mybatis.model;
 
 /**
  * author: mimu
