@@ -6,7 +6,7 @@ package com.mimu.simple.mybatis.model;
  */
 public class UserData {
     private int id;
-    private int pId;
+    private int person_id;
     private String pName;
 
     public int getId() {
@@ -17,12 +17,12 @@ public class UserData {
         this.id = id;
     }
 
-    public int getpId() {
-        return pId;
+    public int getPerson_id() {
+        return person_id;
     }
 
-    public void setpId(int pId) {
-        this.pId = pId;
+    public void setPerson_id(int person_id) {
+        this.person_id = person_id;
     }
 
     public String getpName() {
@@ -37,7 +37,7 @@ public class UserData {
     public String toString() {
         return "UserData{" +
                 "id=" + id +
-                ", pId=" + pId +
+                ", person_id=" + person_id +
                 ", pName='" + pName + '\'' +
                 '}';
     }
