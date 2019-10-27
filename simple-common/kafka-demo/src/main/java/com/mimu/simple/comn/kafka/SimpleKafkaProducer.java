@@ -1,4 +1,4 @@
-package com.mimu.simple.sk;
+package com.mimu.simple.comn.kafka;
 
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;

@@ -19,6 +19,7 @@
         <module>mybatis-demo</module>
         <module>zookeeper-demo</module>
         <module>netty-demo</module>
+        <module>kafka-demo</module>
     </modules>
 
     <properties>

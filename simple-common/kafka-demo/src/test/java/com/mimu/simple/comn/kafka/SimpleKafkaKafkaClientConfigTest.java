@@ -1,4 +1,4 @@
-package com.mimu.simple.sk;
+package com.mimu.simple.comn.kafka;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.PartitionInfo;
