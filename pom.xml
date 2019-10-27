@@ -12,10 +12,8 @@
         <module>simple-spring</module>
         <module>simple-grpc</module>
         <module>simple-kafka</module>
-        <module>simple-netty</module>
         <module>simple-java</module>
         <module>simple-springboot</module>
-        <module>simple-zookeeper</module>
         <module>simple-common</module>
     </modules>
 

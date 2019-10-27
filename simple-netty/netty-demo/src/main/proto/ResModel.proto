@@ -1,9 +1,0 @@
-syntax = "proto3";
-option java_package = "com.mimu.simple.socket.netty.c3";
-option java_outer_classname = "ResModel";
-
-message ResModelInfo {
-    int32 subId = 1;
-    int32 respCode = 2;
-    string desc = 3;
-}
