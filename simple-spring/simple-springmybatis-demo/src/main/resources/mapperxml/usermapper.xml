@@ -2,13 +2,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="user">
-    <!-- #{id} 表示占位符，当 parameterType 为基本类型时，此处id可换成其他参数名称如 #{value}    -->
+
+
+<!-- 该文件 和 mapper 中的 代码配套-->
+<!--使用 mybatis 的mapper 代理方式时应注意以下几点 -->
+<!-- 1. namespace 的值 和 mapper 接口的 定义一致 -->
+<!-- 2. mapper 中接口的 方法名称 和 statement id 的名称一直 如 此时的findUserById 和接口中 findUserById方法名称一致 -->
+<!-- 3. mapper 中接口的 参数类型 和 statement中 paramaterType 类型一致如 此时的findUserById parameterType=java.lang.string 而 和接口中 findUserById方法的 参数为string 类型  -->
+<!-- 4. mapper 中接口的 返回类型 和 statement中 resultType 类型一致如 此时的findUserById resultType=com.mimu.simple.mybatis.model.UserData 而 和接口中 findUserById方法的 返回值 com.mimu.simple.mybatis.model.UserData 类型-->
+
+<mapper namespace="com.mimu.simple.mybatis.mapper.UserMapper">
     <select id="findUserById" parameterType="java.lang.Integer" resultType="com.mimu.simple.mybatis.model.UserData">
     select * from user_info where id = #{id}
     </select>
 
-    <!-- ${value} 表示sql 拼接串，当 parameterType 为基本类型时， 此处只能使用 value 参数名称，    -->
     <select id="listUserByName" parameterType="java.lang.String" resultType="com.mimu.simple.mybatis.model.UserData">
         select * from  user_info where person_name like '%${value}%'
     </select>
@@ -18,10 +25,6 @@
     </insert>
 
 
-    <!-- keyproperty将查询到的主键值设置到parameterType相对应的哪个属性 
-        order是SELECT last_insert_id()的执行顺序，相对于insert语句的执行顺序
-        resultType是指定SELECT LAST_INSERT_ID()的结果类型
-  -->
     <insert id="insertUserReturnPrimaryId" parameterType="com.mimu.simple.mybatis.model.UserData">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             select last_insert_id()

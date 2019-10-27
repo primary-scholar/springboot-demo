@@ -15,6 +15,8 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mapperxml/user.xml"/>
+        <!-- 两种配置 文件 -->
+        <mapper resource="sqlxml/user.xml"/>
+        <mapper resource="mapperxml/usermapper.xml"/>
     </mappers>
 </configuration>

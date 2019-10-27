@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 该文件 和 dao 中的 代码配套-->
+
+
+<mapper namespace="user">
+    <!-- #{id} 表示占位符，当 parameterType 为基本类型时，此处id可换成其他参数名称如 #{value}    -->
+    <select id="findUserById" parameterType="java.lang.Integer" resultType="com.mimu.simple.mybatis.model.UserData">
+    select * from user_info where id = #{id}
+    </select>
+
+    <!-- ${value} 表示sql 拼接串，当 parameterType 为基本类型时， 此处只能使用 value 参数名称，    -->
+    <select id="listUserByName" parameterType="java.lang.String" resultType="com.mimu.simple.mybatis.model.UserData">
+        select * from  user_info where person_name like '%${value}%'
+    </select>
+
+    <insert id="insertUser" parameterType="com.mimu.simple.mybatis.model.UserData">
+        insert into user_info(person_id,person_name) value (#{person_id},#{pName})
+    </insert>
+
+
+    <!-- keyproperty将查询到的主键值设置到parameterType相对应的哪个属性 
+        order是SELECT last_insert_id()的执行顺序，相对于insert语句的执行顺序
+        resultType是指定SELECT LAST_INSERT_ID()的结果类型
+  -->
+    <insert id="insertUserReturnPrimaryId" parameterType="com.mimu.simple.mybatis.model.UserData">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            select last_insert_id()
+        </selectKey>
+        insert into user_info(person_id,person_name) values (#{person_id},#{pName})
+    </insert>
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user_info where id=#{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.mimu.simple.mybatis.model.UserData">
+        update user_info set person_id=#{person_id},person_name=#{pName} where id=#{id}
+    </update>
+
+</mapper>
