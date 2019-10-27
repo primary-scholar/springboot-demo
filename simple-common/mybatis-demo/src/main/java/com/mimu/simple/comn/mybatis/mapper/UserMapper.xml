@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 该文件 和 mapper 接口 中的 代码配套-->
+<!--使用 mybatis 的mapper 代理方式时应注意以下几点 -->
+<!-- 1. namespace 的值 和 mapper 接口的 定义一致 -->
+<!-- 2. mapper 中接口的 方法名称 和 statement id 的名称一直 如 此时的findUserById 和接口中 findUserById方法名称一致 -->
+<!-- 3. mapper 中接口的 参数类型 和 statement中 paramaterType 类型一致如 此时的findUserById parameterType=java.lang.string 而 和接口中 findUserById方法的 参数为string 类型  -->
+<!-- 4. mapper 中接口的 返回类型 和 statement中 resultType 类型一致如 此时的findUserById resultType=com.mimu.simple.mybatis.model.UserData 而 和接口中 findUserById方法的 返回值 com.mimu.simple.mybatis.model.UserData 类型-->
+
+
+<mapper namespace="com.mimu.simple.comn.mybatis.mapper.UserMapper">
+
+    <!-- 定义 resultMap 结构  用于一对多，或多对多或 多表联合查询的 复杂查询结果-->
+    <!-- type ：resultMap 映射的 java 对象
+         id resultMap 的 唯一表示
+     -->
+    <resultMap id="userComplexInfo" type="com.mimu.simple.comn.mybatis.model.UserDataVo">
+        <!-- id：查询结果集中每条记录的唯一表示，，如果有多个列组成唯一标识，配置多个id
+             column：查询的列名
+             property：查询信息的唯 一标识 列所映射到 UserDataVo 中哪个属性
+           -->
+        <id column="id" property="id"/>
+        <!-- result：查询结果集中除唯一表示外的 其他列信息
+             column：查询的列名
+             property：查询信息列所映射到 UserDataVo 中哪个属性
+           -->
+        <result column="person_name" property="person_name"/>
+        <result column="person_id" property="person_id"/>
+        <result column="term_id" property="term_id"/>
+    </resultMap>
+
+    <!-- resultMap 之前定义的 resultMap 的ID 如果 resultMap 的定义在 其他 mapper 中,则记得添加 namespace 属性
+   -->
+    <select id="listUserMapInfo" resultMap="userComplexInfo"
+            parameterType="com.mimu.simple.comn.mybatis.model.UserData">
+        SELECT user.*,term.term_id FROM user_info as user,term_info as term WHERE user.person_id=${person_id} AND user.person_name=#{person_name} AND user.person_id=term.person_id;
+    </select>
+
+    <select id="findUserById" parameterType="java.lang.Integer"
+            resultType="com.mimu.simple.comn.mybatis.model.UserData">
+    select * from user_info where id = #{id}
+    </select>
+
+    <select id="listUserByName" parameterType="java.lang.String"
+            resultType="com.mimu.simple.comn.mybatis.model.UserData">
+        select * from  user_info where person_name like '%${value}%'
+    </select>
+
+    <insert id="insertUser" parameterType="com.mimu.simple.comn.mybatis.model.UserData">
+        insert into user_info(person_id,person_name) value (#{person_id},#{person_name})
+    </insert>
+
+
+    <insert id="insertUserReturnPrimaryId" parameterType="com.mimu.simple.comn.mybatis.model.UserData">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            select last_insert_id()
+        </selectKey>
+        insert into user_info(person_id,person_name) values (#{person_id},#{person_name})
+    </insert>
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user_info where id=#{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.mimu.simple.comn.mybatis.model.UserData">
+        update user_info set person_id=#{person_id},person_name=#{person_name} where id=#{id}
+    </update>
+
+</mapper>

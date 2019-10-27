@@ -16,6 +16,7 @@
         <module>simple-java</module>
         <module>simple-springboot</module>
         <module>simple-zookeeper</module>
+        <module>simple-common</module>
     </modules>
 
     <name>simple-demo</name>

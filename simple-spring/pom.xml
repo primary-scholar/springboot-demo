@@ -24,7 +24,6 @@
         <module>simple-springjetty-demo</module>
         <module>simple-springdubbo</module>
         <module>simple-springhystrix-demo</module>
-        <module>simple-springmybatis-demo</module>
     </modules>
 
     <properties>
