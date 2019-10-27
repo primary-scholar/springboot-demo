@@ -36,7 +36,7 @@ public class NettyProtobufClientDemo {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(new ProtobufVarint32FrameDecoder());
-                        ch.pipeline().addLast(new ProtobufDecoder(com.mimu.simple.socket.netty.c3.SubModel.SubModelInfo.getDefaultInstance()));
+                        ch.pipeline().addLast(new ProtobufDecoder(com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo.getDefaultInstance()));
                         ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
                         ch.pipeline().addLast(new ProtobufEncoder());
                         ch.pipeline().addLast(new ProtobufClientHandler());
@@ -83,8 +83,8 @@ public class NettyProtobufClientDemo {
             ctx.close();
         }
 
-        private com.mimu.simple.socket.netty.c3.SubModel.SubModelInfo creatSumModelInfo(int subId) {
-            com.mimu.simple.socket.netty.c3.SubModel.SubModelInfo.Builder builder = com.mimu.simple.socket.netty.c3.SubModel.SubModelInfo.newBuilder();
+        private com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo creatSumModelInfo(int subId) {
+            com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo.Builder builder = com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo.newBuilder();
             builder.setSubId(subId);
             builder.setProductName("netty in practise");
             builder.setAddress("around corner");

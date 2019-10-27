@@ -10,8 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>simple-spring</module>
-        <module>simple-grpc</module>
-        <module>simple-kafka</module>
         <module>simple-java</module>
         <module>simple-springboot</module>
         <module>simple-common</module>

@@ -40,7 +40,7 @@ public class NettyProtobufServerDemo {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(new ProtobufVarint32FrameDecoder());
-                        ch.pipeline().addLast(new ProtobufDecoder(com.mimu.simple.socket.netty.c3.SubModel.SubModelInfo.getDefaultInstance()));
+                        ch.pipeline().addLast(new ProtobufDecoder(com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo.getDefaultInstance()));
                         ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
                         ch.pipeline().addLast(new ProtobufEncoder());
                         ch.pipeline().addLast(new ProtobufServerHandler());
@@ -71,7 +71,7 @@ public class NettyProtobufServerDemo {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
             logger.info("channelRead");
-            com.mimu.simple.socket.netty.c3.SubModel.SubModelInfo subModlInfo = (com.mimu.simple.socket.netty.c3.SubModel.SubModelInfo) msg;
+            com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo subModlInfo = (com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo) msg;
             System.out.println("server received: ");
             System.out.println(msg);
             ctx.writeAndFlush(getResponse(subModlInfo.getSubId()));
@@ -89,8 +89,8 @@ public class NettyProtobufServerDemo {
             ctx.close();
         }
 
-        private com.mimu.simple.socket.netty.c3.ResModel.ResModelInfo getResponse(int subId) {
-            com.mimu.simple.socket.netty.c3.ResModel.ResModelInfo.Builder builder = com.mimu.simple.socket.netty.c3.ResModel.ResModelInfo.newBuilder();
+        private com.mimu.simple.comn.socket.netty.c3.ResModel.ResModelInfo getResponse(int subId) {
+            com.mimu.simple.comn.socket.netty.c3.ResModel.ResModelInfo.Builder builder = com.mimu.simple.comn.socket.netty.c3.ResModel.ResModelInfo.newBuilder();
             builder.setSubId(subId);
             builder.setRespCode(200);
             builder.setDesc("server received: " + builder.getSubId());

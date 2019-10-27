@@ -1,6 +1,7 @@
 package com.mimu.simple.comn.netty;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.mimu.simple.comn.socket.netty.c3.SubModel;
 import org.junit.Test;
 
 

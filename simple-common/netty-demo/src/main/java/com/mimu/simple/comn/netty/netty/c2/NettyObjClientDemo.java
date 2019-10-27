@@ -1,7 +1,7 @@
 package com.mimu.simple.comn.netty.netty.c2;
 
-import com.mimu.simple.sn.netty.c2.model.ResModel;
-import com.mimu.simple.sn.netty.c2.model.SubModel;
+import com.mimu.simple.comn.netty.netty.c2.model.ResModel;
+import com.mimu.simple.comn.netty.netty.c2.model.SubModel;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

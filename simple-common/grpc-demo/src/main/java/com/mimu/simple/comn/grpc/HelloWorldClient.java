@@ -1,5 +1,8 @@
 package com.mimu.simple.comn.grpc;
 
+import com.mimu.simple.comn.grpc.gen.GreeterGrpc;
+import com.mimu.simple.comn.grpc.gen.HelloReply;
+import com.mimu.simple.comn.grpc.gen.HelloRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import org.slf4j.Logger;

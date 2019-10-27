@@ -1,7 +1,11 @@
 package com.mimu.simple.comn.grpc;
 
+import com.mimu.simple.comn.grpc.gen.GreeterGrpc;
+import com.mimu.simple.comn.grpc.gen.HelloReply;
+import com.mimu.simple.comn.grpc.gen.HelloRequest;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
 
