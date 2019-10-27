@@ -1,4 +1,4 @@
-package com.mimu.simple.sg;
+package com.mimu.simple.comn.grpc;
 
 import org.junit.Test;
 

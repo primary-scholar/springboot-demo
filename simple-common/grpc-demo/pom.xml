@@ -3,17 +3,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>simple-grpc</artifactId>
-        <groupId>com.mimu.simple</groupId>
+        <artifactId>simple-common</artifactId>
+        <groupId>com.mimu.simple.comn</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mimu.simple.sg</groupId>
+    <groupId>com.mimu.simple.comn.grpc</groupId>
     <artifactId>grpc-demo</artifactId>
 
     <name>grpc-demo</name>
-
     <url>http://www.example.com</url>
 
     <properties>
@@ -51,11 +50,6 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
 
