@@ -1,6 +1,8 @@
 package com.mimu.simple.mybatis.dao;
 
+import com.mimu.simple.mybatis.model.UserData;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
@@ -24,6 +26,24 @@ public class UserDaoImplTest {
         String file = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(file);
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+    }
+
+    @Test
+    public void insertUser(){
+        int id = 8;
+        UserDaoImpl userDao = new UserDaoImpl();
+        userDao.setSqlSessionFactory(sqlSessionFactory);
+        UserData userData = new UserData();
+        userData.setPerson_id(id);
+        userData.setPserson_name("first");
+        userDao.insertUser(userData);
+        System.out.println(userData);
+        UserData userData1 = new UserData();
+        userData1.setPerson_id(id + 1);
+        userData1.setPserson_name("second");
+
+        userDao.insertUserReturnPrimaryId(userData1);
+        System.out.println(userData1);
     }
 
     @Test

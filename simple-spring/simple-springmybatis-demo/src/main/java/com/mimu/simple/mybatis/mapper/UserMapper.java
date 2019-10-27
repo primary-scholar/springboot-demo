@@ -1,6 +1,5 @@
 package com.mimu.simple.mybatis.mapper;
 
-import com.mimu.simple.mybatis.dao.UserDao;
 import com.mimu.simple.mybatis.model.UserData;
 
 import java.util.List;

@@ -17,6 +17,9 @@
     <mappers>
         <!-- 两种配置 文件 -->
         <mapper resource="sqlxml/user.xml"/>
-        <mapper resource="mapperxml/usermapper.xml"/>
+        <!-- 使用package 可以 可以批量配置 mapper.xml 单需注意一下几点 -->
+        <!--1. mapper 接口和 mapper.xml 必须在同一个 目录  -->
+        <!--2. mapper 接口的名称 和 mapper.xml 的文件名称(包含大小写) 一致  -->
+        <package name="com.mimu.simple.mybatis.mapper"/>
     </mappers>
 </configuration>

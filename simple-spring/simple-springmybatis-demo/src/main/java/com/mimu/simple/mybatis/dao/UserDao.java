@@ -10,6 +10,10 @@ import java.util.List;
  */
 public interface UserDao {
 
+    public UserData insertUserReturnPrimaryId(UserData data);
+
+    public int insertUser(UserData data);
+
     public UserData findUserById(int id);
 
     public List<UserData> listUserByName(String name);

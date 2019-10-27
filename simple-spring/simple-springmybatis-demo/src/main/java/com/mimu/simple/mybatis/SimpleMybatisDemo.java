@@ -43,13 +43,13 @@ public class SimpleMybatisDemo {
         SqlSession sqlSession = getSqlSession();
         UserData userData = new UserData();
         userData.setPerson_id(id);
-        userData.setpName("first");
+        userData.setPserson_name("first");
         sqlSession.insert("user.insertUser", userData);
         sqlSession.commit();
         System.out.println(userData);
         UserData userData1 = new UserData();
         userData1.setPerson_id(id + 1);
-        userData1.setpName("second");
+        userData1.setPserson_name("second");
         /**
          * 该语句返回的 userdata中的id为数据库中主见返回的 ID；
          */
@@ -71,7 +71,7 @@ public class SimpleMybatisDemo {
         int id = 9;
         UserData userData = new UserData();
         userData.setId(id);
-        userData.setpName("updataName");
+        userData.setPserson_name("updataName");
         userData.setPerson_id(1);
         SqlSession sqlSession = getSqlSession();
         int update = sqlSession.update("user.updateUser", userData);

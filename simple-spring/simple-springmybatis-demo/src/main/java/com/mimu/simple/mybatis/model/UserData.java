@@ -7,7 +7,7 @@ package com.mimu.simple.mybatis.model;
 public class UserData {
     private int id;
     private int person_id;
-    private String pName;
+    private String pserson_name;
 
     public int getId() {
         return id;
@@ -25,12 +25,12 @@ public class UserData {
         this.person_id = person_id;
     }
 
-    public String getpName() {
-        return pName;
+    public String getPserson_name() {
+        return pserson_name;
     }
 
-    public void setpName(String pName) {
-        this.pName = pName;
+    public void setPserson_name(String pserson_name) {
+        this.pserson_name = pserson_name;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class UserData {
         return "UserData{" +
                 "id=" + id +
                 ", person_id=" + person_id +
-                ", pName='" + pName + '\'' +
+                ", pserson_name='" + pserson_name + '\'' +
                 '}';
     }
 }

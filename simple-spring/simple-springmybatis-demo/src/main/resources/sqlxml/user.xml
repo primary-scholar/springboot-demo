@@ -19,7 +19,7 @@
     </select>
 
     <insert id="insertUser" parameterType="com.mimu.simple.mybatis.model.UserData">
-        insert into user_info(person_id,person_name) value (#{person_id},#{pName})
+        insert into user_info(person_id,person_name) value (#{person_id},#{pserson_name})
     </insert>
 
 
@@ -31,7 +31,7 @@
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             select last_insert_id()
         </selectKey>
-        insert into user_info(person_id,person_name) values (#{person_id},#{pName})
+        insert into user_info(person_id,person_name) values (#{person_id},#{pserson_name})
     </insert>
 
     <delete id="deleteUser" parameterType="java.lang.Integer">
@@ -39,7 +39,7 @@
     </delete>
 
     <update id="updateUser" parameterType="com.mimu.simple.mybatis.model.UserData">
-        update user_info set person_id=#{person_id},person_name=#{pName} where id=#{id}
+        update user_info set person_id=#{person_id},person_name=#{pserson_name} where id=#{id}
     </update>
 
 </mapper>

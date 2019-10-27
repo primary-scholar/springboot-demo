@@ -19,6 +19,24 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public int insertUser(UserData data) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        int insert = sqlSession.insert("user.insertUser", data);
+        sqlSession.commit();
+        sqlSession.close();
+        return insert;
+    }
+
+    @Override
+    public UserData insertUserReturnPrimaryId(UserData data) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        sqlSession.insert("user.insertUserReturnPrimaryId", data);
+        sqlSession.commit();
+        sqlSession.close();
+        return data;
+    }
+
+    @Override
     public UserData findUserById(int id) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         UserData userData = sqlSession.selectOne("user.findUserById", id);
