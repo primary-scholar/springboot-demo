@@ -2,7 +2,6 @@ package com.mimu.simple.spring.mybatis.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.mimu.simple.spring.mybatis.mapper.UserMapper;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
