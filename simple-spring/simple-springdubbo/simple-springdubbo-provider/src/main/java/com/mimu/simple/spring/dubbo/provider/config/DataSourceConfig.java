@@ -89,7 +89,7 @@ public class DataSourceConfig {
             dataSource.setConnectionInitSqls(Collections.singletonList("set names utf8mb4;"));
         }
         if (log.isDebugEnabled()) {
-            log.debug("getDataSource info url={}", jdbcUrl);
+            log.debug("dubbo getDataSource info url={}", jdbcUrl);
         }
         return dataSource;
     }
