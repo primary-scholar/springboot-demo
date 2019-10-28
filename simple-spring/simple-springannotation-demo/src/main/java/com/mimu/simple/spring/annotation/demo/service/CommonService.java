@@ -7,6 +7,7 @@ import com.mimu.simple.spring.annotation.demo.repository.PeopleRepository;
 import com.mimu.simple.spring.annotation.demo.repository.TermRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -47,21 +48,8 @@ public class CommonService {
         return peopleRepository.getPeople(pid);
     }
 
-    @Transactional
-    public boolean updateInfo(PersonData personData, TermData termData) {
-        boolean result = false;
-        try {
-            result = updatePeople(personData) && updateTerm(termData);
-        } catch (Exception e) {
-        }
-        return result;
-    }
-
-    public boolean updatePeople(PersonData personData) {
-        return peopleRepository.update(personData);
-    }
-
     /**
+     * 只有 使用 @Transactional 标注的方法 抛出异常 事务才可以回滚
      * 事物回滚
      * 只有遇到 RuntimeException 或 Error 时
      * spring 事务才会执行 rollback 操作
@@ -69,6 +57,15 @@ public class CommonService {
      * @param termData
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {RuntimeException.class, Exception.class})
+    public boolean updateInfo(PersonData personData, TermData termData) {
+        return updatePeople(personData) && updateTerm(termData);
+    }
+
+    public boolean updatePeople(PersonData personData) {
+        return peopleRepository.update(personData);
+    }
+
     public boolean updateTerm(TermData termData) {
         if (!termRepository.update(termData)) {
             throw new RuntimeException();

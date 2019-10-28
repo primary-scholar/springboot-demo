@@ -33,4 +33,12 @@ public class CommonServiceTest {
         UserData data1 = commonService.insertUserDataWithPrimaryId(data);
         System.out.println(data1);
     }
+
+    @Test
+    public void insertWithTransaction(){
+        UserData data = new UserData();
+        data.setPerson_name("abc");
+        data.setPerson_id(2);
+        System.out.println(commonService.insertMultiRecordWithTransaction(data,data));
+    }
 }

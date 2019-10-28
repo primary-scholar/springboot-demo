@@ -37,18 +37,18 @@ public class InnerServiceTest {
     @Test
     public void updateInfo() {
         PersonData personData = new PersonData();
-        personData.setPid(2);
-        personData.setNickName("nickname2");
+        personData.setPid(20);
+        personData.setNickName("nickname1");
         TermData termData = new TermData();
-        termData.setPid(1);
+        termData.setPid(2);
         termData.setTid(1);
         commonService.updateInfo(personData, termData);
         //Assert.assertTrue(commonService.updateInfo(personData, termData));
     }
 
     @Test
-    public void info(){
-        while (true){
+    public void info() {
+        while (true) {
             PersonData personData = commonService.getPeople(1);
             System.out.println(personData);
             System.out.println(System.currentTimeMillis());
@@ -62,7 +62,7 @@ public class InnerServiceTest {
     }
 
     @Test
-    public void logger(){
+    public void logger() {
         System.out.println(commonService.getPeople(1));
     }
 
