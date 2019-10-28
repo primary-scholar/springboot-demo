@@ -22,4 +22,13 @@ public class CommonService {
     public UserData finUserById(int id) {
         return userMapper.findUserById(id);
     }
+
+    public int insertUserData(UserData data) {
+        return userMapper.insertUser(data);
+    }
+
+    public UserData insertUserDataWithPrimaryId(UserData data) {
+        userMapper.insertUserReturnPrimaryId(data);
+        return data;
+    }
 }

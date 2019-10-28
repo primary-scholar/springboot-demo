@@ -20,6 +20,8 @@ public interface UserMapper {
 
     int insertUser(UserData data);
 
+    int insertUserReturnPrimaryId(UserData data);
+
     int deleteUser(int id);
 
     int updataUser(UserData data);
