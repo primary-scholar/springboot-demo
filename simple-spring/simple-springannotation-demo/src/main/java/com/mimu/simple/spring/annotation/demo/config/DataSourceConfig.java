@@ -13,6 +13,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Collections;
 
@@ -55,6 +56,7 @@ public class DataSourceConfig {
     }
 
     @Bean
+    @Resource
     public PlatformTransactionManager transactionManager(DataSource db1Write) {
         return new DataSourceTransactionManager(db1Write);
     }
