@@ -25,6 +25,11 @@ public class FileTest {
         System.out.println(resolve.toString().concat(".class"));
     }
 
+    /**
+     * a fileChannel transfer data to socketChannel
+     *
+     * @throws IOException
+     */
     @Test
     public void info1() throws IOException {
         File file = new File("a.txt");
@@ -32,7 +37,7 @@ public class FileTest {
         FileChannel channel = ((FileOutputStream) outputStream).getChannel();
         int capacity = 1024, index = 0;
         ByteBuffer data = ByteBuffer.allocate(capacity);
-        while (data.position() < capacity) {
+        while (data.remaining() > 0) {
             data.put(String.valueOf(index++).getBytes());
         }
         data.flip();
@@ -47,16 +52,22 @@ public class FileTest {
 
     }
 
+    /**
+     * get data from socketChannel which the data form a fileChannel
+     *
+     * @throws IOException
+     */
     @Test
     public void info2() throws IOException {
         SocketChannel socketChannel = SocketChannel.open();
         socketChannel.connect(new InetSocketAddress("localhost", 8080));
-        int capacity = 1024, index = 0;
+        int capacity = 1024;
         ByteBuffer data = ByteBuffer.allocate(capacity);
         socketChannel.read(data);
         data.flip();
-        while (data.position() < capacity) {
-            System.out.println(data.get(index++));
+        System.out.println(data);
+        while (data.remaining() > 0) {
+            System.out.println(data.get());
         }
     }
 }
