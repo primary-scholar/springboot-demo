@@ -18,7 +18,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <application.main.class>com.mimu.simple.sj.AppSimpleJettyServer</application.main.class>
+        <application.main.class>com.mimu.simple.spring.jetty.AppSimpleJettyServer</application.main.class>
     </properties>
 
     <dependencies>

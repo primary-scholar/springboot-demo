@@ -1,6 +1,11 @@
 package com.mimu.simple.spring.mybatis.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.mimu.simple.spring.mybatis.mapper.UserMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +18,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Collections;
 
@@ -22,6 +28,7 @@ import java.util.Collections;
  */
 @Configuration
 @PropertySource(value = {"classpath:db-connect.properties"})
+@MapperScan(basePackageClasses = UserMapper.class,sqlSessionFactoryRef = "userSqlSessionFactory")
 @EnableTransactionManagement
 public class DataSourceConfig {
     private static final Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
@@ -45,18 +52,13 @@ public class DataSourceConfig {
         return new DataSourceTransactionManager(userDataSource);
     }
 
-    /**
-     * generate jdbcTemplate bean
-     *
-     * @param userDataSource
-     * @return
-     */
     @Bean
-    @Autowired
-    public JdbcTemplate userDataJdbcTemplate(DataSource userDataSource) {
-        return new JdbcTemplate(userDataSource);
+    @Resource
+    public SqlSessionFactory userSqlSessionFactory(DataSource userDataSource) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+        sqlSessionFactory.setDataSource(userDataSource);
+        return sqlSessionFactory.getObject();
     }
-
 
     private DataSource getDataSource(String url, String user, String password, boolean useUtf8Mb4) {
         DruidDataSource dataSource = new DruidDataSource();
