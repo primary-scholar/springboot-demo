@@ -4,7 +4,7 @@
     <!--<property scope="context" name="path" value="${server_log_home}"/>
     <property scope="context" name="name" value="${server_name}"/>-->
     <property scope="context" name="path" value="logs/"/>
-    <property scope="context" name="name" value="simplespringjetty"/>
+    <property scope="context" name="name" value="simple-spring-jetty"/>
     <!--time rolling log-->
     <appender name="timeRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${path}/${name}.log</File>

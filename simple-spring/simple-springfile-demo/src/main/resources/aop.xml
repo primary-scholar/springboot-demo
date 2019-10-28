@@ -8,10 +8,10 @@
 
 
     <!-- repository -->
-    <bean id="base" class="com.mimu.simple.sf.repository.BaseRepository"/>
+    <bean id="base" class="com.mimu.simple.spring.file.repository.BaseRepository"/>
     <bean id="commonRepository" class="com.mimu.simple.sf.repository.CommonRepository"/>
-    <bean id="externalRepository" class="com.mimu.simple.sf.repository.external.ExternalRepository"/>
-    <bean id="innerRepository" class="com.mimu.simple.sf.repository.inner.InnerRepository"/>
+    <bean id="externalRepository" class="com.mimu.simple.spring.file.repository.external.ExternalRepository"/>
+    <bean id="innerRepository" class="com.mimu.simple.spring.file.repository.inner.InnerRepository"/>
 
     <!-- service -->
     <bean id="commonService" class="com.mimu.simple.sf.service.CommonService">
@@ -19,36 +19,36 @@
         <property name="externalRepository" ref="externalRepository"/>
         <property name="innerRepository" ref="innerRepository"/>
     </bean>
-    <bean id="externalService" class="com.mimu.simple.sf.service.external.ExternalService">
+    <bean id="externalService" class="com.mimu.simple.spring.file.service.external.ExternalService">
         <property name="externalRepository" ref="externalRepository"/>
         <property name="innerRepository" ref="innerRepository"/>
     </bean>
-    <bean id="innerService" class="com.mimu.simple.sf.service.inner.InnerService">
+    <bean id="innerService" class="com.mimu.simple.spring.file.service.inner.InnerService">
         <property name="innerRepository" ref="innerRepository"/>
     </bean>
 
     <!-- controller -->
-    <bean id="commonController" class="com.mimu.simple.sf.controller.CommonController">
+    <bean id="commonController" class="com.mimu.simple.spring.file.controller.CommonController">
         <property name="commonService" ref="commonService"/>
         <property name="externalService" ref="externalService"/>
         <property name="innerService" ref="innerService"/>
     </bean>
-    <bean id="externalController" class="com.mimu.simple.sf.controller.external.ExternalController">
+    <bean id="externalController" class="com.mimu.simple.spring.file.controller.external.ExternalController">
         <property name="externalService" ref="externalService"/>
         <property name="innerService" ref="innerService"/>
     </bean>
-    <bean id="innerController" class="com.mimu.simple.sf.controller.inner.InnerController">
+    <bean id="innerController" class="com.mimu.simple.spring.file.controller.inner.InnerController">
         <property name="innerService" ref="innerService"/>
     </bean>
 
     <!-- aop -->
-    <bean id="loggerAroundAspectBean" class="com.mimu.simple.sf.core.SimpleLoggerAroundAspectBean"/>
-    <bean id="simpleLoggerAspectBean" class="com.mimu.simple.sf.core.SimpleLoggerAspectBean"/>
+    <bean id="loggerAroundAspectBean" class="com.mimu.simple.spring.file.core.SimpleLoggerAroundAspectBean"/>
+    <bean id="simpleLoggerAspectBean" class="com.mimu.simple.spring.file.core.SimpleLoggerAspectBean"/>
     <aop:config>
         <aop:pointcut id="loggerBeforeInfo"
-                      expression="execution( public * com.mimu.simple.sf.service.inner.InnerService.info())"/>
+                      expression="execution( public * com.mimu.simple.spring.file.service.inner.InnerService.info())"/>
         <aop:pointcut id="loggerAfterInfo"
-                      expression="execution( public * com.mimu.simple.sf.service.inner.InnerService.message())"/>
+                      expression="execution( public * com.mimu.simple.spring.file.service.inner.InnerService.message())"/>
 
         <aop:aspect id="loggerAroundAspect" ref="loggerAroundAspectBean">
             <aop:pointcut id="loggerAroundInfo"

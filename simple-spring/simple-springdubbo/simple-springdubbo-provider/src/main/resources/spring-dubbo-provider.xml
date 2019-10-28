@@ -21,7 +21,7 @@
 
     <dubbo:provider timeout="5000"/>
 
-    <dubbo:service interface="com.mimu.simple.sd.api.HelloStringApi"
+    <dubbo:service interface="com.mimu.simple.spring.dubbo.api.HelloStringApi"
                    ref="helloStringImpl" timeout="3000" loadbalance="random" cluster="failover" retries="0"
                    version="1.0.0">
         <!--<dubbo:method name="hello" retries="3" timeout="1000"/>-->
@@ -30,7 +30,7 @@
         <!--<dubbo:parameter key="scope" value="remote"/>-->
     </dubbo:service>
 
-    <dubbo:service interface="com.mimu.simple.sd.api.HelloStringApi"
+    <dubbo:service interface="com.mimu.simple.spring.dubbo.api.HelloStringApi"
                    ref="helloStringXImpl" timeout="3000" loadbalance="random" cluster="failover" retries="0"
                    version="1.0.1">
         <!--<dubbo:method name="hello" retries="3" timeout="1000"/>-->
@@ -39,7 +39,7 @@
         <!--<dubbo:parameter key="scope" value="remote"/>-->
     </dubbo:service>
 
-    <dubbo:service interface="com.mimu.simple.sd.api.UserDataApi"
+    <dubbo:service interface="com.mimu.simple.spring.dubbo.api.UserDataApi"
                    ref="userDataApiImpl" timeout="3000" retries="0">
         <!--使用 parameter 参数 key= scope，value！=local时，则dubbo 只进行 remote的服务暴露
         若，不指定 scope 参数，则dubbo对 服务进行 本地和remote 的双重 暴露-->
@@ -48,7 +48,7 @@
     <!-- 上述 dubbo:service ref 中需要引用 spring bean 所以在spring 容器中需注册 userDataApiImpl bean
      由于在com.mimu.simple.sd.provider.service.UserDataApiImpl 类中使用了 @Component 注解
      所以下面的 注册可忽略-->
-    <!--<bean name="userDataApiImpl" class="com.mimu.simple.sd.provider.service.UserDataApiImpl"/>-->
+    <!--<bean name="userDataApiImpl" class="com.mimu.simple.spring.dubbo.provider.service.UserDataApiImpl"/>-->
     <dubbo:monitor protocol="dubbo"/>
 
 </beans>

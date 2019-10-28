@@ -9,24 +9,24 @@
     <!--<bean id="domainA" class="com.mimu.simple.sf.d.DomainA">
         <constructor-arg ref="domainB"/>
     </bean>
-    <bean id="domainB" class="com.mimu.simple.sf.d.DomainB">
+    <bean id="domainB" class="com.mimu.simple.spring.file.lifecycle.d.DomainB">
         <constructor-arg ref="domainA"/>
     </bean>-->
-    <bean id="domainC" class="com.mimu.simple.sf.d.DomainC">
+    <bean id="domainC" class="com.mimu.simple.spring.file.lifecycle.d.DomainC">
         <property name="domainD" ref="domainD"/>
     </bean>
-    <bean id="domainD" class="com.mimu.simple.sf.d.DomainD">
+    <bean id="domainD" class="com.mimu.simple.spring.file.lifecycle.d.DomainD">
         <property name="domainC" ref="domainC"/>
     </bean>
     <!-- lifecycle bean dependency init-->
 
     <!-- lifecycle package init-->
-    <bean id="person" class="com.mimu.simple.sf.l.Person" init-method="customInit"
+    <bean id="person" class="com.mimu.simple.spring.file.lifecycle.l.Person" init-method="customInit"
           destroy-method="customDestory"
           p:name="zhangsan" p:phone="456"/>
     <bean id="customInstantiationAwareBeanPostProcessor"
-          class="com.mimu.simple.sf.l.CustomInstantiationAwareBeanPostProcessor"/>
-    <bean id="customBeanPostProcessor" class="com.mimu.simple.sf.l.CustomBeanPostProcessor"/>
-    <bean id="customBeanFactoryPostProcessor" class="com.mimu.simple.sf.l.CustomBeanFactoryPostProcessor"/>
+          class="com.mimu.simple.spring.file.lifecycle.l.CustomInstantiationAwareBeanPostProcessor"/>
+    <bean id="customBeanPostProcessor" class="com.mimu.simple.spring.file.lifecycle.l.CustomBeanPostProcessor"/>
+    <bean id="customBeanFactoryPostProcessor" class="com.mimu.simple.spring.file.lifecycle.l.CustomBeanFactoryPostProcessor"/>
     <!-- lifecycle package init-->
 </beans>

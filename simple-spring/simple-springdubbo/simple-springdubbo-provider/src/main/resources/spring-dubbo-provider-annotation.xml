@@ -13,7 +13,7 @@
         <dubbo:parameter key="scope" value="remote"/>
     </dubbo:protocol>
 
-    <dubbo:annotation package="com.mimu.simple.sd.provider.service"/>
+    <dubbo:annotation package="com.mimu.simple.spring.dubbo.provider.service"/>
 
     <dubbo:monitor protocol="registry"/>
 </beans>

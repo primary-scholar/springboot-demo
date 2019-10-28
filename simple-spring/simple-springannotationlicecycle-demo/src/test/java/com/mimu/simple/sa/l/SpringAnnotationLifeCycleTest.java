@@ -1,6 +1,7 @@
 package com.mimu.simple.sa.l;
 
 
+import com.mimu.simple.spring.lifecycle.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
