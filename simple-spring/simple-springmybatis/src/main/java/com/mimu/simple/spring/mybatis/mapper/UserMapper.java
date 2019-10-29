@@ -12,6 +12,11 @@ import java.util.List;
  * author: mimu
  * date: 2019/10/28
  */
+
+/**
+ * here @Repository 是否添加都可以，不添加时 idea 进行 CommonService @Autowired 注入时 会提示错误，
+ * 实际上 没有问题
+ */
 @Mapper
 @Repository
 public interface UserMapper {

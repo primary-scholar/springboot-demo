@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.ClassRelativeResourceLoader;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -28,7 +27,7 @@ import java.util.Collections;
  */
 @Configuration
 @PropertySource(value = {"classpath:db-connect.properties"})
-@MapperScan(basePackageClasses = UserMapper.class,sqlSessionFactoryRef = "userSqlSessionFactory")
+@MapperScan(basePackageClasses = UserMapper.class, sqlSessionFactoryRef = "userSqlSessionFactory")
 @EnableTransactionManagement
 public class DataSourceConfig {
     private static final Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
