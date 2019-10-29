@@ -1,5 +1,6 @@
 package com.mimu.simple.comn.netty.netty.c3;
 
+import com.mimu.simple.comn.netty.c3.SubModel;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -36,7 +37,7 @@ public class NettyProtobufClientDemo {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(new ProtobufVarint32FrameDecoder());
-                        ch.pipeline().addLast(new ProtobufDecoder(com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo.getDefaultInstance()));
+                        ch.pipeline().addLast(new ProtobufDecoder(SubModel.SubModelInfo.getDefaultInstance()));
                         ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
                         ch.pipeline().addLast(new ProtobufEncoder());
                         ch.pipeline().addLast(new ProtobufClientHandler());
@@ -83,8 +84,8 @@ public class NettyProtobufClientDemo {
             ctx.close();
         }
 
-        private com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo creatSumModelInfo(int subId) {
-            com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo.Builder builder = com.mimu.simple.comn.socket.netty.c3.SubModel.SubModelInfo.newBuilder();
+        private SubModel.SubModelInfo creatSumModelInfo(int subId) {
+            SubModel.SubModelInfo.Builder builder = SubModel.SubModelInfo.newBuilder();
             builder.setSubId(subId);
             builder.setProductName("netty in practise");
             builder.setAddress("around corner");
