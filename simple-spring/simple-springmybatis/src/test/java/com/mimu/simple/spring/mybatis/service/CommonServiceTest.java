@@ -5,7 +5,6 @@ import com.mimu.simple.spring.mybatis.config.ApplicationConfig;
 import com.mimu.simple.spring.mybatis.model.TermData;
 import com.mimu.simple.spring.mybatis.model.UserData;
 import com.mimu.simple.spring.mybatis.model.UserDataResultMap;
-import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,7 @@ public class CommonServiceTest {
     }
 
     @Test
-    public void insertUser(){
+    public void insertUser() {
         UserData data = new UserData();
         data.setPerson_id(1);
         data.setPerson_name("mapper insert");
@@ -41,13 +40,16 @@ public class CommonServiceTest {
     }
 
     @Test
-    public void insertWithTransaction(){
+    public void insertWithTransaction() {
         UserData data = new UserData();
         data.setPerson_name("abc");
         data.setPerson_id(2);
-        System.out.println(commonService.insertMultiRecordWithTransaction(data,data));
+        System.out.println(commonService.insertMultiRecordWithTransaction(data, data));
     }
 
+    /**
+     * 使用 该测试(listUserTermInfoLazyOne) 和(listUserTermInfoLazy)  可验证 延迟加载
+     */
     @Test
     public void listUserTermInfoLazyOne() {
         UserData userData = new UserData();
@@ -55,6 +57,7 @@ public class CommonServiceTest {
         userData.setPerson_name("hah");
         UserDataResultMap result = commonService.listUserTermInfoLazy(userData);
     }
+
     @Test
     public void listUserTermInfoLazy() {
         UserData userData = new UserData();
