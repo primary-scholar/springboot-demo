@@ -1,11 +1,13 @@
 package com.mimu.simple.comn.mybatis.model;
 
+import java.util.List;
+
 public class UserDataResultMap {
     protected int id;
     protected int person_id;
     protected String person_name;
 
-    protected TermData termData;
+    protected List<TermData> termDataList;
 
     public int getId() {
         return id;
@@ -31,12 +33,12 @@ public class UserDataResultMap {
         this.person_name = person_name;
     }
 
-    public TermData getTermData() {
-        return termData;
+    public List<TermData> getTermDataList() {
+        return termDataList;
     }
 
-    public void setTermData(TermData termData) {
-        this.termData = termData;
+    public void setTermDataList(List<TermData> termDataList) {
+        this.termDataList = termDataList;
     }
 
     @Override
@@ -45,7 +47,7 @@ public class UserDataResultMap {
                 "id=" + id +
                 ", person_id=" + person_id +
                 ", person_name='" + person_name + '\'' +
-                ", termData=" + termData +
+                ", termDataList=" + termDataList +
                 '}';
     }
 }

@@ -1,7 +1,7 @@
 package com.mimu.simple.spring.dubbo.consumer.controller;
 
 import com.mimu.simple.spring.dubbo.consumer.service.HelloService;
-import com.mimu.simple.sd.core.model.HelloData;
+import com.mimu.simple.spring.dubbo.model.HelloData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

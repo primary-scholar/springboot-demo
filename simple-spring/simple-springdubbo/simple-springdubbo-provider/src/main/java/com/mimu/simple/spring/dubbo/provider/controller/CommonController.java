@@ -2,7 +2,7 @@ package com.mimu.simple.spring.dubbo.provider.controller;
 
 import com.mimu.simple.spring.dubbo.api.HelloStringApi;
 import com.mimu.simple.spring.dubbo.api.UserDataApi;
-import com.mimu.simple.sd.core.model.HelloData;
+import com.mimu.simple.spring.dubbo.model.HelloData;
 import com.mimu.simple.spring.dubbo.model.UserData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.mimu.simple.spring.dubbo.consumer.service;
 
 import com.mimu.simple.spring.dubbo.api.HelloStringApi;
-import com.mimu.simple.sd.core.model.HelloData;
+import com.mimu.simple.spring.dubbo.model.HelloData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;

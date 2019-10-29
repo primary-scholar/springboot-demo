@@ -1,7 +1,7 @@
 package com.mimu.simple.spring.file.controller;
 
 
-import com.mimu.simple.sf.service.CommonService;
+import com.mimu.simple.spring.file.service.CommonService;
 import com.mimu.simple.spring.file.service.external.ExternalService;
 import com.mimu.simple.spring.file.service.inner.InnerService;
 

@@ -5,6 +5,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "com.mimu.simple.sa.l")
+@ComponentScan(basePackageClasses = ApplicationConfig.class)
 public class ApplicationConfig {
 }

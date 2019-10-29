@@ -2,6 +2,7 @@ package com.mimu.simple.comn.mybatis.mapper;
 
 
 import com.mimu.simple.comn.mybatis.model.UserData;
+import com.mimu.simple.comn.mybatis.model.UserDataResultMap;
 import com.mimu.simple.comn.mybatis.model.UserDataVo;
 
 import java.util.List;
@@ -23,4 +24,8 @@ public interface UserMapper {
     int updataUser(UserData data);
 
     List<UserDataVo> listUserMapInfo(UserData data);
+
+    UserDataResultMap listUserTermInfo(UserData data);
+
+    UserDataResultMap listUserTermInfoLazy(UserData data);
 }

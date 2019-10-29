@@ -1,7 +1,9 @@
 package com.mimu.simple.comn.mybatis.mapper;
 
 
+import com.mimu.simple.comn.mybatis.model.TermData;
 import com.mimu.simple.comn.mybatis.model.UserData;
+import com.mimu.simple.comn.mybatis.model.UserDataResultMap;
 import com.mimu.simple.comn.mybatis.model.UserDataVo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -74,5 +76,31 @@ public class UserMapperTest {
         userData.setPerson_name("hah");
         List<UserDataVo> userDataVos = mapper.listUserMapInfo(userData);
         System.out.println(userDataVos);
+    }
+
+    @Test
+    public void listUserTermInfo() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        UserData userData = new UserData();
+        userData.setPerson_id(2);
+        userData.setPerson_name("hah");
+        UserDataResultMap result = mapper.listUserTermInfo(userData);
+        System.out.println(result);
+    }
+
+    @Test
+    public void listUserTermInfoLazy() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        UserData userData = new UserData();
+        userData.setPerson_id(2);
+        userData.setPerson_name("hah");
+        UserDataResultMap result = mapper.listUserTermInfoLazy(userData);
+        List<TermData> termDataList = result.getTermDataList();
+        for (TermData termData : termDataList) {
+            System.out.println(termData);
+        }
+        System.out.println(result);
     }
 }

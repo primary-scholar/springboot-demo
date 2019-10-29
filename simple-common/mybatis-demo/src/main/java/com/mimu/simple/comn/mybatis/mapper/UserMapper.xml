@@ -40,6 +40,51 @@
         SELECT user.*,term.term_id FROM user_info as user,term_info as term WHERE user.person_id=${person_id} AND user.person_name=#{person_name} AND user.person_id=term.person_id;
     </select>
 
+
+    <resultMap id="uerTermInfo" type="com.mimu.simple.comn.mybatis.model.UserDataResultMap">
+        <id column="id" property="id"/>
+        <!-- result：查询结果集中除唯一表示外的 其他列信息
+             column：查询的列名
+             property：查询信息列所映射到 UserDataVo 中哪个属性
+           -->
+        <result column="person_name" property="person_name"/>
+        <result column="person_id" property="person_id"/>
+        <!-- collection 表示 一对多的 对应关系 即 一个 UserDataResultMap 中 有多个 对应的 TermData -->
+        <collection property="termDataList" ofType="com.mimu.simple.comn.mybatis.model.TermData">
+            <id column="tid" property="id"/>
+            <result column="term_id" property="term_id"/>
+            <result column="t_pid" property="person_id"/>
+        </collection>
+    </resultMap>
+
+    <select id="listUserTermInfo" resultMap="uerTermInfo" parameterType="com.mimu.simple.comn.mybatis.model.UserData">
+        SELECT user.*,term.id tid,term.term_id,term.person_id t_pid FROM user_info as user,term_info as term WHERE user.person_id=#{person_id} AND user.person_name=#{person_name} AND user.person_id=term.person_id
+    </select>
+
+    <select id="findTermInfoByPersonId" resultType="com.mimu.simple.comn.mybatis.model.TermData"
+            parameterType="java.lang.Integer">
+    SELECT * FROM term_info WHERE person_id=#{id}
+    </select>
+
+    <resultMap id="userTermInfoLazy" type="com.mimu.simple.comn.mybatis.model.UserDataResultMap">
+        <id column="id" property="id"/>
+        <!-- result：查询结果集中除唯一表示外的 其他列信息
+             column：查询的列名
+             property：查询信息列所映射到 UserDataVo 中哪个属性
+           -->
+        <result column="person_name" property="person_name"/>
+        <result column="person_id" property="person_id"/>
+        <!-- collection 表示 一对多的 对应关系 即 一个 UserDataResultMap 中 有多个 对应的 TermData -->
+        <collection property="termDataList" ofType="com.mimu.simple.comn.mybatis.model.TermData"
+                    select="findTermInfoByPersonId" column="person_id" fetchType="lazy">
+        </collection>
+    </resultMap>
+
+    <select id="listUserTermInfoLazy" resultMap="userTermInfoLazy"
+            parameterType="com.mimu.simple.comn.mybatis.model.UserData">
+        SELECT user.* FROM user_info as user WHERE user.person_id=#{person_id} AND user.person_name=#{person_name}
+    </select>
+
     <select id="findUserById" parameterType="java.lang.Integer"
             resultType="com.mimu.simple.comn.mybatis.model.UserData">
     select * from user_info where id = #{id}

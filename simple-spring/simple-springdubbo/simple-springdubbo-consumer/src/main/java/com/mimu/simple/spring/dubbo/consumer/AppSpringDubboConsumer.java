@@ -1,7 +1,7 @@
 package com.mimu.simple.spring.dubbo.consumer;
 
 import com.mimu.simple.spring.dubbo.consumer.config.ApplicationConsumerConfig;
-import com.mimu.simple.sd.server.SimpleJettyServer;
+import com.mimu.simple.spring.dubbo.server.SimpleJettyServer;
 import lombok.extern.slf4j.Slf4j;
 
 /**

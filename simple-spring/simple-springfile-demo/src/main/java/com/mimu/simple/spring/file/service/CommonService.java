@@ -1,6 +1,6 @@
 package com.mimu.simple.spring.file.service;
 
-import com.mimu.simple.sf.repository.CommonRepository;
+import com.mimu.simple.spring.file.repository.CommonRepository;
 import com.mimu.simple.spring.file.repository.external.ExternalRepository;
 import com.mimu.simple.spring.file.repository.inner.InnerRepository;
 

@@ -1,6 +1,7 @@
-package com.mimu.simple.sa.l;
+package com.mimu.simple.spring.lifecycle;
 
 
+import com.mimu.simple.spring.lifecycle.ApplicationConfig;
 import com.mimu.simple.spring.lifecycle.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,9 +18,7 @@ public class SpringAnnotationLifeCycleTest {
 
     @Test
     public void info(){
-        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
-        annotationConfigApplicationContext.scan("com.mimu.simple.sa.l");
-        annotationConfigApplicationContext.refresh();
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         Person person = annotationConfigApplicationContext.getBean("person",Person.class);
         System.out.println(person.getName());
     }
