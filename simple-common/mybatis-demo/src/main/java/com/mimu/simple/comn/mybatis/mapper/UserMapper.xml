@@ -61,11 +61,6 @@
         SELECT user.*,term.id tid,term.term_id,term.person_id t_pid FROM user_info as user,term_info as term WHERE user.person_id=#{person_id} AND user.person_name=#{person_name} AND user.person_id=term.person_id
     </select>
 
-    <select id="findTermInfoByPersonId" resultType="com.mimu.simple.comn.mybatis.model.TermData"
-            parameterType="java.lang.Integer">
-    SELECT * FROM term_info WHERE person_id=#{id}
-    </select>
-
     <resultMap id="userTermInfoLazy" type="com.mimu.simple.comn.mybatis.model.UserDataResultMap">
         <id column="id" property="id"/>
         <!-- result：查询结果集中除唯一表示外的 其他列信息
@@ -75,6 +70,9 @@
         <result column="person_name" property="person_name"/>
         <result column="person_id" property="person_id"/>
         <!-- collection 表示 一对多的 对应关系 即 一个 UserDataResultMap 中 有多个 对应的 TermData -->
+        <!-- select 表示：要执行的 statement 的 id
+        column： 表示 给子查询传递参数值 的 来源 属性(此处的 person_id 即表示 子查询的 参数值 id 的数值来源 为 TermData 中的 person_id)
+         -->
         <collection property="termDataList" ofType="com.mimu.simple.comn.mybatis.model.TermData"
                     select="findTermInfoByPersonId" column="person_id" fetchType="lazy">
         </collection>
@@ -83,6 +81,11 @@
     <select id="listUserTermInfoLazy" resultMap="userTermInfoLazy"
             parameterType="com.mimu.simple.comn.mybatis.model.UserData">
         SELECT user.* FROM user_info as user WHERE user.person_id=#{person_id} AND user.person_name=#{person_name}
+    </select>
+
+    <select id="findTermInfoByPersonId" resultType="com.mimu.simple.comn.mybatis.model.TermData"
+            parameterType="java.lang.Integer">
+    SELECT * FROM term_info WHERE person_id=#{id}
     </select>
 
     <select id="findUserById" parameterType="java.lang.Integer"

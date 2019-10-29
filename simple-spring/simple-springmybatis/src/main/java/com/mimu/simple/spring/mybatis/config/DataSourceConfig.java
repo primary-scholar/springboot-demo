@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ClassRelativeResourceLoader;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -55,6 +57,8 @@ public class DataSourceConfig {
     public SqlSessionFactory userSqlSessionFactory(DataSource userDataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(userDataSource);
+        ClassPathResource resource = new ClassPathResource("mybatis-config.xml");
+        sqlSessionFactory.setConfigLocation(resource);
         return sqlSessionFactory.getObject();
     }
 

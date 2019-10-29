@@ -2,6 +2,7 @@ package com.mimu.simple.spring.mybatis;
 
 import com.mimu.simple.spring.mybatis.mapper.UserMapper;
 import com.mimu.simple.spring.mybatis.model.UserData;
+import com.mimu.simple.spring.mybatis.model.UserDataResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -59,5 +60,9 @@ public class CommonService {
             throw new RuntimeException();
         }
 
+    }
+
+    public UserDataResultMap listUserTermInfoLazy(UserData data){
+        return userMapper.listUserTermInfoLazy(data);
     }
 }

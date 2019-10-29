@@ -1,6 +1,7 @@
 package com.mimu.simple.spring.mybatis.mapper;
 
 import com.mimu.simple.spring.mybatis.model.UserData;
+import com.mimu.simple.spring.mybatis.model.UserDataResultMap;
 import com.mimu.simple.spring.mybatis.model.UserDataVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -27,4 +28,7 @@ public interface UserMapper {
     int updataUser(UserData data);
 
     List<UserDataVo> listUserMapInfo(UserData data);
+
+    UserDataResultMap listUserTermInfoLazy(UserData data);
+
 }

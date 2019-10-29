@@ -89,6 +89,16 @@ public class UserMapperTest {
         System.out.println(result);
     }
 
+
+    @Test
+    public void listUserTermInfoLazyOne() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        UserData userData = new UserData();
+        userData.setPerson_id(2);
+        userData.setPerson_name("hah");
+        UserDataResultMap result = mapper.listUserTermInfoLazy(userData);
+    }
     @Test
     public void listUserTermInfoLazy() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -101,6 +111,5 @@ public class UserMapperTest {
         for (TermData termData : termDataList) {
             System.out.println(termData);
         }
-        System.out.println(result);
     }
 }

@@ -16,6 +16,25 @@
         SELECT user.*,term.term_id FROM user_info as user,term_info as term WHERE user.person_id=${person_id} AND user.person_name=#{person_name} AND user.person_id=term.person_id;
     </select>
 
+    <resultMap id="userTermInfoLazy" type="com.mimu.simple.spring.mybatis.model.UserDataResultMap">
+        <id column="id" property="id"/>
+        <result column="person_name" property="person_name"/>
+        <result column="person_id" property="person_id"/>
+        <collection property="termDataList" ofType="com.mimu.simple.comn.mybatis.model.TermData"
+                    select="findTermInfoByPersonId" column="person_id" fetchType="lazy">
+        </collection>
+    </resultMap>
+
+    <select id="findTermInfoByPersonId" resultType="com.mimu.simple.spring.mybatis.model.TermData"
+            parameterType="java.lang.Integer">
+    SELECT * FROM term_info WHERE person_id=#{id}
+    </select>
+
+    <select id="listUserTermInfoLazy" resultMap="userTermInfoLazy"
+            parameterType="com.mimu.simple.spring.mybatis.model.UserData">
+        SELECT user.* FROM user_info as user WHERE user.person_id=#{person_id} AND user.person_name=#{person_name}
+    </select>
+
     <select id="findUserById" parameterType="java.lang.Integer"
             resultType="com.mimu.simple.spring.mybatis.model.UserData">
     select * from user_info where id = #{id}

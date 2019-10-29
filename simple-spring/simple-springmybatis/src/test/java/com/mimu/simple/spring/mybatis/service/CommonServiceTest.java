@@ -2,12 +2,18 @@ package com.mimu.simple.spring.mybatis.service;
 
 import com.mimu.simple.spring.mybatis.CommonService;
 import com.mimu.simple.spring.mybatis.config.ApplicationConfig;
+import com.mimu.simple.spring.mybatis.model.TermData;
 import com.mimu.simple.spring.mybatis.model.UserData;
+import com.mimu.simple.spring.mybatis.model.UserDataResultMap;
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
+
 
 /**
  * author: mimu
@@ -40,5 +46,24 @@ public class CommonServiceTest {
         data.setPerson_name("abc");
         data.setPerson_id(2);
         System.out.println(commonService.insertMultiRecordWithTransaction(data,data));
+    }
+
+    @Test
+    public void listUserTermInfoLazyOne() {
+        UserData userData = new UserData();
+        userData.setPerson_id(2);
+        userData.setPerson_name("hah");
+        UserDataResultMap result = commonService.listUserTermInfoLazy(userData);
+    }
+    @Test
+    public void listUserTermInfoLazy() {
+        UserData userData = new UserData();
+        userData.setPerson_id(2);
+        userData.setPerson_name("hah");
+        UserDataResultMap result = commonService.listUserTermInfoLazy(userData);
+        List<TermData> termDataList = result.getTermDataList();
+        for (TermData termData : termDataList) {
+            System.out.println(termData);
+        }
     }
 }
