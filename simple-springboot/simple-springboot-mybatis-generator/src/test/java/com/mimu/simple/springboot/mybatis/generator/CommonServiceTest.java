@@ -26,6 +26,6 @@ public class CommonServiceTest {
 
     @Test
     public void getTermInfo() {
-        System.out.println(commonService.getTermInfo(1));
+        System.out.println(commonService.getTermInfo(10));
     }
 }
