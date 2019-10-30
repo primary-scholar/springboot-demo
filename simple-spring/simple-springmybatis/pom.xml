@@ -59,5 +59,12 @@
                 </includes>
             </resource>
         </resources>
+        <plugins>
+            <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>

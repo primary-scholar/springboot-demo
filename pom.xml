@@ -34,6 +34,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.os.detected.version>1.5.0.Final</maven.os.detected.version>
         <maven.protobuf.plugin.version>0.5.1</maven.protobuf.plugin.version>
+        <maven.mybatis.generator.plugin.version>1.3.7</maven.mybatis.generator.plugin.version>
+
 
         <slf4j.log4j.api.version>1.7.25</slf4j.log4j.api.version>
         <logback.version>1.2.3</logback.version>
@@ -41,21 +43,21 @@
         <lang3.version>3.7</lang3.version>
         <collections.version>4.1</collections.version>
         <fastjson.version>1.2.47</fastjson.version>
+        <jackson.version>2.9.10</jackson.version>
         <spring.version>5.1.8.RELEASE</spring.version>
+        <aspectj.version>1.8.13</aspectj.version>
+        <cglib.version>3.2.6</cglib.version>
         <netty.version>4.1.42.Final</netty.version>
         <protobuf.version>3.5.1</protobuf.version>
         <grpc.version>1.17.0</grpc.version>
-        <aspectj.version>1.8.13</aspectj.version>
         <httpclient.version>4.5.6</httpclient.version>
         <mysql.version>5.1.42</mysql.version>
         <druid.version>1.1.16</druid.version>
-        <cglib.version>3.2.6</cglib.version>
         <mybatis.version>3.5.1</mybatis.version>
         <mybatis.spring.version>2.0.1</mybatis.spring.version>
         <kafka.version>2.2.0</kafka.version>
         <hystrix.java.version>1.5.12</hystrix.java.version>
         <lombok.version>1.18.8</lombok.version>
-        <jackson.version>2.9.10</jackson.version>
         <jetty.version>9.4.19.v20190610</jetty.version>
         <curator.version>4.1.0</curator.version>
         <skywalking.version>6.1.0</skywalking.version>
@@ -114,11 +116,6 @@
                 <version>${collections.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
                 <version>${spring.version}</version>
@@ -159,39 +156,24 @@
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-all</artifactId>
-                <version>${netty.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>${druid.version}</version>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
             </dependency>
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-spring</artifactId>
-                <version>${mybatis.spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.kafka</groupId>
@@ -214,7 +196,6 @@
                 <artifactId>protobuf-java</artifactId>
                 <version>${protobuf.version}</version>
             </dependency>
-
             <!-- the three follow dependencies generate .proto to service-->
             <dependency>
                 <groupId>io.grpc</groupId>
@@ -232,11 +213,6 @@
                 <version>${grpc.version}</version>
             </dependency>
             <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${jedis.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
                 <version>${httpclient.version}</version>
@@ -245,19 +221,6 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpmime</artifactId>
                 <version>${httpclient.version}</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
-            <dependency>
-                <groupId>org.elasticsearch</groupId>
-                <artifactId>elasticsearch</artifactId>
-                <version>${elasticsearch.version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>transport</artifactId>
-                <version>${elasticsearch.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
@@ -275,6 +238,11 @@
                 <version>${jackson.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-webapp</artifactId>
                 <version>${jetty.version}</version>
@@ -287,6 +255,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-dependencies-bom</artifactId>
@@ -305,9 +274,29 @@
                 <version>${dubbo.version}</version>
             </dependency>
             <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis.spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -319,12 +308,26 @@
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>transport</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter-test</artifactId>
                 <version>${mybatis.springboot.version}</version>
+                <scope>test</scope>
             </dependency>
-
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -403,7 +406,12 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${maven.source.plugin.version}</version>
                 </plugin>
-
+                <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
+                <plugin>
+                    <groupId>org.mybatis.generator</groupId>
+                    <artifactId>mybatis-generator-maven-plugin</artifactId>
+                    <version>${maven.mybatis.generator.plugin.version}</version>
+                </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
