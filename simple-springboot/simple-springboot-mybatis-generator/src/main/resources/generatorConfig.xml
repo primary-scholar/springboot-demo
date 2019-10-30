@@ -43,7 +43,7 @@
         <!-- 生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径,如./src/main/java，
             也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下 -->
         <javaModelGenerator targetPackage="${generator.targetPackage.model}"
-                            targetProject="${generator.targetProject}">
+                            targetProject="${generator.targetPackage}">
             <!-- 是否在当前路径下新加一层schema, false 路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -52,15 +52,23 @@
 
 
         <!--对应的mapper.xml文件 -->
-        <sqlMapGenerator targetPackage="${generator.targetPackage.mapper}"
-                         targetProject="${generator.targetProject}">
+        <sqlMapGenerator targetPackage="${generator.targetResources.mapper}"
+                         targetProject="${generator.targetResources}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
+        <!--
+        Mapper接口的实现方式有 3 种：
+        ANNOTATEDMAPPER（纯注解方式）
+        XMLMAPPER（纯XML方式）和
+        MIXEDMAPPER （混合方式），
+        通常我们会设置为MIXEDMAPPER (混合方式)，对于Mapper接口中简单的方式，
+        会只用注解形式，对于复杂方法，会使用 XML 的形似
+         -->
         <!-- 对应的Mapper接口类文件 -->
-        <javaClientGenerator type="XMLMAPPER"
+        <javaClientGenerator type="MIXEDMAPPER"
                              targetPackage="${generator.targetPackage.mapper}"
-                             targetProject="${generator.targetProject}">
+                             targetProject="${generator.targetPackage}">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 

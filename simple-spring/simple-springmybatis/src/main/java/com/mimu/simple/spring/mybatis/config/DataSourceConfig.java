@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -56,12 +57,13 @@ public class DataSourceConfig {
     public SqlSessionFactory userSqlSessionFactory(DataSource userDataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(userDataSource);
-        ClassPathResource resource = new ClassPathResource("mybatis-config.xml");
-        sqlSessionFactory.setConfigLocation(resource);
+        sqlSessionFactory.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
         return sqlSessionFactory.getObject();
     }
 
-    public DataSource getDataSource(String url, String user, String password, boolean useUtf8Mb4) {
+    private DataSource getDataSource(String url, String user, String password, boolean useUtf8Mb4) {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         String jdbcUrl = String.format("%s"

@@ -7,4 +7,18 @@
         <setting name="lazyLoadingEnabled" value="true"/>
         <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
+
+    <!--
+    如果 mapper.java 接口 和 mapper.xml 文件 不再同一个目录中即 mapper.xml 文件 在 resources 目录中时，
+    则需要进行手动设置，设置方式有两种
+    1. 在 DataSourceConfig 中的 userSqlSessionFactory 方法中 设置如下 语句
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
+
+    2. 在 该文件的 <mappers> </mappers> 标签中设置 且 这种方法不支持 批量的设置 mapper.xml
+     -->
+
+<!--    <mappers>
+        <mapper resource="mapper/userMapper.xml"/>
+    </mappers>-->
 </configuration>
