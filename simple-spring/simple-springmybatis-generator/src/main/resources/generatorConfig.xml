@@ -3,14 +3,20 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
+
+    <properties resource="generator.properties"/>
     <!-- mysql jdbc driver location -->
     <!-- 指定数据库连接驱动jara地址 -->
-    <classPathEntry
+    <!-- 这里不使用 指定 绝对路径的方式 加载 mysql 驱动 而是 在
+      mybatis-generator-maven-plugin 插件中 添加 dependency 的方式
+      可参考 pom.xml 文件
+      -->
+    <!--<classPathEntry
             location="/Users/mimu/maven-repository/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42.jar"/>
-
+-->
     <!-- one database one context  -->
     <!-- 一个数据库一个context -->
-    <context id="mybatisCustomUserDatabase">
+    <context id="mybatisCustomUserDatabase" targetRuntime="MyBatis3">
         <!-- this plugin generate the java pojo which illmplements serializable interface and
           generate the uuid code-->
         <!-- 生成的pojo，将implements Serializable -->
@@ -23,8 +29,9 @@
 
         <!-- jdbc connection information  -->
         <!-- 数据库链接URL、用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/user" userId="root"
-                        password="root"/>
+        <jdbcConnection driverClass="${db.driver}" connectionURL="${db.user.url}"
+                        userId="${db.user.username}"
+                        password="${db.user.password}"/>
 
         <!-- java type convert     java 类型转换 -->
         <javaTypeResolver>
@@ -35,7 +42,8 @@
 
         <!-- 生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径,如./src/main/java，
             也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下 -->
-        <javaModelGenerator targetPackage="com.mimu.simple.spring.mybatis.generator.model" targetProject="./src/main/java">
+        <javaModelGenerator targetPackage="${generator.targetPackage.model}"
+                            targetProject="${generator.targetProject}">
             <!-- 是否在当前路径下新加一层schema, false 路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -44,15 +52,15 @@
 
 
         <!--对应的mapper.xml文件 -->
-        <sqlMapGenerator targetPackage="com.mimu.simple.spring.mybatis.generator.mapper"
-                         targetProject="./src/main/java">
+        <sqlMapGenerator targetPackage="${generator.targetPackage.mapper}"
+                         targetProject="${generator.targetProject}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 对应的Mapper接口类文件 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.mimu.simple.spring.mybatis.generator.mapper"
-                             targetProject="./src/main/java">
+                             targetPackage="${generator.targetPackage.mapper}"
+                             targetProject="${generator.targetProject}">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -68,13 +76,13 @@
             &lt;!&ndash;指定 某列的 数据类型  &ndash;&gt;
             <columnOverride column="id" jdbcType="" javaType="" typeHandler=""/>
         </table>-->
-        <table tableName="term_info" domainObjectName="termInfo">
+        <table tableName="term_info" domainObjectName="TermInfo">
             <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
+            <property name="useActualColumnNames" value="false"/>
         </table>
-        <table tableName="user_info" domainObjectName="userInfo">
+        <table tableName="user_info" domainObjectName="UserInfo">
             <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
+            <property name="useActualColumnNames" value="false"/>
         </table>
     </context>
 </generatorConfiguration>
