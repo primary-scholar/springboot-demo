@@ -5,7 +5,7 @@ package com.mimu.simple.springboot.demo.request;
  * date: 2019/10/9
  */
 
-public class UserDataRequest {
+public class UserInfoRequest {
     private long pid;
     private String name;
     private UserType type;
@@ -36,7 +36,7 @@ public class UserDataRequest {
 
     @Override
     public String toString() {
-        return "UserDataRequest{" +
+        return "UserInfoRequest{" +
                 "pid=" + pid +
                 ", name='" + name + '\'' +
                 ", type=" + type +

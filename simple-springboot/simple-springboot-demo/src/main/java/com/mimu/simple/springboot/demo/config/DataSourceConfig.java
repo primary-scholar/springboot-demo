@@ -86,13 +86,13 @@ public class DataSourceConfig {
      */
     @Bean
     @Autowired
-    public JdbcTemplate userJdbcTemplate(DataSource userDataSource) {
+    public JdbcTemplate userInfoJdbcTemplate(DataSource userDataSource) {
         return new JdbcTemplate(userDataSource);
     }
 
     @Bean
     @Autowired
-    public JdbcTemplate termJdbcTemplate(DataSource termDataSource) {
+    public JdbcTemplate termInfoJdbcTemplate(DataSource termDataSource) {
         return new JdbcTemplate(termDataSource);
     }
 

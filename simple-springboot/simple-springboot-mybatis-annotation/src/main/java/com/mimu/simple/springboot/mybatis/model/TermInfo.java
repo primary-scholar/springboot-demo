@@ -1,16 +1,18 @@
-package com.mimu.simple.springboot.mybatis.generator.model;
+package com.mimu.simple.springboot.mybatis.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class UserInfo implements Serializable {
+@Builder
+public class TermInfo implements Serializable {
     private Integer id;
 
     private Integer personId;
 
-    private String personName;
+    private Integer termId;
 
     private static final long serialVersionUID = 1L;
 
@@ -30,11 +32,11 @@ public class UserInfo implements Serializable {
         this.personId = personId;
     }
 
-    public String getPersonName() {
-        return personName;
+    public Integer getTermId() {
+        return termId;
     }
 
-    public void setPersonName(String personName) {
-        this.personName = personName == null ? null : personName.trim();
+    public void setTermId(Integer termId) {
+        this.termId = termId;
     }
 }

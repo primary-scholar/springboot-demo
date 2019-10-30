@@ -1,6 +1,6 @@
 package com.mimu.simple.springboot.mybatis.mapper.term;
 
-import com.mimu.simple.springboot.mybatis.model.TermData;
+import com.mimu.simple.springboot.mybatis.model.TermInfo;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,11 @@ import org.springframework.stereotype.Repository;
  * author: mimu
  * date: 2019/7/30
  */
-@Mapper
+
+/**
+ * here @Repository 是否添加都可以，不添加时 idea 进行 CommonService @Autowired 注入时 会提示错误，
+ * 实际上 没有问题
+ */
 @Repository
 public interface TermDataMapper {
 
@@ -17,7 +21,7 @@ public interface TermDataMapper {
     @Results(value = {
             @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER),
             @Result(column = "term_id", property = "termId", jdbcType = JdbcType.INTEGER),
-            @Result(column = "person_id", property = "pId", jdbcType = JdbcType.BIGINT)
+            @Result(column = "person_id", property = "personId", jdbcType = JdbcType.BIGINT)
     })
-    TermData getTermDataById(@Param(value = "id") long personId);
+    TermInfo getTermInfoById(@Param(value = "id") long personId);
 }

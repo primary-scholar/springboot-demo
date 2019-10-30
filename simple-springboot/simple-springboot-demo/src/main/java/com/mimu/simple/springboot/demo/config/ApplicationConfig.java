@@ -10,5 +10,5 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @Import(DataSourceConfig.class)
-public class UserDataApplicationConfig {
+public class ApplicationConfig {
 }

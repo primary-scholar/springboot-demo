@@ -1,7 +1,7 @@
 package com.mimu.simple.springboot.demo.controller;
 
-import com.mimu.simple.springboot.demo.model.UserData;
-import com.mimu.simple.springboot.demo.request.UserDataRequest;
+import com.mimu.simple.springboot.demo.model.UserInfo;
+import com.mimu.simple.springboot.demo.request.UserInfoRequest;
 import com.mimu.simple.springboot.demo.service.CommonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +25,9 @@ public class CommonController {
     }
 
     @RequestMapping(value = "/sb/info.go", method = RequestMethod.GET)
-    public UserData getUserData(UserDataRequest request, long cid) {
-        UserData userData = commonService.getUserInfo(request);
+    public UserInfo getUserData(UserInfoRequest request, long cid) {
+        UserInfo userInfo = commonService.getUserInfo(request);
         logger.info("request={},cid={}", request, cid);
-        return userData;
+        return userInfo;
     }
 }

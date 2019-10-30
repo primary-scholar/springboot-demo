@@ -1,10 +1,10 @@
 package com.mimu.simple.springboot.demo.service;
 
-import com.mimu.simple.springboot.demo.dao.TermRepository;
-import com.mimu.simple.springboot.demo.dao.UserRepository;
-import com.mimu.simple.springboot.demo.model.TermData;
-import com.mimu.simple.springboot.demo.model.UserData;
-import com.mimu.simple.springboot.demo.request.UserDataRequest;
+import com.mimu.simple.springboot.demo.dao.TermInfoRepository;
+import com.mimu.simple.springboot.demo.dao.UserInfoRepository;
+import com.mimu.simple.springboot.demo.model.TermInfo;
+import com.mimu.simple.springboot.demo.model.UserInfo;
+import com.mimu.simple.springboot.demo.request.UserInfoRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,56 +19,56 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommonService {
     private static final Logger logger = LoggerFactory.getLogger(CommonService.class);
 
-    private TermRepository termRepository;
-    private UserRepository userRepository;
+    private TermInfoRepository termInfoRepository;
+    private UserInfoRepository userInfoRepository;
 
     @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public void setUserInfoRepository(UserInfoRepository userInfoRepository) {
+        this.userInfoRepository = userInfoRepository;
     }
 
     @Autowired
-    public void setTermRepository(TermRepository termRepository) {
-        this.termRepository = termRepository;
+    public void setTermInfoRepository(TermInfoRepository termInfoRepository) {
+        this.termInfoRepository = termInfoRepository;
     }
 
-    public UserData getUserDataFrom(long pid) {
-        return userRepository.getUserData(pid);
+    public UserInfo getUserInfo(int pid) {
+        return userInfoRepository.getUserInfo(pid);
     }
 
-    public TermData getTermDataFrom(long pid) {
-        return termRepository.getTermData(pid);
+    public TermInfo getTermInfo(int pid) {
+        return termInfoRepository.getTermInfo(pid);
     }
 
     @Transactional(transactionManager = "userTxManager", rollbackFor = RuntimeException.class)
-    public boolean updateInfo(long pid, String nickName, int termId) {
-        return addTermData1(pid, termId) && addUserData(pid, nickName);
+    public boolean updateInfo(int pid, String nickName, int termId) {
+        return addTermInfo1(pid, termId) && addUserInfo(pid, nickName);
     }
 
-    public UserData getUserInfo(UserDataRequest request) {
-        UserData userData = userRepository.getUserData(request.getPid());
-        logger.info("{}", userData);
-        return userData;
+    public UserInfo getUserInfo(UserInfoRequest request) {
+        UserInfo userInfo = userInfoRepository.getUserInfo(request.getPid());
+        logger.info("{}", userInfo);
+        return userInfo;
     }
 
-    private boolean addTermData(long pid, int termId) {
-        if (!termRepository.addTermData(pid, termId)) {
+    private boolean addTermInfo(int pid, int termId) {
+        if (!termInfoRepository.addTermInfo(pid, termId)) {
             throw new RuntimeException("insert termData error");
         } else {
             return true;
         }
     }
 
-    private boolean addUserData(long pid, String nickName) {
-        if (!userRepository.addUserData(pid, nickName)) {
+    private boolean addUserInfo(int pid, String nickName) {
+        if (!userInfoRepository.addUserInfo(pid, nickName)) {
             throw new RuntimeException("insert termData error");
         } else {
             return true;
         }
     }
 
-    private boolean addTermData1(long pid, int termId) {
-        if (!userRepository.addTermData(pid, termId)) {
+    private boolean addTermInfo1(long pid, int termId) {
+        if (!userInfoRepository.addTermInfo(pid, termId)) {
             throw new RuntimeException("insert termData error");
         } else {
             return true;

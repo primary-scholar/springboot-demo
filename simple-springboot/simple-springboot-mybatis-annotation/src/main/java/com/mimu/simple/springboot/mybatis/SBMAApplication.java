@@ -1,7 +1,7 @@
 package com.mimu.simple.springboot.mybatis;
 
-import com.mimu.simple.springboot.mybatis.config.TermDataSourceConfig;
-import com.mimu.simple.springboot.mybatis.config.UserDataSourceConfig;
+import com.mimu.simple.springboot.mybatis.config.TermInfoDataSourceConfig;
+import com.mimu.simple.springboot.mybatis.config.UserInfoDataSourceConfig;
 import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         JdbcTemplateAutoConfiguration.class, MybatisAutoConfiguration.class})
-@Import(value = {TermDataSourceConfig.class, UserDataSourceConfig.class})
+@Import(value = {TermInfoDataSourceConfig.class, UserInfoDataSourceConfig.class})
 public class SBMAApplication {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(SBMAApplication.class);

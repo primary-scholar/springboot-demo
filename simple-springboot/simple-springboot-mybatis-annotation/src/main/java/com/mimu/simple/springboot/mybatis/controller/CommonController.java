@@ -1,7 +1,7 @@
 package com.mimu.simple.springboot.mybatis.controller;
 
-import com.mimu.simple.springboot.mybatis.model.TermData;
-import com.mimu.simple.springboot.mybatis.model.UserData;
+import com.mimu.simple.springboot.mybatis.model.TermInfo;
+import com.mimu.simple.springboot.mybatis.model.UserInfo;
 import com.mimu.simple.springboot.mybatis.service.CommonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,16 +24,16 @@ public class CommonController {
         this.commonService = commonService;
     }
 
-    @RequestMapping(value = "/sbma/user/info.go", method = RequestMethod.GET)
-    public TermData getTermData(long pid) {
-        TermData termData = commonService.getTermData(pid);
+    @RequestMapping(value = "/sbm/user/info.go", method = RequestMethod.GET)
+    public TermInfo getTermInfo(long pid) {
+        TermInfo termData = commonService.getTermData(pid);
         logger.info("userInfo={}", termData);
         return termData;
     }
 
-    @RequestMapping(value = "/sbma/term/info.go", method = RequestMethod.GET)
-    public UserData getUserData(long pid) {
-        UserData userData = commonService.getUserData(pid);
+    @RequestMapping(value = "/sbm/term/info.go", method = RequestMethod.GET)
+    public UserInfo getUserInfo(long pid) {
+        UserInfo userData = commonService.getUserData(pid);
         logger.info("userInfo={}", userData);
         return userData;
     }

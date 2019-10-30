@@ -1,10 +1,12 @@
-package com.mimu.simple.springboot.mybatis.generator.model;
+package com.mimu.simple.springboot.demo.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
+@Builder
 public class UserInfo implements Serializable {
     private Integer id;
 

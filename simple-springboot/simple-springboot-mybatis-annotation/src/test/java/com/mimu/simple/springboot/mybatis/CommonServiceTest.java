@@ -1,8 +1,9 @@
 package com.mimu.simple.springboot.mybatis;
 
 
-import com.mimu.simple.springboot.mybatis.config.TermDataSourceConfig;
-import com.mimu.simple.springboot.mybatis.config.UserDataSourceConfig;
+import com.mimu.simple.springboot.mybatis.config.ApplicationConfig;
+import com.mimu.simple.springboot.mybatis.config.TermInfoDataSourceConfig;
+import com.mimu.simple.springboot.mybatis.config.UserInfoDataSourceConfig;
 import com.mimu.simple.springboot.mybatis.mapper.term.TermDataMapper;
 import com.mimu.simple.springboot.mybatis.mapper.user.UserDataMapper;
 import org.junit.Test;
@@ -22,8 +23,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         JdbcTemplateAutoConfiguration.class, MybatisAutoConfiguration.class})
-@Import(value = {TermDataSourceConfig.class, UserDataSourceConfig.class})
-public class SBMAApplicationTest {
+@Import(value = {ApplicationConfig.class})
+public class CommonServiceTest {
 
     private TermDataMapper termDataMapper;
     private UserDataMapper userDataMapper;
@@ -40,11 +41,11 @@ public class SBMAApplicationTest {
 
     @Test
     public void info() {
-        System.out.println(termDataMapper.getTermDataById(1));
+        System.out.println(termDataMapper.getTermInfoById(1));
     }
 
     @Test
-    public void info1(){
-        System.out.println(userDataMapper.getUserDataById(2));
+    public void info1() {
+        System.out.println(userDataMapper.getUserInfoById(20));
     }
 }

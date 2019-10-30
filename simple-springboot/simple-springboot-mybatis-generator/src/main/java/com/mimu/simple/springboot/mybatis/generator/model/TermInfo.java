@@ -1,7 +1,10 @@
 package com.mimu.simple.springboot.mybatis.generator.model;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class TermInfo implements Serializable {
     private Integer id;
 

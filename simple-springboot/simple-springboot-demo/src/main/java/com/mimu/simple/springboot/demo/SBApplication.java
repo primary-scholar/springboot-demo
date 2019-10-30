@@ -1,6 +1,6 @@
 package com.mimu.simple.springboot.demo;
 
-import com.mimu.simple.springboot.demo.config.UserDataApplicationConfig;
+import com.mimu.simple.springboot.demo.config.ApplicationConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         JdbcTemplateAutoConfiguration.class})
-@Import(value = {UserDataApplicationConfig.class})
+@Import(value = {ApplicationConfig.class})
 public class SBApplication {
     public static void main(String[] args) {
         SpringApplication.run(SBApplication.class);
