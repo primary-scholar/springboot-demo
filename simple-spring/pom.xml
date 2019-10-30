@@ -25,6 +25,7 @@
         <module>simple-springdubbo</module>
         <module>simple-springhystrix-demo</module>
         <module>simple-springmybatis</module>
+        <module>simple-springmybatis-generator</module>
     </modules>
 
     <properties>

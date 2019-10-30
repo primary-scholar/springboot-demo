@@ -113,7 +113,6 @@
                 <configuration>
                     <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}
                     </protocArtifact>
-                    <pluginId>grpc-java</pluginId>
                 </configuration>
                 <executions>
                     <execution>

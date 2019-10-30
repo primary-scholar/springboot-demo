@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- mysql jdbc driver location -->
+    <!-- 指定数据库连接驱动jara地址 -->
+    <classPathEntry
+            location="/Users/mimu/maven-repository/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42.jar"/>
+
+    <!-- one database one context  -->
+    <!-- 一个数据库一个context -->
+    <context id="mybatisCustomUserDatabase">
+        <!-- this plugin generate the java pojo which illmplements serializable interface and
+          generate the uuid code-->
+        <!-- 生成的pojo，将implements Serializable -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- comment generator  -->
+        <commentGenerator>
+            <!-- suppress all comments 取消所有注释 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc connection information  -->
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/user" userId="root"
+                        password="root"/>
+
+        <!-- java type convert     java 类型转换 -->
+        <javaTypeResolver>
+            <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL
+                和 NUMERIC 类型解析为java.math.BigDecimal -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径,如./src/main/java，
+            也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下 -->
+        <javaModelGenerator targetPackage="com.mimu.simple.spring.mybatis.generator.model" targetProject="./src/main/java">
+            <!-- 是否在当前路径下新加一层schema, false 路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+
+        <!--对应的mapper.xml文件 -->
+        <sqlMapGenerator targetPackage="com.mimu.simple.spring.mybatis.generator.mapper"
+                         targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 对应的Mapper接口类文件 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.mimu.simple.spring.mybatis.generator.mapper"
+                             targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 列出要生成 代码的数据表  -->
+        <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample
+                   是否生成 example类   -->
+        <!--<table tableName="term_info" domainObjectName="termInfo"
+               enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            &lt;!&ndash;插入数据时， 对于 主键的插入处理 一般用于没有 自增主键的数据表   &ndash;&gt;
+            <generatedKey column="id" sqlStatement="CALL IDENTITY()" identity="true"/>
+            &lt;!&ndash;指定 某列的 数据类型  &ndash;&gt;
+            <columnOverride column="id" jdbcType="" javaType="" typeHandler=""/>
+        </table>-->
+        <table tableName="term_info" domainObjectName="termInfo">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false" />
+        </table>
+        <table tableName="user_info" domainObjectName="userInfo">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false" />
+        </table>
+    </context>
+</generatorConfiguration>
