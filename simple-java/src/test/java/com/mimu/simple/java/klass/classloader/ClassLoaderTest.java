@@ -23,7 +23,7 @@ public class ClassLoaderTest {
          */
         Object builderDemo = clazz.newInstance();
         Method printInfo = clazz.getMethod(pringNothing);
-        printInfo.invoke(builderDemo, null);
+        printInfo.invoke(builderDemo, (Object[]) null);
     }
 
 
@@ -33,7 +33,7 @@ public class ClassLoaderTest {
         Object builderDemoOne = clazzOne.newInstance();
         Class<?> clazz = Class.forName(sameClass);
         Method printInfo = clazz.getMethod(pringNothing);
-        printInfo.invoke(builderDemoOne, null);
+        printInfo.invoke(builderDemoOne, (Object[]) null);
     }
 
     @Test
