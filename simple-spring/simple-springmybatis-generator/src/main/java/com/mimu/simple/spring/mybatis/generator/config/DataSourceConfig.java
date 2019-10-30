@@ -1,7 +1,7 @@
-package com.mimu.simple.spring.mybatis.config;
+package com.mimu.simple.spring.mybatis.generator.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.mimu.simple.spring.mybatis.mapper.UserMapper;
+import com.mimu.simple.spring.mybatis.generator.mapper.UserInfoMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -27,7 +27,7 @@ import java.util.Collections;
  */
 @Configuration
 @PropertySource(value = {"classpath:db-connect.properties"})
-@MapperScan(basePackageClasses = UserMapper.class, sqlSessionFactoryRef = "userSqlSessionFactory")
+@MapperScan(basePackageClasses = UserInfoMapper.class, sqlSessionFactoryRef = "userSqlSessionFactory")
 @EnableTransactionManagement
 public class DataSourceConfig {
     private static final Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
@@ -61,7 +61,7 @@ public class DataSourceConfig {
         return sqlSessionFactory.getObject();
     }
 
-    public DataSource getDataSource(String url, String user, String password, boolean useUtf8Mb4) {
+    private DataSource getDataSource(String url, String user, String password, boolean useUtf8Mb4) {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         String jdbcUrl = String.format("%s"
@@ -84,7 +84,7 @@ public class DataSourceConfig {
         if (useUtf8Mb4) {
             dataSource.setConnectionInitSqls(Collections.singletonList("set names utf8mb4;"));
         }
-        logger.debug(" mybatis getDataSource info url={}", jdbcUrl);
+        logger.debug(" mybatis generator getDataSource info url={}", jdbcUrl);
         return dataSource;
     }
 }

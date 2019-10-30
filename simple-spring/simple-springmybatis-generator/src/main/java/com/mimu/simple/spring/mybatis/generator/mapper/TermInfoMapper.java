@@ -3,8 +3,13 @@ package com.mimu.simple.spring.mybatis.generator.mapper;
 import com.mimu.simple.spring.mybatis.generator.model.TermInfo;
 import com.mimu.simple.spring.mybatis.generator.model.TermInfoExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+
+@Mapper
+@Component
 public interface TermInfoMapper {
     long countByExample(TermInfoExample example);
 

@@ -20,6 +20,7 @@
         <module>simple-springboot-mybatis-annotation</module>
         <module>simple-springboot-dubbo</module>
         <module>simple-springboot-demo</module>
+        <module>simple-springboot-mybatis-generator</module>
     </modules>
 
     <properties>
