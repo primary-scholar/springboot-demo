@@ -16,8 +16,8 @@ public class Klass {
             Test test1 = new Test(2);
             Method method = Test.class.getMethod("run");
             while (true){
-                method.invoke(test, null);
-                method.invoke(test1, null);
+                method.invoke(test, (Object[]) null);
+                method.invoke(test1, (Object[]) null);
                 Thread.sleep(1000);
             }
 
