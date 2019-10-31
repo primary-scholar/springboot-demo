@@ -1,6 +1,7 @@
 package com.mimu.simple.spring.dubbo.consumer.service;
 
 import com.mimu.simple.spring.dubbo.api.HelloStringApi;
+import com.mimu.simple.spring.dubbo.exceptions.CustomException;
 import com.mimu.simple.spring.dubbo.model.HelloData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,11 @@ public class HelloService {
     public HelloData getHello(String name) {
         try {
             return helloStringApi.hello(name);
+        } catch (CustomException e) {
+            log.error("getHello1 error", e);
+            return null;
         } catch (Exception e) {
-            log.error("getHello error", e);
+            log.error("getHello2 error", e);
             return null;
         }
     }
