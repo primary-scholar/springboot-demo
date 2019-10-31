@@ -44,6 +44,13 @@ public class LC2Test {
 
     }
 
+    /**
+     * 遍历两个 链表 分别计算 每个节点的 和
+     *
+     * @param first
+     * @param second
+     * @return
+     */
     public ListNode<Integer> caculate(ListNode<Integer> first, ListNode<Integer> second) {
         ListNode<Integer> result = new ListNode<>();
         ListNode<Integer>.ListNodeIterator firstIterator = first.iterator();
