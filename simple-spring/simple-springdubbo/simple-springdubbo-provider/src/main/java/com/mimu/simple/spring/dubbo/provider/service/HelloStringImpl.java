@@ -1,10 +1,9 @@
 package com.mimu.simple.spring.dubbo.provider.service;
 
 import com.mimu.simple.spring.dubbo.api.HelloStringApi;
+import com.mimu.simple.spring.dubbo.exceptions.CustomException;
 import com.mimu.simple.spring.dubbo.model.HelloData;
-import com.mimu.simple.spring.dubbo.provider.exceptions.CustomException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.Service;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,11 +16,11 @@ import org.springframework.stereotype.Component;
  * dubbo @Service 注解
  */
 @Slf4j
-@Service(interfaceClass = HelloStringApi.class, timeout = 100)
+//@Service(interfaceClass = HelloStringApi.class, timeout = 100)
 @Component
 public class HelloStringImpl implements HelloStringApi {
     @Override
-    public HelloData hello(String name) {
+    public HelloData hello(String name) throws Exception {
         if (Math.random() > 0.5) {
             throw new CustomException("custom");
         }

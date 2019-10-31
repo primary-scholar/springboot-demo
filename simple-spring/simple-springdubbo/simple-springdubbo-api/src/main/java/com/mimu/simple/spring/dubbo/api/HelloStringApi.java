@@ -8,5 +8,5 @@ import com.mimu.simple.spring.dubbo.model.HelloData;
  * date: 2019/9/18
  */
 public interface HelloStringApi {
-    HelloData hello(String name);
+    HelloData hello(String name) throws Exception;
 }

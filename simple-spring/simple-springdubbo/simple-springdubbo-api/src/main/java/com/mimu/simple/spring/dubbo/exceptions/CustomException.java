@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.dubbo.provider.exceptions;
+package com.mimu.simple.spring.dubbo.exceptions;
 
 /**
  * author: mimu

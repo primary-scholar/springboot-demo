@@ -2,6 +2,7 @@ package com.mimu.simple.spring.dubbo.consumer.service;
 
 import com.mimu.simple.spring.dubbo.api.HelloStringApi;
 import com.mimu.simple.spring.dubbo.model.HelloData;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
  * 使用 spring-dubbo-consumer.xml 文件则需要 注释掉 ServiceConsumerConfig 类， 在该类上添加 dubbo @Service 注解 并注释掉 @Reference 注解
  * 同时 在 属性上 添加 @Autowire 注解
  */
-
+@Slf4j
 @Component
 @Service
 public class HelloService {
@@ -25,6 +26,11 @@ public class HelloService {
     private HelloStringApi helloStringApi;
 
     public HelloData getHello(String name) {
-        return helloStringApi.hello(name);
+        try {
+            return helloStringApi.hello(name);
+        } catch (Exception e) {
+            log.error("getHello error", e);
+            return null;
+        }
     }
 }
