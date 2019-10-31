@@ -32,7 +32,19 @@ public class CommonService {
         return userInfoMapper.selectByPrimaryKey(key);
     }
 
-    public TermInfo getTermInfo(int key){
+    public TermInfo getTermInfo(int key) {
         return termInfoMapper.selectByPrimaryKey(key);
+    }
+
+    public int insertUserInfo(UserInfo userInfo) {
+        return userInfoMapper.insert(userInfo);
+    }
+
+    public int insertUserSelective(UserInfo userInfo) {
+        return userInfoMapper.insertSelective(userInfo);
+    }
+
+    public int deleteUserInfo(int id) {
+        return userInfoMapper.deleteByPrimaryKey(id);
     }
 }
