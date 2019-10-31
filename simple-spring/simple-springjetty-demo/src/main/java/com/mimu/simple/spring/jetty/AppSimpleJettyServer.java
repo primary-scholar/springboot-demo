@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class AppSimpleJettyServer extends SimpleJettyServer {
     private static final Logger logger = LoggerFactory.getLogger(AppSimpleJettyServer.class);
 
-    private static int port = 9091;
+    private static int port = 9090;
 
     private AppSimpleJettyServer(int port, Class<?> clazz) {
         super(port, clazz);

@@ -9,6 +9,7 @@ public class UserInfoRequest {
     private long pid;
     private String name;
     private UserType type;
+    private TermInfo termInfo;
 
     public long getPid() {
         return pid;
@@ -34,13 +35,44 @@ public class UserInfoRequest {
         this.type = UserType.userType(type);
     }
 
-    @Override
-    public String toString() {
-        return "UserInfoRequest{" +
-                "pid=" + pid +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                '}';
+    public TermInfo getTermInfo() {
+        return termInfo;
+    }
+
+    public void setTermInfo(int termId,int personId) {
+        TermInfo termInfo = new TermInfo();
+        termInfo.setTermId(termId);
+        termInfo.setPersonId(personId);
+        this.termInfo = termInfo;
+    }
+
+    class TermInfo{
+        private int termId;
+        private int personId;
+
+        public int getTermId() {
+            return termId;
+        }
+
+        public void setTermId(int termId) {
+            this.termId = termId;
+        }
+
+        public int getPersonId() {
+            return personId;
+        }
+
+        public void setPersonId(int personId) {
+            this.personId = personId;
+        }
+
+        @Override
+        public String toString() {
+            return "TermInfo{" +
+                    "termId=" + termId +
+                    ", personId=" + personId +
+                    '}';
+        }
     }
 
     enum UserType {
