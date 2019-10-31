@@ -158,10 +158,10 @@ public class LC2Test {
 
         private class Node<E> {
             private E data;
-            private Node pre;
-            private Node next;
+            private Node<E> pre;
+            private Node<E> next;
 
-            Node(E data, Node pre, Node next) {
+            Node(E data, Node<E> pre, Node<E> next) {
                 this.data = data;
                 this.pre = pre;
                 this.next = next;
