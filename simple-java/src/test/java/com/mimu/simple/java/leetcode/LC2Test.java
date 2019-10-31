@@ -136,7 +136,7 @@ public class LC2Test {
             }
         }
 
-        Node<E> node(int index) {
+        private Node<E> node(int index) {
             if (index < (size >> 1)) {
                 Node<E> x = first;
                 for (int i = 0; i < index; i++)
