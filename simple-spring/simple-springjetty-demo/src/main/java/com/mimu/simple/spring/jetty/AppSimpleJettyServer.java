@@ -12,8 +12,6 @@ import org.slf4j.LoggerFactory;
 public class AppSimpleJettyServer extends SimpleJettyServer {
     private static final Logger logger = LoggerFactory.getLogger(AppSimpleJettyServer.class);
 
-    private static int port = 9090;
-
     private AppSimpleJettyServer(int port, Class<?> clazz) {
         super(port, clazz);
     }
@@ -21,6 +19,7 @@ public class AppSimpleJettyServer extends SimpleJettyServer {
     public static void main(String args[]) {
         try {
             logger.info("system params initial complete.");
+            int port = 9090;
             new AppSimpleJettyServer(port, ApplicationConfig.class).run();
         } catch (Exception e) {
             logger.error("start server error", e);
