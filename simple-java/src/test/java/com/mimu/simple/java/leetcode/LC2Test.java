@@ -113,7 +113,7 @@ public class LC2Test {
             size++;
         }
 
-        public ListNodeIterator iterator() {
+        private ListNodeIterator iterator() {
             return new ListNodeIterator(0);
         }
 
