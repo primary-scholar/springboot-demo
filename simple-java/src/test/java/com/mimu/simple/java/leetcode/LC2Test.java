@@ -59,16 +59,16 @@ public class LC2Test {
             int firstValue = firstIterator.next();
             int secondValue = secondIterator.next();
             int mod = (firstValue + secondValue) % 10;
-            result.addBefore(mod + adding);
+            result.addFirst(mod + adding);
             adding = (firstValue + secondValue) / 10;
         }
         while (firstIterator.hasNext()) {
             int firstValue = firstIterator.next();
-            result.addBefore(firstValue + adding);
+            result.addFirst(firstValue + adding);
         }
         while (secondIterator.hasNext()) {
             int secondValue = secondIterator.next();
-            result.addBefore(secondValue + adding);
+            result.addFirst(secondValue + adding);
         }
         return result;
     }
@@ -86,7 +86,7 @@ public class LC2Test {
             return true;
         }
 
-        public boolean addBefore(E data) {
+        public boolean addFirst(E data) {
             linkBefore(data);
             return true;
         }
