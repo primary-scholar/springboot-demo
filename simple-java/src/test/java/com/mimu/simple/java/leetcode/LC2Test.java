@@ -8,7 +8,6 @@ package com.mimu.simple.java.leetcode;
 import org.junit.Test;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 /**
@@ -76,7 +75,7 @@ public class LC2Test {
         }
 
         public boolean addLast(E data) {
-            linkLast(data);
+            linkAfter(data);
             return true;
         }
 
@@ -85,7 +84,7 @@ public class LC2Test {
             return true;
         }
 
-        void linkLast(E data) {
+        void linkAfter(E data) {
             final Node<E> l = last;
             final Node<E> newNode = new Node<>(data, l, null);
             last = newNode;
