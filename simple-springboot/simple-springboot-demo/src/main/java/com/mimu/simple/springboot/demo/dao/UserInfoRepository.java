@@ -44,6 +44,7 @@ public class UserInfoRepository {
         @Override
         public UserInfo mapRow(ResultSet resultSet, int i) throws SQLException {
             return UserInfo.builder()
+                    .id(resultSet.getInt("id"))
                     .personId(resultSet.getInt("person_id"))
                     .personName(resultSet.getString("person_name"))
                     .build();

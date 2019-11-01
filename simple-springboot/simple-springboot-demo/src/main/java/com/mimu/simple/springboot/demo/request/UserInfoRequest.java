@@ -1,21 +1,31 @@
 package com.mimu.simple.springboot.demo.request;
 
+
 /**
  * author: mimu
  * date: 2019/10/9
  */
 
 public class UserInfoRequest {
-    private long pid;
+    private int cid;
+    private int pid;
     private String name;
     private UserType type;
-    private TermInfo termInfo;
+    private TermInfoRequest termInfo;
 
-    public long getPid() {
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
+
+    public int getPid() {
         return pid;
     }
 
-    public void setPid(long pid) {
+    public void setPid(int pid) {
         this.pid = pid;
     }
 
@@ -35,66 +45,22 @@ public class UserInfoRequest {
         this.type = UserType.userType(type);
     }
 
-    public TermInfo getTermInfo() {
+    public TermInfoRequest getTermInfo() {
         return termInfo;
     }
 
-    public void setTermInfo(int termId,int personId) {
-        TermInfo termInfo = new TermInfo();
-        termInfo.setTermId(termId);
-        termInfo.setPersonId(personId);
+    public void setTermInfo(TermInfoRequest termInfo) {
         this.termInfo = termInfo;
     }
 
-    class TermInfo{
-        private int termId;
-        private int personId;
-
-        public int getTermId() {
-            return termId;
-        }
-
-        public void setTermId(int termId) {
-            this.termId = termId;
-        }
-
-        public int getPersonId() {
-            return personId;
-        }
-
-        public void setPersonId(int personId) {
-            this.personId = personId;
-        }
-
-        @Override
-        public String toString() {
-            return "TermInfo{" +
-                    "termId=" + termId +
-                    ", personId=" + personId +
-                    '}';
-        }
-    }
-
-    enum UserType {
-        Error(-1), Publish(1), Media(1);
-
-        private int type;
-
-        UserType(int i) {
-            this.type = i;
-        }
-
-        public int getType() {
-            return type;
-        }
-
-        public static UserType userType(int type) {
-            for (UserType userType : UserType.values()) {
-                if (userType.getType() == type) {
-                    return userType;
-                }
-            }
-            return Error;
-        }
+    @Override
+    public String toString() {
+        return "UserInfoRequest{" +
+                "cid=" + cid +
+                ", pid=" + pid +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", termInfo=" + termInfo +
+                '}';
     }
 }

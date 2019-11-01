@@ -25,9 +25,9 @@ public class CommonController {
     }
 
     @RequestMapping(value = "/sb/info.go", method = RequestMethod.GET)
-    public UserInfo getUserData(UserInfoRequest request, long cid) {
+    public UserInfo getUserData(UserInfoRequest request) {
         UserInfo userInfo = commonService.getUserInfo(request);
-        logger.info("request={},cid={}", request, cid);
+        logger.info("request={},cid={}", request);
         return userInfo;
     }
 }
