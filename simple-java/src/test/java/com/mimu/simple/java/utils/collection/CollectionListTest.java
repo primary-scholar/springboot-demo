@@ -1,4 +1,4 @@
-package com.mimu.simple.java.collections;
+package com.mimu.simple.java.utils.collection;
 
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * LinkedList 和 ArrayList 表现功能一致，支持 增 add 删 remove 改 set 查 get
- * 都可以 存放 null，和重复数据，插入的顺序==输出的顺序，线程不安全
+ * 都可以 存放 null(可多个)，和重复数据，插入的顺序==输出的顺序，线程不安全
  */
 public class CollectionListTest {
 
@@ -38,6 +38,7 @@ public class CollectionListTest {
         arrayList.add(14);
         arrayList.set(3, 11);
         arrayList.add(13);
+        arrayList.add(null);
         System.out.println(arrayList);
 
         /**
@@ -66,7 +67,7 @@ public class CollectionListTest {
      * <p>
      * 容量没有限制
      * 有序集合（插入的顺序==输出的顺序）
-     * 插入的元素可以为null，可以重复
+     * 插入的元素可以为null，可以重复，支持头插和尾插 两种插入顺序
      * 增删改查效率低（相对于ArrayList来说）
      * 线程不安全
      */
@@ -80,6 +81,7 @@ public class CollectionListTest {
         linkedList.add(14);
         linkedList.set(3, 11);
         linkedList.add(13);
+        linkedList.addFirst(null);
         System.out.println(linkedList);
         /**
          * 多个 重复元素 删除第一个
