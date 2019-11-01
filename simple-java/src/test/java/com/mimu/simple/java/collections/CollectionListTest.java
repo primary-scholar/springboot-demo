@@ -11,10 +11,18 @@ import java.util.Map;
  * author: mimu
  * date: 2019/9/23
  */
+
+/**
+ * LinkedList 和 ArrayList 表现功能一致，支持 增 add 删 remove 改 set 查 get
+ * 都可以 存放 null
+ */
 public class CollectionListTest {
 
+    /**
+     *
+     */
     @Test
-    public void arrayListInfo(){
+    public void arrayListInfo() {
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(null);
         arrayList.add(13);
@@ -22,6 +30,7 @@ public class CollectionListTest {
         arrayList.add(10);
         arrayList.add(14);
         arrayList.set(3, 11);
+        System.out.println(arrayList);
 
         /**
          * 多个 重复元素 删除第一个
