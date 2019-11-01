@@ -16,7 +16,7 @@ package com.mimu.simple.java.utils;
  *
  * 1.1 List 常用结构有两种 1.1.1 ArrayList;1.1.2 LinkedList
  * 1.1.1 ArrayList 有序可重复(仅支持尾插)
- * 1.1.2 LinkedList 有序可重复(支持头插和尾插)
+ * 1.1.2 LinkedList 有序可重复(支持头插和尾插) 实现了Queue接口
  *
  * 1.2 Set 常用的结构有两类 1.2.1 SortedSet(有序不可重复);1.2.2 Set(可有序可无序且不可重复)
  * 1.2.1 SortedSet 常用结构有 1.2.1.1 TreeSet

@@ -2,10 +2,7 @@ package com.mimu.simple.java.utils.collection;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * author: mimu
@@ -23,7 +20,7 @@ public class CollectionListTest {
      * 特点如下：
      * <p>
      * 容量不固定，随着容量的增加而动态扩容(1.5倍)（阈值基本不会达到）
-     * 有序集合（插入的顺序==输出的顺序）
+     * 有序集合（插入的顺序==输出的顺序）和 iterator 遍历顺序相同  iterator 返回的是 Object[] elementData 的转换
      * 插入的元素可以为null,可以重复
      * 增删改查效率更高（相对于LinkedList来说）
      * 线程不安全
@@ -39,6 +36,11 @@ public class CollectionListTest {
         arrayList.set(3, 11);
         arrayList.add(13);
         arrayList.add(null);
+        Iterator<Integer> iterator = arrayList.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
         System.out.println(arrayList);
 
         /**
@@ -66,7 +68,7 @@ public class CollectionListTest {
      *
      * <p>
      * 容量没有限制
-     * 有序集合（插入的顺序==输出的顺序）
+     * 有序集合（插入的顺序==输出的顺序）和 iterator 遍历顺序相同 iterator 返回的是 Node 双向链表 的转换
      * 插入的元素可以为null，可以重复，支持头插和尾插 两种插入顺序
      * 增删改查效率低（相对于ArrayList来说）
      * 线程不安全
@@ -82,6 +84,11 @@ public class CollectionListTest {
         linkedList.set(3, 11);
         linkedList.add(13);
         linkedList.addFirst(null);
+        Iterator<Integer> iterator = linkedList.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
         System.out.println(linkedList);
         /**
          * 多个 重复元素 删除第一个
