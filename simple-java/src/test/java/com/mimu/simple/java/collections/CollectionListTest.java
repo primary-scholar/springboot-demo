@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * LinkedList 和 ArrayList 表现功能一致，支持 增 add 删 remove 改 set 查 get
- * 都可以 存放 null，插入的顺序==输出的顺序，线程不安全
+ * 都可以 存放 null，和重复数据，插入的顺序==输出的顺序，线程不安全
  */
 public class CollectionListTest {
 
@@ -24,7 +24,7 @@ public class CollectionListTest {
      * <p>
      * 容量不固定，随着容量的增加而动态扩容(1.5倍)（阈值基本不会达到）
      * 有序集合（插入的顺序==输出的顺序）
-     * 插入的元素可以为null
+     * 插入的元素可以为null,可以重复
      * 增删改查效率更高（相对于LinkedList来说）
      * 线程不安全
      */
@@ -37,6 +37,7 @@ public class CollectionListTest {
         arrayList.add(10);
         arrayList.add(14);
         arrayList.set(3, 11);
+        arrayList.add(13);
         System.out.println(arrayList);
 
         /**
@@ -65,7 +66,7 @@ public class CollectionListTest {
      * <p>
      * 容量没有限制
      * 有序集合（插入的顺序==输出的顺序）
-     * 插入的元素可以为null
+     * 插入的元素可以为null，可以重复
      * 增删改查效率低（相对于ArrayList来说）
      * 线程不安全
      */
@@ -78,7 +79,8 @@ public class CollectionListTest {
         linkedList.add(10);
         linkedList.add(14);
         linkedList.set(3, 11);
-
+        linkedList.add(13);
+        System.out.println(linkedList);
         /**
          * 多个 重复元素 删除第一个
          */
