@@ -72,7 +72,7 @@ public class CollectionMapTest {
      *4.线程不安全
      *
      *
-     * HashMap.put() 过程
+     * HashMap.put() 过程 返回 oldValue
      * 1.首先获取Node数组table对象和长度，若table为null或长度为0，则调用resize()扩容方法获取table最新对象，并通过此对象获取长度大小
      * 2.判定数组中指定索引下的节点是否为Null，若为Null 则new出一个单链表赋给table中索引下的这个节点
      * 3.若判定不为Null,我们的判断再做分支
@@ -83,11 +83,29 @@ public class CollectionMapTest {
      *
      * HashMap.get() 过程
      * 1.判定Node数组table不为Null且table的长度大于0且table指定的索引值不为Null
-     * 2.判定 匹配hash值 & 匹配key值 成功则返回 该值
-     * 3.若 first节点的下一个节点不为Null
+     * 2.判定first节点匹配hash值 & 匹配key值 成功则返回 该值
+     * 3.若 first节点不匹配且其下一个节点不为Null
      * 3.1 若first的类型为TreeNode 红黑树 通过红黑树查找匹配值 并返回查询值
      * 3.2若上面判定不成功 则认为下一个节点为单向链表,通过循环匹配值
      *
+     *
+     * HashMap 扩容过程
+     * 第一种：使用默认构造方法初始化HashMap。HashMap在一开始初始化的时候会返回一个空的table，并且thershold为0。因此第一次扩容的容量为默认值DEFAULT_INITIAL_CAPACITY也就是16。同时threshold = DEFAULT_INITIAL_CAPACITY * DEFAULT_LOAD_FACTOR = 12。
+     * 第二种：指定初始容量的构造方法初始化HashMap。则threshold为min(2^n,capacity)并且2^n>指定的capacity，接着threshold = 当前的容量（threshold） * DEFAULT_LOAD_FACTOR。
+     * 第三种：HashMap不是第一次扩容。如果HashMap已经扩容过的话，那么每次table的容量以及threshold量为原有的两倍。
+     *
+     * 1.判定旧表(oldCap)容量>0,若是则为非首次扩充则1.1;否首次扩充1.2
+     * 1.1判定数组是否已达到极限大小，若是则不再扩容，直接将老表返回，若非尝试两杯扩充
+     * 1.2数组长度，容量则复制为默认值
+     * 2.确定下一次表的扩容量, 将新表赋予当前表
+     * 3.通过for循环将老表中数据存入扩容后的新表中
+     * 3.1 获取旧表中指定索引下的Node对象 赋予e 并将旧表中的索引位置数据置空
+     * 3.2 若e的下面没有其他节点则将e直接赋到新表中的索引位置
+     * 3.3 若e的类型为TreeNode红黑树类型
+     * 3.3.1 分割树，将新表和旧表分割成两个树，并判断索引处节点的长度是否需要转换成红黑树放入新表存储
+     * 3.3.2 通过Do循环 不断获取新旧索引的节点
+     * 3.3.3 通过判定将旧数据和新数据存储到新表指定的位置
+     * 4.最后返回值为 扩容后的新表。
      */
     @Test
     public void hashMapInfo() {
