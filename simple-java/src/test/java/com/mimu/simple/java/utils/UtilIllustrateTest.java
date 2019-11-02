@@ -33,8 +33,15 @@ package com.mimu.simple.java.utils;
  *
  *
  *
- * 2 Map 提供了保存一组<key,value>数据的存储结构 旗下包含:
+ * 2 Map 提供了保存一组<key,value>数据的存储结构 key 不可重复 旗下包含: 可提供 keySet collectionsValue <key,value> 三种访问方式
+ * 2.1 Map(有序或无序 key不可重复) 常用结构 2.1.1 HashMap 2.1.2 HashTable
+ * 2.2 SortedMap(有序 key不可重复) 常用结构 2.2.1 TreeMap
+ * 2.3 ConcurrentMap(有序 key不可重复 线程安全)  常用结构 2.3.1 ConcurrentHashMap
  *
+ * 2.1.1 HashMap(无序 key 可 null 不可重复)
+ * 2.1.2 HashTable(HashMap 的线程安全版)
+ * 2.2.1 TreeMap(有序不可重复Comparable确定顺序)
+ * 2.3.1 ConcurrentHashMap()
  */
-public class UtilIllustrate {
+public class UtilIllustrateTest {
 }
