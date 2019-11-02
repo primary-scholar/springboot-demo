@@ -25,7 +25,9 @@ package com.mimu.simple.java.utils;
  * 1.2.2.1 LinkedHashSet(有序不可重复输出顺序等于插入顺序);
  * 1.2.2.2 HashSet(无序不可重复)
  *
- *
+ *1.3 Queue在jdk1.5 后添加 常用结构 1.3.1 ArrayBlockingQueue; 1.3.2 LinkedBlockingQueue; 1.3.3 SynchronousQueue; 1.3.4 ConcurrentLinkedQueue;
+ * 1.3.1 ArrayBlockingQueue(有界有序可重复)
+ * 1.3.2
  *
  *
  * 2 Map 提供了保存一组<key,value>数据的存储结构 旗下包含:

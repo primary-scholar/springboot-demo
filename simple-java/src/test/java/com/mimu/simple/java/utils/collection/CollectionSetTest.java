@@ -26,9 +26,6 @@ import java.util.TreeSet;
  * 使用有序性来确定唯一性(有序性返回0 则不唯一)
  *
  *
- *
- *
- *
  * public interface Comparable<T> {
  *      public int compareTo(T o);
  * }
