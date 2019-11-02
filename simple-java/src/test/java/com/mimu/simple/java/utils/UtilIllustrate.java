@@ -27,10 +27,14 @@ package com.mimu.simple.java.utils;
  *
  *1.3 Queue在jdk1.5 后添加 常用结构 1.3.1 ArrayBlockingQueue; 1.3.2 LinkedBlockingQueue; 1.3.3 SynchronousQueue; 1.3.4 ConcurrentLinkedQueue;
  * 1.3.1 ArrayBlockingQueue(有界有序可重复)
- * 1.3.2
+ * 1.3.2 LinkedBlockingQueue(有界有序可重复)
+ * 1.3.3 SynchronousQueue(无容量仅支持数据转移)
+ * 1.3.4 ConcurrentLinkedQueue(无界有序可重复不支持阻塞)
+ *
  *
  *
  * 2 Map 提供了保存一组<key,value>数据的存储结构 旗下包含:
+ *
  */
 public class UtilIllustrate {
 }
