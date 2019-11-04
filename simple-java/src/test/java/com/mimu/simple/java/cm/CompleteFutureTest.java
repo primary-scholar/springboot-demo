@@ -50,13 +50,10 @@ public class CompleteFutureTest {
      * 可以确定的是 CompletableFuture.supplyAsync() 是在一个新线程中执行 某个逻辑
      * 而 CompletableFuture.whenComplete() 是在哪个新线程中执行某个逻辑 不确定
      *
-     * @throws InterruptedException
-     * @throws ExecutionException
-     * @throws TimeoutException
      */
     @Test
 
-    public void runAsyncInfo() throws InterruptedException, ExecutionException, TimeoutException {
+    public void runAsyncInfo() {
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
             try {
                 System.out.println("runAsyncInfo supplyAsync thread info:" + Thread.currentThread().getName());
@@ -67,13 +64,13 @@ public class CompleteFutureTest {
             return 10;
         }).whenComplete((integer, throwable) -> {
             if (throwable == null) {
-                System.out.println("runAsyncInfoContrast1 whenComplete thread info: " + Thread.currentThread().getName());
+                System.out.println("runAsyncInfo whenComplete thread info: " + Thread.currentThread().getName());
                 System.out.println(integer);
             } else {
-                System.out.println("exception occur" + throwable.getMessage());
+                System.out.println("runAsyncInfo exception occur" + throwable.getMessage());
             }
         }).exceptionally(throwable -> {
-            System.out.println("exception occur" + throwable.getMessage());
+            System.out.println("runAsyncInfo exception occur" + throwable.getMessage());
             return 1;
         });
         System.out.println("runAsyncInfo outer thread info:" + Thread.currentThread().getName());
@@ -88,13 +85,13 @@ public class CompleteFutureTest {
             return 10;
         }).whenCompleteAsync((integer, throwable) -> {
             if (throwable == null) {
-                System.out.println("runAsyncInfoContrast1 whenComplete thread info: " + Thread.currentThread().getName());
+                System.out.println("runAsyncInfoContrast whenComplete thread info: " + Thread.currentThread().getName());
                 System.out.println(integer);
             } else {
-                System.out.println("exception occur" + throwable.getMessage());
+                System.out.println("runAsyncInfoContrast exception occur" + throwable.getMessage());
             }
         }).exceptionally(throwable -> {
-            System.out.println("exception occur" + throwable.getMessage());
+            System.out.println("runAsyncInfoContrast exception occur" + throwable.getMessage());
             return 1;
         });
         System.out.println("runAsyncInfoContrast outer thread info:" + Thread.currentThread().getName());
@@ -112,10 +109,10 @@ public class CompleteFutureTest {
                 System.out.println("runAsyncInfoContrast1 whenComplete thread info: " + Thread.currentThread().getName());
                 System.out.println(integer);
             } else {
-                System.out.println("exception occur" + throwable.getMessage());
+                System.out.println("runAsyncInfoContrast1 exception occur" + throwable.getMessage());
             }
         }).exceptionally(throwable -> {
-            System.out.println("exception occur" + throwable.getMessage());
+            System.out.println("runAsyncInfoContrast1 exception occur" + throwable.getMessage());
             return 1;
         });
         System.out.println("runAsyncInfoContrast1 outer thread info:" + Thread.currentThread().getName());
