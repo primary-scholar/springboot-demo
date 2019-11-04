@@ -53,6 +53,11 @@ public class CommonServiceTest {
     }
 
     @Test
+    public void getTermInfoRecord() {
+        System.out.println(commonService.getTermInfo(1));
+    }
+
+    @Test
     public void deleteUserInfo() {
         System.out.println(commonService.deleteUserInfo(16));
     }
