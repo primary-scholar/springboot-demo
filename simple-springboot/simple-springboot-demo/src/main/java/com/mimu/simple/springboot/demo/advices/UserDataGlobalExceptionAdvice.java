@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * 总的来说 spring 中的异常主要有两种
  * 1. 404(异常) 用户访问的 url 不存在
- * 2. controller 异常(参考 SB3Application 说明)
+ * 2. controller 异常(参考 SBApplication 说明)
  * 2.1 参数转化异常
  * 2.2 method invoke 异常
  * 对于 1 异常 该 全局异常处理并不支持，

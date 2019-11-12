@@ -11,6 +11,7 @@ public class SpringCycleDependenceTest {
     @Test
     public void info(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("factorybean.xml");
+        System.out.println(applicationContext.getBean("&personFactroyBean"));
         System.out.println(applicationContext.getBean("personFactroyBean"));
     }
 
