@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <dubbo:application name="spring-dubbo-provider" logger="slf4j">
-        <dubbo:parameter key="qos.enable" value="false"/>
+        <dubbo:parameter key="qos.enable" value="true"/>
         <dubbo:parameter key="qos.port" value="2222"/>
     </dubbo:application>
 
