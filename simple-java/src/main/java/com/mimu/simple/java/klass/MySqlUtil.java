@@ -44,10 +44,8 @@ public class MySqlUtil {
 
     public void info(){
         ServiceLoader<Driver> serviceLoader = ServiceLoader.load(Driver.class);
-        Iterator<Driver> iterator = serviceLoader.iterator();
-        while (iterator.hasNext()){
-            Driver driver = iterator.next();
-            System.out.println("driver:"+driver.getClass()+" :loader: "+driver.getClass().getClassLoader());
+        for (Driver driver : serviceLoader) {
+            System.out.println("driver:" + driver.getClass() + " :loader: " + driver.getClass().getClassLoader());
         }
         System.out.println("currentThreadLoader: "+Thread.currentThread().getContextClassLoader());
         System.out.println("serviceLoadClassloader: "+ServiceLoader.class.getClassLoader());
@@ -55,10 +53,8 @@ public class MySqlUtil {
 
     public void info1(){
         ServiceLoader<Driver> serviceLoader = ServiceLoader.load(Driver.class,this.getClass().getClassLoader().getParent());
-        Iterator<Driver> iterator = serviceLoader.iterator();
-        while (iterator.hasNext()){
-            Driver driver = iterator.next();
-            System.out.println("driver:"+driver.getClass()+" :loader: "+driver.getClass().getClassLoader());
+        for (Driver driver : serviceLoader) {
+            System.out.println("driver:" + driver.getClass() + " :loader: " + driver.getClass().getClassLoader());
         }
         System.out.println("currentThreadLoader: "+Thread.currentThread().getContextClassLoader());
         System.out.println("serviceLoadClassloader: "+ServiceLoader.class.getClassLoader());
