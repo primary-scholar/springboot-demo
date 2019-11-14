@@ -56,9 +56,8 @@ public class CollectionSetTest {
         hashSet.add(13);
         hashSet.add(8);
         hashSet.add(null);
-        Iterator<Integer> iterator = hashSet.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer aHashSet : hashSet) {
+            System.out.print(aHashSet + " ");
         }
         System.out.println();
         hashSet.remove(13);
@@ -84,9 +83,8 @@ public class CollectionSetTest {
         hashSet.add(13);
         hashSet.add(8);
         hashSet.add(null);
-        Iterator<Integer> iterator = hashSet.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer aHashSet : hashSet) {
+            System.out.print(aHashSet + " ");
         }
         System.out.println();
         hashSet.remove(13);
@@ -109,9 +107,8 @@ public class CollectionSetTest {
         treeSet.add(14);
         treeSet.add(13);
         treeSet.add(8);
-        Iterator<Integer> iterator = treeSet.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer aTreeSet : treeSet) {
+            System.out.print(aTreeSet + " ");
         }
         System.out.println();
         treeSet.remove(13);

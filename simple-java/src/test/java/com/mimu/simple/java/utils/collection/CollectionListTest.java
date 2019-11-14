@@ -36,9 +36,8 @@ public class CollectionListTest {
         arrayList.set(3, 11);
         arrayList.add(13);
         arrayList.add(null);
-        Iterator<Integer> iterator = arrayList.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer anArrayList : arrayList) {
+            System.out.print(anArrayList + " ");
         }
         System.out.println();
         System.out.println(arrayList);
@@ -84,9 +83,8 @@ public class CollectionListTest {
         linkedList.set(3, 11);
         linkedList.add(13);
         linkedList.addFirst(null);
-        Iterator<Integer> iterator = linkedList.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer aLinkedList : linkedList) {
+            System.out.print(aLinkedList + " ");
         }
         System.out.println();
         System.out.println(linkedList);

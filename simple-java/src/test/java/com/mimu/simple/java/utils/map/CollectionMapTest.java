@@ -118,19 +118,15 @@ public class CollectionMapTest {
         map.put(12, "13");
         map.get(100);
         map.remove(8);
-        Iterator<Integer> key = map.keySet().iterator();
-        while (key.hasNext()) {
-            System.out.print(key.next() + " ");
+        for (Integer integer : map.keySet()) {
+            System.out.print(integer + " ");
         }
         System.out.println();
-        Iterator<String> value = map.values().iterator();
-        while (value.hasNext()) {
-            System.out.print(value.next() + " ");
+        for (String s : map.values()) {
+            System.out.print(s + " ");
         }
         System.out.println();
-        Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<Integer, String> next = iterator.next();
+        for (Map.Entry<Integer, String> next : map.entrySet()) {
             System.out.print("key " + next.getKey() + " value " + next.getValue());
             System.out.println();
         }
@@ -165,19 +161,15 @@ public class CollectionMapTest {
         map.put(3, "3");
         map.put(12, "13");
         map.remove(8);
-        Iterator<Integer> key = map.keySet().iterator();
-        while (key.hasNext()) {
-            System.out.print(key.next() + " ");
+        for (Integer integer : map.keySet()) {
+            System.out.print(integer + " ");
         }
         System.out.println();
-        Iterator<String> value = map.values().iterator();
-        while (value.hasNext()) {
-            System.out.print(value.next() + " ");
+        for (String s : map.values()) {
+            System.out.print(s + " ");
         }
         System.out.println();
-        Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<Integer, String> next = iterator.next();
+        for (Map.Entry<Integer, String> next : map.entrySet()) {
             System.out.print("key " + next.getKey() + " value " + next.getValue());
             System.out.println();
         }
@@ -244,19 +236,15 @@ public class CollectionMapTest {
         map.put(3, "3");
         map.put(12, "13");
         map.remove(8);
-        Iterator<Integer> key = map.keySet().iterator();
-        while (key.hasNext()) {
-            System.out.print(key.next() + " ");
+        for (Integer integer : map.keySet()) {
+            System.out.print(integer + " ");
         }
         System.out.println();
-        Iterator<String> value = map.values().iterator();
-        while (value.hasNext()) {
-            System.out.print(value.next() + " ");
+        for (String s : map.values()) {
+            System.out.print(s + " ");
         }
         System.out.println();
-        Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<Integer, String> next = iterator.next();
+        for (Map.Entry<Integer, String> next : map.entrySet()) {
             System.out.print("key " + next.getKey() + " value " + next.getValue());
             System.out.println();
         }

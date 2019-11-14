@@ -48,9 +48,8 @@ public class CollectionQueueTest {
         queue.put(0);
         queue.offer(4);
         queue.add(3);
-        Iterator<Integer> iterator = queue.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer aQueue : queue) {
+            System.out.print(aQueue + " ");
         }
         System.out.println();
         System.out.println(queue);
@@ -95,9 +94,8 @@ public class CollectionQueueTest {
         queue.put(0);
         queue.offer(4);
         queue.add(3);
-        Iterator<Integer> iterator = queue.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer aQueue : queue) {
+            System.out.print(aQueue + " ");
         }
         System.out.println();
         System.out.println(queue);
@@ -140,9 +138,8 @@ public class CollectionQueueTest {
         queue.add(1);
         queue.offer(4);
         queue.add(3);
-        Iterator<Integer> iterator = queue.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer aQueue : queue) {
+            System.out.print(aQueue + " ");
         }
         System.out.println();
         System.out.println(queue);
