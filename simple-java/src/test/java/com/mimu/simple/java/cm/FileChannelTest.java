@@ -15,7 +15,7 @@ import java.nio.file.Paths;
  * author: mimu
  * date: 2019/10/8
  */
-public class FileTest {
+public class FileChannelTest {
 
     @Test
     public void info() {
