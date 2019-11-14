@@ -5,6 +5,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * author: mimu
@@ -16,6 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @MapperScan(basePackageClasses = TermInfoMapper.class)
 @SpringBootApplication
+@EnableTransactionManagement
 public class SBMGApplication {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(SBMGApplication.class);
