@@ -2,7 +2,6 @@ package com.mimu.simple.java.cm;
 
 import org.junit.Test;
 
-import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
