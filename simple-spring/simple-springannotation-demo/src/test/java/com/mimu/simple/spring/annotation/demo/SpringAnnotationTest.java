@@ -2,6 +2,8 @@ package com.mimu.simple.spring.annotation.demo;
 
 
 import com.mimu.simple.spring.annotation.demo.config.ApplicationConfig;
+import com.mimu.simple.spring.annotation.demo.model.PersonData;
+import com.mimu.simple.spring.annotation.demo.model.TermData;
 import com.mimu.simple.spring.annotation.demo.service.CommonService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -22,7 +24,9 @@ public class SpringAnnotationTest {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(ApplicationConfig.class);
         context.refresh();
-        System.out.println(context.getBean(CommonService.class));
+        CommonService commonService = context.getBean(CommonService.class);
+        commonService.saveInfo(new PersonData(1,""),new TermData());
+        System.out.println(commonService.getPeople(1));
     }
 
 }
