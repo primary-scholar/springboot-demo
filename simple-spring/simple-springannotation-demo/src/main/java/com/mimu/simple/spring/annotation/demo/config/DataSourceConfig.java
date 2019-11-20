@@ -56,7 +56,6 @@ public class DataSourceConfig {
     }
 
     @Bean
-    @Resource
     public PlatformTransactionManager transactionManager(DataSource db1Write) {
         return new DataSourceTransactionManager(db1Write);
     }
@@ -68,7 +67,6 @@ public class DataSourceConfig {
      * @return
      */
     @Bean
-    @Autowired
     public JdbcTemplate jdbcTemplate(DataSource db1Write) {
         return new JdbcTemplate(db1Write);
     }

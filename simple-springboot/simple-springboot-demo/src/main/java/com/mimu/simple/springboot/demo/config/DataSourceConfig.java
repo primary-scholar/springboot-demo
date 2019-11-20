@@ -53,7 +53,6 @@ public class DataSourceConfig {
     }
 
     @Bean
-    @Autowired
     public DataSource termDataSource(DataSourceProperties termDataSourceProperties) {
         //DataSourceProperties db2Properties = sdbDataSourceProperties();
         log.info("init sdbDataSource");
@@ -73,7 +72,7 @@ public class DataSourceConfig {
     }
 
     @Bean
-    @Autowired
+    @Resource
     public PlatformTransactionManager termTxManager(DataSource termDataSource) {
         return new DataSourceTransactionManager(termDataSource);
     }
