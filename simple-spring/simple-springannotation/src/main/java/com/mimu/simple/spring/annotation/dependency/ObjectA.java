@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * 对于 @Autowired 注解的属性，spring 在解析时 是使用 AutowiredAnnotationBeanPostProcessor 进行解析，
- * 解析过程 是使用反射 获取到该类中的 field 属性和 method 属性，封装成 AnnotatedFieldElement 和 AnnotatedMethodElement
+ * 解析过程 是使用反射获取到类的元数据信息，对元数据信息进行解析获取 field 属性和 method 属性，封装成
+ * AnnotatedFieldElement 和 AnnotatedMethodElement
  * 然后调用反射 field.set() 和 method.invoke()  进行属性值的 填充
  */
 @Component
