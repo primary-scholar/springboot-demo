@@ -25,6 +25,7 @@ public class SpringAnnotationTest {
         context.register(ApplicationConfig.class);
         context.refresh();
         CommonService commonService = context.getBean(CommonService.class);
+        commonService.saveInfo(new PersonData(1,""),new TermData());
         System.out.println(commonService.getPeople(1));
     }
 
