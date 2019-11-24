@@ -17,7 +17,7 @@
     <!-- one database one context  -->
     <!-- 一个数据库一个context -->
     <context id="mybatisCustomUserDatabase" targetRuntime="MyBatis3">
-        <!-- this plugin generate the java pojo which illmplements serializable interface and
+        <!-- this plugin generate the java pojo which implements serializable interface and
           generate the uuid code-->
         <!-- 生成的pojo，将implements Serializable -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
