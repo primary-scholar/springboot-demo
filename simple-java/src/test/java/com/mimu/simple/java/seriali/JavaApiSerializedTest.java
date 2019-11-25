@@ -26,9 +26,12 @@ import java.io.*;
  * <p>
  * 反序列化过程 objectInputStream.readObject();
  * 1、读取类的 描述信息(根据 序列化后的二进制信息获取类名，然后列用反射获取类的信息)
+ * 参见 : case TC_CLASS: return readClass(unshared)
  * 2、根据类的信息 反射生成类的对象
+ * 参见 : case TC_OBJECT: return checkResolve(readOrdinaryObject(unshared)) 中的 readOrdinaryObject() 方法
  * 3、填充对性field 值（）
- * <p>
+ * readOrdinaryObject() 方法的 readExternalData() 和 readSerialData() 的 defaultReadFields()
+ * <p> readExternalData() 中 会调用 用户 重写的 readExternal() 方法 如果有的话
  * <p>
  * ps:对于类中重写了 readObject() 或 writeObject() 的方法，或 readResolve() 方法
  * 则调用复写的上述方法进行对象的序列化和反序列化
