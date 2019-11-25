@@ -23,6 +23,8 @@ import java.io.*;
  * 124、输出 类的 field 个数及 各field 的名称类型
  * 125、输出 超类的 描述信息(递归过程)
  * 2、输出对象的 field 值信息
+ * writeOrdinaryObject() 方法中的 writeExternalData() 和 writeSerialData() 中的 的 defaultWriteFields()
+ * writeExternalData() 中回调用 用户 重写的 writeExternal() 方法 如果有
  * <p>
  * 反序列化过程 objectInputStream.readObject();
  * 1、读取类的 描述信息(根据 序列化后的二进制信息获取类名，然后列用反射获取类的信息)
