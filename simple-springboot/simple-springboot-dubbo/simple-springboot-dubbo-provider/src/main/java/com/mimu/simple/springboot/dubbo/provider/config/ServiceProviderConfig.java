@@ -2,6 +2,7 @@ package com.mimu.simple.springboot.dubbo.provider.config;
 
 import com.mimu.simple.springboot.dubbo.provider.service.UserDataApiImpl;
 import org.apache.dubbo.config.ApplicationConfig;
+import org.apache.dubbo.config.MonitorConfig;
 import org.apache.dubbo.config.ProviderConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
@@ -35,6 +36,13 @@ public class ServiceProviderConfig {
     public ProviderConfig providerConfig() {
         ProviderConfig config = new ProviderConfig();
         config.setTimeout(3000);
+        return config;
+    }
+
+    @Bean
+    public MonitorConfig monitorConfig() {
+        MonitorConfig config = new MonitorConfig();
+        config.setProtocol("registry");
         return config;
     }
 }
