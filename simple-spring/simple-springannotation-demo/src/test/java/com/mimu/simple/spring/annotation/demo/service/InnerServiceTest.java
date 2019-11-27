@@ -41,9 +41,9 @@ public class InnerServiceTest {
         personData.setNickName("nickname1");
         TermData termData = new TermData();
         termData.setPid(2);
-        termData.setTid(1);
+        termData.setTid(6);
         commonService.updateInfo(personData, termData);
-        //Assert.assertTrue(commonService.updateInfo(personData, termData));
+        Assert.assertTrue(commonService.updateInfo(personData, termData));
     }
 
     @Test

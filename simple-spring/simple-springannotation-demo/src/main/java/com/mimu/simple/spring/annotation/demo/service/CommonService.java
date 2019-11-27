@@ -5,6 +5,7 @@ import com.mimu.simple.spring.annotation.demo.model.PersonData;
 import com.mimu.simple.spring.annotation.demo.model.TermData;
 import com.mimu.simple.spring.annotation.demo.repository.PeopleRepository;
 import com.mimu.simple.spring.annotation.demo.repository.TermRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  * author: mimu
  * date: 2019/1/11
  */
+@Slf4j
 @Service
 public class CommonService {
 
@@ -36,11 +38,15 @@ public class CommonService {
     }
 
     public boolean savePeople(PersonData personData) {
-        return peopleRepository.save(personData);
+        boolean save = peopleRepository.save(personData);
+        log.info("savePeople result={}", save);
+        return save;
     }
 
     public boolean saveTerm(TermData termData) {
-        return termRepository.save(termData);
+        boolean save = termRepository.save(termData);
+        log.info("saveTerm result={}", save);
+        return save;
     }
 
     @SimpleLogger
@@ -63,14 +69,18 @@ public class CommonService {
     }
 
     public boolean updatePeople(PersonData personData) {
-        return peopleRepository.update(personData);
+        boolean update = peopleRepository.update(personData);
+        log.info("updatePeople result {}", update);
+        return update;
     }
 
     public boolean updateTerm(TermData termData) {
-        if (!termRepository.update(termData)) {
+        boolean update = termRepository.update(termData);
+        log.info("updateTerm result={}", update);
+        if (!update) {
             throw new RuntimeException();
         }
-        return true;
+        return update;
     }
 
 }
