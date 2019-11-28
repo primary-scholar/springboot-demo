@@ -3,7 +3,6 @@ package com.mimu.simple.java.cm;
 import org.junit.Test;
 
 import java.util.concurrent.*;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -119,5 +118,29 @@ public class CompleteFutureTest {
         System.out.println(future);
         System.out.println(future.get(20, TimeUnit.MILLISECONDS));
         System.out.println(future);
+    }
+
+    @Test
+    public void info1() {
+        try {
+            System.out.println(getResult().get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public CompletableFuture<Integer> getResult() {
+        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+            try {
+                System.out.println("runAsyncInfo supplyAsync thread info:" + Thread.currentThread().getName());
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return 10;
+        });
+        return future.thenApply(Function.identity());
     }
 }

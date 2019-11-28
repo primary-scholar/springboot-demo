@@ -1,5 +1,6 @@
 package com.mimu.simple.springboot.dubbo.consumer.config;
 
+import com.mimu.simple.springboot.dubbo.consumer.service.CommonService;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ConsumerConfig;
 import org.apache.dubbo.config.RegistryConfig;
@@ -13,26 +14,26 @@ import org.springframework.context.annotation.Configuration;
  * date: 2019/8/18
  */
 @Configuration
-@ComponentScan(basePackages = {"com.mimu.simple.springboot.sbdc.service"})
-@DubboComponentScan(basePackages = {"com.mimu.simple.springboot.sbdc.service"})
+@ComponentScan(basePackageClasses = CommonService.class)
+@DubboComponentScan(basePackageClasses = CommonService.class)
 public class ServiceConsumerConfig {
 
     @Bean
-    public ApplicationConfig applicationConfig(){
+    public ApplicationConfig applicationConfig() {
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName("sdb-service-consumer");
         return applicationConfig;
     }
 
     @Bean
-    public ConsumerConfig consumerConfig(){
+    public ConsumerConfig consumerConfig() {
         ConsumerConfig consumerConfig = new ConsumerConfig();
         consumerConfig.setTimeout(3000);
         return consumerConfig;
     }
 
     @Bean
-    public RegistryConfig registryConfig(){
+    public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setAddress("zookeeper://localhost:2181");
         registryConfig.setClient("curator");
