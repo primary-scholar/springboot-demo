@@ -37,7 +37,7 @@ public class ServiceConsumerConfig {
     @Bean
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setAddress("zookeeper://192.168.0.105:2181");
+        registryConfig.setAddress("zookeeper://localhost:2181");
         registryConfig.setClient("curator");
         return registryConfig;
     }

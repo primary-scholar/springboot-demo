@@ -1,10 +1,7 @@
 package com.mimu.simple.springboot.dubbo.provider.config;
 
 import com.mimu.simple.springboot.dubbo.provider.service.UserDataApiImpl;
-import org.apache.dubbo.config.ApplicationConfig;
-import org.apache.dubbo.config.MonitorConfig;
-import org.apache.dubbo.config.ProviderConfig;
-import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.config.*;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,5 +41,14 @@ public class ServiceProviderConfig {
         MonitorConfig config = new MonitorConfig();
         config.setProtocol("registry");
         return config;
+    }
+
+    @Bean
+    public ProtocolConfig protocolConfig(){
+        ProtocolConfig protocolConfig = new ProtocolConfig();
+        protocolConfig.setDispatcher("message");
+        protocolConfig.setThreads(200);
+        protocolConfig.setPort(20880);
+        return protocolConfig;
     }
 }
