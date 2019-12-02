@@ -1,5 +1,10 @@
 package com.mimu.simple.comn.zookeeper;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.zookeeper.Op;
 import org.junit.Test;
 
 import java.util.concurrent.Executor;
@@ -12,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  * author: mimu
  * date: 2019/10/27
  */
+@Slf4j
 public class SimpleZKOperatorTest {
     private static final String path = "/abc", data = "abc";
 
@@ -24,28 +30,26 @@ public class SimpleZKOperatorTest {
 
     @Test
     public void dl() throws Exception {
-        Executor executor = Executors.newFixedThreadPool(3);
-        CuratorDLOperator curatorDLOperator = new CuratorDLOperator(CuratorCRUDOperator.getClient(), "/curator/dlocks");
-
-        for (int i = 0; i < 5; i++) {
-            executor.execute(() -> {
-                try {
-                    System.out.println("getLock: " + curatorDLOperator.getLock(30, TimeUnit.MILLISECONDS));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
+        String path = "/curator/locks";
+        try {
+            CuratorFramework client
+                    = CuratorFrameworkFactory.newClient("localhost:2181",new ExponentialBackoffRetry(1000,1));
+            client.start();
+            CuratorDLOperator curatorDLOperator = new CuratorDLOperator(client, path);
+            log.info("getLock: {}", curatorDLOperator.getLock(5, TimeUnit.SECONDS));
+        } catch (Exception e) {
+            log.error("getLock error {}", e);
         }
 
-        for (int i = 0; i < 5; i++) {
-            executor.execute(() -> {
-                try {
-                    System.out.println("releaseLock: " + curatorDLOperator.releaseLock());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
+        try {
+            CuratorFramework client
+                    = CuratorFrameworkFactory.newClient("localhost:2181",new ExponentialBackoffRetry(1000,3));
+            client.start();
+            CuratorDLOperator curatorDLOperator = new CuratorDLOperator(client, path);
+            log.info("getLock: {}", curatorDLOperator.getLock(5, TimeUnit.SECONDS));
+            log.info("releaseLock {}",curatorDLOperator.releaseLock());
+        } catch (Exception e) {
+            log.error("getLock error {}", e);
         }
-        ((ExecutorService) executor).shutdown();
     }
 }
