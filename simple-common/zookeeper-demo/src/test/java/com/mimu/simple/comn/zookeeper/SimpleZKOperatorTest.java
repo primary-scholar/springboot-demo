@@ -12,8 +12,13 @@ public class SimpleZKOperatorTest {
 
     @Test
     public void info() throws Exception {
-        System.out.println(SimpleZKOperator.curatorCRUDOperator.createPNode(path, data));
-        System.out.println(SimpleZKOperator.curatorCRUDOperator.readPNode(path));
-        System.out.println(SimpleZKOperator.curatorCRUDOperator.deletePNode(path));
+        System.out.println(SimpleZKOperator.CuratorCRUDOperator.createPNode(path, data));
+        System.out.println(SimpleZKOperator.CuratorCRUDOperator.readPNode(path));
+        System.out.println(SimpleZKOperator.CuratorCRUDOperator.deletePNode(path));
+    }
+
+    @Test
+    public void dl(){
+
     }
 }
