@@ -10,9 +10,11 @@ import java.util.function.Supplier;
  * author: mimu
  * date: 2019/7/12
  */
-public class CompleteFutureTest {
+public class FutureRelevantTest {
 
-    public static void main(String[] args) {
+
+    @Test
+    public void executeTest(){
         while (true) {
             System.out.println("start");
             for (int i = 0; i < 10000; i++) {
@@ -38,11 +40,6 @@ public class CompleteFutureTest {
         } catch (TimeoutException e) {
             e.printStackTrace();
         }*/
-    }
-
-    @Test
-    public void info() {
-        CompletableFuture<Object> completableFuture = new CompletableFuture<>();
     }
 
     /**
@@ -142,5 +139,28 @@ public class CompleteFutureTest {
             return 10;
         });
         return future.thenApply(Function.identity());
+    }
+
+    @Test
+    public void futureTaskTest() throws ExecutionException, InterruptedException {
+        long starttime = System.currentTimeMillis();
+        FutureTask<Integer> input2_futuretask = new FutureTask<>(() -> {
+            Thread.sleep(3000);
+            return 5;
+        });
+        new Thread(input2_futuretask).start();
+        FutureTask<Integer> input1_futuretask = new FutureTask<>(() -> {
+            Thread.sleep(2000);
+            return 3;
+        });
+        new Thread(input1_futuretask).start();
+        Integer integer2 = input2_futuretask.get();
+        Integer integer1 = input1_futuretask.get();
+        System.out.println(algorithm(integer1, integer2));
+        long endtime = System.currentTimeMillis();
+        System.out.println("用时：" + String.valueOf(endtime - starttime));
+    }
+    public static int algorithm(int input, int input2) {
+        return input + input2;
     }
 }
