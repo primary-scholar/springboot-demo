@@ -6,18 +6,27 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- lifecycle bean dependency init-->
-    <!--<bean id="domainA" class="com.mimu.simple.sf.d.DomainA">
+    <!--<bean id="domainA" class="com.mimu.simple.spring.file.lifecycle.d.DomainA">
         <constructor-arg ref="domainB"/>
     </bean>
     <bean id="domainB" class="com.mimu.simple.spring.file.lifecycle.d.DomainB">
         <constructor-arg ref="domainA"/>
     </bean>-->
+
     <bean id="domainC" class="com.mimu.simple.spring.file.lifecycle.d.DomainC">
         <property name="domainD" ref="domainD"/>
     </bean>
     <bean id="domainD" class="com.mimu.simple.spring.file.lifecycle.d.DomainD">
         <property name="domainC" ref="domainC"/>
     </bean>
+    <!-- 对于 singleton 的实例解析，spring 可以解决 get set 方法的循环依赖，不能解决 构造函数的循环依赖 -->
+    <!-- 对于 非 singleton 的实例解析，spring 无法解决循环依赖 -->
+    <!--<bean id="domainC" class="com.mimu.simple.spring.file.lifecycle.d.DomainC" scope="prototype">
+        <property name="domainD" ref="domainD"/>
+    </bean>
+    <bean id="domainD" class="com.mimu.simple.spring.file.lifecycle.d.DomainD" scope="prototype">
+        <property name="domainC" ref="domainC"/>
+    </bean>-->
     <!-- lifecycle bean dependency init-->
 
     <!-- lifecycle package init-->
@@ -27,6 +36,7 @@
     <bean id="customInstantiationAwareBeanPostProcessor"
           class="com.mimu.simple.spring.file.lifecycle.l.CustomInstantiationAwareBeanPostProcessor"/>
     <bean id="customBeanPostProcessor" class="com.mimu.simple.spring.file.lifecycle.l.CustomBeanPostProcessor"/>
-    <bean id="customBeanFactoryPostProcessor" class="com.mimu.simple.spring.file.lifecycle.l.CustomBeanFactoryPostProcessor"/>
+    <bean id="customBeanFactoryPostProcessor"
+          class="com.mimu.simple.spring.file.lifecycle.l.CustomBeanFactoryPostProcessor"/>
     <!-- lifecycle package init-->
 </beans>
