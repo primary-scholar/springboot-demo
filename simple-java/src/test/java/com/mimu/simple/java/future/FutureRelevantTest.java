@@ -1,4 +1,4 @@
-package com.mimu.simple.java.cm;
+package com.mimu.simple.java.future;
 
 import org.junit.Test;
 
