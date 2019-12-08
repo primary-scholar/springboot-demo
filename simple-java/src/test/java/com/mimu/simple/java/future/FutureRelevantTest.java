@@ -163,18 +163,27 @@ public class FutureRelevantTest {
         return future.thenApply(Function.identity());
     }
 
+    /**
+     * Future 接口提供了一种异步 获取结果的机制，即Future 的callable<>的逻辑执行在其他线程中完成
+     * 在使用 future.get() 方法之前，要确保 callable<> 的逻辑已经执行，否则get() 方法会yizhizuse
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     @Test
     public void futureTaskTest() throws ExecutionException, InterruptedException {
         long starttime = System.currentTimeMillis();
         FutureTask<Integer> input2Futuretask = new FutureTask<>(() -> {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
             return 5;
         });
         new Thread(input2Futuretask).start();
         FutureTask<Integer> input1Futuretask = new FutureTask<>(() -> {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             return 3;
         });
+        /**
+         * 此处没有 执行start() 方法 get() 会一直阻塞
+         */
         new Thread(input1Futuretask).start();
         Integer integer2 = input2Futuretask.get();
         Integer integer1 = input1Futuretask.get();
