@@ -165,7 +165,7 @@ public class FutureRelevantTest {
 
     /**
      * Future 接口提供了一种异步 获取结果的机制，即Future 的callable<>的逻辑执行在其他线程中完成
-     * 在使用 future.get() 方法之前，要确保 callable<> 的逻辑已经执行，否则get() 方法会yizhizuse
+     * 在使用 future.get() 方法之前，要确保 callable<> 的逻辑已经执行，否则get() 方法会一直阻塞
      * @throws ExecutionException
      * @throws InterruptedException
      */
