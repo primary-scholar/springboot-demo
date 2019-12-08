@@ -1,7 +1,9 @@
 package com.mimu.simple.java.future;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.time.LocalTime;
 import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -10,11 +12,11 @@ import java.util.function.Supplier;
  * author: mimu
  * date: 2019/7/12
  */
+@Slf4j
 public class FutureRelevantTest {
 
-
     @Test
-    public void executeTest(){
+    public void executeTest() {
         while (true) {
             System.out.println("start");
             for (int i = 0; i < 10000; i++) {
@@ -31,28 +33,48 @@ public class FutureRelevantTest {
 
     public static void execute() {
         CompletableFuture future = CompletableFuture.supplyAsync((Supplier<Object>) () -> "abc");
-        /*try {
-            future.get(1000,TimeUnit.MILLISECONDS);
+    }
+
+    private void performTask(String stage) {
+        log.info("start stage:{},thread:{}", stage, Thread.currentThread().getName());
+        try {
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }*/
+        }
+        log.info("end stage:{},thread:{}", stage, Thread.currentThread().getName());
     }
 
     /**
-     * 可以确定的是 CompletableFuture.supplyAsync() 是在一个新线程中执行 某个逻辑
-     * 而 CompletableFuture.whenComplete() 是在哪个新线程中执行某个逻辑 不确定
-     *
+     *理论上来说: 使用 RunAsync(),SupplyAsync() 的方法其执行逻辑是在新线程中
+     * 后续的 non-async() 的方法的执行逻辑 在前一阶段的 线程中执行
+     * 后续的 async() 的方法的执行逻辑 是在新线程中
      */
     @Test
+    public void performTest() {
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        CompletableFuture.runAsync(() -> performTask("first stage"), executorService)
+                .thenRun(() -> performTask("second stage"))
+                .thenRunAsync(() -> performTask("third stage"), executorService)
+                .join();
+        log.info("main exiting");
+        executorService.shutdown();
+    }
 
+    @Test
+    public void performTest1() {
+        CompletableFuture.runAsync(() -> performTask("first stage"))
+                .thenRunAsync(() -> performTask("second stage"))
+                .thenRun(() -> performTask("third stage"))
+                .join();
+        log.info("main exiting");
+    }
+
+    @Test
     public void runAsyncInfo() {
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
             try {
-                System.out.println("runAsyncInfo supplyAsync thread info:" + Thread.currentThread().getName());
+                log.info("runAsyncInfo supplyAsync thread info:{}", Thread.currentThread().getName());
                 Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -60,7 +82,7 @@ public class FutureRelevantTest {
             return 10;
         }).whenComplete((integer, throwable) -> {
             if (throwable == null) {
-                System.out.println("runAsyncInfo whenComplete thread info: " + Thread.currentThread().getName());
+                log.info("runAsyncInfo whenComplete thread info:{}", Thread.currentThread().getName());
                 System.out.println(integer);
             } else {
                 System.out.println("runAsyncInfo exception occur" + throwable.getMessage());
@@ -144,22 +166,22 @@ public class FutureRelevantTest {
     @Test
     public void futureTaskTest() throws ExecutionException, InterruptedException {
         long starttime = System.currentTimeMillis();
-        FutureTask<Integer> input2_futuretask = new FutureTask<>(() -> {
+        FutureTask<Integer> input2Futuretask = new FutureTask<>(() -> {
             Thread.sleep(3000);
             return 5;
         });
-        new Thread(input2_futuretask).start();
-        FutureTask<Integer> input1_futuretask = new FutureTask<>(() -> {
+        new Thread(input2Futuretask).start();
+        FutureTask<Integer> input1Futuretask = new FutureTask<>(() -> {
             Thread.sleep(2000);
             return 3;
         });
-        new Thread(input1_futuretask).start();
-        Integer integer2 = input2_futuretask.get();
-        Integer integer1 = input1_futuretask.get();
+        new Thread(input1Futuretask).start();
+        Integer integer2 = input2Futuretask.get();
+        Integer integer1 = input1Futuretask.get();
         System.out.println(algorithm(integer1, integer2));
-        long endtime = System.currentTimeMillis();
-        System.out.println("用时：" + String.valueOf(endtime - starttime));
+        System.out.println("用时：" + (System.currentTimeMillis() - starttime));
     }
+
     public static int algorithm(int input, int input2) {
         return input + input2;
     }
