@@ -3,7 +3,6 @@ package com.mimu.simple.java.future;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.time.LocalTime;
 import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
