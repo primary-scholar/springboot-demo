@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 //@Import(value = {ServiceConsumerConfig.class})
-@ImportResource(value = {"classpath:spring-dubbo-consumer.xml"})
+@ImportResource(value = {"classpath:dubbo-consumer.xml"})
 @ComponentScan(basePackageClasses = AppSpringDubboConsumer.class)
 @EnableWebMvc
 public class ApplicationConsumerConfig {

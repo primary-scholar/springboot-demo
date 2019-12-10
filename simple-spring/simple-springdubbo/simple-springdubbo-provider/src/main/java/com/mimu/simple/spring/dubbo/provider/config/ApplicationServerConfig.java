@@ -13,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 @ComponentScan(basePackageClasses =AppSpringDubboServer.class)
-//@ImportResource(value = {"classpath:spring-dubbo-provider-annotation.xml"})
 @ImportResource(value = {"classpath:spring-dubbo-provider.xml"})
 @Import(value = {DataSourceConfig.class})
 @EnableWebMvc
