@@ -43,7 +43,6 @@ public class SimpleZKOperatorTest {
             client.start();
             CuratorDLOperator curatorDLOperator = new CuratorDLOperator(client, path);
             log.info("getLock: {}", curatorDLOperator.getLock(5, TimeUnit.SECONDS));
-            log.info("releaseLock {}",curatorDLOperator.releaseLock());
         } catch (Exception e) {
             log.error("getLock error {}", e);
         }
