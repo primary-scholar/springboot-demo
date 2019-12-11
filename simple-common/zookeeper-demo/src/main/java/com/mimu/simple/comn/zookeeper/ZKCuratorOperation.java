@@ -100,9 +100,9 @@ public class ZKCuratorOperation {
         }
     }
 
-    public static boolean setData(String path) throws Exception {
+    public static boolean setData(String path,String data) throws Exception {
         try {
-            curatorClient.setData().forPath(path);
+            curatorClient.setData().forPath(path,data.getBytes());
             return true;
         } catch (Exception e) {
             log.error("setData error", e);

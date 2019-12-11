@@ -6,6 +6,9 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.zip.ZipEntry;
+
 /**
  author: mimu
  date: 2019/12/11
@@ -23,6 +26,12 @@ public class ZKCuratorOperationTest {
         ZKCuratorOperation.addPathChildListener(client,path,false);
         ZKCuratorOperation.addTreeListener(client,path,false);
         System.out.println(ZKCuratorOperation.readNode(path));
+        ZKCuratorOperation.setData(path,"abc");
+        System.out.println(ZKCuratorOperation.readNode(path));
+        List<String> children = ZKCuratorOperation.getChildren(path);
+        for (String item:children){
+            System.out.println(item);
+        }
         ZKCuratorOperation.deleteNode(path);
     }
 }
