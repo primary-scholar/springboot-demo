@@ -9,10 +9,13 @@ import java.util.concurrent.TimeUnit;
  author: mimu
  date: 2019/12/2
  */
-public class CuratorDLOperator {
+public class ZKCuratorLock {
+    /**
+     * zookeeper 可重入锁
+     */
     private InterProcessMutex lock;
 
-    public CuratorDLOperator(CuratorFramework client, String path) {
+    public ZKCuratorLock(CuratorFramework client, String path) {
         this.lock = new InterProcessMutex(client, path);
     }
 

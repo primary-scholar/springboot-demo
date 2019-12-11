@@ -8,22 +8,12 @@ import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
-
 /**
- * author: mimu
- * date: 2019/10/27
+ author: mimu
+ date: 2019/12/11
  */
 @Slf4j
-public class SimpleZKOperatorTest {
-    private static final String path = "/abc", data = "abc";
-
-    @Test
-    public void info() throws Exception {
-        System.out.println(CuratorCRUDOperator.createPNode(path, data));
-        System.out.println(CuratorCRUDOperator.readPNode(path));
-        System.out.println(CuratorCRUDOperator.deletePNode(path));
-    }
-
+public class ZKCuratorLockTest {
     @Test
     public void dl() throws Exception {
         String path = "/curator/locks";
@@ -31,8 +21,8 @@ public class SimpleZKOperatorTest {
             CuratorFramework client
                     = CuratorFrameworkFactory.newClient("localhost:2181",new ExponentialBackoffRetry(1000,1));
             client.start();
-            CuratorDLOperator curatorDLOperator = new CuratorDLOperator(client, path);
-            log.info("getLock: {}", curatorDLOperator.getLock(5, TimeUnit.SECONDS));
+            ZKCuratorLock ZKCuratorLock = new ZKCuratorLock(client, path);
+            log.info("getLock: {}", ZKCuratorLock.getLock(5, TimeUnit.SECONDS));
         } catch (Exception e) {
             log.error("getLock error {}", e);
         }
@@ -41,8 +31,8 @@ public class SimpleZKOperatorTest {
             CuratorFramework client
                     = CuratorFrameworkFactory.newClient("localhost:2181",new ExponentialBackoffRetry(1000,3));
             client.start();
-            CuratorDLOperator curatorDLOperator = new CuratorDLOperator(client, path);
-            log.info("getLock: {}", curatorDLOperator.getLock(5, TimeUnit.SECONDS));
+            ZKCuratorLock ZKCuratorLock = new ZKCuratorLock(client, path);
+            log.info("getLock: {}", ZKCuratorLock.getLock(5, TimeUnit.SECONDS));
         } catch (Exception e) {
             log.error("getLock error {}", e);
         }
