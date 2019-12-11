@@ -255,13 +255,13 @@ public class ZKCuratorOperation {
             treeCache.getListenable().addListener((client, event) -> {
                 switch (event.getType()) {
                     case NODE_ADDED:
-                        log.info("tree listener node add {}", event.getData().toString());
+                        log.info("tree listener node add {}", new String(event.getData().getData()));
                         break;
                     case NODE_UPDATED:
-                        log.info("tree listener node update {}", event.getData().toString());
+                        log.info("tree listener node update {}", new String(event.getData().getData()));
                         break;
                     case NODE_REMOVED:
-                        log.info("tree listener node delete {}", event.getData().toString());
+                        log.info("tree listener node delete {}", new String(event.getData().getData()));
                         break;
                     case CONNECTION_SUSPENDED:
                         break;
@@ -283,4 +283,7 @@ public class ZKCuratorOperation {
         }
     }
 
+    public static CuratorFramework getCuratorClient() {
+        return curatorClient;
+    }
 }

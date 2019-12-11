@@ -61,6 +61,8 @@
         <lombok.version>1.18.8</lombok.version>
         <jetty.version>9.4.19.v20190610</jetty.version>
         <curator.version>4.1.0</curator.version>
+        <archaius.core.version>0.7.5</archaius.core.version>
+        <archaius.zookeeper.version>0.5.12</archaius.zookeeper.version>
         <skywalking.version>6.1.0</skywalking.version>
         <elasticsearch.version>6.2.4</elasticsearch.version>
 
@@ -247,6 +249,21 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-webapp</artifactId>
                 <version>${jetty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius-core</artifactId>
+                <version>${archaius.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius-zookeeper</artifactId>
+                <version>${archaius.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-configuration</groupId>
+                <artifactId>commons-configuration</artifactId>
+                <version>1.10</version>
             </dependency>
 
             <dependency>
