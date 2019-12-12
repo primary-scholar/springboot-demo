@@ -2,12 +2,9 @@ package com.mimu.simple.comn.zookeeper;
 
 
 import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.zip.ZipEntry;
 
 /**
  author: mimu

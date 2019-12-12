@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static com.netflix.config.ConfigurationManager.*;
 
 
 /**
@@ -23,14 +22,14 @@ import static com.netflix.config.ConfigurationManager.*;
 public class ZKConfigCenter {
 
     static {
-        ZKConfigCenter.create().zkAddress("localhost:2180").rootPath("/configuration").build();
+        ZKConfigCenter.build().zkAddress("localhost:2181").rootPath("/configuration").init();
     }
 
-    public static Builder create() {
+    public static Builder build() {
         return new Builder();
     }
 
-    private static final class Builder {
+    public static final class Builder {
         private String address;
         private String path;
 
@@ -45,8 +44,8 @@ public class ZKConfigCenter {
             return this;
         }
 
-        public ZKConfigResource build() {
-            return new ZKConfigResource(address, path);
+        public ZKConfigurationResource init() {
+            return new ZKConfigurationResource(address, path);
         }
     }
 
@@ -59,7 +58,7 @@ public class ZKConfigCenter {
         return DynamicPropertyFactory.getInstance().getStringProperty(key, defaultValue, callable);
     }
 
-    /*public static class ZKConfigurationResource {
+    private static class ZKConfigurationResource {
         private static final AtomicBoolean initialization = new AtomicBoolean(false);
         private String zkAddress;
         private String rootPath;
@@ -85,7 +84,7 @@ public class ZKConfigCenter {
                 log.error("initAndStartConfiguration error", e);
             }
             DynamicWatchedConfiguration zkWatchedConfig = new DynamicWatchedConfiguration(zkConfigSource);
-            install(zkWatchedConfig);
+            ConfigurationManager.install(zkWatchedConfig);
         }
-    }*/
+    }
 }

@@ -12,8 +12,8 @@ public class ZKConfigCenterTest {
 
     @Test
     public void info() throws InterruptedException {
+        DynamicStringProperty abc = ZKConfigCenter.getString("abc", "");
         while (true){
-            DynamicStringProperty abc = ZKConfigCenter.getString("abc", "");
             System.out.println(abc);
             Thread.sleep(1000);
         }

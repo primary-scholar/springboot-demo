@@ -58,6 +58,10 @@
             <groupId>com.netflix.archaius</groupId>
             <artifactId>archaius-zookeeper</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

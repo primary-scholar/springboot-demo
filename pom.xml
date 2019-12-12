@@ -63,6 +63,7 @@
         <curator.version>4.1.0</curator.version>
         <archaius.core.version>0.7.5</archaius.core.version>
         <archaius.zookeeper.version>0.5.12</archaius.zookeeper.version>
+        <commons.configuration.version>1.10</commons.configuration.version>
         <skywalking.version>6.1.0</skywalking.version>
         <elasticsearch.version>6.2.4</elasticsearch.version>
 
@@ -263,7 +264,7 @@
             <dependency>
                 <groupId>commons-configuration</groupId>
                 <artifactId>commons-configuration</artifactId>
-                <version>1.10</version>
+                <version>${commons.configuration.version}</version>
             </dependency>
 
             <dependency>
