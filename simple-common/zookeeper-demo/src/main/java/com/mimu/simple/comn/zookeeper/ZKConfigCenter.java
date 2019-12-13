@@ -10,8 +10,10 @@ import com.netflix.curator.framework.CuratorFrameworkFactory;
 import com.netflix.curator.retry.ExponentialBackoffRetry;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 
 
 /**
@@ -21,8 +23,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Slf4j
 public class ZKConfigCenter {
 
+    private static final ZKConfigurationResource zkConfigCenterResource;
+
     static {
-        ZKConfigCenter.build().zkAddress("localhost:2181").rootPath("/configuration").init();
+        zkConfigCenterResource = ZKConfigCenter.build().zkAddress("localhost:2181").rootPath("/configuration").init();
     }
 
     public static Builder build() {
@@ -58,6 +62,14 @@ public class ZKConfigCenter {
         return DynamicPropertyFactory.getInstance().getStringProperty(key, defaultValue, callable);
     }
 
+    /**
+     * 获取 ZKConfigurationResource 中 rootPath 路径下的所有 数据
+     * @return
+     */
+    public static Map<String, String> getCurrentData() {
+        return zkConfigCenterResource.getCurrentData();
+    }
+
     private static class ZKConfigurationResource {
         private static final AtomicBoolean initialization = new AtomicBoolean(false);
         private String zkAddress;
@@ -85,6 +97,20 @@ public class ZKConfigCenter {
             }
             DynamicWatchedConfiguration zkWatchedConfig = new DynamicWatchedConfiguration(zkConfigSource);
             ConfigurationManager.install(zkWatchedConfig);
+        }
+
+        private Map<String, String> getCurrentData() {
+            try {
+                Map<String, Object> currentData = zkConfigSource.getCurrentData();
+                Map<String, String> result = new HashMap<>();
+                for (Map.Entry<String, Object> next : currentData.entrySet()) {
+                    result.put(next.getKey(), String.valueOf(next.getValue()));
+                }
+                return result;
+            } catch (Exception e) {
+                log.error("getCurrentData error", e);
+                return Collections.EMPTY_MAP;
+            }
         }
     }
 }
