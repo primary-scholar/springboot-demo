@@ -99,6 +99,7 @@ public class ZKConfigCenter {
             ConfigurationManager.install(zkWatchedConfig);
         }
 
+        @SuppressWarnings("unchecked")
         private Map<String, String> getCurrentData() {
             try {
                 Map<String, Object> currentData = zkConfigSource.getCurrentData();
