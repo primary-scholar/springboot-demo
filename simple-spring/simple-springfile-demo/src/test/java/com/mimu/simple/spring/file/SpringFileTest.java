@@ -1,10 +1,7 @@
 package com.mimu.simple.spring.file;
 
 import com.mimu.simple.spring.file.controller.inner.InnerController;
-import com.mimu.simple.spring.file.model.ObjectA;
-import com.mimu.simple.spring.file.model.ObjectAFieldFirst;
-import com.mimu.simple.spring.file.model.ObjectAFieldSecondExtendsObjectBFieldSecond;
-import com.mimu.simple.spring.file.model.ObjectB;
+import com.mimu.simple.spring.file.model.*;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.ApplicationContext;
@@ -37,5 +34,12 @@ public class SpringFileTest {
 
         BeanUtils.copyProperties(objectA, objectB);
         System.out.println(objectB);
+    }
+
+    @Test
+    public void info2(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("aop.xml");
+        SourceModelA bean = context.getBean(SourceModelA.class);
+        System.out.println(bean);
     }
 }
