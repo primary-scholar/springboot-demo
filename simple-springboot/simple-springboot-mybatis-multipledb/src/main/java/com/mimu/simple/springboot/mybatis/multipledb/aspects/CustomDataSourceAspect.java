@@ -13,21 +13,21 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class CustomDataSourceAspect {
 
-    @Pointcut(value = "!@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)")
-    public void slavePointcut() {
+    @Pointcut(value = "@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomSlave)")
+    public void appSlavePointcut() {
     }
 
-    @Before(value = "slavePointcut()")
-    public void readDB() {
+    @Before(value = "appSlavePointcut()")
+    public void appSlaveDB() {
         DataSourceContextHolder.slave();
     }
 
     @Pointcut(value = "@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)")
-    public void masterPointcut() {
+    public void appMasterPointcut() {
     }
 
-    @Before(value = "masterPointcut()")
-    public void masterDB() {
+    @Before(value = "appMasterPointcut()")
+    public void appMasterDB() {
         DataSourceContextHolder.master();
     }
 
