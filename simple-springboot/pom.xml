@@ -21,6 +21,7 @@
         <module>simple-springboot-dubbo</module>
         <module>simple-springboot-demo</module>
         <module>simple-springboot-mybatis-generator</module>
+        <module>simple-springboot-mybatis-multipledb</module>
     </modules>
 
     <properties>
@@ -35,6 +36,10 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
         </dependency>
 
         <dependency>
