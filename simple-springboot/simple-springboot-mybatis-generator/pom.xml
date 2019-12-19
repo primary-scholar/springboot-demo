@@ -67,15 +67,18 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <includes>
-                    <include>mapper/*</include>
-                    <include>*.*</include>
-                </includes>
+                <excludes>
+                    <exclude>*.properties</exclude>
+                </excludes>
             </resource>
             <resource>
-                <directory>src/main/resources/${environment}</directory>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
                 <includes>
-                    <include>*.*</include>
+                    <include>mapper/*.xml</include>
+                    <include>generator.properties</include>
+                    <include>application.properties</include>
+                    <include>application-${environment}.properties</include>
                 </includes>
             </resource>
         </resources>
