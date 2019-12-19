@@ -4,7 +4,6 @@ import com.mimu.simple.springboot.mybatis.multipledb.utils.DataSourceContextHold
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
 
 /**
  author: mimu
@@ -13,7 +12,10 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class CustomDataSourceAspect {
 
-    @Pointcut(value = "@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomSlave)")
+    @Pointcut(value = "!@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)" +
+            "&& (execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.select*(..))" +
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.list*(..))" +
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.get*(..)))")
     public void appSlavePointcut() {
     }
 
@@ -22,7 +24,12 @@ public class CustomDataSourceAspect {
         DataSourceContextHolder.slave();
     }
 
-    @Pointcut(value = "@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)")
+    @Pointcut(value = "@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)" +
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.insert*(..))" +
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.add*(..))" +
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.update*(..))" +
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.delete*(..))" +
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.remove*(..))")
     public void appMasterPointcut() {
     }
 

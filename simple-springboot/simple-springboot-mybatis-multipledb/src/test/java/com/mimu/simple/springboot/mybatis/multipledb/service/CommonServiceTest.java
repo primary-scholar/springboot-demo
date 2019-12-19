@@ -38,6 +38,8 @@ public class CommonServiceTest {
     public void getInfo1() {
         System.out.println(commonService.getTermData2(1));
         System.out.println(commonService.getTermData1(1));
+        System.out.println(commonService.getTermData2(1));
+        System.out.println(commonService.getTermData1(1));
     }
 
 }

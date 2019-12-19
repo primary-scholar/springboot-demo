@@ -1,7 +1,6 @@
 package com.mimu.simple.springboot.mybatis.multipledb.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import com.mimu.simple.springboot.mybatis.multipledb.aspects.CustomDataSourceAspect;
 import com.mimu.simple.springboot.mybatis.multipledb.enums.DataSourceType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -60,10 +59,5 @@ public class DataSourceConfig {
         customRoutingDataSource.setDefaultTargetDataSource(termDataSourceAsSlave);
         customRoutingDataSource.setTargetDataSources(targetDataSource);
         return customRoutingDataSource;
-    }
-
-    @Bean
-    public CustomDataSourceAspect customDataSourceAspect(){
-        return new CustomDataSourceAspect();
     }
 }

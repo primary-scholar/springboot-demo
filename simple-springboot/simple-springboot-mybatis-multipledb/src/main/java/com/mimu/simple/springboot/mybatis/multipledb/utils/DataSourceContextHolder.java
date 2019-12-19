@@ -44,7 +44,7 @@ public class DataSourceContextHolder {
      *     }
      */
     public static void slave() {
-        log.info("master datasource");
+        log.info("slave datasource");
         setDataSourceType(DataSourceType.slave);
     }
 }

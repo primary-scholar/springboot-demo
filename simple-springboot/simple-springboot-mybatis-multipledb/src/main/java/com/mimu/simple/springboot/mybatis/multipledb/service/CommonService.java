@@ -1,7 +1,6 @@
 package com.mimu.simple.springboot.mybatis.multipledb.service;
 
 import com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster;
-import com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomSlave;
 import com.mimu.simple.springboot.mybatis.multipledb.mapper.TermDataMapper;
 import com.mimu.simple.springboot.mybatis.multipledb.mapper.UserDataMapper;
 import com.mimu.simple.springboot.mybatis.multipledb.model.TermInfo;
@@ -45,7 +44,6 @@ public class CommonService {
         return data != null ? data : TermInfo.builder().id(0).personId(0).termId(0).build();
     }
 
-    @CustomSlave
     public TermInfo getTermData2(long id){
         TermInfo data = termDataMapper.getTermInfoById(id);
         return data != null ? data : TermInfo.builder().id(0).personId(0).termId(0).build();
