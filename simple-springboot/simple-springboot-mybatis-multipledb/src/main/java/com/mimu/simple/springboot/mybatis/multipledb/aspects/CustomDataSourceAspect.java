@@ -15,7 +15,8 @@ public class CustomDataSourceAspect {
     @Pointcut(value = "!@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)" +
             "&& (execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.select*(..))" +
             "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.list*(..))" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.get*(..)))")
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.get*(..))" +
+            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.find*(..)))")
     public void appSlavePointcut() {
     }
 
