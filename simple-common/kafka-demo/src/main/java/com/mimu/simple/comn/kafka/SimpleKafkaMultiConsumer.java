@@ -19,43 +19,43 @@ import java.util.function.Function;
  * date: 2019/5/14
  */
 public class SimpleKafkaMultiConsumer {
-    private static List<KafkaMultiConsumerRunnable> kafkaMultiConsumerRunnables = new ArrayList<>();
-    private static List<KafkaSingleConsumerRunnable> kafkaSingleConsumerRunnables = new ArrayList<>();
-    private static KafkaSingleConsumerRunnable kafkaSingleConsumerRunnable;
+    private static List<KafkaSingleThreadConsumerRunnable> kafkaSingleThreadConsumerRunnables = new ArrayList<>();
+    private static List<KafkaMultiThreadConsumerRunnable> kafkaMultiThreadConsumerRunnables = new ArrayList<>();
+    private static KafkaMultiThreadConsumerRunnable kafkaMultiThreadConsumerRunnable;
 
     public static SimpleKafkaMultiConsumer getMultiConsumer(int threads, Properties properties, String topic, Function function) {
         for (int i = 0; i < threads; i++) {
-            kafkaMultiConsumerRunnables.add(new KafkaMultiConsumerRunnable(properties, topic, function));
+            kafkaSingleThreadConsumerRunnables.add(new KafkaSingleThreadConsumerRunnable(properties, topic, function));
         }
         return new SimpleKafkaMultiConsumer();
     }
 
     public static SimpleKafkaMultiConsumer getMultiSingleConsumer(int threads, Properties properties, String topic, Function function) {
         for (int i = 0; i < threads; i++) {
-            kafkaSingleConsumerRunnables.add(new KafkaSingleConsumerRunnable(threads, properties, topic, function));
+            kafkaMultiThreadConsumerRunnables.add(new KafkaMultiThreadConsumerRunnable(threads, properties, topic, function));
         }
         return new SimpleKafkaMultiConsumer();
     }
 
     public static SimpleKafkaMultiConsumer getSingleConsumer(int threads, Properties properties, String topic, Function function) {
-        kafkaSingleConsumerRunnable = new KafkaSingleConsumerRunnable(threads, properties, topic, function);
+        kafkaMultiThreadConsumerRunnable = new KafkaMultiThreadConsumerRunnable(threads, properties, topic, function);
         return new SimpleKafkaMultiConsumer();
     }
 
     public void multiConsumerConsume() {
-        for (KafkaMultiConsumerRunnable runnable : kafkaMultiConsumerRunnables) {
+        for (KafkaSingleThreadConsumerRunnable runnable : kafkaSingleThreadConsumerRunnables) {
             new Thread(runnable).start();
         }
     }
 
     public void multiSingleConsumerConsume() {
-        for (KafkaSingleConsumerRunnable runnable : kafkaSingleConsumerRunnables) {
+        for (KafkaMultiThreadConsumerRunnable runnable : kafkaMultiThreadConsumerRunnables) {
             new Thread(runnable).start();
         }
     }
 
     public void singleConsumerConsume() {
-        new Thread(kafkaSingleConsumerRunnable).start();
+        new Thread(kafkaMultiThreadConsumerRunnable).start();
     }
 
     /**
@@ -66,14 +66,14 @@ public class SimpleKafkaMultiConsumer {
     /**
      * 此中方法 中手动提交 偏移量 比较简单，直接和 单线程中的手动提交偏移量一样
      */
-    private static class KafkaMultiConsumerRunnable implements Runnable {
-        private final Logger logger = LoggerFactory.getLogger(KafkaMultiConsumerRunnable.class);
+    private static class KafkaSingleThreadConsumerRunnable implements Runnable {
+        private final Logger logger = LoggerFactory.getLogger(KafkaSingleThreadConsumerRunnable.class);
         private final AtomicBoolean isConsume = new AtomicBoolean(true);
         private Properties properties;
         private KafkaConsumer<String, Object> consumer;
         private Function function;
 
-        public KafkaMultiConsumerRunnable(Properties pro, String topic, Function function) {
+        public KafkaSingleThreadConsumerRunnable(Properties pro, String topic, Function function) {
             this.properties = pro;
             consumer = new KafkaConsumer<>(properties);
             consumer.subscribe(Collections.singleton(topic), new ConsumerRebalanceListener() {
@@ -126,15 +126,15 @@ public class SimpleKafkaMultiConsumer {
     /**
      * 此中方法的 偏移量提交，存在 消息丢失的风险
      */
-    private static class KafkaSingleConsumerRunnable implements Runnable {
-        private final Logger logger = LoggerFactory.getLogger(KafkaMultiConsumerRunnable.class);
+    private static class KafkaMultiThreadConsumerRunnable implements Runnable {
+        private final Logger logger = LoggerFactory.getLogger(KafkaSingleThreadConsumerRunnable.class);
         final Map<TopicPartition, OffsetAndMetadata> offsets = new HashMap<>();
         private final AtomicBoolean isConsume = new AtomicBoolean(true);
         private KafkaConsumer<String, Object> consumer;
         private Function function;
         ExecutorService executorService;
 
-        public KafkaSingleConsumerRunnable(int thread, Properties properties, String topic, Function function) {
+        public KafkaMultiThreadConsumerRunnable(int thread, Properties properties, String topic, Function function) {
             executorService = new ThreadPoolExecutor(thread, thread, 0l, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(1000), new ThreadPoolExecutor.CallerRunsPolicy());
             this.consumer = new KafkaConsumer<>(properties);
             this.function = function;
