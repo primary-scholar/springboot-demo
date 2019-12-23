@@ -27,10 +27,10 @@ public class CustomDataSourceAspect {
      * so this is the question!!!
      */
     @Pointcut(value = "!@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)" +
-            "&& (execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.select*(..))" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.list*(..))" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.get*(..))" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.find*(..)))")
+            "&& (execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.select*(..))" +
+            "|| execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.list*(..))" +
+            "|| execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.get*(..))" +
+            "|| execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.find*(..)))")
     public void appSlavePointcut() {
     }
 
@@ -43,11 +43,11 @@ public class CustomDataSourceAspect {
     }
 
     @Pointcut(value = "@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.insert*(..))" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.add*(..))" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.update*(..))" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.delete*(..))" +
-            "|| execution(* com.mimu.simple.springboot.mybatis.multipledb.service..*.remove*(..))")
+            "|| execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.insert*(..))" +
+            "|| execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.add*(..))" +
+            "|| execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.update*(..))" +
+            "|| execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.delete*(..))" +
+            "|| execution(public * com.mimu.simple.springboot.mybatis.multipledb.service..*.remove*(..))")
     public void appMasterPointcut() {
     }
 
