@@ -38,7 +38,7 @@ public class CustomDataSourceAspect {
     public Object appReadDB(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         DataSourceContextHolder.slave();
         Object object = proceedingJoinPoint.proceed();
-        DataSourceContextHolder.clear();
+        DataSourceContextHolder.remove();
         return object;
     }
 
@@ -55,7 +55,7 @@ public class CustomDataSourceAspect {
     public Object appWriteDB(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         DataSourceContextHolder.master();
         Object object = proceedingJoinPoint.proceed();
-        DataSourceContextHolder.clear();
+        DataSourceContextHolder.remove();
         return object;
     }
 

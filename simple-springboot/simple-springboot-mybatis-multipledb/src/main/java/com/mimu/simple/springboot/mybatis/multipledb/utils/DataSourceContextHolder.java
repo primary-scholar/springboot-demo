@@ -22,7 +22,7 @@ public class DataSourceContextHolder {
         return contextHolder.get();
     }
 
-    private static void clearThread() {
+    private static void removeThread() {
         contextHolder.remove();
     }
 
@@ -52,8 +52,8 @@ public class DataSourceContextHolder {
         setDataSourceType(DataSourceType.slave);
     }
 
-    public static void clear() {
-        log.info("clear {} thread", contextHolder.get());
-        clearThread();
+    public static void remove() {
+        log.info("remove {} thread", contextHolder.get());
+        removeThread();
     }
 }
