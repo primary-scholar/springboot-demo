@@ -15,8 +15,8 @@ import static org.apache.dubbo.rpc.cluster.Constants.FORCE_KEY;
 import static org.apache.dubbo.rpc.cluster.Constants.PRIORITY_KEY;
 
 /**
- author: mimu
- date: 2019/12/23
+ * author: mimu
+ * date: 2019/12/23
  */
 public class CustomDubboDataCenterRouter extends AbstractRouter {
 
@@ -30,10 +30,12 @@ public class CustomDubboDataCenterRouter extends AbstractRouter {
     public <T> List<Invoker<T>> route(List<Invoker<T>> invokers, URL url, Invocation invocation) throws RpcException {
         List<Invoker<T>> filters = new ArrayList<>();
         if (!CollectionUtils.isEmpty(invokers)) {
+            String local = System.getProperty("server_ip");
+            String localPrefix = local.substring(0, getPointIndexWithSpecificOrdial(local, 2));
             for (Invoker invoker : invokers) {
                 String host = invoker.getUrl().getHost();
-                String local = System.getProperty("server_ip");
-                if (matchDbCenterByIp(host, local)) {
+                String hostPrefix = host.substring(0, getPointIndexWithSpecificOrdial(host, 2));
+                if (localPrefix.equals(hostPrefix)) {
                     filters.add(invoker);
                 }
             }
@@ -41,13 +43,7 @@ public class CustomDubboDataCenterRouter extends AbstractRouter {
         return filters.size() > 0 ? filters : invokers;
     }
 
-    private boolean matchDbCenterByIp(String remote, String local) {
-        String remotePrefix = remote.substring(0, getPointIndex(remote, 2));
-        String localPrefix = local.substring(0, getPointIndex(local, 2));
-        return remotePrefix.equals(localPrefix);
-    }
-
-    private int getPointIndex(String origin, int ordinal) {
+    private int getPointIndexWithSpecificOrdial(String origin, int ordinal) {
         if (StringUtils.isEmpty(origin) || ordinal <= 0) {
             return 0;
         }
