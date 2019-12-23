@@ -1,5 +1,6 @@
 package com.mimu.simple.spring.dubbo.consumer.router;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
@@ -47,7 +48,7 @@ public class CustomDubboDataCenterRouter extends AbstractRouter {
     }
 
     private int getPointIndex(String origin, int ordinal) {
-        if (org.apache.commons.lang3.StringUtils.isEmpty(origin) || ordinal <= 0) {
+        if (StringUtils.isEmpty(origin) || ordinal <= 0) {
             return 0;
         }
         int index = 0;
