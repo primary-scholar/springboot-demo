@@ -5,5 +5,5 @@ package com.mimu.simple.springboot.mybatis.multipledb.enums;
  date: 2019/12/18
  */
 public enum DataSourceType {
-    master, slave;
+    master, slave
 }
