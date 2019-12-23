@@ -24,7 +24,7 @@ public class CustomDataSourceAspect {
      * by AnnotationAwareAspectJAutoProxyCreator(wrapIfNecessary()), while during the instantiation of this advisor(spring use
      * instantiateUsingFactoryMethod() method instanced the advisor,so spring get the factoryBean firstly(in our situation the
      * class of factoryBean is com.mimu.simple.springboot.mybatis.multipledb.service.AspectConfig and the class is a proxy
-     * generate by spring with cglib) in the following steps spring will use proxy method to generate the advosor the steps
+     * generate by spring with cglib) in the following steps spring will use proxy method to generate the advisor the steps
      * like this: proxyMethod()->appReadDB()-> factoryMethod.findCustomDataSourceAspect() to get the aspect instance so spring
      * will generate CustomDataSourceAspect again.
      * here this is the question!!!
