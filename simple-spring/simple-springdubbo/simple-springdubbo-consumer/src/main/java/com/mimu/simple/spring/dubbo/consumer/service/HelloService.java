@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  */
 
 /**
- * 使用 dubbo-consumer.xml 文件则需要 注释掉 ServiceConsumerConfig 类， 在该类上添加 dubbo @Service 注解 并注释掉 @Reference 注解
+ * 使用 META-INF-consumer.xml 文件则需要 注释掉 ServiceConsumerConfig 类， 在该类上添加 META-INF @Service 注解 并注释掉 @Reference 注解
  * 同时 在 属性上 添加 @Autowire 注解
  */
 @Slf4j

@@ -1,7 +1,10 @@
 package com.mimu.simple.java.cm;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import javax.xml.transform.Source;
+import java.math.BigDecimal;
 import java.util.BitSet;
 
 /**
@@ -11,12 +14,40 @@ import java.util.BitSet;
 public class BitSetTest {
 
     @Test
-    public void info(){
+    public void info() {
         BitSet set = new BitSet();
         System.out.println(set.size());
-        set.set(196,false);
+        set.set(196, false);
         set.set(100);
         System.out.println(set.size());
         System.out.println(set);
     }
+
+    @Test
+    public void info1() {
+        String ip = ".2.131.80";
+        System.out.println(getPointIndex(ip, 1));
+        System.out.println(getPointIndex(ip, 2));
+        System.out.println(getPointIndex(ip, 3));
+        System.out.println(getPointIndex(ip, 4));
+        System.out.println(getPointIndex(ip, 5));
+    }
+
+    private int getPointIndex(String origin, int ordinal) {
+        if (StringUtils.isEmpty(origin) || ordinal <= 0) {
+            return 0;
+        }
+        int index = 0;
+        for (int i = 0; i < origin.length(); i++) {
+            char c = origin.charAt(i);
+            if (c == '.') {
+                index++;
+            }
+            if (index >= ordinal) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
 }

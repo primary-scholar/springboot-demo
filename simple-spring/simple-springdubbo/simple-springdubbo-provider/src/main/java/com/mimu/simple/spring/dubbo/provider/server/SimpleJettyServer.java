@@ -1,5 +1,5 @@
 /*
-package com.mimu.simple.spring.dubbo.provider.server;
+package com.mimu.simple.spring.META-INF.provider.server;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;

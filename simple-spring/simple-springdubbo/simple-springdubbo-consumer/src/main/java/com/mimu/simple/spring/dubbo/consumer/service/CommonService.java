@@ -19,7 +19,7 @@ public class CommonService {
     /**
      * 可以使用直联方式 进行服务的消费，一般用于测试环境测试接口的可用性，直联方式不依赖zk的参与
      */
-    //@Reference(check = false, retries = 0, url = "dubbo://10.2.132.47:20880")
+    //@Reference(check = false, retries = 0, url = "META-INF://10.2.132.47:20880")
     public void setUserDataApi(UserDataApi userDataApi) {
         this.userDataApi = userDataApi;
     }

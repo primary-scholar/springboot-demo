@@ -1,0 +1,1 @@
+dbCenterRouter=com.mimu.simple.spring.dubbo.consumer.router.factory.CustomDubboDataCenterRouterFactory
