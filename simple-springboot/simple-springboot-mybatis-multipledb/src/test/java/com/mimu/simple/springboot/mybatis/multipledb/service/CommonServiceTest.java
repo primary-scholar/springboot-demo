@@ -77,7 +77,6 @@ public class CommonServiceTest {
                 assert termData1.getId() == 0;
             }
         }).start();*/
-        System.in.read();
         executorService.shutdown();
     }
 
