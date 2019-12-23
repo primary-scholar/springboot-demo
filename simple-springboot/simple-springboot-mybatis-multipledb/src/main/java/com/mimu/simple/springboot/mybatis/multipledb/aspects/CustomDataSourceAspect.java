@@ -16,7 +16,7 @@ public class CustomDataSourceAspect {
     /**
      * here if we move the com.mimu.simple.springboot.mybatis.multipledb.service.AspectConfig to
      * com.mimu.simple.springboot.mybatis.multipledb.service.AspectConfig and change the method
-     * findcustomDataSourceAspect() to (select)(list)(get)(find)*findcustomDataSourceAspect() in AspectConfig
+     * findCustomDataSourceAspect() to (select)(list)(get)(find)*findCustomDataSourceAspect() in AspectConfig
      * the CustomDataSourceAspect advisor won't be created correctly because of circular reference.
      * why in this situation exits circular reference
      * because
