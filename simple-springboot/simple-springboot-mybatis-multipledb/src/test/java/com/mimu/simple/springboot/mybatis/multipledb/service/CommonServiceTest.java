@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  author: mimu
@@ -47,7 +49,23 @@ public class CommonServiceTest {
 
     @Test
     public void getInfo2() throws IOException {
-        new Thread(() -> {
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+        for (int i = 1; i <= 20; i++) {
+            int finalI = i;
+            executorService.submit(() -> {
+                for (int loop = 0; loop < finalI * 1000; loop++) {
+                    if (finalI % 2 == 0) {
+                        TermInfo termData2 = commonService.getTermData2(1);
+                        assert termData2.getId() == 1;
+                    } else {
+                        TermInfo termData1 = commonService.getTermData1(1);
+                        assert termData1.getId() == 0;
+                    }
+
+                }
+            });
+        }
+        /*new Thread(() -> {
             while (true) {
                 TermInfo termData2 = commonService.getTermData2(1);
                 assert termData2.getId() == 1;
@@ -58,8 +76,9 @@ public class CommonServiceTest {
                 TermInfo termData1 = commonService.getTermData1(1);
                 assert termData1.getId() == 0;
             }
-        }).start();
+        }).start();*/
         System.in.read();
+        executorService.shutdown();
     }
 
 }

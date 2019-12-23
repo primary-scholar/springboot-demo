@@ -14,7 +14,7 @@ public class DataSourceContextHolder {
     private static final ThreadLocal<DataSourceType> contextHolder = new ThreadLocal<>();
     private static final AtomicInteger counter = new AtomicInteger(0);
 
-    public static void setDataSourceType(DataSourceType type) {
+    private static void setDataSourceType(DataSourceType type) {
         contextHolder.set(type);
     }
 
@@ -22,8 +22,12 @@ public class DataSourceContextHolder {
         return contextHolder.get();
     }
 
+    private static void clearThread() {
+        contextHolder.remove();
+    }
+
     public static void master() {
-        log.info("master datasource");
+        log.info("set master datasource");
         setDataSourceType(DataSourceType.master);
     }
 
@@ -44,7 +48,12 @@ public class DataSourceContextHolder {
      *     }
      */
     public static void slave() {
-        log.info("slave datasource");
+        log.info("set slave datasource");
         setDataSourceType(DataSourceType.slave);
+    }
+
+    public static void clear() {
+        log.info("clear {} thread", contextHolder.get());
+        clearThread();
     }
 }

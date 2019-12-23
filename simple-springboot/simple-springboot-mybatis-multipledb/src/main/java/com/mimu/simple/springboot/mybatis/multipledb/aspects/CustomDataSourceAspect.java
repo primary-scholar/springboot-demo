@@ -1,8 +1,9 @@
 package com.mimu.simple.springboot.mybatis.multipledb.aspects;
 
 import com.mimu.simple.springboot.mybatis.multipledb.utils.DataSourceContextHolder;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 /**
@@ -33,9 +34,12 @@ public class CustomDataSourceAspect {
     public void appSlavePointcut() {
     }
 
-    @Before(value = "appSlavePointcut()")
-    public void appSlaveDB() {
+    @Around(value = "appSlavePointcut()")
+    public Object appReadDB(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         DataSourceContextHolder.slave();
+        Object object = proceedingJoinPoint.proceed();
+        DataSourceContextHolder.clear();
+        return object;
     }
 
     @Pointcut(value = "@annotation(com.mimu.simple.springboot.mybatis.multipledb.annotations.CustomMaster)" +
@@ -47,9 +51,12 @@ public class CustomDataSourceAspect {
     public void appMasterPointcut() {
     }
 
-    @Before(value = "appMasterPointcut()")
-    public void appMasterDB() {
+    @Around(value = "appMasterPointcut()")
+    public Object appWriteDB(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         DataSourceContextHolder.master();
+        Object object = proceedingJoinPoint.proceed();
+        DataSourceContextHolder.clear();
+        return object;
     }
 
 }
