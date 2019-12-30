@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
  */
 
 /**
- * 如果使用 spring-META-INF-provider-annotation.xml 文件则需 在service 类上添加
- * META-INF @Service 注解
+ * 如果使用 spring-dubbo-provider.xml 文件则需 在service 类上添加
+ * dubbo @Service 注解
  */
 //@Service(interfaceClass = UserDataApi.class, timeout = 10)
 @Component

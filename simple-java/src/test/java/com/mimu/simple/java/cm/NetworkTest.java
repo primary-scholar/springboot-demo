@@ -8,7 +8,7 @@ import java.net.InetSocketAddress;
  */
 public class NetworkTest {
     public static void main(String[] args) {
-        while (true) {
+        /*while (true) {
             InetSocketAddress address = new InetSocketAddress("localhost", 9090);
             System.out.println(address.getAddress());
             try {
@@ -16,6 +16,7 @@ public class NetworkTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
+        System.out.println(6401417103018471523l%128);
     }
 }
