@@ -31,12 +31,14 @@ public class CustomDubboDataCenterRouter extends AbstractRouter {
         List<Invoker<T>> filters = new ArrayList<>();
         if (!CollectionUtils.isEmpty(invokers)) {
             String local = System.getProperty("server_ip");
-            String localPrefix = local.substring(0, getPointIndexWithSpecificOrdial(local, 2));
-            for (Invoker invoker : invokers) {
-                String host = invoker.getUrl().getHost();
-                String hostPrefix = host.substring(0, getPointIndexWithSpecificOrdial(host, 2));
-                if (localPrefix.equals(hostPrefix)) {
-                    filters.add(invoker);
+            if (StringUtils.isNotEmpty(local)){
+                String localPrefix = local.substring(0, getPointIndexWithSpecificOrdial(local, 2));
+                for (Invoker invoker : invokers) {
+                    String host = invoker.getUrl().getHost();
+                    String hostPrefix = host.substring(0, getPointIndexWithSpecificOrdial(host, 2));
+                    if (localPrefix.equals(hostPrefix)) {
+                        filters.add(invoker);
+                    }
                 }
             }
         }

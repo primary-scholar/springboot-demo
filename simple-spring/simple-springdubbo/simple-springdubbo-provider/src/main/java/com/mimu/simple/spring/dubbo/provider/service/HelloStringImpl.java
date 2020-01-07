@@ -28,4 +28,9 @@ public class HelloStringImpl implements HelloStringApi {
         log.info("data={}", build);
         return build;
     }
+
+    @Override
+    public String hello2(String name) {
+        return "hello2 method " + name;
+    }
 }

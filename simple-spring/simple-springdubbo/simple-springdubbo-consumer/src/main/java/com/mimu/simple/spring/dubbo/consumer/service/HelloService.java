@@ -37,4 +37,8 @@ public class HelloService {
             return null;
         }
     }
+
+    public String getHello2(String name) {
+        return helloStringApi.hello2(name);
+    }
 }

@@ -28,4 +28,10 @@ public class CommonController {
         log.info("helloInfo={}", name);
         return helloService.getHello(name);
     }
+
+    @RequestMapping(value = "/sdc/hello2.go", method = RequestMethod.GET)
+    public String getHello2(String name) {
+        log.info("helloInfo={}", name);
+        return helloService.getHello2(name);
+    }
 }

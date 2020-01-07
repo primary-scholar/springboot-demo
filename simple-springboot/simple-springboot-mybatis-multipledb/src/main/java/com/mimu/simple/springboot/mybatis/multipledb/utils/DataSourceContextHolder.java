@@ -41,9 +41,9 @@ public class DataSourceContextHolder {
      *             counter.set(-1);
      *         }
      *         if (index == 0) {
-     *             set(DBTypeEnum.SLAVE1);
+     *             set(DataSourceType.SLAVE1);
      *         }else {
-     *             set(DBTypeEnum.SLAVE2);
+     *             set(DataSourceType.SLAVE2);
      *         }
      *     }
      */

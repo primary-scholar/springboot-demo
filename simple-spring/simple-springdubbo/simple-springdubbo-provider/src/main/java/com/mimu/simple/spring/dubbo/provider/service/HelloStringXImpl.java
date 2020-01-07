@@ -25,4 +25,9 @@ public class HelloStringXImpl implements HelloStringApi {
         log.info("datax={}", build);
         return build;
     }
+
+    @Override
+    public String hello2(String name) {
+        return "hello2 " + name;
+    }
 }

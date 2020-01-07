@@ -9,4 +9,6 @@ import com.mimu.simple.spring.dubbo.model.HelloData;
  */
 public interface HelloStringApi {
     HelloData hello(String name) throws Exception;
+
+    String hello2(String name);
 }
