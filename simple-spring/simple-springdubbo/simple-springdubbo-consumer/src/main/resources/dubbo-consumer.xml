@@ -13,6 +13,6 @@
 
     <dubbo:consumer timeout="30000"/>
 
-    <dubbo:reference id="helloStringApi" interface="com.mimu.simple.spring.dubbo.api.HelloStringApi" retries="0" version="1.0.0"
-                     timeout="300000" check="false"/>
+    <dubbo:reference id="helloStringApi" interface="com.mimu.simple.spring.dubbo.api.HelloStringApi" retries="0"
+                     version="1.0.0" timeout="300000" check="false"/>
 </beans>
