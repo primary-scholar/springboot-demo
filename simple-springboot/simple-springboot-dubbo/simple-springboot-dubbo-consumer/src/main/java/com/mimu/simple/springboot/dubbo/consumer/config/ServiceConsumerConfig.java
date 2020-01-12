@@ -42,13 +42,4 @@ public class ServiceConsumerConfig {
         return registryConfig;
     }
 
-    @Bean
-    public ProtocolConfig protocolConfig(){
-        ProtocolConfig protocolConfig = new ProtocolConfig();
-        protocolConfig.setDispatcher("message");
-        protocolConfig.setThreads(200);
-        protocolConfig.setPort(20880);
-        return protocolConfig;
-    }
-
 }
