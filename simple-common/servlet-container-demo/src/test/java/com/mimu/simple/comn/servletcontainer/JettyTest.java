@@ -10,9 +10,9 @@ import org.eclipse.jetty.server.ServerConnector;
 public class JettyTest {
     public static void main(String[] args) throws Exception {
         int port = 9090;
-        Server server = new Server();
+        Server server = new Server(port);
         ServerConnector connector = new ServerConnector(server,1,1);
-        connector.setPort(port);
+        //connector.setPort(port);
         server.addConnector(connector);
         server.start();
     }
