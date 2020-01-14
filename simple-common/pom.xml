@@ -21,7 +21,7 @@
         <module>netty-demo</module>
         <module>kafka-demo</module>
         <module>grpc-demo</module>
-        <module>tomcat-demo</module>
+        <module>servlet-container-demo</module>
     </modules>
 
     <properties>

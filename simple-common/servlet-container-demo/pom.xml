@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mimu.simple.comn.tomcat</groupId>
-    <artifactId>tomcat-demo</artifactId>
+    <groupId>com.mimu.simple.comn.servletcontainer</groupId>
+    <artifactId>servlet-container-demo</artifactId>
 
-    <name>tomcat-demo</name>
+    <name>servlet-container-demo</name>
     <url>http://www.example.com</url>
 
     <properties>
@@ -24,8 +24,13 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
+
     </build>
 </project>
