@@ -16,6 +16,7 @@ public class TomcatTest {
         connector.setPort(port);
         tomcat.setPort(port);
         tomcat.setConnector(connector);
+        tomcat.getEngine().setBackgroundProcessorDelay(10);
         tomcat.start();
         tomcat.getServer().await();
     }
