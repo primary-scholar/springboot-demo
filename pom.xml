@@ -45,7 +45,7 @@
         <fastjson.version>1.2.47</fastjson.version>
         <jackson.version>2.9.10</jackson.version>
         <jackson.databind.version>2.9.10.1</jackson.databind.version>
-        <spring.version>5.1.8.RELEASE</spring.version>
+        <spring.version>5.2.3.RELEASE</spring.version>
         <aspectj.version>1.8.13</aspectj.version>
         <cglib.version>3.2.6</cglib.version>
         <netty.version>4.1.42.Final</netty.version>
