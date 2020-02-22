@@ -39,12 +39,12 @@ public class ServiceProviderConfig {
     @Bean
     public MonitorConfig monitorConfig() {
         MonitorConfig config = new MonitorConfig();
-        config.setProtocol("registry");
+        config.setProtocol("dubbo");
         return config;
     }
 
     @Bean
-    public ProtocolConfig protocolConfig(){
+    public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
         protocolConfig.setDispatcher("message");
         protocolConfig.setThreads(200);

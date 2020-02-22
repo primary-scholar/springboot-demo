@@ -1,10 +1,7 @@
 package com.mimu.simple.springboot.dubbo.consumer.config;
 
 import com.mimu.simple.springboot.dubbo.consumer.service.CommonService;
-import org.apache.dubbo.config.ApplicationConfig;
-import org.apache.dubbo.config.ConsumerConfig;
-import org.apache.dubbo.config.ProtocolConfig;
-import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.config.*;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -40,6 +37,13 @@ public class ServiceConsumerConfig {
         registryConfig.setAddress("zookeeper://localhost:2181");
         registryConfig.setClient("curator");
         return registryConfig;
+    }
+
+    @Bean
+    public MonitorConfig monitorConfig() {
+        MonitorConfig config = new MonitorConfig();
+        config.setProtocol("dubbo");
+        return config;
     }
 
 }
