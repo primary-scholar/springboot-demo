@@ -26,7 +26,7 @@ public class ServiceConsumerConfig {
     @Bean
     public ConsumerConfig consumerConfig() {
         ConsumerConfig consumerConfig = new ConsumerConfig();
-        consumerConfig.setTimeout(100000);
+        consumerConfig.setTimeout(10000000);
         consumerConfig.setRetries(0);
         return consumerConfig;
     }
@@ -34,7 +34,7 @@ public class ServiceConsumerConfig {
     @Bean
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setAddress("zookeeper://localhost:2181");
+        registryConfig.setAddress("zookeeper://192.168.0.102:2181");
         registryConfig.setClient("curator");
         return registryConfig;
     }

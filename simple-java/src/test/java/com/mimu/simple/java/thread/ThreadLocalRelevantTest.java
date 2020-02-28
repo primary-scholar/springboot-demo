@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class PoolThreadLocalTest {
+public class ThreadLocalRelevantTest {
 
     private static ThreadLocal<AtomicInteger> sequencer = ThreadLocal.withInitial(() -> new AtomicInteger(0));
 
@@ -59,6 +59,15 @@ public class PoolThreadLocalTest {
         executor.execute(new TaskSecond());
         executor.execute(new TaskSecond());
         executor.shutdown();
+    }
+
+
+    @Test
+    public void info2(){
+        new TaskFirst().run();
+        new TaskFirst().run();
+        new TaskSecond().run();
+        new TaskSecond().run();
     }
 
 }
