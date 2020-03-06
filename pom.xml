@@ -44,7 +44,7 @@
         <collections.version>4.1</collections.version>
         <fastjson.version>1.2.62</fastjson.version>
         <jackson.version>2.10.3</jackson.version>
-        <spring.version>5.2.3.RELEASE</spring.version>
+        <spring.version>5.2.4.RELEASE</spring.version>
         <aspectj.version>1.8.13</aspectj.version>
         <cglib.version>3.2.6</cglib.version>
         <netty.version>4.1.42.Final</netty.version>
