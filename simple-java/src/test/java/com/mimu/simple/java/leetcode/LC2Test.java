@@ -32,7 +32,8 @@ public class LC2Test {
         ListNode<Integer> second = new ListNode<>();
         second.addLast(5);
         second.addLast(6);
-        second.addLast(9);
+        second.addLast(4);
+        second.addLast(3);
         second.addLast(3);
 
         ListNode<Integer> result = caculate(first, second);
@@ -65,10 +66,12 @@ public class LC2Test {
         while (firstIterator.hasNext()) {
             int firstValue = firstIterator.next();
             result.addFirst(firstValue + adding);
+            adding=0;
         }
         while (secondIterator.hasNext()) {
             int secondValue = secondIterator.next();
             result.addFirst(secondValue + adding);
+            adding=0;
         }
         return result;
     }
