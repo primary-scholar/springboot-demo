@@ -57,7 +57,7 @@ public class TermTransactionServiceB {
         termData.setPid(5);
         termData.setTid(5);
         termRepository.save(termData);
-        throw new RuntimeException();
+        //throw new RuntimeException();
     }
 
 }
