@@ -19,7 +19,9 @@ public class TermTransactionServiceB {
 
     /** Propagation.REQUIRED
      * A.info1() B.info1() 处在同一个事务中
-     * 无论是 A.info1() 还是 B.info1() 中抛出异常 则 A,B 都会回滚
+     * 无论是 A.info1() B.info1() 中抛出异常 则 A,B都会回滚
+     * 但 如果后者抛异常，被前者捕获 则 事务本身会出现异常
+     * 因为：A,B 处在同一个事务中 B中事务要回滚，A中事务要提交
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void info1() {
@@ -57,7 +59,7 @@ public class TermTransactionServiceB {
         termData.setPid(5);
         termData.setTid(5);
         termRepository.save(termData);
-        //throw new RuntimeException();
+        throw new RuntimeException();
     }
 
 }

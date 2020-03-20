@@ -24,6 +24,8 @@ public class TermTransactionServiceA {
     /** Propagation.REQUIRED
      * A.info1() B.info1() 处在同一个事务中
      * 无论是 A.info1() B.info1() 中抛出异常 则 A,B都会回滚
+     * 但 如果后者抛异常，被前者捕获 则 事务本身会出现异常
+     * 因为：A,B 处在同一个事务中 B中事务要回滚，A中事务要提交
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void info1() {
@@ -31,8 +33,12 @@ public class TermTransactionServiceA {
         termData.setPid(4);
         termData.setTid(4);
         termRepository.save(termData);
-        termTransactionServiceB.info1();
-        throw new RuntimeException();
+        try {
+            termTransactionServiceB.info1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //throw new RuntimeException();
     }
 
     /** Propagation.REQUIRED 和 Propagation.REQUIRES_NEW 后者被嵌套 或者 Propagation.REQUIRES_NEW 相互嵌套
@@ -47,8 +53,12 @@ public class TermTransactionServiceA {
         termData.setPid(4);
         termData.setTid(4);
         termRepository.save(termData);
-        termTransactionServiceB.info2();
-        throw new RuntimeException();
+        try {
+            termTransactionServiceB.info2();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //throw new RuntimeException();
     }
 
     /** Propagation.REQUIRED 和 Propagation.NESTED 后者被嵌套
@@ -63,8 +73,12 @@ public class TermTransactionServiceA {
         termData.setPid(4);
         termData.setTid(4);
         termRepository.save(termData);
-        termTransactionServiceB.info3();
-        throw new RuntimeException();
+        try {
+            termTransactionServiceB.info3();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //throw new RuntimeException();
     }
 
 
