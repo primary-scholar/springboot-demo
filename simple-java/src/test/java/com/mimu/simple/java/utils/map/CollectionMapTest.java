@@ -90,7 +90,7 @@ public class CollectionMapTest {
      *
      *
      * HashMap 扩容过程
-     * 第一种：使用默认构造方法初始化HashMap。HashMap在一开始初始化的时候会返回一个空的table，并且thershold为0。因此第一次扩容的容量为默认值DEFAULT_INITIAL_CAPACITY也就是16。同时threshold = DEFAULT_INITIAL_CAPACITY * DEFAULT_LOAD_FACTOR = 12。
+     * 第一种：使用默认构造方法初始化HashMap。HashMap在一开始初始化的时候会返回一个空的table，并且threshold为0。因此第一次扩容的容量为默认值DEFAULT_INITIAL_CAPACITY也就是16。同时threshold = DEFAULT_INITIAL_CAPACITY * DEFAULT_LOAD_FACTOR = 12。
      * 第二种：指定初始容量的构造方法初始化HashMap。则threshold为min(2^n,capacity)并且2^n>指定的capacity，接着threshold = 当前的容量（threshold） * DEFAULT_LOAD_FACTOR。
      * 第三种：HashMap不是第一次扩容。如果HashMap已经扩容过的话，那么每次table的容量以及threshold量为原有的两倍。
      *
@@ -219,7 +219,7 @@ public class CollectionMapTest {
      *2.线程安全 使用 cas 和 加锁的方式 进行并发控制
      *
      * ConcurrentHashMap.put() 过程
-     * 1、判断Node[]数组是否初始化，没有则进行初始化操作
+     * 1、判断Node[]数组是否初始化，没有则进行初始化操作 初始化过程 有 cas 操作
      * 2、通过hash定位数组的索引坐标，是否有Node节点，如果没有则使用CAS进行添加（链表的头节点），添加失败则进入下次循环。
      * 3、检查到内部正在扩容，就帮助它一块扩容。
      * 4、如果头节点！=null，则使用synchronized锁住头节点元素（链表/红黑树的头元素）。如果是Node（链表结构）则执行链表的添加操作；如果是TreeNode（树型结构）则执行树添加操作。
