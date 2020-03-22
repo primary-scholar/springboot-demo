@@ -64,6 +64,7 @@
         <archaius.zookeeper.version>0.5.12</archaius.zookeeper.version>
         <commons.configuration.version>1.10</commons.configuration.version>
         <jedis.version>2.9.0</jedis.version>
+        <redisson.version>3.12.2</redisson.version>
         <skywalking.version>6.1.0</skywalking.version>
         <elasticsearch.version>6.2.4</elasticsearch.version>
 
@@ -173,6 +174,11 @@
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
