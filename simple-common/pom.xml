@@ -22,6 +22,7 @@
         <module>kafka-demo</module>
         <module>grpc-demo</module>
         <module>servlet-container-demo</module>
+        <module>redis-demo</module>
     </modules>
 
     <properties>
