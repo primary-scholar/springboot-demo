@@ -22,10 +22,10 @@ public class CommonRepository {
      * 异常退出
      * <p>
      * hystrix command execute 默认使用线程池方式执行，根据 maxQueueSize 来生成 blockingQueue，
-     * maxQueueSize>0，为linkBlockingQueue，<0 为SynchrousQueue，默认为后者，
+     * maxQueueSize>0，为linkBlockingQueue，<0 为SynchronousQueue，默认为后者，
      * fallback execute 默认使用信号量的方式执行，可以使用
      * HystrixPropertiesManager.FALLBACK_ISOLATION_SEMAPHORE_MAX_CONCURRENT_REQUESTS
-     * 来指定 fallback 的并发量
+     * 来指定 fallback 的并发量 如果走 fallback 逻辑的qps 超过了指定的 并发量 则 fallback 也会被拒绝而抛异常
      *
      * @param s
      * @return
