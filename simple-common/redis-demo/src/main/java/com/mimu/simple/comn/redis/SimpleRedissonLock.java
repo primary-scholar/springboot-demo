@@ -4,7 +4,6 @@ import org.redisson.Redisson;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
-import org.redisson.config.SingleServerConfig;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,13 +11,19 @@ public class SimpleRedissonLock {
 
     private static final RedissonClient redissonClient;
 
+    /**
+     *  redisson 支持redis 节点模式有：1.集群模式; 2. 云托管模式; 3.单节点模式; 4.哨兵模式
+     *  5.主从模式
+     */
     static {
         Config config = new Config();
-        SingleServerConfig serverConfig = config.useSingleServer()
-                .setAddress("locathost:2181")
-                .setTimeout(3000)
-                .setConnectionPoolSize(5)
-                .setConnectionMinimumIdleSize(5);
+        config.useSingleServer()
+                .setAddress("locathost:6379")
+                .setSubscriptionConnectionMinimumIdleSize(1)
+                .setSubscriptionConnectionPoolSize(50)
+                .setConnectionMinimumIdleSize(32)
+                .setConnectionPoolSize(64)
+                .setTimeout(10000);
         redissonClient = Redisson.create(config);
     }
 
