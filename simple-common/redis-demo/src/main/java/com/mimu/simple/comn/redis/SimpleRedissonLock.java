@@ -18,7 +18,7 @@ public class SimpleRedissonLock {
     static {
         Config config = new Config();
         config.useSingleServer()
-                .setAddress("locathost:6379")
+                .setAddress("redis://localhost:6379")
                 .setSubscriptionConnectionMinimumIdleSize(1)
                 .setSubscriptionConnectionPoolSize(50)
                 .setConnectionMinimumIdleSize(32)
