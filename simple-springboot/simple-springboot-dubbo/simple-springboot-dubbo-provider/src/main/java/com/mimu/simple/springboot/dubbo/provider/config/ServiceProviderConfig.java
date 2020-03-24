@@ -3,8 +3,12 @@ package com.mimu.simple.springboot.dubbo.provider.config;
 import com.mimu.simple.springboot.dubbo.provider.service.UserDataApiImpl;
 import org.apache.dubbo.config.*;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
+import org.springframework.boot.context.annotation.Configurations;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * author: mimu
@@ -46,6 +50,9 @@ public class ServiceProviderConfig {
     @Bean
     public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
+        Map paramater = new HashMap<String,String>();
+        paramater.put("scope", "remote");
+        protocolConfig.setParameters(paramater);
         protocolConfig.setName("dubbo");
         protocolConfig.setDispatcher("message");
         protocolConfig.setThreads(200);
