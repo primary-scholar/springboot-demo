@@ -46,6 +46,7 @@ public class ServiceProviderConfig {
     @Bean
     public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
+        protocolConfig.setName("dubbo");
         protocolConfig.setDispatcher("message");
         protocolConfig.setThreads(200);
         protocolConfig.setPort(20880);
