@@ -48,6 +48,7 @@ public class ServiceProviderConfig {
     }
 
     @Bean
+    @SuppressWarnings("unchecked")
     public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
         Map paramater = new HashMap<String,String>();
