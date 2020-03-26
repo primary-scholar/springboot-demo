@@ -2,12 +2,9 @@ package com.mimu.simple.comn.redis;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
-import static org.junit.Assert.*;
 
 /**
  author: mimu
@@ -18,6 +15,12 @@ public class SimpleRedissonLockTest {
 
     Executor executor = Executors.newFixedThreadPool(2);
     String lockKey = "lockKey";
+
+    @Test
+    public void unloak(){
+        SimpleRedissonLock.lock(lockKey);
+        SimpleRedissonLock.unlock(lockKey);
+    }
 
     @Test
     public void tryLock() {
@@ -47,7 +50,6 @@ public class SimpleRedissonLockTest {
         @Override
         public void run() {
             boolean b = SimpleRedissonLock.tryLock(lockKey, waiteTime, leaseTime);
-            System.out.println(b);
             log.info("get lock result={}", b);
         }
     }
