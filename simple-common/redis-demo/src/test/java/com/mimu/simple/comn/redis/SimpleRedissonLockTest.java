@@ -23,6 +23,12 @@ public class SimpleRedissonLockTest {
     }
 
     @Test
+    public void info(){
+        SimpleRedissonLock.tryLock(lockKey,1,3);
+        SimpleRedissonLock.unlock(lockKey);
+    }
+
+    @Test
     public void tryLock() {
         RedissonLockEvent event = new RedissonLockEvent(lockKey,1,3);
         RedissonLockEvent event1 = new RedissonLockEvent(lockKey,1,3);
