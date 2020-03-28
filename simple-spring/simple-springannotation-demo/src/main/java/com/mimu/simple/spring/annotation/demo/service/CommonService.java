@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Set;
+
 /**
  * author: mimu
  * date: 2019/1/11
@@ -81,6 +84,11 @@ public class CommonService {
             throw new RuntimeException();
         }
         return update;
+    }
+
+    public List<TermData> listInfo(Set<String> termIdSet) {
+        String join = String.join("','", termIdSet);
+        return termRepository.list(join);
     }
 
 }

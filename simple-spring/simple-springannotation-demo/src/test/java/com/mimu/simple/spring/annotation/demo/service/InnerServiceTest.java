@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ApplicationConfig.class)
@@ -45,6 +49,18 @@ public class InnerServiceTest {
         commonService.updateInfo(personData, termData);
         Assert.assertTrue(commonService.updateInfo(personData, termData));
     }
+
+    @Test
+    public void list() {
+        Set<String> termIdSet = new HashSet<>();
+        termIdSet.add(String.valueOf(1));
+        termIdSet.add(String.valueOf(2));
+        List<TermData> termData = commonService.listInfo(termIdSet);
+        for (TermData termDatum : termData) {
+            System.out.println(termDatum);
+        }
+    }
+
 
     @Test
     public void info() {

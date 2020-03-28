@@ -23,4 +23,12 @@ public class TermData {
     public void setTid(int tid) {
         this.tid = tid;
     }
+
+    @Override
+    public String toString() {
+        return "TermData{" +
+                "pid=" + pid +
+                ", tid=" + tid +
+                '}';
+    }
 }
