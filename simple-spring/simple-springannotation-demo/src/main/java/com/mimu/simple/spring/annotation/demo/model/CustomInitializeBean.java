@@ -1,5 +1,6 @@
 package com.mimu.simple.spring.annotation.demo.model;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +16,11 @@ import org.springframework.stereotype.Component;
  *  that is to say only the bean instance was instantiate by spring the method afterPropertiesSet
  *  will be invoked
  */
+@Slf4j
 @Component
-public class CunstomInitlizBean implements InitializingBean {
+public class CustomInitializeBean implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("method: afterPropertiesSet invoked");
+        log.info("method: afterPropertiesSet invoked");
     }
 }

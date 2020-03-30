@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Set;
 
@@ -24,6 +25,11 @@ public class CommonService {
 
     private PeopleRepository peopleRepository;
     private TermRepository termRepository;
+
+    @PostConstruct
+    public void info1() {
+        System.out.println("method... info1()");
+    }
 
     @Autowired
     public void setPeopleRepository(PeopleRepository peopleRepository) {
