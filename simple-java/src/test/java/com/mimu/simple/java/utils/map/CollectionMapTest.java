@@ -2,10 +2,7 @@ package com.mimu.simple.java.utils.map;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -249,6 +246,44 @@ public class CollectionMapTest {
             System.out.println();
         }
         System.out.println();
+    }
+
+
+    /**
+     * TreeMap 内部使用 Entry 节点,由Entry 节点组成红黑数进行数据存储，每次进行数据的插入和删除操作后，
+     * 都需要对红黑树结构进行 转换(左旋，右旋等)
+     * static final class Entry<K,V> implements Map.Entry<K,V> {
+     *         K key;
+     *         V value;
+     *         Entry<K,V> left;
+     *         Entry<K,V> right;
+     *         Entry<K,V> parent;
+     *         boolean color = BLACK;
+     *
+     *
+     *         Entry(K key, V value, Entry<K,V> parent) {
+     *             this.key = key;
+     *             this.value = value;
+     *             this.parent = parent;
+     *         }
+     *
+     * }
+     *
+     *特点如下
+     *1.容量不限制
+     *2.有序集合
+     *3.插入元素, key:不可为null;value:可为null key 不可重复，重复即覆盖
+     *4.线程不安全
+     */
+    @Test
+    public void TreeMapTest() {
+        TreeMap<Integer,String> treeMap = new TreeMap<>();
+        treeMap.put(1,"1");
+        treeMap.put(2,"2");
+        treeMap.put(3,"3");
+        treeMap.put(4,"4");
+        treeMap.put(5,"5");
+        System.out.println(treeMap);
     }
 
 }
