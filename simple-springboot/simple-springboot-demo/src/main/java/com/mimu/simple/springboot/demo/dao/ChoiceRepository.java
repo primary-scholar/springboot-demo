@@ -27,7 +27,7 @@ public class ChoiceRepository {
     }
 
     public List<ChoiceInfo> listChoiceInfo() {
-        String sql = "select * from choice";
+        String sql = "select * from choice_info";
         List<ChoiceInfo> choiceInfoList = userInfoJdbcTemplate.query(sql, new ChoiceInfoMapper());
         return choiceInfoList;
     }

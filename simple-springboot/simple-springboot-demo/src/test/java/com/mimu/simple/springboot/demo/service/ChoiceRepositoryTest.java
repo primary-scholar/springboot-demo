@@ -32,35 +32,35 @@ public class ChoiceRepositoryTest {
             ChoiceItem itemA = new ChoiceItem();
             itemA.setItemId(choiceInfo.getId());
             itemA.setItemKey(item[(++index) % 4]);
-            itemA.setItemValue(choiceInfo.getCa());
+            itemA.setItemValue(choiceInfo.getCa().trim());
             itemA.setItemType(1);
             choiceRepository.addChoiceItem(itemA);
 
             ChoiceItem itemB = new ChoiceItem();
             itemB.setItemId(choiceInfo.getId());
             itemB.setItemKey(item[(++index) % 4]);
-            itemB.setItemValue(choiceInfo.getCb());
+            itemB.setItemValue(choiceInfo.getCb().trim());
             itemB.setItemType(1);
             choiceRepository.addChoiceItem(itemB);
 
             ChoiceItem itemC = new ChoiceItem();
             itemC.setItemId(choiceInfo.getId());
             itemC.setItemKey(item[(++index) % 4]);
-            itemC.setItemValue(choiceInfo.getCc());
+            itemC.setItemValue(choiceInfo.getCc().trim());
             itemC.setItemType(1);
             choiceRepository.addChoiceItem(itemC);
 
             ChoiceItem itemD = new ChoiceItem();
             itemD.setItemId(choiceInfo.getId());
             itemD.setItemKey(item[(++index) % 4]);
-            itemD.setItemValue(choiceInfo.getCd());
+            itemD.setItemValue(choiceInfo.getCd().trim());
             itemD.setItemType(2);
             choiceRepository.addChoiceItem(itemD);
 
             ChoiceItem itemE = new ChoiceItem();
             itemE.setItemId(choiceInfo.getId());
             itemE.setItemKey("R");
-            itemE.setItemValue(choiceInfo.getCe());
+            itemE.setItemValue(choiceInfo.getCe().trim());
             itemE.setItemType(3);
             choiceRepository.addChoiceItem(itemE);
 
