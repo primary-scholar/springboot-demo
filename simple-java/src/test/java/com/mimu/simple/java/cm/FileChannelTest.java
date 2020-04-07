@@ -70,4 +70,16 @@ public class FileChannelTest {
             System.out.println(data.get());
         }
     }
+
+    @Test
+    public void info3() throws IOException {
+        File file = new File("a.txt");
+        System.out.println(file.getAbsoluteFile());
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String s = reader.readLine();
+        for (int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            System.out.println(Integer.toHexString(c));
+        }
+    }
 }
