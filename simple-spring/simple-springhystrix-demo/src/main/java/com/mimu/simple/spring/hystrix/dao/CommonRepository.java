@@ -18,7 +18,7 @@ public class CommonRepository {
 
     /**
      * 在HystrixCommand实现的run()方法中跑出异常时，除了HystrixBadRequestException之外，
-     * 其他异常均会被Hystrix认为命令执行失败并处罚服务降级的处理逻辑,下面的方法抛出的异常会导致主线程
+     * 其他异常均会被Hystrix认为命令执行失败并促发服务降级的处理逻辑,下面的方法抛出的异常会导致主线程
      * 异常退出
      * <p>
      * hystrix command execute 默认使用线程池方式执行，根据 maxQueueSize 来生成 blockingQueue，
