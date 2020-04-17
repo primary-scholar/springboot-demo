@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.params.SetParams;
 
 import java.util.Collections;
 
@@ -16,8 +17,6 @@ import java.util.Collections;
 public class SimpleRedisLock {
     private static final Logger logger = LoggerFactory.getLogger(SimpleRedisLock.class);
     private static final String LOCK_SUCCESS = "OK";
-    private static final String SET_IF_NOT_EXIST = "NX";
-    private static final String SET_WITH_EXPIRE_TIME = "PX";
     private static final Long RELEASE_SUCCESS = 1L;
     private static final String requestIdKey = "request_key";
     private static JedisPool jedisPool;
@@ -36,7 +35,8 @@ public class SimpleRedisLock {
     public static boolean tryGetDistributedLock(String lockKey, String requestId, int expireTime) {
         Jedis jedis = getJedis();
         try {
-            String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
+            SetParams params = SetParams.setParams();
+            String result = jedis.set(lockKey, requestId, params.nx().px(expireTime));
             if (LOCK_SUCCESS.equals(result)) {
                 return true;
             }
