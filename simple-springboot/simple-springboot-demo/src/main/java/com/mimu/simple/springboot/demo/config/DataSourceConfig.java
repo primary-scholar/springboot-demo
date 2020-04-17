@@ -20,7 +20,7 @@ import javax.sql.DataSource;
  */
 @Slf4j
 @Configuration
-@EnableTransactionManagement
+@EnableTransactionManagement(proxyTargetClass = true)
 public class DataSourceConfig {
 
     /**

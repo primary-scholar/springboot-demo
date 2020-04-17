@@ -2,6 +2,7 @@ package com.mimu.simple.springboot.demo.service;
 
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TermInfoService {
 
-    @Cacheable
+    @Cacheable()
     public void getInfo() {
 
     }
@@ -19,5 +20,9 @@ public class TermInfoService {
     @CachePut
     public boolean updateInfo() {
         return false;
+    }
+
+    @Caching(cacheable = {}, put = {})
+    public void info() {
     }
 }
