@@ -81,14 +81,18 @@ public class JedisMultiThreadTest {
      * <p>
      * <p>
      * 1. getResource()
+     * <p>
      * 1.1 从 GenericObjectPool.idleObject 中获取空闲 DefaultPoolObject<Jedis or ShardedJedis>
      * 1.2 若 1.1 中没有空闲的 DefaultPoolObject 进行如下操作
      * 1.2.1 若 newCreateCount < jedispoolconfig 中指定的 maxTotal(JedisPoolDemo 中 maxTotal =2 )
      * 则 新建 DefaultPoolObject factory.makeObject() factory(JedisFactory or ShardedJedisFactroy)
      * 1.2.2 若 newCreateCount > jedispoolconfig 中指定的 maxTotal 则 不创建 并 返回空
      * 1.3 拿到 DefaultPoolObject 后 返回 poolObject.getObject() 该 object 为 Jedis or ShardJedis
+     * <p>
      * 2. execute command
+     * <p>
      * 3 jedis.close()
+     * <p>
      * 3.1 关闭 transaction,pipeline,重置 connection 状态
      * 3.2 把 该 DefaultPoolObject 放入到 idleObject 中
      */
