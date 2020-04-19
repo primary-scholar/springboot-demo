@@ -24,6 +24,9 @@ public class JedisMultiThreadTest {
         service.shutdown();
     }
 
+    /**
+     * 这里 循环 3 次 而 JedisPoolDemo 中 maxTotal =2 所以 会 抛异常
+     */
     public void info1() {
         for (int i = 0; i < 3; i++) {
             service.execute(new JedisPoolDemo.PoolSetEvent("s" + i, "v" + 1));
