@@ -8,6 +8,7 @@ import com.mimu.simple.springboot.demo.request.UserInfoRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +46,7 @@ public class CommonService {
         return addTermInfo1(pid, termId) && addUserInfo(pid, nickName);
     }
 
+    @Cacheable
     public UserInfo getUserInfo(UserInfoRequest request) {
         UserInfo userInfo = userInfoRepository.getUserInfo(request.getPid());
         logger.info("{}", userInfo);
