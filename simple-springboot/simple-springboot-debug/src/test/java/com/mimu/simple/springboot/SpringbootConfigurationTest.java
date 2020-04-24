@@ -1,9 +1,10 @@
 package com.mimu.simple.springboot;
 
-import com.mimu.simple.springboot.configurations.ConfigurationProject;
+import com.mimu.simple.springboot.configurations.ModelDependency;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -11,15 +12,14 @@ import org.springframework.test.context.junit4.SpringRunner;
  date: 2020/4/22
  */
 @RunWith(SpringRunner.class)
+@SpringBootTest
 public class SpringbootConfigurationTest {
+
+    @Autowired
+    private ModelDependency modelDependency;
 
     @Test
     public void info() {
-        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext();
-        configApplicationContext.register(ConfigurationProject.class);
-        configApplicationContext.refresh();
-        for (String s : configApplicationContext.getBeanDefinitionNames()) {
-            System.out.println(configApplicationContext.getBean(s).toString());
-        }
+        System.out.println(modelDependency.getModelProperty());
     }
 }
