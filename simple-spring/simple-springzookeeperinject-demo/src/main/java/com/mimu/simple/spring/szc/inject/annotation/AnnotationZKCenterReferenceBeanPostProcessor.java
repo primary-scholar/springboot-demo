@@ -4,6 +4,7 @@ import com.mimu.simple.spring.szc.inject.ZKConfigCenter;
 import com.netflix.config.DynamicStringProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.BeanCreationException;
@@ -11,19 +12,19 @@ import org.springframework.beans.factory.annotation.InjectionMetadata;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
 import org.springframework.beans.factory.support.MergedBeanDefinitionPostProcessor;
 import org.springframework.beans.factory.support.RootBeanDefinition;
+import org.springframework.core.BridgeMethodResolver;
 import org.springframework.core.PriorityOrdered;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.MergedAnnotation;
 import org.springframework.core.annotation.MergedAnnotations;
+import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.beans.PropertyDescriptor;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Field;
-import java.lang.reflect.Member;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -35,7 +36,8 @@ public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationA
     private static final Logger logger = LoggerFactory.getLogger(AnnotationZKCenterReferenceBeanPostProcessor.class);
 
     private final Set<Class<? extends Annotation>> referenceAnnotationType = new LinkedHashSet<>(1);
-    private String requeireParameterName = "key";
+    private String requireInjectParameterName = "key";
+    private String requireInjectDefaultValue = "value";
 
     private final Map<String, InjectionMetadata> injectionMetadataCache = new ConcurrentHashMap<>(256);
 
@@ -94,16 +96,39 @@ public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationA
         do {
             final List<InjectionMetadata.InjectedElement> currElements = new ArrayList<>();
             ReflectionUtils.doWithLocalFields(targetClass, field -> {
-                MergedAnnotation<?> ann = findReferencedAnnotation(field);
-                if (ann != null) {
+                MergedAnnotation<?> referencedAnnotation = findReferencedAnnotation(field);
+                if (referencedAnnotation != null) {
                     if (Modifier.isStatic(field.getModifiers())) {
                         if (logger.isInfoEnabled()) {
-                            logger.info("ZKReference annotation is not supported on static fileds:" + field);
+                            logger.info("ZKReference annotation is not supported on static fields:" + field);
                         }
                         return;
                     }
-                    boolean required = determineRequiredStatus(ann);
-                    currElements.add(new ZKReferencedElement(field, ann, required));
+                    boolean required = determineRequiredStatus(referencedAnnotation);
+                    currElements.add(new ZKReferencedFieldElement(field, referencedAnnotation));
+                }
+            });
+            ReflectionUtils.doWithLocalMethods(targetClass, method -> {
+                Method bridgedMethod = BridgeMethodResolver.findBridgedMethod(method);
+                if (!BridgeMethodResolver.isVisibilityBridgeMethodPair(method, bridgedMethod)) {
+                    return;
+                }
+                MergedAnnotation<?> referencedAnnotation = findReferencedAnnotation(bridgedMethod);
+                if (referencedAnnotation != null && method.equals(ClassUtils.getMostSpecificMethod(method, clazz))) {
+                    if (Modifier.isStatic(method.getModifiers())) {
+                        if (logger.isInfoEnabled()) {
+                            logger.info("ZKReference annotation is not supported on static methods:" + method);
+                        }
+                        return;
+                    }
+                    if (method.getParameterCount() == 0) {
+                        if (logger.isInfoEnabled()) {
+                            logger.info("ZKReference annotation should only be used on methods with parameters:" + method);
+                        }
+                    }
+                    boolean requiredStatus = determineRequiredStatus(referencedAnnotation);
+                    PropertyDescriptor pd = BeanUtils.findPropertyForMethod(bridgedMethod, clazz);
+                    currElements.add(new ZKReferenceMethodElement(method, referencedAnnotation, pd));
                 }
             });
             elements.addAll(0, currElements);
@@ -120,7 +145,7 @@ public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationA
     }
 
     private boolean determineRequiredStatus(AnnotationAttributes ann) {
-        return StringUtils.hasLength(ann.getString(requeireParameterName));
+        return StringUtils.hasLength(ann.getString(requireInjectParameterName));
     }
 
     private MergedAnnotation<?> findReferencedAnnotation(AccessibleObject ao) {
@@ -134,20 +159,20 @@ public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationA
         return null;
     }
 
-    private class ZKReferencedElement extends InjectionMetadata.InjectedElement {
+    private class ZKReferencedFieldElement extends InjectionMetadata.InjectedElement {
         private final MergedAnnotation<?> annotation;
         private final AnnotationAttributes annotationAttributes;
         private final String key;
         private final String defaultValue;
         private volatile DynamicStringProperty value;
 
-        protected ZKReferencedElement(Member member, MergedAnnotation<?> annotation, boolean required) {
+        protected ZKReferencedFieldElement(Member member, MergedAnnotation<?> annotation) {
             super(member, null);
             this.annotation = annotation;
             this.annotationAttributes = this.annotation.asMap(mergedAnnotation ->
                     new AnnotationAttributes(mergedAnnotation.getType()));
-            this.key = this.annotationAttributes.getString("key");
-            this.defaultValue = this.annotationAttributes.getString("value");
+            this.key = this.annotationAttributes.getString(requireInjectParameterName);
+            this.defaultValue = this.annotationAttributes.getString(requireInjectDefaultValue);
             this.value = ZKConfigCenter.getString(key, defaultValue);
         }
 
@@ -157,6 +182,34 @@ public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationA
                 Field field = (Field) this.member;
                 ReflectionUtils.makeAccessible(field);
                 field.set(target, value);
+            }
+        }
+    }
+
+    private class ZKReferenceMethodElement extends InjectionMetadata.InjectedElement {
+
+        private final MergedAnnotation<?> annotation;
+        private final AnnotationAttributes annotationAttributes;
+        private final String key;
+        private final String defaultValue;
+        private volatile DynamicStringProperty value;
+
+        protected ZKReferenceMethodElement(Member member, MergedAnnotation<?> annotation, PropertyDescriptor pd) {
+            super(member, null);
+            this.annotation = annotation;
+            this.annotationAttributes = this.annotation.asMap(mergedAnnotation ->
+                    new AnnotationAttributes(mergedAnnotation.getType()));
+            this.key = this.annotationAttributes.getString(requireInjectParameterName);
+            this.defaultValue = this.annotationAttributes.getString(requireInjectDefaultValue);
+            this.value = ZKConfigCenter.getString(key, defaultValue);
+        }
+
+        @Override
+        protected void inject(Object target, String requestingBeanName, PropertyValues pvs) throws Throwable {
+            if (value != null) {
+                Method method = (Method) this.member;
+                ReflectionUtils.makeAccessible(method);
+                method.invoke(target, value);
             }
         }
     }

@@ -11,11 +11,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class ZKPropertyModel {
 
-    @ZKReference(key = "abcd", value = "asd")
+    @ZKReference(key = "abc", value = "asd")
     private DynamicStringProperty age;
 
-    @ZKReference(key = "", value = "")
     private DynamicStringProperty num;
+
+    @ZKReference(key = "abc", value = "asd")
+    public void setNum(DynamicStringProperty num) {
+        this.num = num;
+    }
 
     public String getAge() {
         return age.get();
