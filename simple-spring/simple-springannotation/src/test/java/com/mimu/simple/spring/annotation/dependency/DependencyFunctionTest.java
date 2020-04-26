@@ -12,5 +12,6 @@ public class DependencyFunctionTest {
     public void info() {
         AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(DependencyConfig.class);
         System.out.println(configApplicationContext.getBean(ObjectA.class));
+        System.out.println(configApplicationContext.getBean(ObjectB.class));
     }
 }

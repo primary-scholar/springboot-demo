@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ObjectA {
-    @Autowired
+    //@Autowired
     private DependencyA dependencyA;
     private DependencyB dependencyB;
 
