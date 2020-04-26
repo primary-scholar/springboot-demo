@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject;
+package com.mimu.simple.spring.szc.inject.test.annotation;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

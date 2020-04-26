@@ -1,5 +1,6 @@
 package com.mimu.simple.spring.szc.inject.annotation;
 
+import com.mimu.simple.spring.szc.inject.annotation.support.AnnotationZKCenterReferenceBeanPostProcessor;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

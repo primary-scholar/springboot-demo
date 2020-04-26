@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject;
+package com.mimu.simple.spring.szc.inject.test.annotation;
 
 import com.mimu.simple.spring.szc.inject.annotation.EnableZKCenter;
 import org.springframework.context.annotation.ComponentScan;

@@ -5,12 +5,20 @@ package com.mimu.simple.spring.file.model;
  * date: 2019/6/1
  */
 public class ObjectA {
-    private int id;
+    private long id;
     private String desc;
     private String aName;
     private ObjectAFieldFirst fieldFirst;
     private ObjectAFieldSecondExtendsObjectBFieldSecond fieldSecond;
     private ObjectA.InnerClass innerClass;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getaName() {
         return aName;
