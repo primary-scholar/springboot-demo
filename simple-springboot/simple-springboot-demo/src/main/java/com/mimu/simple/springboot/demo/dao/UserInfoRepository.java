@@ -26,7 +26,7 @@ public class UserInfoRepository {
     public UserInfo getUserInfo(long pid) {
         String sql = "select * from user_info where person_id=?";
         List<UserInfo> userInfoList = userInfoJdbcTemplate.query(sql, new UserInfoMapper(), pid);
-        return userInfoList.isEmpty() ? UserInfo.builder().build() : userInfoList.get(0);
+        return userInfoList.isEmpty() ? new UserInfo() : userInfoList.get(0);
     }
 
     public boolean addUserInfo(long pid, String nickName) {
@@ -43,11 +43,11 @@ public class UserInfoRepository {
 
         @Override
         public UserInfo mapRow(ResultSet resultSet, int i) throws SQLException {
-            return UserInfo.builder()
-                    .id(resultSet.getInt("id"))
-                    .personId(resultSet.getInt("person_id"))
-                    .personName(resultSet.getString("person_name"))
-                    .build();
+            UserInfo userInfo = new UserInfo();
+            userInfo.setId(resultSet.getInt("id"));
+            userInfo.setPersonId(resultSet.getInt("person_id"));
+            userInfo.setPersonName(resultSet.getString("person_name"));
+            return userInfo;
         }
     }
 }

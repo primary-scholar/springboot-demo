@@ -5,8 +5,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
-@Builder
 public class UserInfo implements Serializable {
     private Integer id;
 
