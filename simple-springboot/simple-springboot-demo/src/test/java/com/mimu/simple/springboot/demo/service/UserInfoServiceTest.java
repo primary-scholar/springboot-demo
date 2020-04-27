@@ -1,13 +1,11 @@
 package com.mimu.simple.springboot.demo.service;
 
-import com.mimu.simple.springboot.demo.request.UserInfoRequest;
+import com.mimu.simple.springboot.demo.model.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 /**
  author: mimu
@@ -22,16 +20,15 @@ public class UserInfoServiceTest {
 
     @Test
     public void getUserInfo() {
-        UserInfoRequest userInfoRequest = new UserInfoRequest();
-        userInfoRequest.setPid(1);
-        userInfoRequest.setCid(2);
-        while (true) {
-            userInfoService.getUserInfo(userInfoRequest);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        UserInfo userInfo1 = userInfoService.getUserInfoCacheableEquivalent(1);
+        System.out.println(userInfo1);
+    }
+
+    @Test
+    public void updateInfo(){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setPersonId(1);
+        userInfo.setPersonName("123");
+        userInfoService.updateUser(userInfo);
     }
 }

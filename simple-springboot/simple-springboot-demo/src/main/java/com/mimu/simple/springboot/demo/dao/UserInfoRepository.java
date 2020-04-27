@@ -34,9 +34,19 @@ public class UserInfoRepository {
         return userInfoJdbcTemplate.update(sql, pid, nickName) > 0;
     }
 
+    public boolean deleteUserInfo(long pid) {
+        String sql = "delete from user_info where person_id=?";
+        return userInfoJdbcTemplate.update(sql, pid) > 0;
+    }
+
     public boolean addTermInfo(long pid, int termId) {
         String sql = "insert into term_info (`term_id`, `person_id`) values (?,?)";
         return userInfoJdbcTemplate.update(sql, termId, pid) > 0;
+    }
+
+    public boolean updateUserInfo(UserInfo userInfo) {
+        String sql = "update user_info set person_name=? where person_id=?";
+        return userInfoJdbcTemplate.update(sql, userInfo.getPersonName(), userInfo.getPersonId()) > 0;
     }
 
     public class UserInfoMapper implements RowMapper<UserInfo> {
