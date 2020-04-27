@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Import;
  * date: 2019/10/9
  */
 @Configuration
-@Import({DataSourceConfig.class, CustomAdditionConfig.class})
+@Import({DataSourceConfig.class, CustomAdditionConfig.class, RedisConfig.class})
 public class ApplicationConfig {
 }

@@ -1,8 +1,5 @@
 package com.mimu.simple.springboot.demo.model;
 
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 
 public class UserInfo implements Serializable {
@@ -36,5 +33,14 @@ public class UserInfo implements Serializable {
 
     public void setPersonName(String personName) {
         this.personName = personName == null ? null : personName.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", personId=" + personId +
+                ", personName='" + personName + '\'' +
+                '}';
     }
 }
