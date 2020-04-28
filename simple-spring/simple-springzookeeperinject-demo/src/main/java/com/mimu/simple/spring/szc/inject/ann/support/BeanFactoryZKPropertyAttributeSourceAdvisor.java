@@ -9,15 +9,15 @@ import org.springframework.aop.support.AbstractBeanFactoryPointcutAdvisor;
  */
 public class BeanFactoryZKPropertyAttributeSourceAdvisor extends AbstractBeanFactoryPointcutAdvisor {
 
-    private ZKPropertyArrtibuteSource zkPropertyArrtibuteSource;
+    private ZKPropertyAttributeSource zkPropertyAttributeSource;
 
     @Override
     public Pointcut getPointcut() {
         return null;
     }
 
-    public void setZkPropertyArrtibuteSource(ZKPropertyArrtibuteSource zkPropertyArrtibuteSource) {
-        this.zkPropertyArrtibuteSource = zkPropertyArrtibuteSource;
+    public void setZkPropertyAttributeSource(ZKPropertyAttributeSource zkPropertyAttributeSource) {
+        this.zkPropertyAttributeSource = zkPropertyAttributeSource;
     }
 
 

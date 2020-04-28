@@ -21,12 +21,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
  date: 2019/12/11
  */
 @Slf4j
-public class ZKConfigCenter {
+public class ZKConfigProperty {
 
     private static final ZKConfigurationResource zkConfigCenterResource;
 
     static {
-        zkConfigCenterResource = ZKConfigCenter.build().zkAddress("localhost:2181").rootPath("/configuration").init();
+        zkConfigCenterResource = ZKConfigProperty.build().zkAddress("localhost:2181").rootPath("/configuration").init();
     }
 
     public static Builder build() {

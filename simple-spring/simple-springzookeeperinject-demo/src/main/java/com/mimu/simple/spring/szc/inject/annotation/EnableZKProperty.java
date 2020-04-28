@@ -1,6 +1,6 @@
 package com.mimu.simple.spring.szc.inject.annotation;
 
-import com.mimu.simple.spring.szc.inject.annotation.support.AnnotationZKCenterReferenceBeanPostProcessor;
+import com.mimu.simple.spring.szc.inject.annotation.support.AnnotationZKPropertyReferenceBeanPostProcessor;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -12,6 +12,6 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(AnnotationZKCenterReferenceBeanPostProcessor.class)
-public @interface EnableZKCenter {
+@Import(AnnotationZKPropertyReferenceBeanPostProcessor.class)
+public @interface EnableZKProperty {
 }

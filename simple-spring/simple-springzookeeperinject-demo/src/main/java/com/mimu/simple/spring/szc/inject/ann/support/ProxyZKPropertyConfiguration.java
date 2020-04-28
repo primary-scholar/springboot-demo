@@ -14,18 +14,21 @@ import org.springframework.context.annotation.Role;
 public class ProxyZKPropertyConfiguration extends AbstractPropertyConfiguration {
 
     @Bean
+    @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public BeanFactoryZKPropertyAttributeSourceAdvisor zkPropertyAttributeSourceAdvisor() {
         BeanFactoryZKPropertyAttributeSourceAdvisor advisor = new BeanFactoryZKPropertyAttributeSourceAdvisor();
-        advisor.setZkPropertyArrtibuteSource(propertyArrtibuteSource());
+        advisor.setZkPropertyAttributeSource(propertyAttributeSource());
         return advisor;
     }
 
     @Bean
-    public ZKPropertyArrtibuteSource propertyArrtibuteSource() {
+    @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
+    public ZKPropertyAttributeSource propertyAttributeSource() {
         return new AnnotationZkPropertyAttributeSource();
     }
 
     @Bean
+    @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public ZKPropertyInterceptor propertyInterceptor() {
         ZKPropertyInterceptor interceptor = new ZKPropertyInterceptor();
         return interceptor;

@@ -1,6 +1,6 @@
 package com.mimu.simple.spring.szc.inject.annotation.support;
 
-import com.mimu.simple.spring.szc.inject.ZKConfigCenter;
+import com.mimu.simple.spring.szc.inject.ZKConfigProperty;
 import com.mimu.simple.spring.szc.inject.annotation.ZKReference;
 import com.netflix.config.DynamicStringProperty;
 import org.slf4j.Logger;
@@ -33,8 +33,8 @@ import java.util.concurrent.ConcurrentHashMap;
  author: mimu
  date: 2020/4/25
  */
-public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationAwareBeanPostProcessorAdapter implements MergedBeanDefinitionPostProcessor, PriorityOrdered {
-    private static final Logger logger = LoggerFactory.getLogger(AnnotationZKCenterReferenceBeanPostProcessor.class);
+public class AnnotationZKPropertyReferenceBeanPostProcessor extends InstantiationAwareBeanPostProcessorAdapter implements MergedBeanDefinitionPostProcessor, PriorityOrdered {
+    private static final Logger logger = LoggerFactory.getLogger(AnnotationZKPropertyReferenceBeanPostProcessor.class);
 
     private final Set<Class<? extends Annotation>> referenceAnnotationType = new LinkedHashSet<>(1);
     private String requireInjectParameterName = "key";
@@ -42,7 +42,7 @@ public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationA
 
     private final Map<String, InjectionMetadata> injectionMetadataCache = new ConcurrentHashMap<>(256);
 
-    public AnnotationZKCenterReferenceBeanPostProcessor() {
+    public AnnotationZKPropertyReferenceBeanPostProcessor() {
         this.referenceAnnotationType.add(ZKReference.class);
     }
 
@@ -174,7 +174,7 @@ public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationA
                     new AnnotationAttributes(mergedAnnotation.getType()));
             this.key = this.annotationAttributes.getString(requireInjectParameterName);
             this.defaultValue = this.annotationAttributes.getString(requireInjectDefaultValue);
-            this.value = ZKConfigCenter.getString(key, defaultValue);
+            this.value = ZKConfigProperty.getString(key, defaultValue);
         }
 
         @Override
@@ -202,7 +202,7 @@ public class AnnotationZKCenterReferenceBeanPostProcessor extends InstantiationA
                     new AnnotationAttributes(mergedAnnotation.getType()));
             this.key = this.annotationAttributes.getString(requireInjectParameterName);
             this.defaultValue = this.annotationAttributes.getString(requireInjectDefaultValue);
-            this.value = ZKConfigCenter.getString(key, defaultValue);
+            this.value = ZKConfigProperty.getString(key, defaultValue);
         }
 
         @Override

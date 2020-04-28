@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
  author: mimu
  date: 2020/4/28
  */
-public interface ZKPropertyArrtibuteSource {
+public interface ZKPropertyAttributeSource {
 
-    ZKPropertyArrtibute getPropertyArrtibute(Method method, Class<?> clazz);
+    ZKPropertyAttribute getProperAttribute(Method method, Class<?> clazz);
 }

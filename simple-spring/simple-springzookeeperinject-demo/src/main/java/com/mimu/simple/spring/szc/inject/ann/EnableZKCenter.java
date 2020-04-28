@@ -1,6 +1,6 @@
 package com.mimu.simple.spring.szc.inject.ann;
 
-import com.mimu.simple.spring.szc.inject.ann.support.ZKCenterConfigurationSelector;
+import com.mimu.simple.spring.szc.inject.ann.support.ZKPropertyConfigurationSelector;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
@@ -14,7 +14,7 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(ZKCenterConfigurationSelector.class)
+@Import(ZKPropertyConfigurationSelector.class)
 public @interface EnableZKCenter {
 
     boolean proxyTargetClass() default false;

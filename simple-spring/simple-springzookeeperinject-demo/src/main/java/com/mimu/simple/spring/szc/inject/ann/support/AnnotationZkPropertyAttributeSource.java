@@ -7,9 +7,9 @@ import java.lang.reflect.Method;
  author: mimu
  date: 2020/4/28
  */
-public class AnnotationZkPropertyAttributeSource  implements ZKPropertyArrtibuteSource,Serializable {
+public class AnnotationZkPropertyAttributeSource  implements ZKPropertyAttributeSource,Serializable {
     @Override
-    public ZKPropertyArrtibute getPropertyArrtibute(Method method, Class<?> clazz) {
+    public ZKPropertyAttribute getProperAttribute(Method method, Class<?> clazz) {
         return null;
     }
 }
