@@ -1,6 +1,7 @@
-package com.mimu.simple.spring.szc.inject.test.annotation;
+package com.mimu.simple.spring.szc.inject.test.ann.app;
 
-import com.mimu.simple.spring.szc.inject.annotation.ZKReference;
+
+import com.mimu.simple.spring.szc.inject.ann.ZKReference;
 import com.netflix.config.DynamicStringProperty;
 import org.springframework.stereotype.Component;
 

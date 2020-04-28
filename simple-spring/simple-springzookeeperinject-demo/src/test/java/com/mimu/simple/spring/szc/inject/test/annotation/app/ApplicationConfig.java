@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject.test.annotation;
+package com.mimu.simple.spring.szc.inject.test.annotation.app;
 
 import com.mimu.simple.spring.szc.inject.annotation.EnableZKProperty;
 import org.springframework.context.annotation.ComponentScan;

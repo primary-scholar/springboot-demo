@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject;
+package com.mimu.simple.spring.szc.inject.ann;
 
 import com.netflix.config.ConfigurationManager;
 import com.netflix.config.DynamicPropertyFactory;

@@ -1,6 +1,6 @@
 package com.mimu.simple.spring.szc.inject.annotation.support;
 
-import com.mimu.simple.spring.szc.inject.ZKConfigProperty;
+import com.mimu.simple.spring.szc.inject.annotation.ZKConfigProperty;
 import com.mimu.simple.spring.szc.inject.annotation.ZKReference;
 import com.netflix.config.DynamicStringProperty;
 import org.slf4j.Logger;
