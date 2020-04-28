@@ -1,7 +1,10 @@
-package com.mimu.simple.spring.szc.inject.ann;
+package com.mimu.simple.spring.szc.inject.ann.support;
 
+import com.mimu.simple.spring.szc.inject.annotation.EnableZKCenter;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.AdviceModeImportSelector;
+import org.springframework.context.annotation.AutoProxyRegistrar;
+import org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration;
 
 /**
  * author: mimu
@@ -22,7 +25,7 @@ public class ZKCenterConfigurationSelector extends AdviceModeImportSelector<Enab
     }
 
     private String[] getProxyImports() {
-        return new String[0];
+        return new String[]{AutoProxyRegistrar.class.getName(), ProxyZKPropertyConfiguration.class.getName()};
     }
 
     private String[] getAspectJImports() {
