@@ -2,6 +2,7 @@ package com.mimu.simple.spring.szc.inject.ann.support;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.springframework.aop.support.AopUtils;
 
 import java.io.Serializable;
 
@@ -12,6 +13,9 @@ import java.io.Serializable;
 public class ZKPropertyInterceptor extends ZKPropertyAspectSupport implements MethodInterceptor, Serializable {
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        return null;
+        Class<?> targetClass = (invocation.getThis() != null ? AopUtils.getTargetClass(invocation.getThis()) : null);
+        return invokeWithIntercept(invocation.getMethod(), targetClass);
     }
+
+
 }

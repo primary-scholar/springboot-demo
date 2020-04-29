@@ -1,5 +1,6 @@
 package com.mimu.simple.spring.szc.inject.ann.support;
 
+import org.springframework.aop.ClassFilter;
 import org.springframework.aop.Pointcut;
 import org.springframework.aop.support.AbstractBeanFactoryPointcutAdvisor;
 
@@ -18,13 +19,17 @@ public class BeanFactoryZKPropertyAttributeSourceAdvisor extends AbstractBeanFac
         }
     };
 
+    public void setZkPropertyAttributeSource(ZKPropertyAttributeSource zkPropertyAttributeSource) {
+        this.zkPropertyAttributeSource = zkPropertyAttributeSource;
+    }
+
+    public void setClassFilter(ClassFilter classFilter) {
+        this.pointcut.setClassFilter(classFilter);
+    }
+
     @Override
     public Pointcut getPointcut() {
         return pointcut;
-    }
-
-    public void setZkPropertyAttributeSource(ZKPropertyAttributeSource zkPropertyAttributeSource) {
-        this.zkPropertyAttributeSource = zkPropertyAttributeSource;
     }
 
 

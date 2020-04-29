@@ -12,21 +12,43 @@ import org.springframework.stereotype.Component;
 @Component
 public class ZKPropertyModel {
 
-    @ZKReference(key = "abc", value = "asd")
-    private DynamicStringProperty age;
+    private int age;
+    private String name;
+    private boolean aBoolean;
+    private String tmp;
 
-    private DynamicStringProperty num;
-
-    @ZKReference(key = "abc", value = "asd")
-    public void setNum(DynamicStringProperty num) {
-        this.num = num;
+    @ZKReference(key = "abc",value = "1")
+    public int getAge() {
+        return age;
     }
 
-    public String getAge() {
-        return age.get();
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getNum() {
-        return num.get();
+    @ZKReference(key = "abd",value = "1")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @ZKReference(key = "abe",value = "1")
+    public boolean isaBoolean() {
+        return aBoolean;
+    }
+
+    public void setaBoolean(boolean aBoolean) {
+        this.aBoolean = aBoolean;
+    }
+
+    public String getTmp() {
+        return tmp;
+    }
+
+    public void setTmp(String tmp) {
+        this.tmp = tmp;
     }
 }

@@ -18,6 +18,7 @@ public class ProxyZKPropertyConfiguration extends AbstractPropertyConfiguration 
     public BeanFactoryZKPropertyAttributeSourceAdvisor zkPropertyAttributeSourceAdvisor() {
         BeanFactoryZKPropertyAttributeSourceAdvisor advisor = new BeanFactoryZKPropertyAttributeSourceAdvisor();
         advisor.setZkPropertyAttributeSource(propertyAttributeSource());
+        advisor.setAdvice(propertyInterceptor());
         return advisor;
     }
 
@@ -31,6 +32,7 @@ public class ProxyZKPropertyConfiguration extends AbstractPropertyConfiguration 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public ZKPropertyInterceptor propertyInterceptor() {
         ZKPropertyInterceptor interceptor = new ZKPropertyInterceptor();
+        interceptor.setPropertyAttribute(propertyAttributeSource());
         return interceptor;
     }
 

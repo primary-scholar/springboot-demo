@@ -18,7 +18,9 @@ public class ZKCenterInjectTest {
         ZKPropertyModel bean = context.getBean(ZKPropertyModel.class);
         while (true){
             System.out.println(bean.getAge());
-            System.out.println(bean.getNum());
+            System.out.println(bean.getName());
+            System.out.println(bean.isaBoolean());
+            System.out.println(bean.getTmp());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
