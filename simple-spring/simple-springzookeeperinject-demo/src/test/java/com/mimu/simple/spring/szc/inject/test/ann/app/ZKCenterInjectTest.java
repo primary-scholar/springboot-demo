@@ -21,6 +21,7 @@ public class ZKCenterInjectTest {
             System.out.println(bean.getName());
             System.out.println(bean.isaBoolean());
             System.out.println(bean.getTmp());
+            System.out.println(bean.getInner());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

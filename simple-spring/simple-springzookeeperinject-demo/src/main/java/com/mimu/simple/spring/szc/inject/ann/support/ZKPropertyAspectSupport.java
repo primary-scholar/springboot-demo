@@ -51,23 +51,22 @@ public class ZKPropertyAspectSupport implements BeanFactoryAware, InitializingBe
     }
 
     public Object getValue(Class<?> returnType, String value) {
-        if (returnType == Integer.class) {
-            return NumberUtils.toInt(value, 0);
-        }
-        if (returnType == Long.class) {
-            return NumberUtils.toLong(value, 0l);
-        }
-        if (returnType == Float.class) {
-            return NumberUtils.toFloat(value, 0.0f);
-        }
-        if (returnType == Double.class) {
-            return NumberUtils.toDouble(value, 0.0d);
-        }
-        if (returnType == Short.class) {
-            return NumberUtils.toShort(value, (short) 0);
-        }
-        if (returnType == Boolean.class) {
-            return NumberUtils.isDigits(value) ? BooleanUtils.toBoolean(NumberUtils.toInt(value)) : BooleanUtils.toBoolean(value);
+        String name = returnType.getName();
+        switch (name) {
+            case "int":
+                return NumberUtils.toInt(value, 0);
+            case "long":
+                return NumberUtils.toLong(value, 0l);
+            case "float":
+                return NumberUtils.toFloat(value, 0.0f);
+            case "double":
+                return NumberUtils.toDouble(value, 0.0d);
+            case "short":
+                return NumberUtils.toShort(value, (short) 0);
+            case "boolean":
+                return BooleanUtils.toBoolean(value);
+            case "java.lang.String":
+                return value;
         }
         try {
             return JSONObject.toJavaObject(JSONObject.parseObject(value), returnType);
