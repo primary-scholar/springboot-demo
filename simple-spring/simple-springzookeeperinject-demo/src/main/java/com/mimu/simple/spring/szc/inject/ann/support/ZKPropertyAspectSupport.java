@@ -1,7 +1,9 @@
 package com.mimu.simple.spring.szc.inject.ann.support;
 
+import com.alibaba.fastjson.JSONObject;
 import com.netflix.config.DynamicStringProperty;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -34,7 +36,7 @@ public class ZKPropertyAspectSupport implements BeanFactoryAware, InitializingBe
         if (attribute != null) {
             DynamicStringProperty property = ((DefaultZKPropertyAttribute) attribute).getProperty();
             Class<?> returnType = method.getReturnType();
-            return getValue(returnType, property.get());
+            return getValue(returnType, property == null ? null : property.get());
         }
         return null;
     }
@@ -49,21 +51,28 @@ public class ZKPropertyAspectSupport implements BeanFactoryAware, InitializingBe
     }
 
     public Object getValue(Class<?> returnType, String value) {
-        String name = returnType.getName();
-        switch (name) {
-            case "int":
-                return Integer.parseInt(value);
-            case "long":
-                return Long.parseLong(value);
-            case "float":
-                return Float.parseFloat(value);
-            case "double":
-                return Double.parseDouble(value);
-            case "short":
-                return Short.parseShort(value);
-            case "boolean":
-                return Boolean.parseBoolean(value);
+        if (returnType == Integer.class) {
+            return NumberUtils.toInt(value, 0);
         }
-        return value;
+        if (returnType == Long.class) {
+            return NumberUtils.toLong(value, 0l);
+        }
+        if (returnType == Float.class) {
+            return NumberUtils.toFloat(value, 0.0f);
+        }
+        if (returnType == Double.class) {
+            return NumberUtils.toDouble(value, 0.0d);
+        }
+        if (returnType == Short.class) {
+            return NumberUtils.toShort(value, (short) 0);
+        }
+        if (returnType == Boolean.class) {
+            return NumberUtils.isDigits(value) ? BooleanUtils.toBoolean(NumberUtils.toInt(value)) : BooleanUtils.toBoolean(value);
+        }
+        try {
+            return JSONObject.toJavaObject(JSONObject.parseObject(value), returnType);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
