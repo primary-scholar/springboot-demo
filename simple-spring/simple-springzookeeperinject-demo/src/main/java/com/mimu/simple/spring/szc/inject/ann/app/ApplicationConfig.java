@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject.test.ann.app;
+package com.mimu.simple.spring.szc.inject.ann.app;
 
 import com.mimu.simple.spring.szc.inject.ann.EnableZKCenter;
 import com.mimu.simple.spring.szc.inject.ann.ZKConfigProperty;
