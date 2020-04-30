@@ -14,7 +14,7 @@ public class ZKPropertyInterceptor extends ZKPropertyAspectSupport implements Me
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Class<?> targetClass = (invocation.getThis() != null ? AopUtils.getTargetClass(invocation.getThis()) : null);
-        return invokeWithIntercept(invocation.getMethod(), targetClass);
+        return invokeWithInterceptor(invocation.getMethod(), targetClass);
     }
 
 

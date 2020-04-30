@@ -30,7 +30,7 @@ public class ZKPropertyAspectSupport implements BeanFactoryAware, InitializingBe
 
     }
 
-    protected Object invokeWithIntercept(Method method, Class<?> targetClass) {
+    protected Object invokeWithInterceptor(Method method, Class<?> targetClass) {
         ZKPropertyAttributeSource attributeSource = getPropertyAttribute();
         ZKPropertyAttribute attribute = attributeSource != null ? attributeSource.getProperAttribute(method, targetClass) : null;
         if (attribute != null) {
