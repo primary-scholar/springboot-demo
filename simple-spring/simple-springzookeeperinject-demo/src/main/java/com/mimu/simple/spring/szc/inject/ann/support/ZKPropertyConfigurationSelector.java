@@ -1,7 +1,6 @@
 package com.mimu.simple.spring.szc.inject.ann.support;
 
 import com.mimu.simple.spring.szc.inject.ann.EnableZKCenter;
-import com.mimu.simple.spring.szc.inject.annotation.EnableZKProperty;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.AdviceModeImportSelector;
 import org.springframework.context.annotation.AutoProxyRegistrar;

@@ -20,6 +20,7 @@ public class ZKCenterInjectTest {
             System.out.println(bean.getAge());
             System.out.println(bean.getName());
             System.out.println(bean.isaBoolean());
+            System.out.println(bean.getaBBoolean());
             System.out.println(bean.getTmp());
             System.out.println(bean.getInner());
             try {
