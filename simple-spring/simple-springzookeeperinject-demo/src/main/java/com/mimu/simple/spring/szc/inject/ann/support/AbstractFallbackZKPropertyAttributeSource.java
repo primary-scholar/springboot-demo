@@ -39,7 +39,7 @@ public abstract class AbstractFallbackZKPropertyAttributeSource implements ZKPro
                 return cached;
             }
         } else {
-            ZKPropertyAttribute attribute = computeZKPropertyArrtibute(method, clazz);
+            ZKPropertyAttribute attribute = computeZKPropertyAttribute(method, clazz);
             if (attribute == null) {
                 this.propertyCache.put(cacheKey, NULL_ZKPROPERTY_ATTRIBUTE);
             } else {
@@ -49,7 +49,7 @@ public abstract class AbstractFallbackZKPropertyAttributeSource implements ZKPro
         }
     }
 
-    protected ZKPropertyAttribute computeZKPropertyArrtibute(Method method, Class<?> targetClass) {
+    protected ZKPropertyAttribute computeZKPropertyAttribute(Method method, Class<?> targetClass) {
         if (!Modifier.isPublic(method.getModifiers())) {
             return null;
         }
