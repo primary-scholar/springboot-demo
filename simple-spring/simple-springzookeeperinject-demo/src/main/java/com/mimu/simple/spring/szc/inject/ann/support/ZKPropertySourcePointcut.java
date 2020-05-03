@@ -12,9 +12,9 @@ import java.lang.reflect.Method;
 public abstract class ZKPropertySourcePointcut extends StaticMethodMatcherPointcut implements Serializable {
     @Override
     public boolean matches(Method method, Class<?> targetClass) {
-        ZKPropertyAttributeSource source = getProtertyAttributeSource();
+        ZKPropertyAttributeSource source = getPropertyAttributeSource();
         return (source == null || source.getProperAttribute(method, targetClass) != null);
     }
 
-    protected abstract ZKPropertyAttributeSource getProtertyAttributeSource();
+    protected abstract ZKPropertyAttributeSource getPropertyAttributeSource();
 }

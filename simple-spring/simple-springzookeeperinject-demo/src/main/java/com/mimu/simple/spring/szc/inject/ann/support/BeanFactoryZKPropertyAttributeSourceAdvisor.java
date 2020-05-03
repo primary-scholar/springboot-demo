@@ -14,7 +14,7 @@ public class BeanFactoryZKPropertyAttributeSourceAdvisor extends AbstractBeanFac
 
     private final ZKPropertySourcePointcut pointcut = new ZKPropertySourcePointcut() {
         @Override
-        protected ZKPropertyAttributeSource getProtertyAttributeSource() {
+        protected ZKPropertyAttributeSource getPropertyAttributeSource() {
             return zkPropertyAttributeSource;
         }
     };
