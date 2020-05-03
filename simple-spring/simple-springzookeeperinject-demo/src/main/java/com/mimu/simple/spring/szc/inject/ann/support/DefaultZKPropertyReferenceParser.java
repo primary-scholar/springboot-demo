@@ -15,8 +15,7 @@ public class DefaultZKPropertyReferenceParser implements ZKPropertyReferencePars
     public ZKPropertyAttribute parseZKReferenceAnnotation(AnnotatedElement element) {
         AnnotationAttributes annotationAttributes = AnnotatedElementUtils.findMergedAnnotationAttributes(element, ZKReference.class, false, false);
         if (annotationAttributes != null) {
-            DefaultZKPropertyAttribute attribute = new DefaultZKPropertyAttribute(annotationAttributes.getString("key"), annotationAttributes.getString("value"));
-            return attribute;
+            return new DefaultZKPropertyAttribute(annotationAttributes.getString("key"), annotationAttributes.getString("value"));
         }
         return null;
     }
