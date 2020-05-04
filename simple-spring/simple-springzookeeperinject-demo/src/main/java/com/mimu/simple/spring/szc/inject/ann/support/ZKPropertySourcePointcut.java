@@ -13,7 +13,7 @@ public abstract class ZKPropertySourcePointcut extends StaticMethodMatcherPointc
     @Override
     public boolean matches(Method method, Class<?> targetClass) {
         ZKPropertyAttributeSource source = getPropertyAttributeSource();
-        return (source == null || source.getProperAttribute(method, targetClass) != null);
+        return (source != null && source.getProperAttribute(method, targetClass) != null);
     }
 
     protected abstract ZKPropertyAttributeSource getPropertyAttributeSource();
