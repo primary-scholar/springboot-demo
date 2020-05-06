@@ -36,6 +36,7 @@ public class ServiceProviderConfig {
     @Bean
     public ProviderConfig providerConfig() {
         ProviderConfig config = new ProviderConfig();
+        config.setRetries(0);
         config.setTimeout(3000);
         return config;
     }
@@ -51,7 +52,7 @@ public class ServiceProviderConfig {
     @SuppressWarnings("unchecked")
     public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
-        Map parameter = new HashMap<String,String>();
+        Map parameter = new HashMap<String, String>();
         parameter.put("scope", "remote");
         protocolConfig.setParameters(parameter);
         protocolConfig.setName("dubbo");

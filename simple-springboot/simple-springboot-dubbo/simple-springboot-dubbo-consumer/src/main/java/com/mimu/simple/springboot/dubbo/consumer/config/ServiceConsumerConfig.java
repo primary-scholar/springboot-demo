@@ -26,7 +26,7 @@ public class ServiceConsumerConfig {
     @Bean
     public ConsumerConfig consumerConfig() {
         ConsumerConfig consumerConfig = new ConsumerConfig();
-        consumerConfig.setTimeout(10000000);
+        consumerConfig.setTimeout(3000);
         consumerConfig.setRetries(0);
         return consumerConfig;
     }
