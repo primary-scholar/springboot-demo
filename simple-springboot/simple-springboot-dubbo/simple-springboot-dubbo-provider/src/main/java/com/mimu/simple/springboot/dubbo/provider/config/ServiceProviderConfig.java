@@ -51,9 +51,9 @@ public class ServiceProviderConfig {
     @SuppressWarnings("unchecked")
     public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
-        Map paramater = new HashMap<String,String>();
-        paramater.put("scope", "remote");
-        protocolConfig.setParameters(paramater);
+        Map parameter = new HashMap<String,String>();
+        parameter.put("scope", "remote");
+        protocolConfig.setParameters(parameter);
         protocolConfig.setName("dubbo");
         protocolConfig.setDispatcher("message");
         protocolConfig.setThreads(200);
