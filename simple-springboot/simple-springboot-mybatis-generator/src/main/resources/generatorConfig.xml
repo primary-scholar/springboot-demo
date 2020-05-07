@@ -44,7 +44,9 @@
             也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下 -->
         <javaModelGenerator targetPackage="${generator.targetPackage.model}"
                             targetProject="${generator.targetPackage}">
-            <!-- 是否在当前路径下新加一层schema, false 路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <!-- 是否在当前路径下新加一层schema, false 路径com.mimu.simple.springboot.mybatis.generator.model，
+            true:com.mimu.simple.springboot.mybatis.generator.model.[schemaName]
+            此处的 schemaName 为 下面 <table> 元素指定的 achemaName  -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
             <property name="trimStrings" value="true"/>
@@ -54,6 +56,9 @@
         <!--对应的mapper.xml文件 -->
         <sqlMapGenerator targetPackage="${generator.targetResources.mapper}"
                          targetProject="${generator.targetResources}">
+            <!-- 是否在当前路径下新加一层schema, false 路径com.mimu.simple.springboot.mybatis.generator.mapper，
+            true:com.mimu.simple.springboot.mybatis.generator.mapper.[schemaName]
+            此处的 schemaName 为 下面 <table> 元素指定的 achemaName  -->
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
@@ -69,6 +74,9 @@
         <javaClientGenerator type="MIXEDMAPPER"
                              targetPackage="${generator.targetPackage.mapper}"
                              targetProject="${generator.targetPackage}">
+            <!-- 是否在当前路径下新加一层schema, false 路径com.mimu.simple.springboot.mybatis.generator.mapper，
+            true:com.mimu.simple.springboot.mybatis.generator.mapper.[schemaName]
+            此处的 schemaName 为 下面 <table> 元素指定的 achemaName  -->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -79,8 +87,10 @@
                enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false">
-            &lt;!&ndash;插入数据时， 对于 主键的插入处理 一般用于没有 自增主键的数据表   &ndash;&gt;
-            <generatedKey column="id" sqlStatement="CALL IDENTITY()" identity="true"/>
+            &lt;!&ndash;插入数据时，返回插入行数 还是 自增主键；常见值为 DB2,Mysql,SqlServer等 如果 identity 为 true
+             则 mbg(mybatis generator) 在 生成 <insert> 插入语句时 会 添加 <selectKey> 元素 以指定返回的
+             自增主键的值&ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             &lt;!&ndash;指定 某列的 数据类型  &ndash;&gt;
             <columnOverride column="id" jdbcType="" javaType="" typeHandler=""/>
         </table>-->
@@ -90,6 +100,7 @@
                enableUpdateByExample="false">
             <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
             <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="user_info" domainObjectName="UserInfo"
                enableCountByExample="false" enableDeleteByExample="false"
@@ -97,6 +108,7 @@
                enableUpdateByExample="false">
             <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
             <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>
