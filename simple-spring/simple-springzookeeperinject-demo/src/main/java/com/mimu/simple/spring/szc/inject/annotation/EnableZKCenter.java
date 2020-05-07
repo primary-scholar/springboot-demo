@@ -13,5 +13,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(AnnotationZKPropertyReferenceBeanPostProcessor.class)
-public @interface EnableZKProperty {
+public @interface EnableZKCenter {
 }

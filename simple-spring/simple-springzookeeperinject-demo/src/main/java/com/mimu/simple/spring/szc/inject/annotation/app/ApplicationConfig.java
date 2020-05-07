@@ -1,6 +1,6 @@
 package com.mimu.simple.spring.szc.inject.annotation.app;
 
-import com.mimu.simple.spring.szc.inject.annotation.EnableZKProperty;
+import com.mimu.simple.spring.szc.inject.annotation.EnableZKCenter;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan(basePackageClasses = ZKPropertyModel.class)
-@EnableZKProperty
+@EnableZKCenter
 public class ApplicationConfig {
 }
