@@ -33,6 +33,8 @@ server_log_home_IS_UNDEFINED
 ehthumbs.db
 Icon?
 Thumbs.db
+*.gif
+*.GIF
 
 # Editor Files #
 ################
