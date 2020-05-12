@@ -16,7 +16,8 @@ import org.springframework.stereotype.Component;
  * 而不报异常
  *
  * 其解析过程：即 被依赖的bean的生成过程 是在 ObjectProvider.getIfAvailable() 中开始的
- * 具体可参考 DefaultListableBeanFactory.DependencyObjectProvider.getIfAvailable() 的执行过程
+ * 具体可参考 {@link org.springframework.beans.factory.support.DefaultListableBeanFactory .DependencyObjectProvider.getIfAvailable()}
+ * 的执行过程
  */
 @Component
 public class ObjectB {

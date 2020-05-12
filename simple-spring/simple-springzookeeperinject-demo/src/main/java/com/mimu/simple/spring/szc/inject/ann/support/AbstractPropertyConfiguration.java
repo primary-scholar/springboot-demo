@@ -8,7 +8,7 @@ import org.springframework.core.type.AnnotationMetadata;
  author: mimu
  date: 2020/4/28
  */
-@Configuration
+//@Configuration
 public class AbstractPropertyConfiguration implements ImportAware {
     @Override
     public void setImportMetadata(AnnotationMetadata importMetadata) {

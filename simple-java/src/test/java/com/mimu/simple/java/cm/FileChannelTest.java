@@ -2,6 +2,8 @@ package com.mimu.simple.java.cm;
 
 import org.junit.Test;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -77,9 +79,17 @@ public class FileChannelTest {
         System.out.println(file.getAbsoluteFile());
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String s = reader.readLine();
-        for (int i=0;i<s.length();i++){
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             System.out.println(Integer.toHexString(c));
         }
+    }
+
+    @Test
+    public void info4() throws IOException {
+        BufferedImage read = ImageIO.read(new File("small.GIF"));
+        int height = read.getHeight();
+        int width = read.getWidth();
+        System.out.println("h:" + height + " w:" + width);
     }
 }
