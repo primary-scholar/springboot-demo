@@ -49,7 +49,7 @@ public class UserInfoService {
 
     /**
      * 这里 Cacheable 执行逻辑:
-     * 和 {@link UserInfoService.getUserInfo(int pid) }
+     * 和 {@link UserInfoService #getUserInfo(int pid) }
      *  逻辑 一致 key 的拼接也是 一致的
      *  只是 没有 设置 有效期
      * @param pid
@@ -89,7 +89,7 @@ public class UserInfoService {
 
     /**
      * 这里 CacheEvict 执行逻辑:
-     * 和 {@link UserInfoService.deleteUserInfo(int pid) 逻辑 一致 key 的拼接也是 一致的 }
+     * 和 {@link UserInfoService #deleteUserInfo(int pid) 逻辑 一致 key 的拼接也是 一致的 }
      * @param personId
      * @return
      */
