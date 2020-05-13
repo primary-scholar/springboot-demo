@@ -11,9 +11,5 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching(proxyTargetClass = true)
 public class RedisConfig {
 
-    /*@Bean
-    public CacheManager cacheManager() {
-        return null;
-    }*/
 
 }

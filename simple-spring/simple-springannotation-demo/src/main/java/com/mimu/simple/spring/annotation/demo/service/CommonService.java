@@ -1,17 +1,21 @@
 package com.mimu.simple.spring.annotation.demo.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mimu.simple.spring.annotation.demo.core.SimpleLogger;
 import com.mimu.simple.spring.annotation.demo.model.PersonData;
 import com.mimu.simple.spring.annotation.demo.model.TermData;
 import com.mimu.simple.spring.annotation.demo.repository.PeopleRepository;
 import com.mimu.simple.spring.annotation.demo.repository.TermRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
@@ -23,6 +27,7 @@ import java.util.Set;
 @Service
 public class CommonService {
 
+    private StringRedisTemplate stringRedisTemplate;
     private PeopleRepository peopleRepository;
     private TermRepository termRepository;
 
@@ -39,6 +44,11 @@ public class CommonService {
     @Autowired
     public void setTermRepository(TermRepository termRepository) {
         this.termRepository = termRepository;
+    }
+
+    @Autowired
+    public void setStringRedisTemplate(StringRedisTemplate stringRedisTemplate) {
+        this.stringRedisTemplate = stringRedisTemplate;
     }
 
     @Transactional
@@ -61,6 +71,22 @@ public class CommonService {
     @SimpleLogger
     public PersonData getPeople(int pid) {
         return peopleRepository.getPeople(pid);
+    }
+
+
+    public PersonData getPeopleWithCache(int pid) {
+        String key = "people::user_" + pid;
+        String s = stringRedisTemplate.opsForValue().get(key);
+        if (StringUtils.isNotEmpty(s)) {
+            return JSONObject.parseObject(s, PersonData.class);
+        }
+        PersonData people = peopleRepository.getPeople(pid);
+        if (people != null) {
+            String s1 = JSONObject.toJSONString(people);
+            stringRedisTemplate.opsForValue().set(key, s1, Duration.ofMillis(60000));
+        }
+        log.info("{}", people);
+        return people;
     }
 
     /**

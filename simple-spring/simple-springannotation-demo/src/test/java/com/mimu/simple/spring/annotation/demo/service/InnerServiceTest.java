@@ -26,6 +26,13 @@ public class InnerServiceTest {
         this.commonService = commonService;
     }
 
+
+    @Test
+    public void getInfoWithCache(){
+        PersonData peopleWithCache = commonService.getPeopleWithCache(1);
+        System.out.println(peopleWithCache);
+    }
+
     @Test
     public void saveInfo() {
         PersonData personData = new PersonData();

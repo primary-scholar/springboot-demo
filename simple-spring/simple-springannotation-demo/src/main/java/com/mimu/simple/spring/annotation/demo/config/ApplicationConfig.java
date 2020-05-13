@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @ComponentScan(basePackageClasses = CommonController.class)
-@Import(value = {AspectConfig.class, DataSourceConfig.class})
+@Import(value = {AspectConfig.class, DataSourceConfig.class, RedisConfig.class})
 public class ApplicationConfig {
 }

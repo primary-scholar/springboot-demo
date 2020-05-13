@@ -3,7 +3,6 @@ package com.mimu.simple.springboot.demo.service;
 import com.alibaba.fastjson.JSONObject;
 import com.mimu.simple.springboot.demo.dao.UserInfoRepository;
 import com.mimu.simple.springboot.demo.model.UserInfo;
-import com.mimu.simple.springboot.demo.request.UserInfoRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,7 @@ public class UserInfoService {
         UserInfo userInfo = userInfoRepository.getUserInfo(pid);
         if (userInfo != null) {
             String s1 = JSONObject.toJSONString(userInfo);
-            redisTemplate.opsForValue().set(key, s1, Duration.ofMillis(2000));
+            redisTemplate.opsForValue().set(key, s1, Duration.ofMillis(60000));
         }
         log.info("{}", userInfo);
         return userInfo;
