@@ -1,6 +1,7 @@
 package com.mimu.simple.springboot.demo.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mimu.simple.springboot.demo.config.customer.RedisTTlConstant;
 import com.mimu.simple.springboot.demo.dao.UserInfoRepository;
 import com.mimu.simple.springboot.demo.model.UserInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,7 @@ public class UserInfoService {
     private UserInfoRepository userInfoRepository;
 
     public UserInfo getUserInfo(int pid) {
-        String key = "userInfo::user_" + pid;
+        String key = "mo::user_" + pid;
         String s = redisTemplate.opsForValue().get(key);
         if (StringUtils.isNotEmpty(s)) {
             return JSONObject.parseObject(s, UserInfo.class);
@@ -54,7 +55,7 @@ public class UserInfoService {
      * @param pid
      * @return
      */
-    @Cacheable(cacheNames = "userInfo", key = "'user_'+#p0", unless = "#result==null")
+    @Cacheable(cacheNames = RedisTTlConstant.minute_1_info, key = "'user_'+#p0", unless = "#result==null")
     public UserInfo getUserInfoCacheableEquivalent(int pid) {
         return userInfoRepository.getUserInfo(pid);
     }
@@ -66,13 +67,13 @@ public class UserInfoService {
      * @param userInfo
      * @return
      */
-    @CachePut(cacheNames = "userInfo", key = "'user_'+#userInfo.personId")
+    @CachePut(cacheNames = RedisTTlConstant.minute_1_info, key = "'user_'+#userInfo.personId")
     public boolean updateUserInfo(UserInfo userInfo) {
         return userInfoRepository.updateUserInfo(userInfo);
     }
 
 
-    @CacheEvict(cacheNames = "userInfo", key = "'user_'+#userInfo.personId")
+    @CacheEvict(cacheNames = RedisTTlConstant.minute_1_info, key = "'user_'+#userInfo.personId")
     public boolean updateUser(UserInfo userInfo) {
         return userInfoRepository.updateUserInfo(userInfo);
     }
@@ -80,7 +81,7 @@ public class UserInfoService {
     public boolean deleteUserInfo(int pid) {
         boolean b = userInfoRepository.deleteUserInfo(pid);
         if (b) {
-            String key = "userInfo::user_" + pid;
+            String key = "mo::user_" + pid;
             redisTemplate.delete(key);
         }
         return b;
@@ -92,7 +93,7 @@ public class UserInfoService {
      * @param personId
      * @return
      */
-    @CacheEvict(cacheNames = "userInfo", key = "'user_'+#p0")
+    @CacheEvict(cacheNames = RedisTTlConstant.minute_1_info, key = "'user_'+#p0")
     public boolean deleteUserInfoCacheEvitEquivalent(int personId) {
         return userInfoRepository.deleteUserInfo(personId);
     }
