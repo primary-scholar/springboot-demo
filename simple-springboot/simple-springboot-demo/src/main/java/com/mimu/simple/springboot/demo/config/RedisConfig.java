@@ -14,6 +14,11 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching(proxyTargetClass = true)
 public class RedisConfig {
 
+    /**
+     * spring boot 2.0 以后 一般使用 实现 XXXCustomizer 接口 的方式 实现 自定义
+     * 详见这里的 {@link AppRedisCacheManagerBuilderCustomer,AppRedisCacheManagerCustomer}
+     * @return
+     */
     @Bean
     public AppRedisCacheManagerBuilderCustomer redisCacheManagerBuilderCustomer() {
         return new AppRedisCacheManagerBuilderCustomer();
