@@ -1,4 +1,4 @@
-package com.mimu.simple.springboot.demo.config.customer;
+package com.mimu.simple.springboot.demo.config.customizer.cache;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

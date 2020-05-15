@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 @Slf4j
 @Configuration
 @EnableTransactionManagement(proxyTargetClass = true)
-public class DataSourceConfig {
+public class AppDataSourceConfig {
 
     /**
      * generate datasource properties bean

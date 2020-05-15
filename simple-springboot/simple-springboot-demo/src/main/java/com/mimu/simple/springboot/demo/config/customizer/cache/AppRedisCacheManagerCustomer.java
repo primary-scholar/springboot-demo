@@ -1,4 +1,4 @@
-package com.mimu.simple.springboot.demo.config.customer;
+package com.mimu.simple.springboot.demo.config.customizer.cache;
 
 import org.springframework.boot.autoconfigure.cache.CacheManagerCustomizer;
 import org.springframework.data.redis.cache.RedisCacheManager;

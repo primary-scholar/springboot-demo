@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 /**
- * 可以和 springboot-demo 中 springboot-debug-running 中的 ConditionOnBean 注解进行对比
+ * 可以和 springboot-demo 中 springboot-debug-running 中的 {@link com.mimu.simple.springboot.conditions.config} 注解进行对比
  *
  * @Configuration 对于 spring container  来说 被该注解标注的类是一个配置文件 类似于 xml 文件
  * @Configuration 解析过程 该过程由 ConfigurationClassPostProcessor 来进行，解析的结果是先生成 ConfigurationClass 对象，注册到 DefaultListableBeanFactory 中,该对象中包含了 beanMethod 信息

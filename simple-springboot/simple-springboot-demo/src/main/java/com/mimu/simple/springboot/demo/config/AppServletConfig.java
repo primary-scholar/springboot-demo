@@ -33,7 +33,7 @@ import java.util.Collections;
  */
 //@ServletComponentScan
 @Configuration
-public class CustomAdditionConfig {
+public class AppServletConfig {
 
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
