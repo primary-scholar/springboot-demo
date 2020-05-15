@@ -8,6 +8,7 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.data.redis.serializer.RedisSerializer;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -23,19 +24,23 @@ public class AppRedisCacheManagerBuilderCustomer implements RedisCacheManagerBui
     @Override
     public void customize(RedisCacheManager.RedisCacheManagerBuilder builder) {
         Map<String, RedisCacheConfiguration> customCacheConfigMap = new HashMap<>();
-        RedisCacheConfiguration minute_1_info = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMillis(RedisTTlConstant.minute_1_ttl))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(getJackson2()));
-        RedisCacheConfiguration minute_5_info = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMillis(RedisTTlConstant.minute_5_ttl))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(getJackson2()));
-        RedisCacheConfiguration minute_10_info = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMillis(RedisTTlConstant.minute_10_ttl))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(getJackson2()));
-        customCacheConfigMap.put(RedisTTlConstant.minute_1_info, minute_1_info);
-        customCacheConfigMap.put(RedisTTlConstant.minute_5_info, minute_5_info);
-        customCacheConfigMap.put(RedisTTlConstant.minute_10_info, minute_10_info);
+        customCacheConfigMap.put(RedisTTlConstant.minute_1_info, generateConfiguration(RedisTTlConstant.minute_1_ttl, getJackson2()));
+        customCacheConfigMap.put(RedisTTlConstant.minute_5_info, generateConfiguration(RedisTTlConstant.minute_5_ttl, getJackson2()));
+        customCacheConfigMap.put(RedisTTlConstant.minute_10_info, generateConfiguration(RedisTTlConstant.minute_10_ttl, getJackson2()));
         builder.withInitialCacheConfigurations(customCacheConfigMap);
+    }
+
+    /**
+     * expire milliseconds
+     * @param expire
+     * @param serializer
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    private RedisCacheConfiguration generateConfiguration(long expire, RedisSerializer serializer) {
+        return RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofMillis(expire))
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(serializer));
     }
 
 

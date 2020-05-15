@@ -12,5 +12,4 @@ public class AppRedisCacheManagerCustomer implements CacheManagerCustomizer<Redi
     public void customize(RedisCacheManager cacheManager) {
     }
 
-
 }
