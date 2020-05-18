@@ -1,7 +1,7 @@
 package com.mimu.simple.springboot.demo.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mimu.simple.springboot.demo.config.customer.RedisTTlConstant;
+import com.mimu.simple.springboot.demo.config.customizer.cache.RedisTTlConstant;
 import com.mimu.simple.springboot.demo.dao.UserInfoRepository;
 import com.mimu.simple.springboot.demo.model.UserInfo;
 import lombok.extern.slf4j.Slf4j;

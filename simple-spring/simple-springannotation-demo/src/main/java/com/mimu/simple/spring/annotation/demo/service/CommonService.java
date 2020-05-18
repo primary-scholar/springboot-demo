@@ -83,7 +83,7 @@ public class CommonService {
         PersonData people = peopleRepository.getPeople(pid);
         if (people != null) {
             String s1 = JSONObject.toJSONString(people);
-            stringRedisTemplate.opsForValue().set(key, s1, Duration.ofMillis(60000));
+            stringRedisTemplate.opsForValue().set(key, s1, Duration.ofMillis(100000));
         }
         log.info("{}", people);
         return people;
