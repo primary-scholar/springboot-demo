@@ -1,6 +1,5 @@
 package com.mimu.simple.springboot.conditions.config;
 
-import com.mimu.simple.springboot.conditions.condition.SimpleRegistBeanPhaseCondition;
 import com.mimu.simple.springboot.conditions.config.condition.SimpleConditionParseConfigurationPhaseConfig;
 import com.mimu.simple.springboot.conditions.config.condition.SimpleConditionRegisterBeanPhaseConfig;
 import org.springframework.context.annotation.Configuration;
