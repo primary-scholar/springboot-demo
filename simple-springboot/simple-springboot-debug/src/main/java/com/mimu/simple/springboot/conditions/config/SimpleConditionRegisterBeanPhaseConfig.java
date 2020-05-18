@@ -2,6 +2,7 @@ package com.mimu.simple.springboot.conditions.config;
 
 import com.mimu.simple.springboot.conditions.condition.SimpleConditionA;
 import com.mimu.simple.springboot.conditions.condition.SimpleConditionB;
+import com.mimu.simple.springboot.conditions.condition.SimpleRegistBeanPhaseCondition;
 import com.mimu.simple.springboot.conditions.depen.ConditionDependencyBean;
 import com.mimu.simple.springboot.conditions.model.ConditionBean;
 import org.slf4j.Logger;
@@ -25,11 +26,12 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan(basePackages = {"com.mimu.simple.springboot.conditions.model"})
-public class SimpleConditionAnnotationConfig {
-    private static Logger logger = LoggerFactory.getLogger(SimpleConditionAnnotationConfig.class);
+public class SimpleConditionRegisterBeanPhaseConfig {
+    private static Logger logger = LoggerFactory.getLogger(SimpleConditionRegisterBeanPhaseConfig.class);
 
     /**
-     * 嵌套的config class 跟外层的 @configuration 标注的类解析是一样的
+     * 嵌套的config class 跟外层的 @configuration 标注的类解析是一样的 是在 processMemberClasses
+     * 中进行处理的
      */
     @Configuration
     static class SimpleConditionAConfig {
@@ -57,5 +59,11 @@ public class SimpleConditionAnnotationConfig {
     @Conditional({SimpleConditionA.class, SimpleConditionB.class})
     public ConditionBean conditionAB() {
         return ConditionBean.builder().flag("condition a and b").build();
+    }
+
+    @Bean
+    @Conditional(SimpleRegistBeanPhaseCondition.class)
+    public ConditionBean conditionRegisterBeanPhaseBean() {
+        return ConditionBean.builder().flag("simple register bean phase conditionRegisterBeanPhaseBean").build();
     }
 }

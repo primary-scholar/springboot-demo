@@ -1,6 +1,7 @@
 package com.mimu.simple.springboot;
 
-import com.mimu.simple.springboot.conditions.config.SimpleConditionAnnotationConfig;
+import com.mimu.simple.springboot.conditions.config.SimpleConditionParseConfigurationPhaseConfig;
+import com.mimu.simple.springboot.conditions.config.SimpleConditionRegisterBeanPhaseConfig;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,18 @@ public class SpringbootConditionTest {
     @Test
     public void info() {
         AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext();
-        configApplicationContext.register(SimpleConditionAnnotationConfig.class);
+        configApplicationContext.register(SimpleConditionRegisterBeanPhaseConfig.class);
+        configApplicationContext.refresh();
+        for (String s : configApplicationContext.getBeanDefinitionNames()) {
+            System.out.println(s);
+        }
+        configApplicationContext.getEnvironment().getSystemProperties().forEach((key, value) -> logger.info(key + "=" + value));
+    }
+
+    @Test
+    public void info1() {
+        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext();
+        configApplicationContext.register(SimpleConditionParseConfigurationPhaseConfig.class);
         configApplicationContext.refresh();
         for (String s : configApplicationContext.getBeanDefinitionNames()) {
             System.out.println(s);
