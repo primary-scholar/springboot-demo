@@ -1,4 +1,4 @@
-package com.mimu.simple.springboot.conditions.config;
+package com.mimu.simple.springboot.conditions.config.condition;
 
 import com.mimu.simple.springboot.conditions.condition.SimpleConditionA;
 import com.mimu.simple.springboot.conditions.condition.SimpleConditionB;
