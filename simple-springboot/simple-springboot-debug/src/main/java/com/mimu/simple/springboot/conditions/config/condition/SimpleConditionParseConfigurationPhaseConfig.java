@@ -11,13 +11,13 @@ import org.springframework.context.annotation.Configuration;
  author: mimu
  date: 2020/5/18
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @Conditional(SimpleParseConfigPhaseCondition.class)
 @ComponentScan(basePackageClasses = ConditionBean.class)
 public class SimpleConditionParseConfigurationPhaseConfig {
 
     @Bean
-    public ConditionBean conditionParseConfigurationPhaseBean(){
+    public ConditionBean conditionParseConfigurationPhaseBean() {
         return ConditionBean.builder().flag("conditionParseConfigurationPhaseBean").build();
     }
 }

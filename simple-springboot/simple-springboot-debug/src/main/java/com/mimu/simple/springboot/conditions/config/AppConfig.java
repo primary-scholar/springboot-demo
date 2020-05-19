@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
  author: mimu
  date: 2020/5/18
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @Import(value = {SimpleConditionRegisterBeanPhaseConfig.class/*, SimpleConditionParseConfigurationPhaseConfig.class*/})
 public class AppConfig {
 
@@ -29,5 +29,13 @@ public class AppConfig {
      * 在 2.2 中如果 shouldSkip() 返回 true 则 被 @Configuration 标注的 配置类会被加载到spring 容器中
      * 但是 该配置类中 被 @Bean 标注的方法 则会忽略即不会生成 方法对应的 实例
      *
+     *
+     *
+     * 在 注解 Configuration 中 有一个  proxyBeanMethods() 属性，默认为 true 标志着在默认情况下
+     * spring 容器会为 被 @Configuration 标注的 javaConfig 配置类生成 代理类 (cglib 方式)
+     * 在spring 容器中 如果有 从外部访问javaConfig(被@configuration 标注的类)(即使用代理类) 的某些方法的需求
+     * 则可以使用 默认的 true 值即可。如果没有这种调用的 需求
+     * 则 可以 指定 proxyBeanMethods 为 false 可参见 本类的 Configuration 注解
+     * 可加快 Spring 容器的 启动
      */
 }

@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
  * 对于 具有参数的 方法 conditionB(ConditionDependencyBean conditionDependencyBean) 会使用 自动注入的方式从
  * DefaultListableBeanFactory 中获取参数实例，然后反射调用该方法生成 对象
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @ComponentScan(basePackages = {"com.mimu.simple.springboot.conditions.model"})
 public class SimpleConditionRegisterBeanPhaseConfig {
     private static Logger logger = LoggerFactory.getLogger(SimpleConditionRegisterBeanPhaseConfig.class);
