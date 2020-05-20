@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject.ann.support;
+package com.mimu.simple.spring.szc.inject.ann.interceptor;
 
 import com.mimu.simple.spring.szc.inject.annotation.ZKConfigProperty;
 import com.netflix.config.DynamicStringProperty;

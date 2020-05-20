@@ -1,10 +1,9 @@
-package com.mimu.simple.spring.szc.inject.ann.support;
+package com.mimu.simple.spring.szc.inject.ann.interceptor;
 
 import org.springframework.aop.support.AopUtils;
 import org.springframework.core.MethodClassKey;
 import org.springframework.lang.Nullable;
 
-import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Map;
@@ -14,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  author: mimu
  date: 2020/4/29
  */
-public abstract class AbstractFallbackZKPropertyAttributeSource implements ZKPropertyAttributeSource{
+public abstract class AbstractFallbackZKPropertyAttributeSource implements ZKPropertyAttributeSource {
 
     private static final ZKPropertyAttribute NULL_ZKPROPERTY_ATTRIBUTE = new DefaultZKPropertyAttribute() {
         @Override

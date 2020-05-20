@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject.ann.support;
+package com.mimu.simple.spring.szc.inject.ann.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 import com.netflix.config.DynamicStringProperty;

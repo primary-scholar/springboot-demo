@@ -1,6 +1,5 @@
 package com.mimu.simple.spring.szc.inject.ann;
 
-import com.mimu.simple.spring.szc.inject.ann.support.ZKPropertyConfigurationSelector;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;

@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject.ann.support;
+package com.mimu.simple.spring.szc.inject.ann.interceptor;
 
 import java.lang.reflect.Method;
 

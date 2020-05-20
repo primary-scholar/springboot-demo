@@ -1,4 +1,6 @@
-package com.mimu.simple.spring.szc.inject.ann.support;
+package com.mimu.simple.spring.szc.inject.ann;
+
+import com.mimu.simple.spring.szc.inject.ann.interceptor.ZKPropertyAttribute;
 
 import java.lang.reflect.AnnotatedElement;
 

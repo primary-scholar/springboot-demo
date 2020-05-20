@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject.ann.support;
+package com.mimu.simple.spring.szc.inject.ann;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportAware;
@@ -8,7 +8,7 @@ import org.springframework.core.type.AnnotationMetadata;
  author: mimu
  date: 2020/4/28
  */
-//@Configuration
+@Configuration
 public class AbstractPropertyConfiguration implements ImportAware {
     @Override
     public void setImportMetadata(AnnotationMetadata importMetadata) {

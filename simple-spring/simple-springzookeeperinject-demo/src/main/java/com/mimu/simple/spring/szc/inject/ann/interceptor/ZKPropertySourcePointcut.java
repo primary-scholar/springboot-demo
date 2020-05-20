@@ -1,4 +1,4 @@
-package com.mimu.simple.spring.szc.inject.ann.support;
+package com.mimu.simple.spring.szc.inject.ann.interceptor;
 
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
 
