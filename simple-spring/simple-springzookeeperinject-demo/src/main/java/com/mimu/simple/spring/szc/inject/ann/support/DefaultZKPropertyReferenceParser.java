@@ -19,4 +19,14 @@ public class DefaultZKPropertyReferenceParser implements ZKPropertyReferencePars
         }
         return null;
     }
+
+    @Override
+    public int hashCode() {
+        return DefaultZKPropertyReferenceParser.class.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj == this || obj instanceof DefaultZKPropertyReferenceParser);
+    }
 }

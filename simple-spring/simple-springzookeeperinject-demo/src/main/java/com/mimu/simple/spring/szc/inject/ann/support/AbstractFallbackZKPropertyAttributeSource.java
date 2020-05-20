@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  author: mimu
  date: 2020/4/29
  */
-public abstract class AbstractFallbackZKPropertyAttributeSource implements ZKPropertyAttributeSource, Serializable {
+public abstract class AbstractFallbackZKPropertyAttributeSource implements ZKPropertyAttributeSource{
 
     private static final ZKPropertyAttribute NULL_ZKPROPERTY_ATTRIBUTE = new DefaultZKPropertyAttribute() {
         @Override
@@ -50,7 +50,7 @@ public abstract class AbstractFallbackZKPropertyAttributeSource implements ZKPro
     }
 
     protected ZKPropertyAttribute computeZKPropertyAttribute(Method method, Class<?> targetClass) {
-        if (!Modifier.isPublic(method.getModifiers())) {
+        if (isPublicMethodOnly() && !Modifier.isPublic(method.getModifiers())) {
             return null;
         }
         Method mostSpecificMethod = AopUtils.getMostSpecificMethod(method, targetClass);
@@ -64,6 +64,10 @@ public abstract class AbstractFallbackZKPropertyAttributeSource implements ZKPro
 
     protected Object getCacheKey(Method method, @Nullable Class<?> targetClass) {
         return new MethodClassKey(method, targetClass);
+    }
+
+    protected boolean isPublicMethodOnly() {
+        return false;
     }
 
     protected abstract ZKPropertyAttribute findZKPropertyAttribute(Method method);

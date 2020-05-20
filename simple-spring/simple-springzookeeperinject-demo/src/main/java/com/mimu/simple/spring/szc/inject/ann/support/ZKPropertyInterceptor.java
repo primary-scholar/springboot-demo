@@ -2,8 +2,12 @@ package com.mimu.simple.spring.szc.inject.ann.support;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.ietf.jgss.Oid;
 import org.springframework.aop.support.AopUtils;
+import org.springframework.beans.factory.BeanFactory;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
@@ -17,5 +21,18 @@ public class ZKPropertyInterceptor extends ZKPropertyAspectSupport implements Me
         return invokeWithInterceptor(invocation.getMethod(), targetClass);
     }
 
+    private void writeObject(java.io.ObjectOutputStream out)
+            throws IOException {
+        out.defaultWriteObject();
+        out.writeObject(getPropertyAttribute());
+        out.writeObject(getBeanFactory());
+    }
+
+    private void readObject(java.io.ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        setPropertyAttribute((ZKPropertyAttributeSource) in.readObject());
+        setBeanFactory((BeanFactory) in.readObject());
+    }
 
 }

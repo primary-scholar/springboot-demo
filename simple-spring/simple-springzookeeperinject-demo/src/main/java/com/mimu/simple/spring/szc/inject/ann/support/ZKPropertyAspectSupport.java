@@ -25,8 +25,18 @@ public class ZKPropertyAspectSupport implements BeanFactoryAware, InitializingBe
         this.beanFactory = beanFactory;
     }
 
+    public BeanFactory getBeanFactory() {
+        return beanFactory;
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
+        if (this.beanFactory == null) {
+            throw new RuntimeException("running in a listableBeanFactory is required!");
+        }
+        if (this.propertyAttribute == null) {
+            throw new RuntimeException("propertyAttributeSource is required!");
+        }
 
     }
 

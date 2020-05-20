@@ -40,4 +40,25 @@ public class AnnotationZkPropertyAttributeSource extends AbstractFallbackZKPrope
         }
         return null;
     }
+
+    public boolean isPublicMethodOnly() {
+        return publicMethodOnly;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.annotationParsers.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof AnnotationZkPropertyAttributeSource)) {
+            return false;
+        }
+        AnnotationZkPropertyAttributeSource objTag = (AnnotationZkPropertyAttributeSource) obj;
+        return (this.annotationParsers.equals(objTag.annotationParsers) && this.publicMethodOnly == objTag.publicMethodOnly);
+    }
 }
