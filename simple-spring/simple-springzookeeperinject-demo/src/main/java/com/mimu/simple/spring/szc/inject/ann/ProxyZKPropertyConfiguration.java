@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Role;
  author: mimu
  date: 2020/4/28
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 public class ProxyZKPropertyConfiguration extends AbstractPropertyConfiguration {
 
