@@ -47,7 +47,7 @@ public class CommonRepository {
         try {
             Thread.sleep(40);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("getRemoteInfo", e);
         }
         String value = "normal logic";
         logger.info("s={},value={}", s, value);
@@ -55,7 +55,7 @@ public class CommonRepository {
     }
 
     public String getRemoteInfoFallBack(String s, Throwable throwable) {
-        logger.error("s={},getRemoteInfo fallBack,exception=", s, throwable);
+        logger.error("s={},getRemoteInfo fallBack,exception", s, throwable);
         return "getRemoteInfo fallBack";
     }
 }

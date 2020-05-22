@@ -12,7 +12,7 @@ import java.util.List;
  * date: 2019/8/30
  */
 public class HystrixApplication {
-    private static final int size = 100;
+    private static final int size = 1;
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
