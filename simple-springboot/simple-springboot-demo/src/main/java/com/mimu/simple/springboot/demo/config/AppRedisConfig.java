@@ -2,7 +2,7 @@ package com.mimu.simple.springboot.demo.config;
 
 import com.mimu.simple.springboot.demo.config.customizer.cache.AppRedisCacheManagerBuilderCustomer;
 import com.mimu.simple.springboot.demo.config.customizer.cache.AppRedisCacheManagerCustomer;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,13 +22,13 @@ public class AppRedisConfig {
      * @return
      */
     @Bean
-    @ConditionalOnBean(RedisCache.class)
+    @ConditionalOnClass(RedisCache.class)
     public AppRedisCacheManagerBuilderCustomer redisCacheManagerBuilderCustomer() {
         return new AppRedisCacheManagerBuilderCustomer();
     }
 
     @Bean
-    @ConditionalOnBean(RedisCache.class)
+    @ConditionalOnClass(RedisCache.class)
     public AppRedisCacheManagerCustomer redisCacheManagerCustomer() {
         return new AppRedisCacheManagerCustomer();
     }
