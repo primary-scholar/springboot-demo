@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         JdbcTemplateAutoConfiguration.class})
-@Import(value = {ProjectApplicationConfig.class})
+//@Import(value = {ProjectApplicationConfig.class}) // 此处可引可不引
 public class SBApplication {
     public static void main(String[] args) {
         SpringApplication.run(SBApplication.class);
