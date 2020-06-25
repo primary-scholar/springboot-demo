@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Role;
 
 /**
- author: mimu
- date: 2020/4/28
+ * author: mimu
+ * date: 2020/4/28
  */
 @Configuration(proxyBeanMethods = false)
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
@@ -18,10 +18,10 @@ public class ProxyZKPropertyConfiguration extends AbstractPropertyConfiguration 
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public BeanFactoryZKPropertyAttributeSourceAdvisor zkPropertyAttributeSourceAdvisor() {
+    public BeanFactoryZKPropertyAttributeSourceAdvisor zkPropertyAttributeSourceAdvisor(ZKPropertyAttributeSource attributeSource, ZKPropertyInterceptor interceptor) {
         BeanFactoryZKPropertyAttributeSourceAdvisor advisor = new BeanFactoryZKPropertyAttributeSourceAdvisor();
-        advisor.setZkPropertyAttributeSource(propertyAttributeSource());
-        advisor.setAdvice(propertyInterceptor());
+        advisor.setZkPropertyAttributeSource(attributeSource);
+        advisor.setAdvice(interceptor);
         return advisor;
     }
 
@@ -33,9 +33,9 @@ public class ProxyZKPropertyConfiguration extends AbstractPropertyConfiguration 
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public ZKPropertyInterceptor propertyInterceptor() {
+    public ZKPropertyInterceptor propertyInterceptor(ZKPropertyAttributeSource attributeSource) {
         ZKPropertyInterceptor interceptor = new ZKPropertyInterceptor();
-        interceptor.setPropertyAttribute(propertyAttributeSource());
+        interceptor.setPropertyAttribute(attributeSource);
         return interceptor;
     }
 
