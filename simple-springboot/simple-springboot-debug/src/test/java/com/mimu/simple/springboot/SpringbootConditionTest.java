@@ -15,12 +15,12 @@ public class SpringbootConditionTest {
 
     @Test
     public void info() {
-        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext();
-        configApplicationContext.register(AppConfig.class);
-        configApplicationContext.refresh();
+        AnnotationConfigApplicationContext configApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        //configApplicationContext.register(AppConfig.class);
+        //configApplicationContext.refresh();
         for (String s : configApplicationContext.getBeanDefinitionNames()) {
             System.out.println(s);
         }
-        configApplicationContext.getEnvironment().getSystemProperties().forEach((key, value) -> logger.info(key + "=" + value));
+        //configApplicationContext.getEnvironment().getSystemProperties().forEach((key, value) -> logger.info(key + "=" + value));
     }
 }
