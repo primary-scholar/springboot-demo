@@ -1,10 +1,10 @@
-package com.mimu.simple.spring.szc.inject.annotation;
+package com.mimu.simple.spring.szc.inject.anno;
 
 import java.lang.annotation.*;
 
 /**
- * author: mimu
- * date: 2020/4/27
+ author: mimu
+ date: 2020/4/25
  */
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

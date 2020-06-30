@@ -1,7 +1,7 @@
 package com.mimu.simple.spring.szc.inject.test.annotation.app;
 
-import com.mimu.simple.spring.szc.inject.annotation.app.ApplicationConfig;
-import com.mimu.simple.spring.szc.inject.annotation.app.ZKPropertyModel;
+import com.mimu.simple.spring.szc.inject.anno.app.ApplicationConfig;
+import com.mimu.simple.spring.szc.inject.anno.app.ZKPropertyModel;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
