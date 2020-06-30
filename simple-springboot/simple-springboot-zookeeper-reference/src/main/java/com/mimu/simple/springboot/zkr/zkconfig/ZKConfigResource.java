@@ -25,9 +25,9 @@ public class ZKConfigResource {
     private CuratorFramework client;
     private ZooKeeperConfigurationSource zkConfigSource;
 
-    public ZKConfigResource(ZookeeperConfigProperties zookeeperConfigProperties) {
-        this.zkAddress = zookeeperConfigProperties.getAddress();
-        this.rootPath = zookeeperConfigProperties.getPath();
+    public ZKConfigResource(String address, String path) {
+        this.zkAddress = address;
+        this.rootPath = path;
         if (initialization.compareAndSet(false, true)) {
             initAndStartConfiguration();
         }

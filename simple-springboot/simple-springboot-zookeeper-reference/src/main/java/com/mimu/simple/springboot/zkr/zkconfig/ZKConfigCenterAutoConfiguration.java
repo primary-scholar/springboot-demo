@@ -8,11 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnBean(ZKPropertyAspectSupport.class)
-@EnableConfigurationProperties(ZookeeperConfigProperties.class)
-public class ZookeeperConfigCenterAutoConfiguration {
+@EnableConfigurationProperties(ZKConfigProperties.class)
+public class ZKConfigCenterAutoConfiguration {
 
     @Bean
-    public void ZKCenterResource(){
-
+    public ZKConfigResource zkConfigResource(ZKConfigProperties zkConfigProperties) {
+        ZKConfigResource zkConfigResource = new ZKConfigResource(zkConfigProperties.getAddress(), zkConfigProperties.getPath());
+        return zkConfigResource;
     }
 }

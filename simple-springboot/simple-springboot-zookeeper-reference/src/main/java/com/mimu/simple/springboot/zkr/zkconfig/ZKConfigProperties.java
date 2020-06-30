@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(
         prefix = "spring.zookeeper.center"
 )
-public class ZookeeperConfigProperties {
+public class ZKConfigProperties {
     private String address;
     private String path;
 
