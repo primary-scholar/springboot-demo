@@ -22,7 +22,6 @@
         <module>simple-springboot-demo</module>
         <module>simple-springboot-mybatis-generator</module>
         <module>simple-springboot-mybatis-multipledb</module>
-        <module>simple-springboot-zkreference-spring-boot-starter</module>
     </modules>
 
     <properties>
