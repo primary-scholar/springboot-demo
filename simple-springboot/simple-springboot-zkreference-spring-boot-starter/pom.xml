@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.mimu.simple.zkreference.sbs</groupId>
-  <artifactId>zkreference-spring-boot-starter</artifactId>
+  <artifactId>simple-springboot-zkreference-spring-boot-starter</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>zkreference-spring-boot-starter</name>
