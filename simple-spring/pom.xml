@@ -26,7 +26,7 @@
         <module>simple-springhystrix-demo</module>
         <module>simple-springmybatis</module>
         <module>simple-springmybatis-generator</module>
-        <module>simple-springzookeeperinject-demo</module>
+        <module>simple-springzkreference-demo</module>
     </modules>
 
     <properties>
