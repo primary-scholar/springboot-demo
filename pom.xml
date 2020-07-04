@@ -57,22 +57,21 @@
         <kafka.version>2.2.0</kafka.version>
         <hystrix.java.version>1.5.12</hystrix.java.version>
         <lombok.version>1.18.8</lombok.version>
+        <tomcat.embed.core>9.0.36</tomcat.embed.core>
+        <lettuce.version>5.3.1.RELEASE</lettuce.version>
         <jetty.version>9.4.19.v20190610</jetty.version>
         <curator.version>4.1.0</curator.version>
         <archaius.core.version>0.7.5</archaius.core.version>
         <archaius.zookeeper.version>0.5.12</archaius.zookeeper.version>
         <zookeeper.version>3.4.14</zookeeper.version>
         <commons.configuration.version>1.10</commons.configuration.version>
+        <spring.data.redis.version>2.3.1.RELEASE</spring.data.redis.version>
         <jedis.version>3.2.0</jedis.version>
         <redisson.version>3.12.2</redisson.version>
         <skywalking.version>6.1.0</skywalking.version>
         <elasticsearch.version>6.2.4</elasticsearch.version>
 
-        <spring.boot.version>2.2.4.RELEASE</spring.boot.version>
         <dubbo.version>2.7.4.1</dubbo.version>
-        <druid.springboot.version>1.1.18</druid.springboot.version>
-        <mybatis.springboot.version>2.0.1</mybatis.springboot.version>
-
         <junit.version>4.12</junit.version>
     </properties>
 
@@ -161,6 +160,11 @@
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>${spring.data.redis.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
@@ -169,6 +173,11 @@
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.lettuce</groupId>
+                <artifactId>lettuce-core</artifactId>
+                <version>${lettuce.version}</version>
             </dependency>
             <dependency>
                 <groupId>redis.clients</groupId>
@@ -253,6 +262,11 @@
                 <version>${fastjson.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>${tomcat.embed.core}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-webapp</artifactId>
                 <version>${jetty.version}</version>
@@ -306,6 +320,11 @@
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-core</artifactId>
                 <version>${maven.mybatis.generator.plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.curator</groupId>
