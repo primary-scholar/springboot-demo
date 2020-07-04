@@ -61,6 +61,7 @@
         <curator.version>4.1.0</curator.version>
         <archaius.core.version>0.7.5</archaius.core.version>
         <archaius.zookeeper.version>0.5.12</archaius.zookeeper.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
         <commons.configuration.version>1.10</commons.configuration.version>
         <jedis.version>3.2.0</jedis.version>
         <redisson.version>3.12.2</redisson.version>
@@ -270,6 +271,11 @@
                 <groupId>commons-configuration</groupId>
                 <artifactId>commons-configuration</artifactId>
                 <version>${commons.configuration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
