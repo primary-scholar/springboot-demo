@@ -17,6 +17,9 @@ public class SimpleRedissonLock {
      */
     static {
         Config config = new Config();
+        /**
+         * 3. 单节点模式
+         */
         config.useSingleServer()
                 .setAddress("redis://localhost:6379")
                 .setSubscriptionConnectionMinimumIdleSize(1)
@@ -24,7 +27,24 @@ public class SimpleRedissonLock {
                 .setConnectionMinimumIdleSize(32)
                 .setConnectionPoolSize(64)
                 .setTimeout(10000);
+        /**
+         * 5. 主从模式
+         *
+         */
+        /*config.useMasterSlaveServers()
+                .setMasterAddress("redis://localhost:6379")
+                .addSlaveAddress("redis://localhost:6379", "redis://localhost:6379")
+                .setPassword("");*/
+
+        /**
+         * 1. 集群模式
+         */
+        /*config.useClusterServers()
+                .setScanInterval(2000) // 集群状态扫描间隔时间，单位是毫秒
+                .addNodeAddress("redis://localhost:6379", "redis://localhost:6379")
+                .addNodeAddress("redis://localhost:6379");*/
         redissonClient = Redisson.create(config);
+
     }
 
     public static RLock lock(String lockKey) {
@@ -35,6 +55,7 @@ public class SimpleRedissonLock {
 
     /**
      * 释放锁
+     *
      * @param lockKey
      */
     public static void unlock(String lockKey) {
@@ -48,6 +69,7 @@ public class SimpleRedissonLock {
 
     /**
      * 带超时的锁
+     *
      * @param lockKey
      * @param timeout 超时时间   单位：秒
      */
@@ -59,11 +81,12 @@ public class SimpleRedissonLock {
 
     /**
      * 带超时的锁
+     *
      * @param lockKey
-     * @param unit 时间单位
+     * @param unit    时间单位
      * @param timeout 超时时间
      */
-    public static RLock lock(String lockKey, TimeUnit unit , int timeout) {
+    public static RLock lock(String lockKey, TimeUnit unit, int timeout) {
         RLock lock = redissonClient.getLock(lockKey);
         lock.lock(timeout, unit);
         return lock;
@@ -80,9 +103,10 @@ public class SimpleRedissonLock {
 
     /**
      * 尝试获取锁
+     *
      * @param lockKey
-     * @param unit 时间单位
-     * @param waitTime 最多等待时间
+     * @param unit      时间单位
+     * @param waitTime  最多等待时间
      * @param leaseTime 上锁后自动释放锁时间
      * @return
      */
