@@ -68,7 +68,7 @@
         <jedis.version>3.2.0</jedis.version>
         <lettuce.version>5.3.1.RELEASE</lettuce.version>
         <redisson.version>3.12.2</redisson.version>
-        <skywalking.version>6.1.0</skywalking.version>
+        <skywalking.version>8.0.1</skywalking.version>
         <elasticsearch.version>6.2.4</elasticsearch.version>
 
         <dubbo.version>2.7.4.1</dubbo.version>
@@ -342,6 +342,16 @@
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>transport</artifactId>
                 <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-log4j-2.x</artifactId>
+                <version>${skywalking.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-trace</artifactId>
+                <version>${skywalking.version}</version>
             </dependency>
 
             <dependency>

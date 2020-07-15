@@ -3,8 +3,8 @@ package com.mimu.simple.java.thread;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- author: mimu
- date: 2020/2/28
+ * author: mimu
+ * date: 2020/2/28
  */
 public class ThreadLocalRandomTest {
 
@@ -22,7 +22,7 @@ public class ThreadLocalRandomTest {
     }
 
     /**
-     * 这里 Random 中
+     * 这里 Random  在所有线程中 输出的 数字 都一样
      */
     private static class Player extends Thread {
         @Override

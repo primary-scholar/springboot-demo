@@ -1,7 +1,10 @@
 package com.mimu.simple.java.future;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.*;
 import java.util.function.Function;
@@ -11,8 +14,8 @@ import java.util.function.Supplier;
  * author: mimu
  * date: 2019/7/12
  */
-@Slf4j
 public class FutureRelevantTest {
+    private static final Logger logger = LoggerFactory.getLogger(FutureRelevantTest.class);
 
     @Test
     public void executeTest() {
@@ -35,17 +38,17 @@ public class FutureRelevantTest {
     }
 
     private void performTask(String stage) {
-        log.info("start stage:{},thread:{}", stage, Thread.currentThread().getName());
+        logger.info("start stage:{},thread:{}", stage, Thread.currentThread().getName());
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        log.info("end stage:{},thread:{}", stage, Thread.currentThread().getName());
+        logger.info("end stage:{},thread:{}", stage, Thread.currentThread().getName());
     }
 
     /**
-     *理论上来说: 使用 RunAsync(),SupplyAsync() 的方法其执行逻辑是在新线程中
+     * 理论上来说: 使用 RunAsync(),SupplyAsync() 的方法其执行逻辑是在新线程中
      * 后续的 non-async() 的方法的执行逻辑 在前一阶段的 线程中执行
      * 后续的 async() 的方法的执行逻辑 是在新线程中
      */
@@ -56,8 +59,18 @@ public class FutureRelevantTest {
                 .thenRun(() -> performTask("second stage"))
                 .thenRunAsync(() -> performTask("third stage"), executorService)
                 .join();
-        log.info("main exiting");
+        logger.info("main exiting");
         executorService.shutdown();
+    }
+
+    @Trace
+    public void performTest3() {
+        logger.info("performTest3 traceing Info");
+        Thread lalal = new Thread(() -> {
+            logger.info("traceing Info");
+            System.out.println("lalal");
+        });
+        lalal.start();
     }
 
     @Test
@@ -66,14 +79,14 @@ public class FutureRelevantTest {
                 .thenRunAsync(() -> performTask("second stage"))
                 .thenRun(() -> performTask("third stage"))
                 .join();
-        log.info("main exiting");
+        logger.info("main exiting");
     }
 
     @Test
     public void runAsyncInfo() {
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
             try {
-                log.info("runAsyncInfo supplyAsync thread info:{}", Thread.currentThread().getName());
+                logger.info("runAsyncInfo supplyAsync thread info:{}", Thread.currentThread().getName());
                 Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -81,7 +94,7 @@ public class FutureRelevantTest {
             return 10;
         }).whenComplete((integer, throwable) -> {
             if (throwable == null) {
-                log.info("runAsyncInfo whenComplete thread info:{}", Thread.currentThread().getName());
+                logger.info("runAsyncInfo whenComplete thread info:{}", Thread.currentThread().getName());
                 System.out.println(integer);
             } else {
                 System.out.println("runAsyncInfo exception occur" + throwable.getMessage());
@@ -165,6 +178,7 @@ public class FutureRelevantTest {
     /**
      * Future 接口提供了一种异步 获取结果的机制，即Future 的callable<>的逻辑执行在其他线程中完成
      * 在使用 future.get() 方法之前，要确保 callable<> 的逻辑已经执行，否则get() 方法会一直阻塞
+     *
      * @throws ExecutionException
      * @throws InterruptedException
      */
@@ -192,5 +206,9 @@ public class FutureRelevantTest {
 
     public static int algorithm(int input, int input2) {
         return input + input2;
+    }
+
+    public static void main(String[] args) {
+        new FutureRelevantTest().performTest3();
     }
 }

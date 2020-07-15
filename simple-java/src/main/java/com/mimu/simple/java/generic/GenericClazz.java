@@ -7,6 +7,8 @@ package com.mimu.simple.java.generic;
  */
 
 /**
+ * Tips
+ * <p>
  * 类上使用 <T> 代表该类是一个 泛型类
  *
  * @param <T>
