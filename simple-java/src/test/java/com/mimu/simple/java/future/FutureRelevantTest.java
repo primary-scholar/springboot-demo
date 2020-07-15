@@ -65,9 +65,18 @@ public class FutureRelevantTest {
     @Trace
     public void performTest3() {
         logger.info("performTest3 traceing Info");
-        Thread lalal = new Thread(() -> {
-            logger.info("traceing Info");
-            //System.out.println("lalal");
+        Thread lalal = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    logger.info("traceing Info");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         });
         lalal.start();
     }

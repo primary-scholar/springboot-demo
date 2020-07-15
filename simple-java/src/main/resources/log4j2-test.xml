@@ -38,7 +38,7 @@
         <RollingFile name="RollingFileError" fileName="${path}/${name}.err"
                      filePattern="${path}/${name}-%d{yyyy-MM-dd}.err">
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36}:%L [%t] [%traceId] - %msg%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36}:%L [%t] - %msg%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
             </Policies>
