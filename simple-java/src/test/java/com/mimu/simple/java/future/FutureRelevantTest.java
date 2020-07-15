@@ -1,6 +1,5 @@
 package com.mimu.simple.java.future;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -68,7 +67,7 @@ public class FutureRelevantTest {
         logger.info("performTest3 traceing Info");
         Thread lalal = new Thread(() -> {
             logger.info("traceing Info");
-            System.out.println("lalal");
+            //System.out.println("lalal");
         });
         lalal.start();
     }
