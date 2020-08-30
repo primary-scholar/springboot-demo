@@ -1,9 +1,13 @@
 package com.mimu.simple.java.cm.jdk8n;
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.logging.log4j.core.util.ExecutorServices;
 
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class FunctionTest {
 
@@ -30,12 +34,11 @@ public class FunctionTest {
             }
         };
 
-        Function<Integer, Integer> multiplyFunction = integer -> integer * integer;
+        Supplier<Integer> constanst = () -> 1;
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
 
         System.out.println(addFunction.apply(3));
-        System.out.println(multiplyFunction.apply(3));
-        System.out.println(addFunction.compose(multiplyFunction).apply(3));
-        System.out.println(addFunction.andThen(multiplyFunction).apply(3));
+        System.out.println(constanst.get());
     }
 
 
