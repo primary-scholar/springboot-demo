@@ -1,13 +1,11 @@
 package com.mimu.simple.java.seriali;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.text.html.parser.Entity;
 import java.io.IOException;
-import java.util.Objects;
 
 public class ObjectMapperSerialzedTest {
     public ObjectMapper objectMapper;
@@ -15,6 +13,7 @@ public class ObjectMapperSerialzedTest {
     @Before
     public void objectMapper() {
         objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     @Test
@@ -31,8 +30,8 @@ public class ObjectMapperSerialzedTest {
         role.setPassword("role password");
         role.setRole("role");
         System.out.println(objectMapper.writeValueAsString(role));
-       /* AbstractEntity roleEntity = objectMapper.readValue(objectMapper.writeValueAsString(role), AbstractEntity.class);
-        System.out.println(objectMapper.writeValueAsString(roleEntity));*/
+        AbstractEntity roleEntity = objectMapper.readValue(objectMapper.writeValueAsString(role), AbstractEntity.class);
+        System.out.println(objectMapper.writeValueAsString(roleEntity));
 
         TokenEntity token = new TokenEntity();
         token.setName("token name");

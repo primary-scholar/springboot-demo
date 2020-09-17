@@ -11,39 +11,27 @@ public class FastJsonTest {
 
     @Test
     public void info() {
-        People people = new People(10, "name");
+        People people = new People();
+        people.setId(10);
+        people.setName("people");
         System.out.println(JSONObject.toJSONString(people));
 
-        String peos = "{\"aName\":\"anamela\",\"age\":11}";
+        String peos = "{\"aName\":\"anamela\",\"id\":11}";
         People people1 = JSONObject.toJavaObject(JSONObject.parseObject(peos), People.class);
         System.out.println(JSONObject.toJSONString(people1));
 
-        String peos1 = "{\"bName\":\"bnamela\",\"age\":12}";
+        String peos1 = "{\"name\":\"bnamela\",\"id\":12,\"role\":\"worker\"}";
         People people2 = JSONObject.toJavaObject(JSONObject.parseObject(peos1), People.class);
         System.out.println(JSONObject.toJSONString(people2));
-        System.out.println();
-    }
 
-    @Test
-    public void info1() {
-        People people = new People(1, "aaa");
-        String jsonString = JSONObject.toJSONString(people);
-        JSONObject jsonObject = JSONObject.parseObject(jsonString);
-        People people1 = JSONObject.toJavaObject(jsonObject, People.class);
-        System.out.println(people1);
+        String peos12 = "{\"name\":\"bnamela\",\"id\":12,\"role\":\"worker\"}";
+        People people121 = JSONObject.toJavaObject(JSONObject.parseObject(peos12), Worker.class);
+        System.out.println(JSONObject.toJSONString(people121));
     }
 
     static class People {
         private int id;
         private String name;
-
-        People() {
-        }
-
-        People(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
 
         public int getId() {
             return id;
@@ -60,13 +48,17 @@ public class FastJsonTest {
         public void setName(String name) {
             this.name = name;
         }
+    }
 
-        @Override
-        public String toString() {
-            return "People{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    '}';
+    public static class Worker extends People{
+        private String role;
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
         }
     }
 }
