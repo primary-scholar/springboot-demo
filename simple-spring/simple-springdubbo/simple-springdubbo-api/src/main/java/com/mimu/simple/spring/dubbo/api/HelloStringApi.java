@@ -11,4 +11,6 @@ public interface HelloStringApi {
     HelloData hello(String name) throws Exception;
 
     String hello2(String name);
+
+    HelloData hello3(String name);
 }

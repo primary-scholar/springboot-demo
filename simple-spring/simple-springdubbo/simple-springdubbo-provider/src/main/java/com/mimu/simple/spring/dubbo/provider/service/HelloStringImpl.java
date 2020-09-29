@@ -33,4 +33,9 @@ public class HelloStringImpl implements HelloStringApi {
     public String hello2(String name) {
         return "hello2 method " + name;
     }
+
+    @Override
+    public HelloData hello3(String name) {
+        return null;
+    }
 }

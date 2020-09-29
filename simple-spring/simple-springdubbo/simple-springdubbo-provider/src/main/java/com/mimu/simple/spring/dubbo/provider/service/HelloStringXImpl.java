@@ -30,4 +30,12 @@ public class HelloStringXImpl implements HelloStringApi {
     public String hello2(String name) {
         return "hello2 " + name;
     }
+
+    @Override
+    public HelloData hello3(String name) {
+        if (Math.random() > 0.5) {
+            throw new RuntimeException();
+        }
+        return new HelloData();
+    }
 }

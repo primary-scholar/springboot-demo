@@ -34,4 +34,17 @@ public class CommonController {
         log.info("helloInfo={}", name);
         return helloService.getHello2(name);
     }
+
+
+    @RequestMapping(value = "/sdc/hello1.go", method = RequestMethod.GET)
+    public HelloData getHelloException(String name) {
+        try {
+            log.info("helloInfo={}", name);
+            return helloService.getHello3(name);
+        } catch (Exception e) {
+            log.error("getHello error", e);
+            return new HelloData();
+
+        }
+    }
 }

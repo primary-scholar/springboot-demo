@@ -41,4 +41,10 @@ public class HelloService {
     public String getHello2(String name) {
         return helloStringApi.hello2(name);
     }
+
+    public HelloData getHello3(String name) {
+        HelloData helloData = helloStringApi.hello3(name);
+        log.info("getHello3 result={}", helloData);
+        return helloData;
+    }
 }

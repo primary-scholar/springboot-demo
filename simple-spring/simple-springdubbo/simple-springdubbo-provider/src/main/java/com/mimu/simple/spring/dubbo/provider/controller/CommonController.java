@@ -40,7 +40,7 @@ public class CommonController {
     }
 
     @RequestMapping(value = "/sds/hello.go", method = RequestMethod.GET)
-    public HelloData getHello(String name) {
+    public HelloData getHelloWithException(String name) {
         try {
             log.info("helloInfo={}", name);
             return helloStringApi.hello(name);
