@@ -66,7 +66,7 @@ public class DataSourceConfig {
 
     private DataSource getDataSource(String url, String user, String password, boolean useUtf8Mb4) {
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         String jdbcUrl = String.format("%s"
                 , url);
         dataSource.setUrl(jdbcUrl);

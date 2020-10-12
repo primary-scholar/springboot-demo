@@ -38,7 +38,7 @@ public class CommonService {
     public List<CourseInfo> find() {
         CourseInfoExample example = new CourseInfoExample();
         example.setDistinct(true);
-        example.setOrderByClause("person_id desc,term_id");
+        example.setOrderByClause("no desc,hour");
         List<Integer> personIdList = new ArrayList<>();
         personIdList.add(10);
         personIdList.add(13);
