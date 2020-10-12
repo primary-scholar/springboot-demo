@@ -94,18 +94,18 @@
             &lt;!&ndash;指定 某列的 数据类型  &ndash;&gt;
             <columnOverride column="id" jdbcType="" javaType="" typeHandler=""/>
         </table>-->
-        <table tableName="term_info" domainObjectName="TermInfo"
-               enableCountByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false">
+        <table tableName="course_info" domainObjectName="CourseInfo"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true"
+               enableUpdateByExample="true">
             <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="user_info" domainObjectName="UserInfo"
-               enableCountByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false">
+        <table tableName="school_info" domainObjectName="SchoolInfo"
+               enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true"
+               enableUpdateByExample="true">
             <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>

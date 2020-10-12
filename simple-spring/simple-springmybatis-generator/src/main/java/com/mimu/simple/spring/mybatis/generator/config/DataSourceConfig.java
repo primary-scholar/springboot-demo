@@ -1,7 +1,7 @@
 package com.mimu.simple.spring.mybatis.generator.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.mimu.simple.spring.mybatis.generator.mapper.UserInfoMapper;
+import com.mimu.simple.spring.mybatis.generator.mapper.CourseInfoMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
-import javax.xml.transform.Result;
 import java.util.Collections;
 
 /**
@@ -29,7 +28,7 @@ import java.util.Collections;
  */
 @Configuration
 @PropertySource(value = {"classpath:db-connect.properties"})
-@MapperScan(basePackageClasses = UserInfoMapper.class, sqlSessionFactoryRef = "userSqlSessionFactory")
+@MapperScan(basePackageClasses = CourseInfoMapper.class, sqlSessionFactoryRef = "userSqlSessionFactory")
 @EnableTransactionManagement
 public class DataSourceConfig {
     private static final Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);

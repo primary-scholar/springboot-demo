@@ -1,13 +1,14 @@
 package com.mimu.simple.spring.mybatis.generator;
 
 import com.mimu.simple.spring.mybatis.generator.config.ApplicationConfig;
+import com.mimu.simple.spring.mybatis.generator.model.CourseInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
 /**
  * author: mimu
@@ -24,5 +25,11 @@ public class CommonServiceTest {
     public void countByExample() {
         long l = commonService.countByExample(1);
         System.out.println(l);
+    }
+
+    @Test
+    public void complexFind() {
+        List<CourseInfo> termInfos = commonService.find();
+        termInfos.forEach(termInfo -> System.out.println(termInfo));
     }
 }
