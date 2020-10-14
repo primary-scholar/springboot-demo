@@ -1,5 +1,8 @@
 package com.mimu.simple.java.seriali;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.ParserConfig;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -50,6 +53,17 @@ public class ObjectMapperSerialzedTest {
         System.out.println(objectMapper.writeValueAsString(model));
         ResultModel model13 = objectMapper.readValue(objectMapper.writeValueAsString(model), ResultModel.class);
         System.out.println(objectMapper.writeValueAsString(model13));
+
+
+        /**
+         * fastJson 存在 同样的问题，可以使用如下方法 解决
+         */
+        String x = JSONObject.toJSONString(model, SerializerFeature.WriteClassName);
+        System.out.println(x);
+        ParserConfig globalInstance = ParserConfig.getGlobalInstance();
+        globalInstance.setAutoTypeSupport(true);
+        Object o = JSONObject.parseObject(x, ResultModel.class, globalInstance);
+        System.out.println(JSONObject.toJSONString(o));
 
     }
 
