@@ -17,6 +17,8 @@ public class NetworkTest {
                 e.printStackTrace();
             }
         }*/
-        System.out.println(6401417103018471523l%128);
+        String abc="abc|abfda|";
+        System.out.println(abc.split("\\|").length);
+        //System.out.println(6401417103018471523l%128);
     }
 }
