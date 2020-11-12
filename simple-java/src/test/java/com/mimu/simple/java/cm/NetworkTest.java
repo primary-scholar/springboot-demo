@@ -4,7 +4,6 @@ package com.mimu.simple.java.cm;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.net.InetSocketAddress;
 import java.util.Properties;
 
 /**
