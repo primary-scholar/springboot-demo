@@ -1,9 +1,9 @@
 package com.mimu.simple.spring.mybatis.generator;
 
-import com.mimu.simple.spring.mybatis.generator.mapper.CourseInfoMapper;
-import com.mimu.simple.spring.mybatis.generator.mapper.SchoolInfoMapper;
-import com.mimu.simple.spring.mybatis.generator.model.CourseInfo;
-import com.mimu.simple.spring.mybatis.generator.model.CourseInfoExample;
+import com.mimu.simple.spring.mybatis.generator.mapper.school.CourseInfoMapper;
+import com.mimu.simple.spring.mybatis.generator.mapper.school.SchoolInfoMapper;
+import com.mimu.simple.spring.mybatis.generator.model.school.CourseInfo;
+import com.mimu.simple.spring.mybatis.generator.model.school.CourseInfoExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +31,8 @@ public class CommonService {
     }
 
     public long countByExample(int id) {
-        CourseInfoExample termInfoExample = new CourseInfoExample();
-        return courseInfoMapper.countByExample(termInfoExample);
+        CourseInfoExample example = new CourseInfoExample();
+        return courseInfoMapper.countByExample(example);
     }
 
     public List<CourseInfo> find() {
