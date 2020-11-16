@@ -1,7 +1,6 @@
 package com.mimu.simple.java.cm.jdk8n;
 
 import com.alibaba.fastjson.JSONObject;
-import org.apache.logging.log4j.core.util.ExecutorServices;
 
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
@@ -43,7 +42,7 @@ public class FunctionTest {
 
 
     public Parent.Child childInfo(Function<? super Parent, ? super Parent> function) {
-        return new Parent.Child(new Parent(), function);
+        return new Parent.Child(function);
     }
 
     static class Parent {
@@ -74,8 +73,8 @@ public class FunctionTest {
         static class Child extends Parent {
             private String name;
 
-            public Child(Parent parent, Function<? super Parent, ? super Parent> function) {
-                Parent apply = (Parent) function.apply(parent);
+            public Child(Function<? super Parent, ? super Parent> function) {
+                Parent apply = (Parent) function.apply(this);
                 this.setAge(apply.getAge());
                 this.name = "age" + apply.getAge();
             }
