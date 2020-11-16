@@ -1,7 +1,7 @@
 package com.mimu.simple.spring.mybatis.generator;
 
 import com.mimu.simple.spring.mybatis.generator.config.ApplicationConfig;
-import com.mimu.simple.spring.mybatis.generator.model.CourseInfo;
+import com.mimu.simple.spring.mybatis.generator.model.school.CourseInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class CommonServiceTest {
 
     @Test
     public void countByExample() {
-        long l = commonService.countByExample(1);
+        long l = commonService.countByExample(10001);
         System.out.println(l);
     }
 

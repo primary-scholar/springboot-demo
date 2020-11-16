@@ -1,7 +1,7 @@
 package com.mimu.simple.spring.mybatis.generator.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.mimu.simple.spring.mybatis.generator.mapper.CourseInfoMapper;
+import com.mimu.simple.spring.mybatis.generator.mapper.school.CourseInfoMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -60,7 +60,7 @@ public class DataSourceConfig {
         ClassPathResource resource = new ClassPathResource("mybatis-config.xml");
         sqlSessionFactory.setConfigLocation(resource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
+        //sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
         return sqlSessionFactory.getObject();
     }
 
