@@ -17,10 +17,14 @@ public class BitSetTest {
     public void info() {
         BitSet set = new BitSet();
         System.out.println(set.size());
-        set.set(196, false);
-        set.set(100);
+        set.set(1);
+        set.set(196);
+        set.set(100000);
         System.out.println(set.size());
-        System.out.println(set);
+        System.out.println(set.get(1000));
+        System.out.println(set.get(196));
+        System.out.println(set.get(1));
+        System.out.println(set.get(2));
     }
 
     @Test
