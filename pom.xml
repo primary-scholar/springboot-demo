@@ -58,7 +58,7 @@
         <hystrix.java.version>1.5.12</hystrix.java.version>
         <lombok.version>1.18.8</lombok.version>
         <tomcat.embed.core>9.0.36</tomcat.embed.core>
-        <jetty.version>9.4.19.v20190610</jetty.version>
+        <jetty.version>9.4.33.v20201020</jetty.version>
         <curator.version>4.1.0</curator.version>
         <archaius.core.version>0.7.5</archaius.core.version>
         <archaius.zookeeper.version>0.5.12</archaius.zookeeper.version>
