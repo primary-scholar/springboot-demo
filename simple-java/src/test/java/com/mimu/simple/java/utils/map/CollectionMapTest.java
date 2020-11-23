@@ -1,15 +1,10 @@
 package com.mimu.simple.java.utils.map;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-
-/**
- author: mimu
- date: 2019/11/2
- */
-
 
 /**
  *在JDK1.8主要设计上的改进有以下几点:
@@ -279,10 +274,19 @@ public class CollectionMapTest {
     public void TreeMapTest() {
         TreeMap<Integer,String> treeMap = new TreeMap<>();
         treeMap.put(1,"1");
-        treeMap.put(2,"2");
-        treeMap.put(3,"3");
-        treeMap.put(4,"4");
         treeMap.put(5,"5");
+        treeMap.put(6,"6");
+        treeMap.put(7,"7");
+        treeMap.put(13,"13");
+        System.out.println(JSONObject.toJSONString(treeMap.ceilingEntry(4)));
+        System.out.println(JSONObject.toJSONString(treeMap.ceilingEntry(5)));
+        System.out.println(JSONObject.toJSONString(treeMap.floorEntry(12)));
+        System.out.println(JSONObject.toJSONString(treeMap.floorEntry(13)));
+        System.out.println(JSONObject.toJSONString(treeMap.firstKey()));
+        System.out.println(JSONObject.toJSONString(treeMap.higherEntry(4)));
+        System.out.println(JSONObject.toJSONString(treeMap.higherEntry(5)));
+        System.out.println(JSONObject.toJSONString(treeMap.lowerEntry(4)));
+        System.out.println(JSONObject.toJSONString(treeMap.lowerEntry(5)));
         System.out.println(treeMap);
     }
 
