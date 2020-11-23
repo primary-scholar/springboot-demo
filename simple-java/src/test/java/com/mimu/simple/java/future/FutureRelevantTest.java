@@ -204,6 +204,7 @@ public class FutureRelevantTest {
          * 此处没有 执行start() 方法 get() 会一直阻塞
          */
         new Thread(input1Futuretask).start();
+        System.out.println(input1Futuretask.isDone());
         Integer integer2 = input2Futuretask.get();
         Integer integer1 = input1Futuretask.get();
         System.out.println(algorithm(integer1, integer2));

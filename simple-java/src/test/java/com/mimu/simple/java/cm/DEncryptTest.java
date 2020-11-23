@@ -13,16 +13,16 @@ import java.security.NoSuchAlgorithmException;
  * date: 2019/9/10
  */
 public class DEncryptTest {
-    private static String originCode = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static String originCode = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static char[] CODEARRY = originCode.toCharArray();
 
     @Test
     public void getCode() {
-        long id = 6290494046431785000l;
+        long id = 6290494046431785001l;
         StringBuilder codeBuilder = new StringBuilder();
         while (id > 0) {
-            int mod = Math.toIntExact(id % 61);
-            id = (id - mod) / 61;
+            int mod = Math.toIntExact(id % 58);
+            id = (id - mod) / 58;
             codeBuilder.append(CODEARRY[mod]);
         }
         System.out.println(codeBuilder.toString());
@@ -30,11 +30,11 @@ public class DEncryptTest {
 
     @Test
     public void deCode() {
-        String realCode = "Jlu7jxD1VO9";
+        String realCode = "7FAhqK3gQye";
         char[] codeArry = realCode.toCharArray();
         long result = 0;
         for (int i = 0; i < realCode.length(); i++) {
-            result += originCode.indexOf(String.valueOf(codeArry[i])) * Math.pow(61.0, (double) i);
+            result += originCode.indexOf(String.valueOf(codeArry[i])) * new Double(Math.pow(58.0, i)).longValue();
         }
         System.out.println(result);
     }
