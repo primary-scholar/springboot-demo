@@ -21,9 +21,9 @@ public class ThreadPoolRelevantTest {
 
     private static void sayHi(int num) {
         System.out.println(Thread.currentThread());
-        if (num % 2 == 0) {
+        if (num % 2 == 0)
             throw new RuntimeException(Thread.currentThread() + " 异常 ");
-        }
+
     }
 
 }
