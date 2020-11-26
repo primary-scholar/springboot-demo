@@ -99,7 +99,7 @@ public class CollectionListTest {
     }
 
     /**
-     * list 顺序不同 hascode 不同
+     * list 顺序不同 hashcode 不同
      */
     @Test
     public void info() {
