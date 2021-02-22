@@ -24,9 +24,9 @@
 
 
     <!-- keyproperty将查询到的主键值设置到parameterType相对应的哪个属性 
-        order是SELECT last_insert_id()的执行顺序，相对于insert语句的执行顺序
-        resultType是指定SELECT LAST_INSERT_ID()的结果类型
-  -->
+       order是SELECT last_insert_id()的执行顺序，相对于insert语句的执行顺序
+       resultType是指定SELECT LAST_INSERT_ID()的结果类型
+    -->
     <insert id="insertUserReturnPrimaryId" parameterType="com.mimu.simple.comn.mybatis.model.UserData">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             select last_insert_id()

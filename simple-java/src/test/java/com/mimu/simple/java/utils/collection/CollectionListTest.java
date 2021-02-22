@@ -2,7 +2,9 @@ package com.mimu.simple.java.utils.collection;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  * author: mimu
@@ -53,17 +55,17 @@ public class CollectionListTest {
     /**
      * LinkedList 使用 双向链表 的方式 保存数据 支持头插法和尾插法两种 插入方式
      * <p>
-     *     private static class Node<E> {
-     *         E item;
-     *         Node<E> next;
-     *         Node<E> prev;
-     *
-     *         Node(Node<E> prev, E element, Node<E> next) {
-     *             this.item = element;
-     *             this.next = next;
-     *             this.prev = prev;
-     *         }
-     *     }
+     * private static class Node<E> {
+     * E item;
+     * Node<E> next;
+     * Node<E> prev;
+     * <p>
+     * Node(Node<E> prev, E element, Node<E> next) {
+     * this.item = element;
+     * this.next = next;
+     * this.prev = prev;
+     * }
+     * }
      *
      * <p>
      * 容量没有限制
@@ -94,5 +96,22 @@ public class CollectionListTest {
         linkedList.remove((Integer) 13);
         linkedList.remove(3);
         System.out.println(linkedList);
+    }
+
+    /**
+     * list 顺序不同 hashcode 不同
+     */
+    @Test
+    public void info() {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1);
+        arrayList.add(5);
+        arrayList.add(10);
+        arrayList.add(14);
+        for (int i = 0; i < 20; i++) {
+            Collections.shuffle(arrayList);
+            System.out.println(arrayList + " " + arrayList.hashCode());
+        }
+
     }
 }
