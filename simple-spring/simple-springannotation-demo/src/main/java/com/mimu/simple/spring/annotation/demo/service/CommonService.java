@@ -2,6 +2,7 @@ package com.mimu.simple.spring.annotation.demo.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mimu.simple.spring.annotation.demo.core.SimpleLogger;
+import com.mimu.simple.spring.annotation.demo.event.AsyncTranEvent;
 import com.mimu.simple.spring.annotation.demo.model.PersonData;
 import com.mimu.simple.spring.annotation.demo.model.TermData;
 import com.mimu.simple.spring.annotation.demo.repository.PeopleRepository;
@@ -9,6 +10,7 @@ import com.mimu.simple.spring.annotation.demo.repository.TermRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -30,6 +32,7 @@ public class CommonService {
     private StringRedisTemplate stringRedisTemplate;
     private PeopleRepository peopleRepository;
     private TermRepository termRepository;
+    private ApplicationContext applicationContext;
 
     @PostConstruct
     public void info1() {
@@ -49,6 +52,11 @@ public class CommonService {
     @Autowired
     public void setStringRedisTemplate(StringRedisTemplate stringRedisTemplate) {
         this.stringRedisTemplate = stringRedisTemplate;
+    }
+
+    @Autowired
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
     }
 
     @Transactional
@@ -121,6 +129,12 @@ public class CommonService {
     public List<TermData> listInfo(Set<String> termIdSet) {
         String join = String.join("','", termIdSet);
         return termRepository.list(join);
+    }
+
+    @Transactional(propagation =  Propagation.REQUIRED,rollbackFor = {RuntimeException.class})
+    public void asyncTransactionExecute(TermData termData){
+        boolean update = termRepository.update(termData);
+        applicationContext.publishEvent(new AsyncTranEvent());
     }
 
 }
