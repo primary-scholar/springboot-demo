@@ -19,11 +19,11 @@ import org.slf4j.LoggerFactory;
 public class NettySimpleClientDemo {
     private static final Logger logger = LoggerFactory.getLogger(NettySimpleClientDemo.class);
 
-    private String host;
+    private String peer;
     private int port;
 
     private NettySimpleClientDemo(String host, int port) {
-        this.host = host;
+        this.peer = host;
         this.port = port;
     }
 
@@ -55,7 +55,7 @@ public class NettySimpleClientDemo {
                     }
                 });
         try {
-            ChannelFuture channelFuture = bootstrap.connect(host, port).sync();
+            ChannelFuture channelFuture = bootstrap.connect(peer, port).sync();
             logger.info("NettySimpleClientDemo connected... port={}", port);
             channelFuture.channel().closeFuture().addListener(future -> workerGroup.shutdownGracefully());
         } catch (InterruptedException e) {
