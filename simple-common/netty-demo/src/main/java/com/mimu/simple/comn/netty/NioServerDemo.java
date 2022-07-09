@@ -1,6 +1,5 @@
 package com.mimu.simple.comn.netty;
 
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -9,6 +8,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -24,7 +24,7 @@ public class NioServerDemo {
     }
 
     public void startServer() {
-        new Thread(new NioServer(port),"NioServerDemo-1").start();
+        new Thread(new NioServer(port), "NioServerDemo-1").start();
     }
 
     public static void main(String[] args) {
@@ -42,7 +42,8 @@ public class NioServerDemo {
                 selector = Selector.open();
                 serverSocketChannel = ServerSocketChannel.open();
                 serverSocketChannel.configureBlocking(false);
-                serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+                final SelectionKey register = serverSocketChannel.register(selector, 0, null);
+                register.interestOps(SelectionKey.OP_ACCEPT);
                 serverSocketChannel.bind(new InetSocketAddress(port));
                 System.out.println("server ...");
             } catch (IOException e) {
@@ -88,37 +89,41 @@ public class NioServerDemo {
                     ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
                     SocketChannel socketChannel = serverSocketChannel.accept();
                     socketChannel.configureBlocking(false);
-                    socketChannel.register(selector, SelectionKey.OP_READ);
+                    ByteBuffer buffer = ByteBuffer.allocate(1024);
+                    final SelectionKey register = socketChannel.register(selector, 0, buffer);
+                    register.interestOps(SelectionKey.OP_READ);
                 }
                 if (key.isReadable()) {
                     SocketChannel socketChannel = (SocketChannel) key.channel();
-                    ByteBuffer buffer = ByteBuffer.allocate(1024);
+                    final ByteBuffer buffer = (ByteBuffer) key.attachment();
+                    // 每次实际读取的字节数
                     int readBytes = socketChannel.read(buffer);
                     if (readBytes > 0) {
                         buffer.flip();
+                        final ByteBuffer writeBuffer = ByteBuffer.allocate(buffer.remaining());
+                        writeBuffer.put(buffer);
                         byte[] bytes = new byte[buffer.remaining()];
                         buffer.get(bytes);
-                        String message = new String(bytes,"UTF-8");
+                        String message = new String(bytes, StandardCharsets.UTF_8);
                         System.out.println((message));
-                        doWrite(socketChannel, message);
+                        socketChannel.write(writeBuffer);
+                        if (writeBuffer.hasRemaining()) {
+                            key.interestOps(key.interestOps() | SelectionKey.OP_WRITE);
+                            key.attach(writeBuffer);
+                        }
                     } else if (readBytes < 0) {
                         key.cancel();
                         socketChannel.close();
                     }
                 }
-            }
-        }
-
-        private void doWrite(SocketChannel channel, String message) {
-            if (StringUtils.isNotEmpty(message)) {
-                byte[] bytes = message.getBytes();
-                ByteBuffer buffer = ByteBuffer.allocate(bytes.length);
-                buffer.put(bytes);
-                buffer.flip();
-                try {
-                    channel.write(buffer);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (key.isWritable()) {
+                    SocketChannel socketChannel = (SocketChannel) key.channel();
+                    final ByteBuffer buffer = (ByteBuffer) key.attachment();
+                    socketChannel.write(buffer);
+                    if (!buffer.hasRemaining()) {
+                        key.attach(null);
+                        key.interestOps(key.interestOps() - SelectionKey.OP_WRITE);
+                    }
                 }
             }
         }

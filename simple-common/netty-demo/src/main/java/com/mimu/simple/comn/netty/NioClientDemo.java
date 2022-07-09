@@ -73,11 +73,9 @@ public class NioClientDemo {
                         try {
                             handleKey(key);
                         } catch (IOException e) {
-                            if (key != null) {
-                                key.cancel();
-                                if (key.channel() != null) {
-                                    key.channel().close();
-                                }
+                            key.cancel();
+                            if (key.channel() != null) {
+                                key.channel().close();
                             }
                             e.printStackTrace();
                         }
