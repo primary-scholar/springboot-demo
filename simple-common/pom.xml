@@ -24,6 +24,7 @@
         <module>servlet-container-demo</module>
         <module>redis-demo</module>
         <module>httpclient-demo</module>
+        <module>rocketmq-demo</module>
     </modules>
 
     <properties>
