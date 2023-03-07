@@ -1,4 +1,4 @@
-package com.mimu.simple.java.leetcode;
+package com.mimu.simple.java.algorithm.leetcode;
 
 /**
  * author: mimu
