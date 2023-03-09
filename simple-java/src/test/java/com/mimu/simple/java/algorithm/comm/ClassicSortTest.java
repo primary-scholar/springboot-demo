@@ -1,56 +1,13 @@
-package com.mimu.simple.java.algorithm;
+package com.mimu.simple.java.algorithm.comm;
 
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.tools.ant.taskdefs.Sleep;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.*;
-import java.net.Inet4Address;
 import java.util.*;
 
 
-public class CommonTest {
-
-    private Integer[] sortList;
-
-    @Before
-    public void prepareList() {
-        ArrayList<Integer> integers = new ArrayList<>(10);
-        for (int i = 0; i < 10; i++) {
-            integers.add(i);
-        }
-        Collections.shuffle(integers);
-        sortList = integers.toArray(new Integer[integers.size()]);
-    }
-
-    @Test
-    public void bubbleSortTest() {
-        System.out.println(JSONObject.toJSONString(sortList));
-        bubbleSort(sortList);
-        System.out.println(JSONObject.toJSONString(sortList));
-    }
-
-    @Test
-    public void selectSortTest() {
-        System.out.println(JSONObject.toJSONString(sortList));
-        selectSort(sortList);
-        System.out.println(JSONObject.toJSONString(sortList));
-    }
-
-    @Test
-    public void insertSortTest() {
-        System.out.println(JSONObject.toJSONString(sortList));
-        insertSort(sortList);
-        System.out.println(JSONObject.toJSONString(sortList));
-    }
-
-    public void swap(Integer[] unSortList, int i, int j) {
-        Integer tmp = unSortList[i];
-        unSortList[i] = unSortList[j];
-        unSortList[j] = tmp;
-    }
+public class ClassicSortTest {
 
     /**
      * 冒泡排序
@@ -114,5 +71,45 @@ public class CommonTest {
 
     }
 
+
+    public Integer[] sortList;
+
+    @Before
+    public void prepareList() {
+        ArrayList<Integer> integers = new ArrayList<>(10);
+        for (int i = 0; i < 10; i++) {
+            int v = (int) (i * Math.random() * 100 - Math.random() * 100);
+            integers.add(v);
+        }
+        Collections.shuffle(integers);
+        sortList = integers.toArray(new Integer[integers.size()]);
+    }
+
+    @Test
+    public void bubbleSortTest() {
+        System.out.println(JSONObject.toJSONString(sortList));
+        bubbleSort(sortList);
+        System.out.println(JSONObject.toJSONString(sortList));
+    }
+
+    @Test
+    public void selectSortTest() {
+        System.out.println(JSONObject.toJSONString(sortList));
+        selectSort(sortList);
+        System.out.println(JSONObject.toJSONString(sortList));
+    }
+
+    @Test
+    public void insertSortTest() {
+        System.out.println(JSONObject.toJSONString(sortList));
+        insertSort(sortList);
+        System.out.println(JSONObject.toJSONString(sortList));
+    }
+
+    public void swap(Integer[] unSortList, int i, int j) {
+        Integer tmp = unSortList[i];
+        unSortList[i] = unSortList[j];
+        unSortList[j] = tmp;
+    }
 
 }
