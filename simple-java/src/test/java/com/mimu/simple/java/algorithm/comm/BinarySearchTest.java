@@ -42,6 +42,13 @@ public class BinarySearchTest extends ClassicSortTest {
         return -1;
     }
 
+    /**
+     * >= 某个元素最左侧的位置
+     *
+     * @param sortList
+     * @param searchIng
+     * @return
+     */
     public Integer biggerThanOneLeftMostBinaryQuery(Integer[] sortList, Integer searchIng) {
         if (Objects.isNull(sortList) || sortList.length < 1) {
             return -1;
@@ -60,6 +67,13 @@ public class BinarySearchTest extends ClassicSortTest {
         return index;
     }
 
+    /**
+     * <= 某个元素最右侧的位置
+     *
+     * @param sortList
+     * @param searchIng
+     * @return
+     */
     public Integer smallThanOneRightMostBinaryQuery(Integer[] sortList, Integer searchIng) {
         if (Objects.isNull(sortList) || sortList.length < 1) {
             return -1;
@@ -120,14 +134,6 @@ public class BinarySearchTest extends ClassicSortTest {
                 System.out.println(String.format(info, searchIng, index, queryIndex));
                 return;
             }
-            /*searchIng = (int) (Math.random() * 100 - Math.random() * 100);
-            queryIndex = biggerThanOneLeftMostBinaryQuery(origin, searchIng);
-            if (!Arrays.asList(origin).contains(searchIng) && (queryIndex != -1)) {
-                System.out.println(JSONObject.toJSONString(origin));
-                System.out.println(searchIng);
-                System.out.println(index);
-                return;
-            }*/
         }
     }
 
@@ -146,13 +152,6 @@ public class BinarySearchTest extends ClassicSortTest {
                 System.out.println(String.format(info, searchIng, index, queryIndex));
                 return;
             }
-            searchIng = (int) (Math.random() * 100 - Math.random() * 100);
-            /*index = smallThanOneRightMostBinaryQuery(origin, searchIng);
-            if (!Arrays.asList(origin).contains(searchIng) && index != -1) {
-                System.out.println(JSONObject.toJSONString(origin));
-                System.out.println(searchIng);
-                return;
-            }*/
         }
     }
 }
