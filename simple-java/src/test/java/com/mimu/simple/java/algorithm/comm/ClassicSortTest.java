@@ -1,6 +1,7 @@
 package com.mimu.simple.java.algorithm.comm;
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -72,38 +73,64 @@ public class ClassicSortTest {
     }
 
 
-    public Integer[] sortList;
-
-    @Before
-    public void prepareList() {
-        ArrayList<Integer> integers = new ArrayList<>(10);
-        for (int i = 0; i < 10; i++) {
+    protected Integer[] initAList() {
+        Integer length = (int) (Math.random() * 20) + 1;
+        ArrayList<Integer> integers = new ArrayList<>(length);
+        for (int i = 0; i < length; i++) {
             int v = (int) (i * Math.random() * 100 - Math.random() * 100);
             integers.add(v);
         }
         Collections.shuffle(integers);
-        sortList = integers.toArray(new Integer[integers.size()]);
+        return integers.toArray(new Integer[0]);
+    }
+
+    public Integer[] copyList(Integer[] origin) {
+        return Arrays.copyOf(origin, origin.length);
     }
 
     @Test
     public void bubbleSortTest() {
-        System.out.println(JSONObject.toJSONString(sortList));
-        bubbleSort(sortList);
-        System.out.println(JSONObject.toJSONString(sortList));
+        Integer loop = (int) (Math.random() * 50);
+        for (int l = 0; l < loop; l++) {
+            Integer[] origin = initAList();
+            Integer[] copy = copyList(origin);
+            bubbleSort(origin);
+            Arrays.sort(copy);
+            if (!Arrays.equals(origin, copy)) {
+                System.out.println(JSONObject.toJSONString(origin));
+                System.out.println(JSONObject.toJSONString(copy));
+            }
+        }
     }
 
     @Test
     public void selectSortTest() {
-        System.out.println(JSONObject.toJSONString(sortList));
-        selectSort(sortList);
-        System.out.println(JSONObject.toJSONString(sortList));
+        Integer loop = (int) (Math.random() * 50);
+        for (int l = 0; l < loop; l++) {
+            Integer[] origin = initAList();
+            Integer[] copy = copyList(origin);
+            selectSort(origin);
+            Arrays.sort(copy);
+            if (!Arrays.equals(origin, copy)) {
+                System.out.println(JSONObject.toJSONString(origin));
+                System.out.println(JSONObject.toJSONString(copy));
+            }
+        }
     }
 
     @Test
     public void insertSortTest() {
-        System.out.println(JSONObject.toJSONString(sortList));
-        insertSort(sortList);
-        System.out.println(JSONObject.toJSONString(sortList));
+        Integer loop = (int) (Math.random() * 50);
+        for (int l = 0; l < loop; l++) {
+            Integer[] origin = initAList();
+            Integer[] copy = copyList(origin);
+            insertSort(origin);
+            Arrays.sort(copy);
+            if (!Arrays.equals(origin, copy)) {
+                System.out.println(JSONObject.toJSONString(origin));
+                System.out.println(JSONObject.toJSONString(copy));
+            }
+        }
     }
 
     public void swap(Integer[] unSortList, int i, int j) {
